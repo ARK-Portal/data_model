@@ -2,9 +2,8 @@
 
 This repository contains 3 major files:
 
-1. `ark.model.csv`: The CSV representation of the AMP AIM data model. This file 
-is created by the collective effort of data curators and annotators from the AMP AIM 
-and is used to create the JSON-LD representation of the data model.
+1. `ark.model.csv`: The CSV representation of the ARK Portal data model and is used 
+to create the JSON-LD representation of the data model.
 
 
 2. `ark.model.jsonld`: The JSON-LD representation of the data model, which is 
