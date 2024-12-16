@@ -22,6 +22,8 @@ jobs:
       # Set up supported python.
       - uses: actions/setup-python@v5
         with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
           python-version: '3.10.12' 
 
       - name: Install Schematic
@@ -50,4 +52,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         branch: main
+         branch: ${{ github.event.pull_request.head.ref }} #The name of the branch being merged into main
