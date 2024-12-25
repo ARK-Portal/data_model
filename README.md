@@ -15,7 +15,7 @@ generation of metadata manifest templates for various data types (e.g., `scRNA-s
 from the schema.
 
 
-3. `config.yml`: A template version of the schematic-compatible configuration file, 
+3. `schematic_config.yml`: A template version of the schematic-compatible configuration file, 
 which allows users to specify values for application-specific keys (e.g., path 
 to Synapse configuration file) and project-specific keys (e.g., Synapse 
 fileview for community project). A description of what the various keys in this 
