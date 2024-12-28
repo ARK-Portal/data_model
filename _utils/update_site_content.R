@@ -109,9 +109,13 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
                depends <- glue("'{depends}'")
                output <- glue("docs/metadata_templates/{title_snake}.md")
                cmd <- glue("Rscript _utils/render_template.R metadata_template {output} '{attr}' {title_snake} \"{depends}\"")
-               run <- sys::exec_internal(cmd)
+               run <- sys::exec_internal(cmd = "Rscript", 
+                                         args = c("_utils/render_template.R", 
+                                         "metadata_template", 
+                                         output, glue('{attr}'),
+                                         "title_snake", glue("\"{depends}\"")))
                if (run$status != 0) {
-                stop(glue("Failed to complete: {cmd}!"))
+                stop("Failed to complete execution of _utils/render_template.R")
                }
              })
 
