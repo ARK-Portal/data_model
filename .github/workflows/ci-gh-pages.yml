@@ -25,18 +25,18 @@ jobs:
         with:
           packages: |
             any::rmarkdown
+            any::dplyr
+            any::stringr
+            any::glue
+            any::purrr
             
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
           ref: gh-pages
 
-      - name: test
+      - name: Update site content
         run: | 
-          ls
-          
-      - name: Hello world test
-        run: | 
-          Rscript _utils/hello_world.R
+          Rscript _utils/update_site_content.R
 
 # END
