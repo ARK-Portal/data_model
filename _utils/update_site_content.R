@@ -90,6 +90,20 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
                write_model_csv(out, fid)
              }, df = model)
 
+### Catalog existing
+### metadata templates Markdown files
+### docs/metadata_templates/ one md per template
+purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
+             function(attr, depends){
+               title_snake <- snakecase::to_snake_case(attr)
+               title_snake <- str_replace(title_snake, "sc_rna_seq", "scrnaseq")
+               depends <- str_replace_all(depends, ", ", "', '")
+               depends <- glue("'{depends}'")
+               output <- glue("docs/metadata_templates/{title_snake}.md")
+               cmd <- glue("Rscript _utils/render_template.R metadata_template {output} '{attr}' {title_snake} \"{depends}\"")
+               system(cmd)
+             })
+
 writeLines("Success!")
 
 # END
