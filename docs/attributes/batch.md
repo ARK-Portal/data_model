@@ -5,6 +5,7 @@ datatable: true
 layout: page
 permalink: "docs/attributes/batch.html"
 date: "2024-12-28"
+nav_order: 1
 params:
   title: ""
 ---
