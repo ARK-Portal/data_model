@@ -91,6 +91,13 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
              }, df = model)
 
 ### Catalog existing
+md_catalog <- purrr::map(c("_includes/content/", 
+                           "docs/metadata_templates/", 
+                           "docs/attributes/"), 
+                         function(dir) {
+                           
+                         })
+
 ### metadata templates Markdown files
 ### docs/metadata_templates/ one md per template
 purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
@@ -101,7 +108,10 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
                depends <- glue("'{depends}'")
                output <- glue("docs/metadata_templates/{title_snake}.md")
                cmd <- glue("Rscript _utils/render_template.R metadata_template {output} '{attr}' {title_snake} \"{depends}\"")
-               system(cmd)
+               run <- sys::exec_internal(cmd)
+               if (run$status != 0) {
+                stop(glue("Failed to complete: {cmd}!"))
+               }
              })
 
 writeLines("Success!")
