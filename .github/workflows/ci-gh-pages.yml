@@ -1,0 +1,32 @@
+# This workflow is used to update gh-pages content by running an R workflow when 
+# changes occur to ark.model.csv in the main branch
+
+name: ci-schema-convert
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          path: gh-pages
+      # Set up supported python.
+      - name: Setup R env
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-renv@v2
+      
+      - name: Install rmarkdown
+        run: install.packages("rmarkdown")
+        shell: Rscript {0}
+      
+      - name: Hello world test
+        shell: Rscript _utils/hello_world.R
