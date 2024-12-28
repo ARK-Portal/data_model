@@ -91,11 +91,12 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
              }, df = model)
 
 ### Catalog existing
-md_catalog <- purrr::map(c("_includes/content/", 
-                           "docs/metadata_templates/", 
-                           "docs/attributes/"), 
-                         function(dir) {
-                           
+md_dirs <- c("_includes/content/", 
+             "docs/metadata_templates/", 
+             "docs/attributes/")
+md_catalog <- purrr::map(md_dirs, function(dir) {
+                           md <- list.files(dir, full.names = TRUE)
+                           return(md)
                          })
 
 ### metadata templates Markdown files
