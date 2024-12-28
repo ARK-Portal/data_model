@@ -1,5 +1,9 @@
 # Data Models
 
+## main branch
+
+> This branch should not be merged with `gh-pages` and vice versa
+
 This repository contains 3 major files:
 
 1. `ark.model.csv`: The CSV representation of the ARK Portal data model and is used 
