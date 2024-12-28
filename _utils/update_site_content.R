@@ -57,11 +57,11 @@ model_valid_val <- filter(model_attributes, Valid.Values != "")
 purrr::walk2(model_valid_val$Attribute, model_valid_val$Valid.Values, 
              function(attr, vals) {
                 vals <- unlist(str_split(vals, ", ")) %>% sort()
-                out <- tibble('Valid Values' = vals)
+                out <- tibble('Valid Values' = as.character(vals))
                 # check for existing definitions
                 fid <- glue("_data/csv/attributes/{attr}.csv")
                 if (file.exists(fid)) {
-                  pre <- read.csv(fid) %>% tibble()
+                  pre <- read.csv(fid, colClasses = rep("character", 3)) %>% tibble()
                   colnames(pre) <- c("Valid Values", "Description", "Source")
                   # merge into valid values in model
                   out <- left_join(out, pre, by = "Valid Values")
@@ -90,5 +90,6 @@ purrr::walk2(model_templates$Attribute, model_templates$DependsOn,
                write_model_csv(out, fid)
              }, df = model)
 
+writeLines("Success!")
 
 # END
