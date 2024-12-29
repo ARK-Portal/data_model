@@ -193,7 +193,7 @@ purrr::pwalk(select(model_templates, Attribute, DependsOn, Description),
              })
 
 ### attributes with valid values
-purrr::pwalk(filter(model_valid_val, Attribute, Description, rank),
+purrr::pwalk(select(model_valid_val, Attribute, Description, rank),
             function(Attribute, Description, rank){
               # make content md file is doesn't exist
               content_md(Attribute, Description, vals_note = FALSE)
