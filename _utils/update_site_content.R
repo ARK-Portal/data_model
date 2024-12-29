@@ -186,7 +186,7 @@ purrr::pwalk(select(model_templates, Attribute, DependsOn, Description),
                                          args = c("_utils/render_template.R", 
                                          "metadata_template", 
                                          output, glue('{Attribute}'),
-                                         "title_snake", glue("\"{depends}\"")))
+                                         title_snake, glue("\"{depends}\"")))
                if (run$status != 0) {
                 stop(glue("Failed to complete execution of _utils/render_template.R for {title_snake}"))
                }
