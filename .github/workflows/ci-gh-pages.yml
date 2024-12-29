@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: build environment
+  update:
+    name: Update site content
     runs-on: ubuntu-latest
     
     steps:
@@ -33,11 +33,7 @@ jobs:
             any::readr
             any::sys
             any::lubridate
-  update:
-    name: Update site content
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
