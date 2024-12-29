@@ -1,0 +1,53 @@
+# This workflow is used to update gh-pages content by running an R workflow when 
+# changes occur to ark.model.csv in the main branch
+
+name: ci gh-pages content update
+
+on:
+  push:
+    branches: [main]
+    paths: 
+      - 'ark.model.csv'
+      - '.github/workflows/ci-gh-pages.yml'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update site content
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup R env
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::rmarkdown
+            any::dplyr
+            any::stringr
+            any::glue
+            any::purrr
+            any::snakecase
+            any::readr
+            any::sys
+            any::lubridate
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Update site content
+        run: | 
+          Rscript _utils/update_site_content.R
+      
+      - name: Test
+        run: |
+          echo ${{ github.ref_name }}
+          echo ${{ github.event.pull_request.head.ref }}
+# END
