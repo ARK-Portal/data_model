@@ -211,7 +211,7 @@ purrr::pwalk(filter(model_valid_val, Attribute, Description, rank),
 
 ### attributes w/o valid values
 purrr::pwalk(filter(model_attributes, Valid.Values == "") %>% 
-               select(Attribute, Description, rank), 
+                      select(Attribute, Description, rank), 
              function(Attribute, Description, rank){
                # make content md file is doesn't exist
                content_md(Attribute, Description, vals_note = TRUE)
