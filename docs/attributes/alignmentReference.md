@@ -3,10 +3,12 @@ title: "alignmentReference"
 parent: Attributes
 datatable: true
 layout: page
+nav_order: "3"
 permalink: "docs/attributes/alignmentReference.html"
-date: "2024-12-28"
+date: "2024-12-29"
 params:
   title: ""
+  rank: ""
 ---
 {% assign mydata=site.data.csv.attributes.alignmentReference %} 
 
