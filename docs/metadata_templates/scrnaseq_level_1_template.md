@@ -3,17 +3,16 @@ title: "scRNASeq Level 1 Template"
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: "docs/metadata_templates/scrnaseq_level_1_template.html"
-date: "2024-12-28"
+permalink: "docs/metadata_templates/title_snake.html"
+date: "2024-12-29"
 params:
   title: ""
   title_snake: ""
   dependsOn: ""
 ---
 
-{% assign mydata=site.data.csv.metadata_templates.scrnaseq_level_1_template %} 
-
-TBD content
+{% assign mydata=site.data.csv.metadata_templates.title_snake %} 
+{% include content/title_snake.md %}
 
 <table id="myTable" class="display" style="width:135%">
     <thead>
