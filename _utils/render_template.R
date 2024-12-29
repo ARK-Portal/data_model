@@ -5,7 +5,7 @@ args <- commandArgs(trailingOnly = TRUE)
 # 1 = rmd template to use
 # 2 = output file
 # 3 = title
-# 4 = title_snake
+# 4 = title_snake or rank
 # 5 = dependsOn
 
 if (args[1] == "metadata_template"){
@@ -35,7 +35,7 @@ if (args[1] == "valid_vals"){
     knit_root_dir = "../",
     #output_file = args[2],
     output_format = 'md_document', 
-    params = list("title" = args[3])
+    params = list("title" = args[3], "rank" = args[4])
   )
 
   temp <- file.rename(from = "_templates/template-valid_vals.knit.md", 
@@ -50,7 +50,7 @@ if (args[1] == "attribute"){
     knit_root_dir = "../",
     #output_file = args[2],
     output_format = 'md_document', 
-    params = list("title" = args[3])
+    params = list("title" = args[3], "rank" = args[4])
   )
   
   temp <- file.rename(from = "_templates/template-attributes.knit.md", 
