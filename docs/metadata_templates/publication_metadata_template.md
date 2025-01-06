@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/publication_metadata_template.html"
-date: "2024-12-28"
+date: "2025-01-06"
 params:
   title: ""
   title_snake: ""

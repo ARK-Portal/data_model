@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "20"
 permalink: "docs/attributes/diagnosis.html"
-date: "2024-12-29"
+date: "2025-01-06"
 params:
   title: ""
   rank: ""

@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "23"
 permalink: "docs/attributes/GitHubURL.html"
-date: "2024-12-29"
+date: "2025-01-06"
 params:
   title: ""
   rank: ""
