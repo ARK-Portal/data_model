@@ -57,11 +57,12 @@ archive_md <- function(fid) {
 
 content_md <- function(attr, desc, vals_note = FALSE) {
   fid <- glue("_includes/content/{attr}.md")
+  md_lines <- glue("# {attr}")
   if (!file.exists(fid)) {
     if (desc == ""){
-      md_lines <- "Content TBD"
+      md_lines <- c(md_lines, "\n", "Content TBD")
     } else{
-      md_lines <- c(desc)
+      md_lines <- c(md_lines, "\n", desc)
     }
     if (vals_note){
       md_lines <- c(md_lines, "\n", 
