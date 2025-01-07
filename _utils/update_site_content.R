@@ -56,24 +56,30 @@ archive_md <- function(fid) {
 }
 
 content_md <- function(attr, desc, vals_note = FALSE, title = NULL) {
+  if (desc == ""){
+    desc = "Content TBD"
+  }
+
   fid <- glue("_includes/content/{attr}.md")
   md_lines <- glue("# {attr}")
   if (!is.null(title)) {
     md_lines <- glue("# {title}")
   }
+  
   if (!file.exists(fid)) {
-    if (desc == ""){
-      md_lines <- c(md_lines, "Content TBD")
-    } else{
       md_lines <- c(md_lines, desc)
-    }
     if (vals_note){
       md_lines <- c(md_lines, "\n", 
                     "{: .note }",
                     "There are no defined valid values for this model attribute.")
     }
-    writeLines(md_lines, con = fid)
+  } else {
+    # replace existing description text with what's in the model just in case there have 
+    # been any changes
+    md_lines <- readLines(fid)
+    md_lines[2] <- desc
   }
+  writeLines(md_lines, con = fid)
 }
 
 #################
