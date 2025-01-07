@@ -55,9 +55,12 @@ archive_md <- function(fid) {
   file.rename(from = fid, to = glue(".archived/{fid}"))
 }
 
-content_md <- function(attr, desc, vals_note = FALSE) {
+content_md <- function(attr, desc, vals_note = FALSE, title = NULL) {
   fid <- glue("_includes/content/{attr}.md")
   md_lines <- glue("# {attr}")
+  if (!is.null(title)) {
+    md_lines <- glue("# {title}")
+  }
   if (!file.exists(fid)) {
     if (desc == ""){
       md_lines <- c(md_lines, "Content TBD")
@@ -177,7 +180,7 @@ purrr::pwalk(select(model_templates, Attribute, DependsOn, Description),
                title_snake <- get_title_snake(Attribute)
                
                # make content md file is doesn't exist
-               content_md(title_snake, Description, vals_note = FALSE)
+               content_md(title_snake, Description, vals_note = FALSE, title = Attribute)
                
                depends <- str_replace_all(DependsOn, ", ", "', '")
                depends <- glue("'{depends}'")
