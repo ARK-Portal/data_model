@@ -1,3 +1,4 @@
+# Component
 A high-level attribute grouping variable.
 
 

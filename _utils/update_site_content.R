@@ -60,9 +60,9 @@ content_md <- function(attr, desc, vals_note = FALSE) {
   md_lines <- glue("# {attr}")
   if (!file.exists(fid)) {
     if (desc == ""){
-      md_lines <- c(md_lines, "\n", "Content TBD")
+      md_lines <- c(md_lines, "Content TBD")
     } else{
-      md_lines <- c(md_lines, "\n", desc)
+      md_lines <- c(md_lines, desc)
     }
     if (vals_note){
       md_lines <- c(md_lines, "\n", 
