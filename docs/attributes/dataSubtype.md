@@ -3,9 +3,9 @@ title: "dataSubtype"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "17"
+nav_order: "19"
 permalink: "docs/attributes/dataSubtype.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

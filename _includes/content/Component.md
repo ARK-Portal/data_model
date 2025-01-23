@@ -1,5 +1,5 @@
 # Component
-A high-level attribute grouping variable.
+A high-level attribute for grouping attributes into templates.
 
 
 {: .note }

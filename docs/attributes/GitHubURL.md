@@ -3,9 +3,9 @@ title: "GitHubURL"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "23"
+nav_order: "27"
 permalink: "docs/attributes/GitHubURL.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "batch"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "7"
+nav_order: "8"
 permalink: "docs/attributes/batch.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

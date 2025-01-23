@@ -3,9 +3,9 @@ title: "assay"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "5"
+nav_order: "6"
 permalink: "docs/attributes/assay.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "RObjectClass"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "35"
+nav_order: "43"
 permalink: "docs/attributes/RObjectClass.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

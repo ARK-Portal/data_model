@@ -3,9 +3,9 @@ title: "biospecimenSubtype"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "9"
+nav_order: "10"
 permalink: "docs/attributes/biospecimenSubtype.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "Component"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "12"
+nav_order: "14"
 permalink: "docs/attributes/Component.html"
-date: "2025-01-07"
+date: "2025-01-23"
 params:
   title: ""
   rank: ""
