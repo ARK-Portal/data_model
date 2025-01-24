@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "2"
 permalink: "docs/attributes/acknowledgmentStatement.html"
-date: "2025-01-23"
+date: "2025-01-24"
 params:
   title: ""
   rank: ""

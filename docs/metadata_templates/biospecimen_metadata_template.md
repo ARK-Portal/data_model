@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/biospecimen_metadata_template.html"
-date: "2025-01-23"
+date: "2025-01-24"
 params:
   title: ""
   title_snake: ""

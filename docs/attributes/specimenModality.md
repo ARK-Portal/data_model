@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "47"
 permalink: "docs/attributes/specimenModality.html"
-date: "2025-01-23"
+date: "2025-01-24"
 params:
   title: ""
   rank: ""

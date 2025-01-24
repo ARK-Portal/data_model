@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "12"
 permalink: "docs/attributes/BRENDA.html"
-date: "2025-01-23"
+date: "2025-01-24"
 params:
   title: ""
   rank: ""

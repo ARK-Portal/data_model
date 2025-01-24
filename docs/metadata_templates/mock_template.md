@@ -1,9 +1,9 @@
 ---
-title: "Dataset Annotation Template"
+title: "Mock Template"
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: "docs/metadata_templates/dataset_annotation_template.html"
+permalink: "docs/metadata_templates/mock_template.html"
 date: "2025-01-24"
 params:
   title: ""
@@ -11,8 +11,8 @@ params:
   dependsOn: ""
 ---
 
-{% assign mydata=site.data.csv.metadata_templates.dataset_annotation_template %} 
-{% include content/dataset_annotation_template.md %}
+{% assign mydata=site.data.csv.metadata_templates.mock_template %} 
+{% include content/mock_template.md %}
 
 <table id="myTable" class="display" style="width:135%">
     <thead>

@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "11"
 permalink: "docs/attributes/biospecimenType.html"
-date: "2025-01-23"
+date: "2025-01-24"
 params:
   title: ""
   rank: ""
