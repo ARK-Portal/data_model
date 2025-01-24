@@ -1,2 +1,2 @@
 # Mock Template
-A template outlining metadata to be collected for biospecimen.
+A mock template for performing tests of GH Actions workflows
