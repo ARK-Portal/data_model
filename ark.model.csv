@@ -4,9 +4,8 @@ Dataset Annotation Template,A template outlining dataset metadata to use as anno
 scRNASeq Level 1 Template,A template outlining metadata to use as annotations for scRNA-seq fastq files.,,"Component, filename, fileFormat, program, project, resourceType, nucleicAcidSource, libraryPrepMethod, libraryID, batch",,,,,,
 Feature Barcode Seq Level 1 Template,A template outlining metadata to use as annotations for feature barcode sequencing fastq files.,,"Component, filename, fileFormat, program, project, resourceType, nucleicAcidSource, targetPanel, targetPanelSynID, libraryID, batch",,,,,,
 Publication Metadata Template,A template outlining metadata to use as annotations for Publication 'file' entities.,,"Component, program, programPhase, project, associatedDataset, PMID, DOI, journal, publicationDate, year, title, publicationType",,,,,,
-Biospecimen Metadata Template,A template outlining metadata to be collected for biospecimen.,,"Component, individualID, visitID, biospecimenID, biospecimenType, biospecimenSubtype, program, project",,,,,,
-V-CoRT Biospecimen Metadata Template,A template outlining metadata to be collected for V-CoRT biospecimen.,,"Component, individualID, biospecimenID, biospecimenType, biospecimenSubtype, program, project",,,,,,
-V-CoRT Clinical Metadata Template,A template outlining metadata to be collected for V-CoRT project study participants.,,"Component, individualID, diagnosis",,,,,,
+Biospecimen Metadata Template,A template outlining metadata to be collected for biospecimen.,,"Component, individualID, visitID, biospecimenID, biospecimenType, biospecimenSubtype",,,,,,
+V-CoRT Clinical Metadata Template,A template outlining clinical and demographic metadata to be collected for V-CoRT study participants.,,"Component, program, project, individualID, diagnosis, age, ageUnits, sex, height, heightUnits, weight, weightUnits, comorbidities, vitiligoType, vitiligoSubtype, VIDA, VASI, VETI",,,,,,
 Mock Template,A mock template for performing tests of GH Actions workflows,,"Component, individualID, visitID, biospecimenID, biospecimenType, biospecimenSubtype, program, project",,,,,,
 fileFormat,Standard file format name or file extension,"csv, tsv, txt, xlsx, xls, fcs, docx, erate, rec, info, vcf, dose, tbi, fam, bim, bed, bam, h5, mtx, bai, rds, pdf, tgz, zip, fastq, parquet, geojson, tar.gz, zip",,,TRUE,,,,
 filename,Name of a file. Must be included in DependsOn for all file manifest/annotation templates.,,,,TRUE,,,,
@@ -30,7 +29,7 @@ platform,"The specific version (manufacturer, model, etc.) of a technology that 
 specimenModality,Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens,"single specimen, multispecimen",,,TRUE,,,,
 individualID,Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.,,,,TRUE,,,,#ClinicalMetadataTemplate unique error^^#BiospecimenMetadataTemplate str^^list like error
 biospecimenID,A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.,,,,FALSE,,,,#BiospecimenMetadataTemplate unique error^^list like error
-biospecimenType,"A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.","none, urine, stool, whole blood, serum, plasma, PBMCs, total leukocytes, kidney biopsy, synovial fluid, skin biopsy, salivary gland, saliva, skin swab, synovial tissue",,,TRUE,,,,list like error^^#BiospecimenMetadataTemplate
+biospecimenType,"A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.","none, urine, stool, whole blood, serum, plasma, PBMCs, total leukocytes, kidney biopsy, synovial fluid, skin biopsy, salivary gland, saliva, skin swab, synovial tissue, suction blister cells, suction blister fluid",,,TRUE,,,,list like error^^#BiospecimenMetadataTemplate
 metadata,"Any file that contains curated data describing an experiment and experimental-derived data, including metadata about study subjects, biospecimens, protocols, assay reagents, marker panels, and ID mappings. Is a valid value of Resource Type that triggers conditional dependencies for additional attributes.",,metadataType,,FALSE,,,,
 metadataType,A label further classifying the content of metadata resource.,,,,TRUE,,,,
 figure,"A file that contains a graphical representation of data such as a scatter plot, heatmap, etc. Is a valid value of Resource Type and may trigger conditional dependencies for additional attributes.",,,,FALSE,,,,
@@ -76,13 +75,16 @@ vitiligoType,General type classification of vitiligo disease manifestation,"segm
 vitiligoSubtype,Subtype classification of vitiligo disease manifestation.,"focal, mucosal, acrofacial, generalized, universal, unisegmental, bisegmental",,,FALSE,,,,
 vitiligo,A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.,,"vitiligoType, vitiligoSubtype",,,,,,
 ageDiagnosis,Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age``,,,,FALSE,,,,num
-age,Age at which subject was enrolled in study or baseline visit.,,,,TRUE,,,,num
+age,Age at which subject was enrolled in study or age at corresponding visit and data collection event.,,,,TRUE,,,,num
 ageUnits,The unit of measure used for `ageEnrollment` and `ageDiagnosis`,"years, months",,,TRUE,,,,
 sex,A textual description of a person's sex at birth.,"female, male, intersex, unknown",,,TRUE,,,,
 height,Standing height of subject.,,,,TRUE,,,,num
 heightUnits,Unit of measure of value provided for `height`.,"inches, centimeters, meters, feet",,,TRUE,,,,
 weight,Weight of subject.,,,,TRUE,,,,num
-weightUnits,Abbreviated unit of measure of valued provided for `weight`.,"lb, kg, g, oz",,,TRUE,,,,
-comorbidities,Any diseases or medical condition that is simultaneously present in addition to diagnosis.,"diabetes, cardiovascular disease, pulmonary disease, autoimmune thyroid disease, inflammatory bowel disease, psoriasis, multiple sclerosis, systemic lupus erythematosus, rheumatoid arthritis, other",,,FALSE,,,,
+weightUnits,Abbreviated unit of measure of value provided for `weight`.,"lb, kg, g, oz",,,TRUE,,,,
+comorbidities,Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.,"diabetes, cardiovascular disease, pulmonary disease, autoimmune thyroid disease, inflammatory bowel disease, psoriasis, multiple sclerosis, systemic lupus erythematosus, rheumatoid arthritis, other",,,FALSE,,,,
 diabetesType,Type of diabetes mellitus.,"type 1, type 2, unknown, gestational",,,FALSE,,,,
 diabetes,A valid value of `comorbidities` that triggers conditional dependencies for additional attributes.,,diabetesType,,,,,,
+VIDA,"Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo ",,,,FALSE,,,,
+VASI,"Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",,,,FALSE,,,,
+VETI,Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.,,,,FALSE,,,https://doi.org/10.5826/dpc.0404a18,num
