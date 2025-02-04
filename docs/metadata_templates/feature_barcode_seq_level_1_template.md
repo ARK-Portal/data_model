@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/feature_barcode_seq_level_1_template.html"
-date: "2025-01-24"
+date: "2025-02-04"
 params:
   title: ""
   title_snake: ""
