@@ -5,14 +5,14 @@ scRNASeq Level 1 Template,A template outlining metadata to use as annotations fo
 Feature Barcode Seq Level 1 Template,A template outlining metadata to use as annotations for feature barcode sequencing fastq files.,,"Component, filename, fileFormat, program, project, resourceType, nucleicAcidSource, targetPanel, targetPanelSynID, libraryID, batch",,,,,,
 Publication Metadata Template,A template outlining metadata to use as annotations for Publication 'file' entities.,,"Component, program, programPhase, project, associatedDataset, PMID, DOI, journal, publicationDate, year, title, publicationType",,,,,,
 Biospecimen Metadata Template,A template outlining metadata to be collected for biospecimen.,,"Component, individualID, visitID, biospecimenID, biospecimenType, biospecimenSubtype",,,,,,
-V-CoRT Clinical Metadata Template,A template outlining clinical and demographic metadata to be collected for V-CoRT study participants.,,"Component, program, project, individualID, diagnosis, age, ageUnits, sex, height, heightUnits, weight, weightUnits, comorbidities, vitiligoType, vitiligoSubtype, VIDA, VASI, VETI",,,,,,
+V-CoRT Clinical Metadata Template,A template outlining clinical and demographic metadata to be collected for V-CoRT study participants.,,"Component, program, project, individualID, diagnosis, age, ageUnits, sex, height, heightUnits, weight, weightUnits, comorbidities, vitiligoType, vitiligoSubtype, VIDA, VASI, VETI, PASI, CDASI",,,,,,
 Mock Template,A mock template for performing tests of GH Actions workflows,,"Component, individualID, visitID, biospecimenID, biospecimenType, biospecimenSubtype, program, project",,,,,,
 fileFormat,Standard file format name or file extension,"csv, tsv, txt, xlsx, xls, fcs, docx, erate, rec, info, vcf, dose, tbi, fam, bim, bed, bam, h5, mtx, bai, rds, pdf, tgz, zip, fastq, parquet, geojson, tar.gz, zip",,,TRUE,,,,
 filename,Name of a file. Must be included in DependsOn for all file manifest/annotation templates.,,,,TRUE,,,,
 publicationSynID,"The synID of the corresponding Synapse entity that stores metadata about the publication. This is used to differentiate publication-specific files, often consisting of level 4 processed data and expanded subject metadata, in a publication dataset that also includes raw or minimally processed files from experimental datasets. This provides an easy way to distinguish and select for the publication-specific data from which the research findings were derived. When this attribute is used to annotate a Dataset it serves as a way to directly link the Dataset entity with the publication metadata stored in Synapse.",,,,FALSE,,,,regex search ^syn[0-9]{8} error
 associatedDataset,The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.,,,,FALSE,,,,list like :: regex search ^syn[0-9]{8} error
 program,Name of the funding program that supported the generation of data and associated files,"AMP RA/SLE, AMP AIM, Community Contribution",,,TRUE,,,,
-project,A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.,"RA, SLE, AIM for RA, STAMP, LOCKIT, V-CoRT",,,TRUE,,,,
+project,A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.,"RA, SLE, AIM for RA, STAMP, LOCKIT, V-CoRT, ELLIPSS",,,TRUE,,,,
 AMP RA/SLE,Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.,,programPhase,,FALSE,,,,
 programPhase,A label noting which AMP RA/SLE program phase generated the data.,"I, II",,,TRUE,,,,
 resourceType,High-level classification of the file content,"experimental data, metadata, figure, code",,,TRUE,,,,
@@ -49,8 +49,8 @@ datasetDescription,A Dataset-specific attribute specifying the synID of the fold
 ARKRelease,A Dataset-specific attribute specifying the ARK Portal release in which this dataset was first made available to the public.,"1.0, 2.0, 2024.06.R1, 2024.07.R1, 2024.08.R1, 2024.09.R1, 2024.10.R1, 2024.12.R1, 2025.01.R1, 2025.02.R1, 2025.03.R1, 2025.04.R1, 2025.05.R1, 2025.06.R1, 2025.07.R1, 2025.08.R1, 2025.09.R1, 2025.10.R1, 2025.11.R1, 2025.12.R1",,,TRUE,,,,
 RObjectClass,"Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.","list, vector, sparse matrix, Seurat object, data.frame, matrix, SummarizedExperiment",,,FALSE,,,,
 dbGapAccession,"NIH policy requires large-scale human genomics studies to be registered in dbGap. This is a Dataset-specific attribute indicating the unique identifier (i.e., accession) of the corresponding study that is registered in dbGap.",,,,FALSE,,,,
-diagnosis,A high-level classifier indicating the disease status of an individual.,"Control, SLE, RA, At-Risk-RA, vitiligo",,,TRUE,,,,
-libraryID,,,,,FALSE,,,,
+diagnosis,A high-level classifier indicating the disease status of an individual.,"control, SLE, RA, At-Risk-RA, vitiligo, dermatomyositis, PsO, PsA, scleroderma, SjD",,,TRUE,,,,
+libraryID,"A library label or name, unique within an experiment, used to distinguish sequencing libraries.",,,,FALSE,,,,
 batch,"A label or identifier that is unique within a given experiment or dataset used to group data related to sample processing, sample pooling, or data collection batches. These batches often introduce technical effects that can be important to account for in downstream analyses.",,,,FALSE,,,,
 GitHubURL,A URL to the GitHub repository where associated code is available,,,,FALSE,,,,
 FMAID,Functional Model of Anatomy ontology ID corresponding to the anatomical site and origin of the biospecimen. This is a conditionally dependent attribute triggered by a subset of `biospecimenType`.,,,,TRUE,,,https://bioportal.bioontology.org/ontologies/FMA/?p=summary,int
@@ -71,10 +71,10 @@ publicationDate,The publication date extracted from PubMed database,,,,TRUE,,,,
 PMID,PubMed® Identifier,,,,TRUE,,,,regex search ^PMID error
 DOI,Digital object identifier,,,,TRUE,,,,
 anatomicalSite,Functional Model of Anatomy ontology label corresponding to the FMAID of the biospecimen collection site. This attribute is set by ARK Portal data managers.,,,,TRUE,,,,
-vitiligoType,General type classification of vitiligo disease manifestation,"segmental, non-segmental, mixed, unclassified",,,FALSE,,,,
+vitiligoType,General type classification of vitiligo disease manifestation.,"segmental, non-segmental, mixed, unclassified",,,FALSE,,,,
 vitiligoSubtype,Subtype classification of vitiligo disease manifestation.,"focal, mucosal, acrofacial, generalized, universal, unisegmental, bisegmental",,,FALSE,,,,
 vitiligo,A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.,,"vitiligoType, vitiligoSubtype",,,,,,
-ageDiagnosis,Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age``,,,,FALSE,,,,num
+ageDiagnosis,Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age`.,,,,FALSE,,,,num
 age,Age at which subject was enrolled in study or age at corresponding visit and data collection event.,,,,TRUE,,,,num
 ageUnits,The unit of measure used for `ageEnrollment` and `ageDiagnosis`,"years, months",,,TRUE,,,,
 sex,A textual description of a person's sex at birth.,"female, male, intersex, unknown",,,TRUE,,,,
@@ -88,3 +88,5 @@ diabetes,A valid value of `comorbidities` that triggers conditional dependencies
 VIDA,"Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo ",,,,FALSE,,,,
 VASI,"Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",,,,FALSE,,,,
 VETI,Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.,,,,FALSE,,,https://doi.org/10.5826/dpc.0404a18,num
+PASI,"Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",,,,FALSE,,,,
+CDASI,"Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",,,,FALSE,,,,
