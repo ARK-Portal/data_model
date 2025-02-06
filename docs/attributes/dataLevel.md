@@ -3,9 +3,9 @@ title: "dataLevel"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "16"
+nav_order: "21"
 permalink: "docs/attributes/dataLevel.html"
-date: "2025-02-04"
+date: "2025-02-06"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "platform"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "34"
+nav_order: "44"
 permalink: "docs/attributes/platform.html"
-date: "2025-02-04"
+date: "2025-02-06"
 params:
   title: ""
   rank: ""

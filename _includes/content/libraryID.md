@@ -1,5 +1,5 @@
 # libraryID
-Content TBD
+A library label or name, unique within an experiment, used to distinguish sequencing libraries.
 {: .note }
 There are no defined valid values for this model attribute.
 

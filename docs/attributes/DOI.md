@@ -3,9 +3,9 @@ title: "DOI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "23"
+nav_order: "29"
 permalink: "docs/attributes/DOI.html"
-date: "2025-02-04"
+date: "2025-02-06"
 params:
   title: ""
   rank: ""

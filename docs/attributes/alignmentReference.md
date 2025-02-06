@@ -3,9 +3,9 @@ title: "alignmentReference"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "3"
+nav_order: "6"
 permalink: "docs/attributes/alignmentReference.html"
-date: "2025-02-04"
+date: "2025-02-06"
 params:
   title: ""
   rank: ""

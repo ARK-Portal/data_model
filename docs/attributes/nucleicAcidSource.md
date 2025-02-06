@@ -3,9 +3,9 @@ title: "nucleicAcidSource"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "33"
+nav_order: "42"
 permalink: "docs/attributes/nucleicAcidSource.html"
-date: "2025-02-04"
+date: "2025-02-06"
 params:
   title: ""
   rank: ""
