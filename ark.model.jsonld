@@ -113,6 +113,9 @@
                 },
                 {
                     "@id": "bts:AMPAIM"
+                },
+                {
+                    "@id": "bts:CommunityContribution"
                 }
             ],
             "sms:displayName": "program",
@@ -147,6 +150,12 @@
                 },
                 {
                     "@id": "bts:LOCKIT"
+                },
+                {
+                    "@id": "bts:V-CoRT"
+                },
+                {
+                    "@id": "bts:ELLIPSS"
                 }
             ],
             "sms:displayName": "project",
@@ -236,6 +245,12 @@
                 },
                 {
                     "@id": "bts:Synovialtissue"
+                },
+                {
+                    "@id": "bts:Suctionblistercells"
+                },
+                {
+                    "@id": "bts:Suctionblisterfluid"
                 }
             ],
             "sms:displayName": "biospecimenType",
@@ -310,6 +325,24 @@
                 },
                 {
                     "@id": "bts:At-Risk-RA"
+                },
+                {
+                    "@id": "bts:Vitiligo"
+                },
+                {
+                    "@id": "bts:Dermatomyositis"
+                },
+                {
+                    "@id": "bts:PsO"
+                },
+                {
+                    "@id": "bts:PsA"
+                },
+                {
+                    "@id": "bts:Scleroderma"
+                },
+                {
+                    "@id": "bts:SjD"
                 }
             ],
             "sms:displayName": "diagnosis",
@@ -1058,7 +1091,7 @@
         {
             "@id": "bts:LibraryID",
             "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
+            "rdfs:comment": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
             "rdfs:label": "LibraryID",
             "rdfs:subClassOf": [
                 {
@@ -1424,12 +1457,6 @@
                 },
                 {
                     "@id": "bts:BiospecimenSubtype"
-                },
-                {
-                    "@id": "bts:Program"
-                },
-                {
-                    "@id": "bts:Project"
                 }
             ],
             "sms:validationRules": []
@@ -1486,11 +1513,554 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "biospecimenID",
-            "sms:required": "sms:false",
+            "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
+        },
+        {
+            "@id": "bts:V-CoRTClinicalMetadataTemplate",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A template outlining clinical and demographic metadata to be collected for V-CoRT study participants.",
+            "rdfs:label": "V-CoRTClinicalMetadataTemplate",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "V-CoRT Clinical Metadata Template",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:Component"
+                },
+                {
+                    "@id": "bts:Program"
+                },
+                {
+                    "@id": "bts:Project"
+                },
+                {
+                    "@id": "bts:IndividualID"
+                },
+                {
+                    "@id": "bts:Diagnosis"
+                },
+                {
+                    "@id": "bts:Age"
+                },
+                {
+                    "@id": "bts:AgeUnits"
+                },
+                {
+                    "@id": "bts:Sex"
+                },
+                {
+                    "@id": "bts:Race"
+                },
+                {
+                    "@id": "bts:Ethnicity"
+                },
+                {
+                    "@id": "bts:Height"
+                },
+                {
+                    "@id": "bts:HeightUnits"
+                },
+                {
+                    "@id": "bts:Weight"
+                },
+                {
+                    "@id": "bts:WeightUnits"
+                },
+                {
+                    "@id": "bts:Comorbidities"
+                },
+                {
+                    "@id": "bts:VitiligoType"
+                },
+                {
+                    "@id": "bts:VitiligoSubtype"
+                },
+                {
+                    "@id": "bts:VIDA"
+                },
+                {
+                    "@id": "bts:VASI"
+                },
+                {
+                    "@id": "bts:VETI"
+                },
+                {
+                    "@id": "bts:PASI"
+                },
+                {
+                    "@id": "bts:CDASI"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Age",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Age at which subject was enrolled in study or age at corresponding visit and data collection event.",
+            "rdfs:label": "Age",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "age",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num"
+            ]
+        },
+        {
+            "@id": "bts:AgeUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The unit of measure used for `ageEnrollment` and `ageDiagnosis`",
+            "rdfs:label": "AgeUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Years"
+                },
+                {
+                    "@id": "bts:Months"
+                }
+            ],
+            "sms:displayName": "ageUnits",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Sex",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A textual description of a person's sex at birth.",
+            "rdfs:label": "Sex",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Female"
+                },
+                {
+                    "@id": "bts:Male"
+                },
+                {
+                    "@id": "bts:Intersex"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "sex",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Race",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A textual description of a person's race.",
+            "rdfs:label": "Race",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Asian"
+                },
+                {
+                    "@id": "bts:BlackorAfricanAmerican"
+                },
+                {
+                    "@id": "bts:White"
+                },
+                {
+                    "@id": "bts:Hispanic"
+                },
+                {
+                    "@id": "bts:AmericanindianorAlaskanative"
+                },
+                {
+                    "@id": "bts:Mixedrace"
+                },
+                {
+                    "@id": "bts:NativeHawaiianorotherpacificislander"
+                },
+                {
+                    "@id": "bts:Other"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "race",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Ethnicity",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The ethnicity of a person.",
+            "rdfs:label": "Ethnicity",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Hispanicorlatino"
+                },
+                {
+                    "@id": "bts:Nothispanicorlatino"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "ethnicity",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Height",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Standing height of subject.",
+            "rdfs:label": "Height",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "height",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num"
+            ]
+        },
+        {
+            "@id": "bts:HeightUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Unit of measure of value provided for `height`.",
+            "rdfs:label": "HeightUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Inches"
+                },
+                {
+                    "@id": "bts:Centimeters"
+                },
+                {
+                    "@id": "bts:Meters"
+                },
+                {
+                    "@id": "bts:Feet"
+                }
+            ],
+            "sms:displayName": "heightUnits",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Weight",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Weight of subject.",
+            "rdfs:label": "Weight",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "weight",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num"
+            ]
+        },
+        {
+            "@id": "bts:WeightUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Abbreviated unit of measure of value provided for `weight`.",
+            "rdfs:label": "WeightUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Lb"
+                },
+                {
+                    "@id": "bts:Kg"
+                },
+                {
+                    "@id": "bts:G"
+                },
+                {
+                    "@id": "bts:Oz"
+                }
+            ],
+            "sms:displayName": "weightUnits",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Comorbidities",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
+            "rdfs:label": "Comorbidities",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Diabetes"
+                },
+                {
+                    "@id": "bts:Cardiovasculardisease"
+                },
+                {
+                    "@id": "bts:Pulmonarydisease"
+                },
+                {
+                    "@id": "bts:Autoimmunethyroiddisease"
+                },
+                {
+                    "@id": "bts:Inflammatoryboweldisease"
+                },
+                {
+                    "@id": "bts:Psoriasis"
+                },
+                {
+                    "@id": "bts:Multiplesclerosis"
+                },
+                {
+                    "@id": "bts:Systemiclupuserythematosus"
+                },
+                {
+                    "@id": "bts:Rheumatoidarthritis"
+                },
+                {
+                    "@id": "bts:Other"
+                }
+            ],
+            "sms:displayName": "comorbidities",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:VitiligoType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "General type classification of vitiligo disease manifestation.",
+            "rdfs:label": "VitiligoType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Segmental"
+                },
+                {
+                    "@id": "bts:Non-segmental"
+                },
+                {
+                    "@id": "bts:Mixed"
+                },
+                {
+                    "@id": "bts:Unclassified"
+                }
+            ],
+            "sms:displayName": "vitiligoType",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VitiligoSubtype",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Subtype classification of vitiligo disease manifestation.",
+            "rdfs:label": "VitiligoSubtype",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Focal"
+                },
+                {
+                    "@id": "bts:Mucosal"
+                },
+                {
+                    "@id": "bts:Acrofacial"
+                },
+                {
+                    "@id": "bts:Generalized"
+                },
+                {
+                    "@id": "bts:Universal"
+                },
+                {
+                    "@id": "bts:Unisegmental"
+                },
+                {
+                    "@id": "bts:Bisegmental"
+                }
+            ],
+            "sms:displayName": "vitiligoSubtype",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VIDA",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
+            "rdfs:label": "VIDA",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VIDA",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
+            "rdfs:label": "VASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VASI",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VETI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
+            "rdfs:label": "VETI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VETI",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "num"
+            ]
+        },
+        {
+            "@id": "bts:PASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
+            "rdfs:label": "PASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "PASI",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:CDASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
+            "rdfs:label": "CDASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "CDASI",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
         },
         {
             "@id": "bts:MockTemplate",
@@ -2051,6 +2621,23 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:CommunityContribution",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "CommunityContribution",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Community Contribution",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:RA",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2138,6 +2725,40 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "LOCKIT",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:V-CoRT",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "V-CoRT",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Project"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "V-CoRT",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ELLIPSS",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ELLIPSS",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Project"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "ELLIPSS",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -4004,6 +4625,56 @@
             "sms:requiresDependency": [
                 {
                     "@id": "bts:SynovialCollectionProcedure"
+                },
+                {
+                    "@id": "bts:FMAID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Suctionblistercells",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Suctionblistercells",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:BiospecimenType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "suction blister cells",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:SkinSiteStatus"
+                },
+                {
+                    "@id": "bts:FMAID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Suctionblisterfluid",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Suctionblisterfluid",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:BiospecimenType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "suction blister fluid",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:SkinSiteStatus"
                 },
                 {
                     "@id": "bts:FMAID"
@@ -5919,7 +6590,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "Control",
+            "sms:displayName": "control",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -5937,6 +6608,116 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "At-Risk-RA",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Vitiligo",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Vitiligo",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "vitiligo",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:VitiligoType"
+                },
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Dermatomyositis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Dermatomyositis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "dermatomyositis",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:PsO",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "PsO",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "PsO",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:PsA",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "PsA",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "PsA",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Scleroderma",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Scleroderma",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "scleroderma",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:SjD",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "SjD",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "SjD",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -6281,6 +7062,872 @@
             },
             "sms:displayName": "anatomicalSite",
             "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Segmental",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Segmental",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "segmental",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Non-segmental",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Non-segmental",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "non-segmental",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Mixed",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Mixed",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "mixed",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Unclassified",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Unclassified",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "unclassified",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Focal",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Focal",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "focal",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Mucosal",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Mucosal",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "mucosal",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Acrofacial",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Acrofacial",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "acrofacial",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Generalized",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Generalized",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "generalized",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Universal",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Universal",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "universal",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Unisegmental",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Unisegmental",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "unisegmental",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Bisegmental",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Bisegmental",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:VitiligoSubtype"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "bisegmental",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:AgeDiagnosis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age`.",
+            "rdfs:label": "AgeDiagnosis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "ageDiagnosis",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "num"
+            ]
+        },
+        {
+            "@id": "bts:Years",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Years",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:AgeUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "years",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Months",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Months",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:AgeUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "months",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Female",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Female",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Sex"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "female",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Male",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Male",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Sex"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "male",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Intersex",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Intersex",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Sex"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "intersex",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Unknown",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Unknown",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Ethnicity"
+                },
+                {
+                    "@id": "bts:DiabetesType"
+                },
+                {
+                    "@id": "bts:Sex"
+                },
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "unknown",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Asian",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Asian",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "asian",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:BlackorAfricanAmerican",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "BlackorAfricanAmerican",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "black or African American",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:White",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "White",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "white",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Hispanic",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Hispanic",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "hispanic",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:AmericanindianorAlaskanative",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "AmericanindianorAlaskanative",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "American indian or Alaska native",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Mixedrace",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Mixedrace",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "mixed race",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:NativeHawaiianorotherpacificislander",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "NativeHawaiianorotherpacificislander",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "native Hawaiian or other pacific islander",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Other",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Other",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Race"
+                },
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "other",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Hispanicorlatino",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Hispanicorlatino",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Ethnicity"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "hispanic or latino",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Nothispanicorlatino",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Nothispanicorlatino",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Ethnicity"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "not hispanic or latino",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Inches",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Inches",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:HeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "inches",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Centimeters",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Centimeters",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:HeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "centimeters",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Meters",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Meters",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:HeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "meters",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Feet",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Feet",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:HeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "feet",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Lb",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Lb",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:WeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "lb",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Kg",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Kg",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:WeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "kg",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:G",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "G",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:WeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "g",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Oz",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Oz",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:WeightUnits"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "oz",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Diabetes",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A valid value of `comorbidities` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Diabetes",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "diabetes",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:DiabetesType"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Cardiovasculardisease",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Cardiovasculardisease",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "cardiovascular disease",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Pulmonarydisease",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Pulmonarydisease",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "pulmonary disease",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Autoimmunethyroiddisease",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Autoimmunethyroiddisease",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "autoimmune thyroid disease",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Inflammatoryboweldisease",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Inflammatoryboweldisease",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "inflammatory bowel disease",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Psoriasis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Psoriasis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "psoriasis",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Multiplesclerosis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Multiplesclerosis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "multiple sclerosis",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Systemiclupuserythematosus",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Systemiclupuserythematosus",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "systemic lupus erythematosus",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Rheumatoidarthritis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Rheumatoidarthritis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "rheumatoid arthritis",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:DiabetesType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Type of diabetes mellitus.",
+            "rdfs:label": "DiabetesType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Type1"
+                },
+                {
+                    "@id": "bts:Type2"
+                },
+                {
+                    "@id": "bts:Unknown"
+                },
+                {
+                    "@id": "bts:Gestational"
+                }
+            ],
+            "sms:displayName": "diabetesType",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Type1",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Type1",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:DiabetesType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "type 1",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Type2",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Type2",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:DiabetesType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "type 2",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Gestational",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Gestational",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:DiabetesType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "gestational",
+            "sms:required": "sms:false",
             "sms:validationRules": []
         }
     ],
