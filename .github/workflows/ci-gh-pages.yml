@@ -49,18 +49,18 @@ jobs:
         run: |
           if [[ $(git diff --exit-code) ]]; then 
             echo "Changes in site content detected and will be committed."
-            git config --local user.name "$GITHUB_ACTOR"
-            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git config --local user.name "ark-cicd-service-account"
+            git config --local user.email "ark-cicd-service-account@users.noreply.github.com"
             git add .
             git commit -m "GitHub Action: update data dictionary site content"
           else 
-            echo "Trigger even changes did not affect site content, nothing to commit"
+            echo "Push event did not affect site content, nothing to commit"
           fi
     
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
+         github_token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
          branch: gh-pages
          force: true
 # END
