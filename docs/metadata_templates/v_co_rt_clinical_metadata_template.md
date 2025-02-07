@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/v_co_rt_clinical_metadata_template.html"
-date: "2025-02-06"
+date: "2025-02-07"
 params:
   title: ""
   title_snake: ""

@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "69"
 permalink: "docs/attributes/vitiligoType.html"
-date: "2025-02-06"
+date: "2025-02-07"
 params:
   title: ""
   rank: ""
