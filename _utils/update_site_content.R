@@ -104,7 +104,7 @@ fid <- "https://raw.githubusercontent.com/ARK-Portal/data_models/refs/heads/main
 model <- read.csv(fid)
 
 # remove mock templates
-model <- filter(model, !grepl("mock", Attribute, ignore.case = TRUE))
+#model <- filter(model, !grepl("mock", Attribute, ignore.case = TRUE))
 
 # split into constituent parts
 model_templates <- filter(model, grepl("template", Attribute, ignore.case = TRUE) |
