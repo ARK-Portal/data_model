@@ -1,6 +1,8 @@
 #! Rscript
 
 # update_site_content.R
+# this script will download the raw model.csv and 
+# create all the necessary data dictionary site content
 
 #################
 ### Functions ###
