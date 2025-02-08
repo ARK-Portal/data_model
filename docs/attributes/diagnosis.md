@@ -3,7 +3,7 @@ title: "diagnosis"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "28"
+nav_order: "27"
 permalink: "docs/attributes/diagnosis.html"
 date: "2025-02-08"
 params:

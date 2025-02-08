@@ -3,7 +3,7 @@ title: "VETI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "65"
+nav_order: "63"
 permalink: "docs/attributes/VETI.html"
 date: "2025-02-08"
 params:

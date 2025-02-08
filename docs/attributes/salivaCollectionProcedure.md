@@ -3,7 +3,7 @@ title: "salivaCollectionProcedure"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "55"
+nav_order: "54"
 permalink: "docs/attributes/salivaCollectionProcedure.html"
 date: "2025-02-08"
 params:
