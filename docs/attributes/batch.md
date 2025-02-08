@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "11"
 permalink: "docs/attributes/batch.html"
-date: "2025-02-07"
+date: "2025-02-08"
 params:
   title: ""
   rank: ""

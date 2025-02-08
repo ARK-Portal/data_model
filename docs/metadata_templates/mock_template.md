@@ -1,9 +1,9 @@
 ---
-title: "Feature Barcode Seq Level 1 Template"
+title: "Mock Template"
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: "docs/metadata_templates/feature_barcode_seq_level_1_template.html"
+permalink: "docs/metadata_templates/mock_template.html"
 date: "2025-02-08"
 params:
   title: ""
@@ -11,8 +11,8 @@ params:
   dependsOn: ""
 ---
 
-{% assign mydata=site.data.csv.metadata_templates.feature_barcode_seq_level_1_template %} 
-{% include content/feature_barcode_seq_level_1_template.md %}
+{% assign mydata=site.data.csv.metadata_templates.mock_template %} 
+{% include content/mock_template.md %}
 
 <table id="myTable" class="display" style="width:135%">
     <thead>
