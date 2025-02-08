@@ -56,13 +56,13 @@ jobs:
             git add .
             git commit -m "GitHub Action: update data dictionary site content"
           else 
-            echo "Push event did not affect site content, nothing to commit"
+            echo "Push to branch did not change site content, nothing to commit"
           fi
     
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-         github_token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
-         branch: gh-pages
-         force: true
+          github_token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
+          branch: gh-pages
+          force: true
 # END
