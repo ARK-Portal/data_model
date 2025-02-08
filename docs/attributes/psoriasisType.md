@@ -1,18 +1,18 @@
 ---
-title: "vitiligoType"
+title: "psoriasisType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "70"
-permalink: "docs/attributes/vitiligoType.html"
+nav_order: "49"
+permalink: "docs/attributes/psoriasisType.html"
 date: "2025-02-08"
 params:
   title: ""
   rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.vitiligoType %} 
+{% assign mydata=site.data.csv.attributes.psoriasisType %} 
 
-{% include content/vitiligoType.md %}
+{% include content/psoriasisType.md %}
 
 <table id="myTable" class="display" style="width:100%">
     <thead>
