@@ -3,7 +3,7 @@ title: "weight"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "68"
+nav_order: "70"
 permalink: "docs/attributes/weight.html"
 date: "2025-02-08"
 params:

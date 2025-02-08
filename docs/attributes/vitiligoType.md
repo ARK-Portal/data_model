@@ -3,7 +3,7 @@ title: "vitiligoType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "67"
+nav_order: "69"
 permalink: "docs/attributes/vitiligoType.html"
 date: "2025-02-08"
 params:

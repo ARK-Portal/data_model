@@ -1,18 +1,18 @@
 ---
-title: "salivaCollectionProcedure"
+title: "diabetesType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "55"
-permalink: "docs/attributes/salivaCollectionProcedure.html"
+nav_order: "27"
+permalink: "docs/attributes/diabetesType.html"
 date: "2025-02-08"
 params:
   title: ""
   rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.salivaCollectionProcedure %} 
+{% assign mydata=site.data.csv.attributes.diabetesType %} 
 
-{% include content/salivaCollectionProcedure.md %}
+{% include content/diabetesType.md %}
 
 <table id="myTable" class="display" style="width:100%">
     <thead>

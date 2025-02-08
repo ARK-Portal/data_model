@@ -3,7 +3,7 @@ title: "synovialCollectionProcedure"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "58"
+nav_order: "60"
 permalink: "docs/attributes/synovialCollectionProcedure.html"
 date: "2025-02-08"
 params:

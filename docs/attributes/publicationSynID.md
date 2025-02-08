@@ -3,7 +3,7 @@ title: "publicationSynID"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "49"
+nav_order: "50"
 permalink: "docs/attributes/publicationSynID.html"
 date: "2025-02-08"
 params:
