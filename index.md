@@ -12,11 +12,15 @@ Related Diseases. It was established by the National Institute of Arthritis
 and Musculoskeletal and Skin Diseases (NIAMS) and includes data from the Accelerating 
 Medicines Partnership® (AMP®).
 
-## ARK Portal data standards
+### ARK Portal data standards
 
 Data standards are a set of rules that define how data is recorded, 
 described, and shared. They help ensure that data is consistent, accurate, 
 and comply with FAIR data practices.
 
+{: .note }
 
+> At this time, not all files and dataset annotations conform to the model described here. Our team is in the process of updating annotations for all files and datasets in the portal, one dataset at a time, to conform to the model. This will take some time and we thank you for your patience as we work to implement these changes. As updates continue we will include progress reports in our release announcements. 
+
+Please note - updating file and dataset annotations may cause unexpected issues to the ARK Portal site. Please notify our team through the help desk if you experience issues navigating the site. At this time the Explore All Data and Explore Datasets pages will show a mix of metadata columns and values. Once all dataset have been updated these pages will be revised to surface only the columns and values defined in the new ARK data model.
 
