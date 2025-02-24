@@ -3,9 +3,9 @@ title: "dbGapAccession"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "26"
+nav_order: "28"
 permalink: "docs/attributes/dbGapAccession.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

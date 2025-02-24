@@ -3,9 +3,9 @@ title: "PASI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "43"
+nav_order: "49"
 permalink: "docs/attributes/PASI.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

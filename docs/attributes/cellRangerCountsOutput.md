@@ -3,9 +3,9 @@ title: "cellRangerCountsOutput"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "17"
+nav_order: "19"
 permalink: "docs/attributes/cellRangerCountsOutput.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

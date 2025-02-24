@@ -3,9 +3,9 @@ title: "comorbidities"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "18"
+nav_order: "20"
 permalink: "docs/attributes/comorbidities.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "datasetType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "23"
+nav_order: "25"
 permalink: "docs/attributes/datasetType.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "journal"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "38"
+nav_order: "43"
 permalink: "docs/attributes/journal.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

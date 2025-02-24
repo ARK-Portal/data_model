@@ -3,9 +3,9 @@ title: "specimenModality"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "60"
+nav_order: "68"
 permalink: "docs/attributes/specimenModality.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

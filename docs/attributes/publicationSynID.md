@@ -3,9 +3,9 @@ title: "publicationSynID"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "51"
+nav_order: "58"
 permalink: "docs/attributes/publicationSynID.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""

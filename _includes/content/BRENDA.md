@@ -1,5 +1,5 @@
 # BRENDA
-BRENDA Tissue and Enzyme Source Ontology ID (BTO) corresponding to the `biospecimenType`. This attribute is set by ARK Portal data managers.
+BRENDA Tissue and Enzyme Source Ontology ID (BTO) corresponding to the `biospecimenType`. Attribute values are applied by ARK Portal data managers.
 
 
 {: .note }

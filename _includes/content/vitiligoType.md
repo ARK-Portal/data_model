@@ -1,2 +1,2 @@
 # vitiligoType
-General type classification of vitiligo disease manifestation.
+A high-level classification of vitiligo based on the distribution and patterning of lesions across the body.

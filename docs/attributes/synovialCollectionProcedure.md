@@ -3,9 +3,9 @@ title: "synovialCollectionProcedure"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "61"
+nav_order: "69"
 permalink: "docs/attributes/synovialCollectionProcedure.html"
-date: "2025-02-08"
+date: "2025-02-24"
 params:
   title: ""
   rank: ""
