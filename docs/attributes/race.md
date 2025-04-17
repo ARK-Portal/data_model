@@ -3,9 +3,9 @@ title: "race"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "60"
+nav_order: "65"
 permalink: "docs/attributes/race.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

@@ -3,9 +3,9 @@ title: "weight"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "80"
+nav_order: "86"
 permalink: "docs/attributes/weight.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

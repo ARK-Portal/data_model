@@ -3,9 +3,9 @@ title: "publicationType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "59"
+nav_order: "64"
 permalink: "docs/attributes/publicationType.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

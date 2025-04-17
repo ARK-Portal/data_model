@@ -1,5 +1,5 @@
 # visitID
-Ordinal ID distinguishing different patient visits
+Ordinal ID distinguishing different patient visits.
 
 
 {: .note }

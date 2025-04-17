@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/rasle_biospecimen_metadata_template.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   title_snake: ""

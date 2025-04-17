@@ -1,5 +1,5 @@
 # anatomicalSite
-Functional Model of Anatomy ontology label corresponding to the FMAID of the biospecimen collection site. Attribute values are applied by ARK Portal data managers.
+Functional Model of Anatomy ontology label corresponding to the FMAID of the biospecimen collection site.
 
 
 {: .note }

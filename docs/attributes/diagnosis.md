@@ -3,9 +3,9 @@ title: "diagnosis"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "30"
+nav_order: "31"
 permalink: "docs/attributes/diagnosis.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

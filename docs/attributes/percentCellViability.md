@@ -3,9 +3,9 @@ title: "percentCellViability"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "50"
+nav_order: "55"
 permalink: "docs/attributes/percentCellViability.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

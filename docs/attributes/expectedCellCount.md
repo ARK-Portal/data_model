@@ -3,9 +3,9 @@ title: "expectedCellCount"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "34"
+nav_order: "35"
 permalink: "docs/attributes/expectedCellCount.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

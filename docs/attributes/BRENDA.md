@@ -3,9 +3,9 @@ title: "BRENDA"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "16"
+nav_order: "15"
 permalink: "docs/attributes/BRENDA.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

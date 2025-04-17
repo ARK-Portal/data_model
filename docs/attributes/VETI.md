@@ -3,9 +3,9 @@ title: "VETI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "75"
+nav_order: "81"
 permalink: "docs/attributes/VETI.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""

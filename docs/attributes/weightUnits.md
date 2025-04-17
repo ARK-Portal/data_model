@@ -3,9 +3,9 @@ title: "weightUnits"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "81"
+nav_order: "87"
 permalink: "docs/attributes/weightUnits.html"
-date: "2025-02-25"
+date: "2025-04-17"
 params:
   title: ""
   rank: ""
