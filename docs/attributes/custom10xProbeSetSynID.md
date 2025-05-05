@@ -3,7 +3,7 @@ title: "custom10xProbeSetSynID"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "22"
+nav_order: "21"
 permalink: "docs/attributes/custom10xProbeSetSynID.html"
 date: "2025-05-05"
 params:

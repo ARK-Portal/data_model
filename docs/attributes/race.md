@@ -3,7 +3,7 @@ title: "race"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "67"
+nav_order: "66"
 permalink: "docs/attributes/race.html"
 date: "2025-05-05"
 params:

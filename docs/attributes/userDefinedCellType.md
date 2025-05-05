@@ -3,7 +3,7 @@ title: "userDefinedCellType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "82"
+nav_order: "81"
 permalink: "docs/attributes/userDefinedCellType.html"
 date: "2025-05-05"
 params:

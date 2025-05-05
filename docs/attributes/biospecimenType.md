@@ -3,7 +3,7 @@ title: "biospecimenType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "14"
+nav_order: "13"
 permalink: "docs/attributes/biospecimenType.html"
 date: "2025-05-05"
 params:

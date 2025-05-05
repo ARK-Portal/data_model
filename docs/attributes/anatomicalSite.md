@@ -3,7 +3,7 @@ title: "anatomicalSite"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "8"
+nav_order: "7"
 permalink: "docs/attributes/anatomicalSite.html"
 date: "2025-05-05"
 params:

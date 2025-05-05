@@ -3,7 +3,7 @@ title: "comorbidities"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "20"
+nav_order: "19"
 permalink: "docs/attributes/comorbidities.html"
 date: "2025-05-05"
 params:

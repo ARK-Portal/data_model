@@ -3,7 +3,7 @@ title: "acknowledgmentStatement"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "3"
+nav_order: "2"
 permalink: "docs/attributes/acknowledgmentStatement.html"
 date: "2025-05-05"
 params:

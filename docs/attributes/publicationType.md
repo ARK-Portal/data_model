@@ -3,7 +3,7 @@ title: "publicationType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "66"
+nav_order: "65"
 permalink: "docs/attributes/publicationType.html"
 date: "2025-05-05"
 params:

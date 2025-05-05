@@ -3,7 +3,7 @@ title: "diabetesType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "31"
+nav_order: "30"
 permalink: "docs/attributes/diabetesType.html"
 date: "2025-05-05"
 params:

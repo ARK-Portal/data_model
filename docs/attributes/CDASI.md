@@ -3,7 +3,7 @@ title: "CDASI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "16"
+nav_order: "15"
 permalink: "docs/attributes/CDASI.html"
 date: "2025-05-05"
 params:

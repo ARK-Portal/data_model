@@ -3,7 +3,7 @@ title: "dataLevel"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "24"
+nav_order: "23"
 permalink: "docs/attributes/dataLevel.html"
 date: "2025-05-05"
 params:

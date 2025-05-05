@@ -3,7 +3,7 @@ title: "10xProbeSetReference"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "2"
+nav_order: "1"
 permalink: "docs/attributes/10xProbeSetReference.html"
 date: "2025-05-05"
 params:

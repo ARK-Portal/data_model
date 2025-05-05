@@ -3,7 +3,7 @@ title: "metadataStandards"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "52"
+nav_order: "51"
 permalink: "docs/attributes/metadataStandards.html"
 date: "2025-05-05"
 params:

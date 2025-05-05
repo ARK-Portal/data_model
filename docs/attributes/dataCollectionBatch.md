@@ -3,7 +3,7 @@ title: "dataCollectionBatch"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "23"
+nav_order: "22"
 permalink: "docs/attributes/dataCollectionBatch.html"
 date: "2025-05-05"
 params:

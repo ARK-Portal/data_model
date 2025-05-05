@@ -3,7 +3,7 @@ title: "specimenModality"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "76"
+nav_order: "75"
 permalink: "docs/attributes/specimenModality.html"
 date: "2025-05-05"
 params:

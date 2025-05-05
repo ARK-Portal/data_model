@@ -3,7 +3,7 @@ title: "alignmentReference"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "7"
+nav_order: "6"
 permalink: "docs/attributes/alignmentReference.html"
 date: "2025-05-05"
 params:

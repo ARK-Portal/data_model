@@ -3,7 +3,7 @@ title: "Component"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "21"
+nav_order: "20"
 permalink: "docs/attributes/Component.html"
 date: "2025-05-05"
 params:
