@@ -852,13 +852,16 @@
                     "@id": "bts:LibraryID"
                 },
                 {
-                    "@id": "bts:Batch"
-                },
-                {
                     "@id": "bts:TotalReads"
                 },
                 {
                     "@id": "bts:Platform"
+                },
+                {
+                    "@id": "bts:SampleProcessingBatch"
+                },
+                {
+                    "@id": "bts:DataCollectionBatch"
                 }
             ],
             "sms:validationRules": []
@@ -1110,12 +1113,6 @@
                     "@id": "bts:TruSeqStrandedmRNA"
                 },
                 {
-                    "@id": "bts:ChromiumSingleCellHumanTCRAmplificationKit"
-                },
-                {
-                    "@id": "bts:ChromiumSingleCellHumanBCRAmplificationKit"
-                },
-                {
                     "@id": "bts:SMART-SeqHumanBCRwithUMI"
                 },
                 {
@@ -1137,37 +1134,40 @@
                     "@id": "bts:NEBNextHumanImmuneSequencingKit"
                 },
                 {
-                    "@id": "bts:10xChromium3GEX"
-                },
-                {
-                    "@id": "bts:10xChromium3GEXv3.1"
-                },
-                {
-                    "@id": "bts:10xChromium5GEX"
-                },
-                {
-                    "@id": "bts:10xUniversal3GEX"
-                },
-                {
-                    "@id": "bts:10xUniversal5GEX"
-                },
-                {
-                    "@id": "bts:10xChromiumFlex"
-                },
-                {
                     "@id": "bts:CEL-Seq2"
-                },
-                {
-                    "@id": "bts:ChromiumscATACKitv2"
                 },
                 {
                     "@id": "bts:In-houselibraryprep"
                 },
                 {
-                    "@id": "bts:ChromiumNextGEMChipG"
+                    "@id": "bts:FluidigmC1HT"
                 },
                 {
-                    "@id": "bts:FluidigmC1HT"
+                    "@id": "bts:10xChromiumNextGEMSingleCell3'"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell3'3.1"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell5'v2"
+                },
+                {
+                    "@id": "bts:10xChromiumGEM-XSingleCell5'v3"
+                },
+                {
+                    "@id": "bts:10xChromiumGEM-XSingleCell3'v4"
+                },
+                {
+                    "@id": "bts:10xGEM-XUniversal5’GeneExpressionv34-plex"
+                },
+                {
+                    "@id": "bts:10xChromiumSingleCellHumanTCR"
+                },
+                {
+                    "@id": "bts:10xChromiumSingleCellHumanBCR"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCellATACv2"
                 }
             ],
             "sms:displayName": "libraryPrepMethod",
@@ -1188,23 +1188,6 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "libraryID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Batch",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label or identifier that is unique within a given experiment or dataset used to group data related to sample processing, sample pooling, or data collection batches. These batches often introduce technical effects that can be important to account for in downstream analyses.",
-            "rdfs:label": "Batch",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "batch",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -1285,6 +1268,27 @@
                 },
                 {
                     "@id": "bts:None"
+                },
+                {
+                    "@id": "bts:IlluminaHiSeqXTen"
+                },
+                {
+                    "@id": "bts:ChromiumNextGEMChipG"
+                },
+                {
+                    "@id": "bts:GEM-XOCM5'Chip"
+                },
+                {
+                    "@id": "bts:ChromiumNextGEMChipM"
+                },
+                {
+                    "@id": "bts:ChromiumNextGEMChipH"
+                },
+                {
+                    "@id": "bts:ChromiumGEM-XSingleCell3'Chipv4"
+                },
+                {
+                    "@id": "bts:ChromiumNextGEMChipK"
                 }
             ],
             "sms:displayName": "platform",
@@ -1294,10 +1298,10 @@
             ]
         },
         {
-            "@id": "bts:ScRNA-seqAssayMetadataTemplate",
+            "@id": "bts:SampleProcessingBatch",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A template outlining metadata to be collected for each scRNA-seq library in a dataset.",
-            "rdfs:label": "ScRNA-seqAssayMetadataTemplate",
+            "rdfs:comment": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
+            "rdfs:label": "SampleProcessingBatch",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -1306,7 +1310,41 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "scRNA-seq Assay Metadata Template",
+            "sms:displayName": "sampleProcessingBatch",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:DataCollectionBatch",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
+            "rdfs:label": "DataCollectionBatch",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "dataCollectionBatch",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ScRNASeqAssayMetadataTemplate",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A template outlining metadata to be collected for each scRNA-seq library in a dataset.",
+            "rdfs:label": "ScRNASeqAssayMetadataTemplate",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "scRNASeq Assay Metadata Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
@@ -1325,9 +1363,6 @@
                     "@id": "bts:LibraryID"
                 },
                 {
-                    "@id": "bts:Batch"
-                },
-                {
                     "@id": "bts:LibraryPrepMethod"
                 },
                 {
@@ -1340,13 +1375,19 @@
                     "@id": "bts:PercentCellViability"
                 },
                 {
-                    "@id": "bts:ExpectedCellCount"
-                },
-                {
                     "@id": "bts:Platform"
                 },
                 {
                     "@id": "bts:SequencingSaturation"
+                },
+                {
+                    "@id": "bts:SampleProcessingBatch"
+                },
+                {
+                    "@id": "bts:DataCollectionBatch"
+                },
+                {
+                    "@id": "bts:InputCellCount"
                 }
             ],
             "sms:validationRules": []
@@ -1418,25 +1459,6 @@
             ]
         },
         {
-            "@id": "bts:ExpectedCellCount",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
-            "rdfs:label": "ExpectedCellCount",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "expectedCellCount",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "int error"
-            ]
-        },
-        {
             "@id": "bts:SequencingSaturation",
             "@type": "rdfs:Class",
             "rdfs:comment": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1.",
@@ -1454,6 +1476,25 @@
             "sms:validationRules": [
                 "float",
                 "inRange 0 1 error"
+            ]
+        },
+        {
+            "@id": "bts:InputCellCount",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
+            "rdfs:label": "InputCellCount",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "inputCellCount",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "int error"
             ]
         },
         {
@@ -1503,7 +1544,10 @@
                     "@id": "bts:LibraryID"
                 },
                 {
-                    "@id": "bts:Batch"
+                    "@id": "bts:SampleProcessingBatch"
+                },
+                {
+                    "@id": "bts:DataCollectionBatch"
                 }
             ],
             "sms:validationRules": []
@@ -3186,6 +3230,9 @@
             "sms:requiresDependency": [
                 {
                     "@id": "bts:MetadataType"
+                },
+                {
+                    "@id": "bts:MetadataStandards"
                 }
             ],
             "sms:validationRules": []
@@ -4216,7 +4263,7 @@
             "rdfs:label": "10xChromiumFlex",
             "rdfs:subClassOf": [
                 {
-                    "@id": "bts:LibraryPrepMethod"
+                    "@id": "bts:Thing"
                 }
             ],
             "schema:isPartOf": {
@@ -4592,6 +4639,125 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "BD FACSAria Fusion cell sorter",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:IlluminaHiSeqXTen",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "IlluminaHiSeqXTen",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Illumina HiSeq X Ten",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ChromiumNextGEMChipG",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ChromiumNextGEMChipG",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Chromium Next GEM Chip G",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:GEM-XOCM5'Chip",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "GEM-XOCM5'Chip",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "GEM-X OCM 5' Chip",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ChromiumNextGEMChipM",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ChromiumNextGEMChipM",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Chromium Next GEM Chip M",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ChromiumNextGEMChipH",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ChromiumNextGEMChipH",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Chromium Next GEM Chip H",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ChromiumGEM-XSingleCell3'Chipv4",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ChromiumGEM-XSingleCell3'Chipv4",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Chromium GEM-X Single Cell 3' Chip v4",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ChromiumNextGEMChipK",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ChromiumNextGEMChipK",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Platform"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Chromium Next GEM Chip K",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -5035,9 +5201,37 @@
                 },
                 {
                     "@id": "bts:Datadictionary"
+                },
+                {
+                    "@id": "bts:Single-cellmetadata"
                 }
             ],
             "sms:displayName": "metadataType",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:MetadataStandards",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Metadata standards used to generate the metadata",
+            "rdfs:label": "MetadataStandards",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:User-defined"
+                },
+                {
+                    "@id": "bts:ARKdatamodel"
+                }
+            ],
+            "sms:displayName": "metadataStandards",
             "sms:required": "sms:true",
             "sms:validationRules": []
         },
@@ -5140,6 +5334,23 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "data dictionary",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Single-cellmetadata",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Single-cellmetadata",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "single-cell metadata",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -6242,40 +6453,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:ChromiumSingleCellHumanTCRAmplificationKit",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "ChromiumSingleCellHumanTCRAmplificationKit",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Chromium Single Cell Human TCR Amplification Kit",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:ChromiumSingleCellHumanBCRAmplificationKit",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "ChromiumSingleCellHumanBCRAmplificationKit",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Chromium Single Cell Human BCR Amplification Kit",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:SMART-SeqHumanBCRwithUMI",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -6395,91 +6572,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:10xChromium3GEX",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "10xChromium3GEX",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x Chromium 3 GEX",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xChromium3GEXv3.1",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "10xChromium3GEXv3.1",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x Chromium 3 GEX v3.1",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xChromium5GEX",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "10xChromium5GEX",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x Chromium 5 GEX",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xUniversal3GEX",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "10xUniversal3GEX",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x Universal 3 GEX",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xUniversal5GEX",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "10xUniversal5GEX",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x Universal 5 GEX",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:CEL-Seq2",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -6493,23 +6585,6 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "CEL-Seq2",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:ChromiumscATACKitv2",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "ChromiumscATACKitv2",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Chromium scATAC Kit v2",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -6531,23 +6606,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:ChromiumNextGEMChipG",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "ChromiumNextGEMChipG",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Chromium Next GEM Chip G",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:FluidigmC1HT",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -6561,6 +6619,159 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "Fluidigm C1 HT",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumNextGEMSingleCell3'",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumNextGEMSingleCell3'",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Next GEM Single Cell 3'",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumNextGEMSingleCell3'3.1",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumNextGEMSingleCell3'3.1",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Next GEM Single Cell 3' 3.1",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumNextGEMSingleCell5'v2",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumNextGEMSingleCell5'v2",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Next GEM Single Cell 5' v2",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumGEM-XSingleCell5'v3",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumGEM-XSingleCell5'v3",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium GEM-X Single Cell 5' v3",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumGEM-XSingleCell3'v4",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumGEM-XSingleCell3'v4",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium GEM-X Single Cell 3' v4",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xGEM-XUniversal5’GeneExpressionv34-plex",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xGEM-XUniversal5’GeneExpressionv34-plex",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x GEM-X Universal 5’ Gene Expression v3 4-plex",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumSingleCellHumanTCR",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumSingleCellHumanTCR",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Single Cell Human TCR",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumSingleCellHumanBCR",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumSingleCellHumanBCR",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Single Cell Human BCR",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xChromiumNextGEMSingleCellATACv2",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "10xChromiumNextGEMSingleCellATACv2",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x Chromium Next GEM Single Cell ATAC v2",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -6989,6 +7200,9 @@
                 },
                 {
                     "@id": "bts:SummarizedExperiment"
+                },
+                {
+                    "@id": "bts:Symphonyreference"
                 }
             ],
             "sms:displayName": "RObjectClass",
@@ -7111,6 +7325,23 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "SummarizedExperiment",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Symphonyreference",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Symphonyreference",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:RObjectClass"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Symphony reference",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -9163,6 +9394,40 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "released",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:User-defined",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "User-defined",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataStandards"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "user-defined",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ARKdatamodel",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "ARKdatamodel",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataStandards"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "ARK data model",
             "sms:required": "sms:false",
             "sms:validationRules": []
         }
