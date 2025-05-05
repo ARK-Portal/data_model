@@ -3,9 +3,9 @@ title: "resourceType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "66"
+nav_order: "68"
 permalink: "docs/attributes/resourceType.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

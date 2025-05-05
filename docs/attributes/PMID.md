@@ -3,9 +3,9 @@ title: "PMID"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "57"
+nav_order: "59"
 permalink: "docs/attributes/PMID.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

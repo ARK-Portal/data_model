@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/dataset_annotation_template.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   title_snake: ""

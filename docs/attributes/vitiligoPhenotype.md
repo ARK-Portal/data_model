@@ -3,9 +3,9 @@ title: "vitiligoPhenotype"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "84"
+nav_order: "87"
 permalink: "docs/attributes/vitiligoPhenotype.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

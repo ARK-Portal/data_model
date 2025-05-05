@@ -3,9 +3,9 @@ title: "ethnicity"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "34"
+nav_order: "35"
 permalink: "docs/attributes/ethnicity.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

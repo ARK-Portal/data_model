@@ -3,9 +3,9 @@ title: "metadataType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "51"
+nav_order: "53"
 permalink: "docs/attributes/metadataType.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

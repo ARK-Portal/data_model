@@ -3,9 +3,9 @@ title: "sex"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "70"
+nav_order: "73"
 permalink: "docs/attributes/sex.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

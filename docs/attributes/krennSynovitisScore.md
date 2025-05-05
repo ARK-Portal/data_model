@@ -3,9 +3,9 @@ title: "krennSynovitisScore"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "48"
+nav_order: "49"
 permalink: "docs/attributes/krennSynovitisScore.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

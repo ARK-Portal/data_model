@@ -3,9 +3,9 @@ title: "krennStroma"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "47"
+nav_order: "48"
 permalink: "docs/attributes/krennStroma.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

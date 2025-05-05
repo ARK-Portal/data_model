@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "20"
 permalink: "docs/attributes/comorbidities.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   rank: ""

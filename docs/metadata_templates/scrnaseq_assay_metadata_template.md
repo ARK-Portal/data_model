@@ -1,10 +1,10 @@
 ---
-title: "scRNA-seq Assay Metadata Template"
+title: "scRNASeq Assay Metadata Template"
 parent: Metadata Templates
 datatable: true
 layout: page
 permalink: "docs/metadata_templates/scrnaseq_assay_metadata_template.html"
-date: "2025-04-17"
+date: "2025-05-05"
 params:
   title: ""
   title_snake: ""
