@@ -1,10 +1,13 @@
 #! Rscript
 
-library(JustTheDocDataDictionary)
+# install remote package
+remotes::install_github("Sage-Bionetworks/JustTheDocsDataDictionary")
+# load installed library
+library(JustTheDocsDataDictionary)
 
 args <- commandArgs(trailingOnly = TRUE)
 
-#data_model_url <- "https://raw.githubusercontent.com/ARK-Portal/data_model/refs/heads/main/ark.model.csv"
+# generate site content
 main(args[1])
 
 # END
