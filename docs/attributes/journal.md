@@ -1,15 +1,10 @@
 ---
-title: "journal"
+title: journal
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "44"
-permalink: "docs/attributes/journal.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 47
+permalink: docs/attributes/journal.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.journal %} 
-
 {% include content/journal.md %}

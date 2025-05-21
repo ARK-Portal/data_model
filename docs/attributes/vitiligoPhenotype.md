@@ -1,19 +1,14 @@
 ---
-title: "vitiligoPhenotype"
+title: vitiligoPhenotype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "86"
-permalink: "docs/attributes/vitiligoPhenotype.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 89
+permalink: docs/attributes/vitiligoPhenotype.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.vitiligoPhenotype %} 
-
+{% assign mydata=site.data.csv.attributes.vitiligoPhenotype %}
 {% include content/vitiligoPhenotype.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

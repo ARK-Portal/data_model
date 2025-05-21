@@ -1,15 +1,10 @@
 ---
-title: "publicationSynID"
+title: publicationSynID
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "64"
-permalink: "docs/attributes/publicationSynID.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 67
+permalink: docs/attributes/publicationSynID.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.publicationSynID %} 
-
 {% include content/publicationSynID.md %}

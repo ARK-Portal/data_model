@@ -1,19 +1,14 @@
 ---
-title: "diagnosis"
+title: diagnosis
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "31"
-permalink: "docs/attributes/diagnosis.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 33
+permalink: docs/attributes/diagnosis.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.diagnosis %} 
-
+{% assign mydata=site.data.csv.attributes.diagnosis %}
 {% include content/diagnosis.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

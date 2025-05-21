@@ -1,19 +1,14 @@
 ---
-title: "race"
+title: race
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "66"
-permalink: "docs/attributes/race.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 69
+permalink: docs/attributes/race.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.race %} 
-
+{% assign mydata=site.data.csv.attributes.race %}
 {% include content/race.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

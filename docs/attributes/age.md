@@ -1,15 +1,10 @@
 ---
-title: "age"
+title: age
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "3"
-permalink: "docs/attributes/age.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 3
+permalink: docs/attributes/age.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.age %} 
-
 {% include content/age.md %}

@@ -1,15 +1,10 @@
 ---
-title: "publicationDate"
+title: publicationDate
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "63"
-permalink: "docs/attributes/publicationDate.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 66
+permalink: docs/attributes/publicationDate.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.publicationDate %} 
-
 {% include content/publicationDate.md %}

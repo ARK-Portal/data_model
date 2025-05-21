@@ -1,19 +1,14 @@
 ---
-title: "fileFormat"
+title: fileFormat
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "36"
-permalink: "docs/attributes/fileFormat.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 39
+permalink: docs/attributes/fileFormat.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.fileFormat %} 
-
+{% assign mydata=site.data.csv.attributes.fileFormat %}
 {% include content/fileFormat.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

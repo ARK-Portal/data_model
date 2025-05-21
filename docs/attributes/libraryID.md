@@ -1,15 +1,10 @@
 ---
-title: "libraryID"
+title: libraryID
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "49"
-permalink: "docs/attributes/libraryID.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 52
+permalink: docs/attributes/libraryID.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.libraryID %} 
-
 {% include content/libraryID.md %}

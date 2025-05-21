@@ -1,15 +1,10 @@
 ---
-title: "userDefinedCellType"
+title: userDefinedCellType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "81"
-permalink: "docs/attributes/userDefinedCellType.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 84
+permalink: docs/attributes/userDefinedCellType.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.userDefinedCellType %} 
-
 {% include content/userDefinedCellType.md %}

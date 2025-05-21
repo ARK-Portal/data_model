@@ -1,15 +1,10 @@
 ---
-title: "totalReads"
+title: totalReads
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "80"
-permalink: "docs/attributes/totalReads.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 83
+permalink: docs/attributes/totalReads.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.totalReads %} 
-
 {% include content/totalReads.md %}

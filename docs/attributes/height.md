@@ -1,15 +1,10 @@
 ---
-title: "height"
+title: height
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "39"
-permalink: "docs/attributes/height.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 42
+permalink: docs/attributes/height.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.height %} 
-
 {% include content/height.md %}

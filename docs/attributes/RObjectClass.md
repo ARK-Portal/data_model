@@ -1,19 +1,14 @@
 ---
-title: "RObjectClass"
+title: RObjectClass
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "68"
-permalink: "docs/attributes/RObjectClass.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 71
+permalink: docs/attributes/RObjectClass.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.RObjectClass %} 
-
+{% assign mydata=site.data.csv.attributes.RObjectClass %}
 {% include content/RObjectClass.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

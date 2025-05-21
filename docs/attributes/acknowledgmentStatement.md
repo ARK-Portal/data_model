@@ -1,19 +1,14 @@
 ---
-title: "acknowledgmentStatement"
+title: acknowledgmentStatement
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "2"
-permalink: "docs/attributes/acknowledgmentStatement.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 2
+permalink: docs/attributes/acknowledgmentStatement.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.acknowledgmentStatement %} 
-
+{% assign mydata=site.data.csv.attributes.acknowledgmentStatement %}
 {% include content/acknowledgmentStatement.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

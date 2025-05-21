@@ -1,20 +1,14 @@
 ---
-title: "Publication Metadata Template"
+title: Publication Metadata Template
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: "docs/metadata_templates/publication_metadata_template.html"
-date: "2025-05-21"
-params:
-  title: ""
-  title_snake: ""
-  dependsOn: ""
+permalink: docs/metadata_templates/publication_metadata_template.html
+date: 2025-05-21
 ---
-
-{% assign mydata=site.data.csv.metadata_templates.publication_metadata_template %} 
+{% assign mydata=site.data.csv.metadata_templates.publication_metadata_template %}
 {% include content/publication_metadata_template.md %}
-
-<table id="myTable" class="display" style="width:135%">
+<table id="myTable" class="display" style="width:100%">
     <thead>
       {% for column in mydata[0] %}
           <th>{{ column[0] }}</th>
@@ -39,7 +33,7 @@ params:
       paging: false,
       order: [],
       columnDefs: [
-        { 
+        {
           targets: 0,
           orderable: false,
           render : function(data, type, row, meta){
@@ -51,8 +45,8 @@ params:
                    .html();
           }
         },
-        { 
-          targets: [1,2,3], 
+        {
+          targets: [1,2,3],
           orderable: false
         }
       ]

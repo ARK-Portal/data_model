@@ -1,15 +1,10 @@
 ---
-title: "biospecimenID"
+title: biospecimenID
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "11"
-permalink: "docs/attributes/biospecimenID.html"
-date: "2025-05-21"
-params:
-  title: ""
-  rank: ""
+nav_order: 12
+permalink: docs/attributes/biospecimenID.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.biospecimenID %} 
-
 {% include content/biospecimenID.md %}
