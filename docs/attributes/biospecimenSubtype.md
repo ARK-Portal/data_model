@@ -1,19 +1,14 @@
 ---
-title: "biospecimenSubtype"
+title: biospecimenSubtype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "12"
-permalink: "docs/attributes/biospecimenSubtype.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 13
+permalink: docs/attributes/biospecimenSubtype.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.biospecimenSubtype %} 
-
+{% assign mydata=site.data.csv.attributes.biospecimenSubtype %}
 {% include content/biospecimenSubtype.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

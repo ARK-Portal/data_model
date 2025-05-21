@@ -1,19 +1,14 @@
 ---
-title: "softwareAndVersion"
+title: softwareAndVersion
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "74"
-permalink: "docs/attributes/softwareAndVersion.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 77
+permalink: docs/attributes/softwareAndVersion.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.softwareAndVersion %} 
-
+{% assign mydata=site.data.csv.attributes.softwareAndVersion %}
 {% include content/softwareAndVersion.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

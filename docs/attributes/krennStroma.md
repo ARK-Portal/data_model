@@ -1,15 +1,10 @@
 ---
-title: "krennStroma"
+title: krennStroma
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "47"
-permalink: "docs/attributes/krennStroma.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 50
+permalink: docs/attributes/krennStroma.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.krennStroma %} 
-
 {% include content/krennStroma.md %}
