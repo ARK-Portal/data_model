@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "47"
 permalink: "docs/attributes/krennStroma.html"
-date: "2025-05-05"
+date: "2025-05-21"
 params:
   title: ""
   rank: ""

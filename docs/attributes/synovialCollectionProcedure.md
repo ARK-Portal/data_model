@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: "76"
 permalink: "docs/attributes/synovialCollectionProcedure.html"
-date: "2025-05-05"
+date: "2025-05-21"
 params:
   title: ""
   rank: ""
