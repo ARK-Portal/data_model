@@ -9,17 +9,18 @@ site.
 
 ## Site Content
 
-All site content is created by the Rscript in `_utils/update_site_content.R`. This 
-script is executed via GitHub actions described in `main/.github/workflows/ci-gh-pages.yml` 
-and will execute whenever there is a change to `ark.model.csv` in the main branch 
-or changes to files under `_utils/` and `_templates` in the `gh-pages` branch. Any changes 
-to site content are then automatically committed which will then trigger site re-deployment.
+All site content is created using the `JustTheDocsDataDictionary` R package 
+(<https://github.com/Sage-Bionetworks/JustTheDocsDataDictionary>). `_utils/update_site_content.R` 
+installs and runs this package via the GitHub actions workflow `.github/workflows/ci-gh-pages.yml` 
+which executes whenever there is a change to `ark.model.csv` in the main branch 
+or changes to relevant files in the `gh-pages` branch. Site content changes are 
+commited by this workflow which triggers site rebuild and deployment.
 
 ## Site Deployment
 
 Github actions defined in `.github/workflows/pages.yml` is triggered when 
-pushes are made affecting any file in the branch except those under `_utils/` and
-`_templates`.
+pushes are made affecting any site content files in this branch. See `.github/workflows/README.md` 
+for more details.
 
 ### Local deployment and testing
 
