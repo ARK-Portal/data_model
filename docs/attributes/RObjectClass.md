@@ -3,7 +3,7 @@ title: RObjectClass
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 71
+nav_order: 70
 permalink: docs/attributes/RObjectClass.html
 date: 2025-05-21
 ---

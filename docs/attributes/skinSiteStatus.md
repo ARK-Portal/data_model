@@ -3,7 +3,7 @@ title: skinSiteStatus
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 76
+nav_order: 75
 permalink: docs/attributes/skinSiteStatus.html
 date: 2025-05-21
 ---

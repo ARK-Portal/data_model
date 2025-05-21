@@ -3,7 +3,7 @@ title: platform
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 60
+nav_order: 59
 permalink: docs/attributes/platform.html
 date: 2025-05-21
 ---

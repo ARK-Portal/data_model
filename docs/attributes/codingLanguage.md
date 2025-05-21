@@ -1,14 +1,14 @@
 ---
-title: vitiligoType
+title: codingLanguage
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 89
-permalink: docs/attributes/vitiligoType.html
+nav_order: 20
+permalink: docs/attributes/codingLanguage.html
 date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.vitiligoType %}
-{% include content/vitiligoType.md %}
+{% assign mydata=site.data.csv.attributes.codingLanguage %}
+{% include content/codingLanguage.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

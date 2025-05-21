@@ -3,7 +3,7 @@ title: psoriasisType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 65
+nav_order: 64
 permalink: docs/attributes/psoriasisType.html
 date: 2025-05-21
 ---

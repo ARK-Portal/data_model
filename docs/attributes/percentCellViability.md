@@ -3,7 +3,7 @@ title: percentCellViability
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 59
+nav_order: 58
 permalink: docs/attributes/percentCellViability.html
 date: 2025-05-21
 ---
