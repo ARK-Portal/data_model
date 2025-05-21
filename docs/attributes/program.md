@@ -1,14 +1,19 @@
 ---
-title: program
+title: "program"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 62
-permalink: docs/attributes/program.html
-date: 2025-05-21
+nav_order: "59"
+permalink: "docs/attributes/program.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.program %}
+{% assign mydata=site.data.csv.attributes.program %} 
+
 {% include content/program.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

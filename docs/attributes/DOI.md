@@ -1,10 +1,15 @@
 ---
-title: DOI
+title: "DOI"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 34
-permalink: docs/attributes/DOI.html
-date: 2025-05-21
+nav_order: "32"
+permalink: "docs/attributes/DOI.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
+{% assign mydata=site.data.csv.attributes.DOI %} 
+
 {% include content/DOI.md %}

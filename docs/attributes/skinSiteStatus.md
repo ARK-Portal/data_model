@@ -1,14 +1,19 @@
 ---
-title: skinSiteStatus
+title: "skinSiteStatus"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 76
-permalink: docs/attributes/skinSiteStatus.html
-date: 2025-05-21
+nav_order: "73"
+permalink: "docs/attributes/skinSiteStatus.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.skinSiteStatus %}
+{% assign mydata=site.data.csv.attributes.skinSiteStatus %} 
+
 {% include content/skinSiteStatus.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

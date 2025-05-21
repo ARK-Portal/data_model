@@ -1,14 +1,19 @@
 ---
-title: metadataStandards
+title: "metadataStandards"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 54
-permalink: docs/attributes/metadataStandards.html
-date: 2025-05-21
+nav_order: "51"
+permalink: "docs/attributes/metadataStandards.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.metadataStandards %}
+{% assign mydata=site.data.csv.attributes.metadataStandards %} 
+
 {% include content/metadataStandards.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

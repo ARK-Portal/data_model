@@ -1,14 +1,19 @@
 ---
-title: alignmentReference
+title: "alignmentReference"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 6
-permalink: docs/attributes/alignmentReference.html
-date: 2025-05-21
+nav_order: "6"
+permalink: "docs/attributes/alignmentReference.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.alignmentReference %}
+{% assign mydata=site.data.csv.attributes.alignmentReference %} 
+
 {% include content/alignmentReference.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

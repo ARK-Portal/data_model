@@ -1,14 +1,19 @@
 ---
-title: publicationType
+title: "publicationType"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 68
-permalink: docs/attributes/publicationType.html
-date: 2025-05-21
+nav_order: "65"
+permalink: "docs/attributes/publicationType.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.publicationType %}
+{% assign mydata=site.data.csv.attributes.publicationType %} 
+
 {% include content/publicationType.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

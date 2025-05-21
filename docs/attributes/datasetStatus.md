@@ -1,14 +1,19 @@
 ---
-title: datasetStatus
+title: "datasetStatus"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 27
-permalink: docs/attributes/datasetStatus.html
-date: 2025-05-21
+nav_order: "25"
+permalink: "docs/attributes/datasetStatus.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.datasetStatus %}
+{% assign mydata=site.data.csv.attributes.datasetStatus %} 
+
 {% include content/datasetStatus.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

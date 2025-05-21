@@ -1,10 +1,15 @@
 ---
-title: BRENDA
+title: "BRENDA"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 15
-permalink: docs/attributes/BRENDA.html
-date: 2025-05-21
+nav_order: "14"
+permalink: "docs/attributes/BRENDA.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
+{% assign mydata=site.data.csv.attributes.BRENDA %} 
+
 {% include content/BRENDA.md %}

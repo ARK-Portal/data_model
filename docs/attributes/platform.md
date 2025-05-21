@@ -1,14 +1,19 @@
 ---
-title: platform
+title: "platform"
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 60
-permalink: docs/attributes/platform.html
-date: 2025-05-21
+nav_order: "57"
+permalink: "docs/attributes/platform.html"
+date: "2025-05-05"
+params:
+  title: ""
+  rank: ""
 ---
-{% assign mydata=site.data.csv.attributes.platform %}
+{% assign mydata=site.data.csv.attributes.platform %} 
+
 {% include content/platform.md %}
+
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

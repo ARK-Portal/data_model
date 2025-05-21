@@ -1,14 +1,20 @@
 ---
-title: Biospecimen Metadata Template
+title: "Biospecimen Metadata Template"
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: docs/metadata_templates/biospecimen_metadata_template.html
-date: 2025-05-21
+permalink: "docs/metadata_templates/biospecimen_metadata_template.html"
+date: "2025-05-05"
+params:
+  title: ""
+  title_snake: ""
+  dependsOn: ""
 ---
-{% assign mydata=site.data.csv.metadata_templates.biospecimen_metadata_template %}
+
+{% assign mydata=site.data.csv.metadata_templates.biospecimen_metadata_template %} 
 {% include content/biospecimen_metadata_template.md %}
-<table id="myTable" class="display" style="width:100%">
+
+<table id="myTable" class="display" style="width:135%">
     <thead>
       {% for column in mydata[0] %}
           <th>{{ column[0] }}</th>
@@ -33,7 +39,7 @@ date: 2025-05-21
       paging: false,
       order: [],
       columnDefs: [
-        {
+        { 
           targets: 0,
           orderable: false,
           render : function(data, type, row, meta){
@@ -45,8 +51,8 @@ date: 2025-05-21
                    .html();
           }
         },
-        {
-          targets: [1,2,3],
+        { 
+          targets: [1,2,3], 
           orderable: false
         }
       ]
