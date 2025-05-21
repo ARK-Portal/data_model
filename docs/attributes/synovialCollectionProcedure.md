@@ -1,19 +1,14 @@
 ---
-title: "synovialCollectionProcedure"
+title: synovialCollectionProcedure
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "76"
-permalink: "docs/attributes/synovialCollectionProcedure.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 79
+permalink: docs/attributes/synovialCollectionProcedure.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.synovialCollectionProcedure %} 
-
+{% assign mydata=site.data.csv.attributes.synovialCollectionProcedure %}
 {% include content/synovialCollectionProcedure.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

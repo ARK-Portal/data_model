@@ -1,15 +1,10 @@
 ---
-title: "custom10xProbeSetSynID"
+title: custom10xProbeSetSynID
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "21"
-permalink: "docs/attributes/custom10xProbeSetSynID.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 23
+permalink: docs/attributes/custom10xProbeSetSynID.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.custom10xProbeSetSynID %} 
-
 {% include content/custom10xProbeSetSynID.md %}

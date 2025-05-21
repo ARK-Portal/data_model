@@ -1,19 +1,14 @@
 ---
-title: "cellRangerCountsOutput"
+title: cellRangerCountsOutput
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "17"
-permalink: "docs/attributes/cellRangerCountsOutput.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 18
+permalink: docs/attributes/cellRangerCountsOutput.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.cellRangerCountsOutput %} 
-
+{% assign mydata=site.data.csv.attributes.cellRangerCountsOutput %}
 {% include content/cellRangerCountsOutput.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

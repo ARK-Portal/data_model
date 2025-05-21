@@ -1,19 +1,14 @@
 ---
-title: "heightUnits"
+title: heightUnits
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "40"
-permalink: "docs/attributes/heightUnits.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 43
+permalink: docs/attributes/heightUnits.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.heightUnits %} 
-
+{% assign mydata=site.data.csv.attributes.heightUnits %}
 {% include content/heightUnits.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

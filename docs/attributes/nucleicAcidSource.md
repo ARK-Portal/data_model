@@ -1,19 +1,14 @@
 ---
-title: "nucleicAcidSource"
+title: nucleicAcidSource
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "53"
-permalink: "docs/attributes/nucleicAcidSource.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 56
+permalink: docs/attributes/nucleicAcidSource.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.nucleicAcidSource %} 
-
+{% assign mydata=site.data.csv.attributes.nucleicAcidSource %}
 {% include content/nucleicAcidSource.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

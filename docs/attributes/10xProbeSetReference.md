@@ -1,19 +1,14 @@
 ---
-title: "10xProbeSetReference"
+title: 10xProbeSetReference
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "1"
-permalink: "docs/attributes/10xProbeSetReference.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 1
+permalink: docs/attributes/10xProbeSetReference.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.10xProbeSetReference %} 
-
+{% assign mydata=site.data.csv.attributes.10xProbeSetReference %}
 {% include content/10xProbeSetReference.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

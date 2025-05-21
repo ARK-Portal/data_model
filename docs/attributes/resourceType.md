@@ -1,19 +1,14 @@
 ---
-title: "resourceType"
+title: resourceType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "67"
-permalink: "docs/attributes/resourceType.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 70
+permalink: docs/attributes/resourceType.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.resourceType %} 
-
+{% assign mydata=site.data.csv.attributes.resourceType %}
 {% include content/resourceType.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

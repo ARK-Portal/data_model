@@ -1,19 +1,14 @@
 ---
-title: "dataType"
+title: dataType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "28"
-permalink: "docs/attributes/dataType.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 30
+permalink: docs/attributes/dataType.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.dataType %} 
-
+{% assign mydata=site.data.csv.attributes.dataType %}
 {% include content/dataType.md %}
-
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

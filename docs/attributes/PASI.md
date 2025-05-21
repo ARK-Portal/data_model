@@ -1,15 +1,10 @@
 ---
-title: "PASI"
+title: PASI
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "55"
-permalink: "docs/attributes/PASI.html"
-date: "2025-05-05"
-params:
-  title: ""
-  rank: ""
+nav_order: 58
+permalink: docs/attributes/PASI.html
+date: 2025-05-21
 ---
-{% assign mydata=site.data.csv.attributes.PASI %} 
-
 {% include content/PASI.md %}
