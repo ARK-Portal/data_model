@@ -1,0 +1,39 @@
+#!/bin/bash
+# generate blank xlsx templates
+
+# exit on error
+set -e
+
+# define script variables
+CREDS=./schematic_service_account_creds.json
+
+# create schematic config yml
+#echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
+cat $1 > $CREDS
+echo "✓ Created temp $CREDS from secrets for template generation."
+
+# generate list of templates defined in model
+cut -f1 -d',' ark.model.csv | grep -i template > metadata_templates/templates.txt
+sed -i 's/ //g' metadata_templates/templates.txt
+sed -i 's/"//g' metadata_templates/templates.txt
+sed -i 's/\([[:alpha:]]\)/\U\1/' metadata_templates/templates.txt
+echo "✓ Created metadata_templates/templates.txt."
+
+# use schematic to generate xlsx for each template in templates.txt
+while read template; do
+  /Users/jvera/micromamba/envs/schematic_v24.11.2/bin/schematic manifest \
+  -c schematic_config.yml get -dt $template -oxlsx metadata_templates/$template.xlsx
+  
+  sleep 5 # prevent google API from complaining
+done < metadata_templates/templates.txt
+echo "✓ Created xlsx templates created."
+
+# clean up/reorg remaining output from manifest get
+mv *.schema.json metadata_templates/
+echo "json schemas moved to metadata_templates/"
+
+# clean up and remove sensitive info so it's not commited to repo
+echo "Cleaning up processes directory"
+rm -f $CREDS
+
+echo "✓ Done!"
