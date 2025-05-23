@@ -20,8 +20,7 @@ echo "✓ Created metadata_templates/templates.txt."
 
 # use schematic to generate xlsx for each template in templates.txt
 while read template; do
-  /Users/jvera/micromamba/envs/schematic_v24.11.2/bin/schematic manifest \
-  -c schematic_config.yml get -dt $template -oxlsx metadata_templates/$template.xlsx
+  schematic manifest -c schematic_config.yml get -dt $template -oxlsx metadata_templates/$template.xlsx
   
   sleep 5 # prevent google API from complaining
 done < metadata_templates/templates.txt
