@@ -8,8 +8,7 @@ set -e
 CREDS=./schematic_service_account_creds.json
 
 # create schematic config yml
-#echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
-cat $1 > $CREDS
+echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
 echo "✓ Created temp $CREDS from secrets for template generation."
 
 # generate list of templates defined in model
