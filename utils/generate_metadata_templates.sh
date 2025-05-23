@@ -16,6 +16,7 @@ cut -f1 -d',' ark.model.csv | grep -i template > metadata_templates/templates.tx
 sed -i 's/ //g' metadata_templates/templates.txt
 sed -i 's/"//g' metadata_templates/templates.txt
 sed -i 's/\([[:alpha:]]\)/\U\1/' metadata_templates/templates.txt
+cat metadata_templates/templates.txt
 echo "✓ Created metadata_templates/templates.txt."
 
 # use schematic to generate xlsx for each template in templates.txt
