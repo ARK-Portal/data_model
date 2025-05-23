@@ -22,7 +22,8 @@ echo "✓ Created metadata_templates/templates.txt."
 while read template; do
   schematic manifest -c schematic_config.yml get -dt $template -oxlsx metadata_templates/$template.xlsx
   
-  sleep 5 # prevent google API from complaining
+  sleep 10 # prevent google API from complaining
+  
 done < metadata_templates/templates.txt
 echo "✓ Created xlsx templates created."
 
