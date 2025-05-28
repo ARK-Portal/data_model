@@ -5,11 +5,11 @@
 set -e
 
 # define script variables
-CREDS=./schematic_service_account_creds.json
-
-# create schematic config yml
-echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
-echo "✓ Created temp $CREDS from secrets for template generation."
+#CREDS=./schematic_service_account_creds.json
+#
+## create schematic config yml
+#echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
+#echo "✓ Created temp $CREDS from secrets for template generation."
 
 # generate list of templates defined in model
 cut -f1 -d',' ark.model.csv | grep -i template > metadata_templates/templates.txt
