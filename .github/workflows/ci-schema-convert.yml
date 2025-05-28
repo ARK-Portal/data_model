@@ -16,13 +16,15 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
     
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token
       # Set up supported python.
+          ref: mk_templates
 
       - uses: actions/setup-python@v5
         with:
@@ -38,12 +40,11 @@ jobs:
           schematic schema convert ark.model.csv
           
       - name: Generate metadata collection templates defined in model
-        env:
-          SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
         run: |
+          echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
           bash utils/generate_metadata_templates.sh
 
       - name: Commit files if there are changes
         run: |
           if [[ $(git diff --exit-code) ]]; then 
-            echo "Changes in ark.model.csv affect final jsonld which will be committed"
+            echo "Changes in detected"
