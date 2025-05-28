@@ -31,7 +31,7 @@ mv *.schema.json metadata_templates/
 echo "json schemas moved to metadata_templates/"
 
 # clean up and remove sensitive info so it's not commited to repo
-echo "Cleaning up processes directory"
-rm -f $CREDS
+echo "Cleaning up directory"
+rm -f schematic_service_account_creds.json
 
 echo "✓ Done!"
