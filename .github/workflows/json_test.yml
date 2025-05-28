@@ -21,6 +21,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
+        ref: mk_templates
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
@@ -33,19 +34,13 @@ jobs:
           cat fake.json
           ls
           echo "this is a test" > test.txt
+          cat test.txt
 
       - name: Commit files if there are changes
         run: |
-          if [[ $(git diff --exit-code) ]]; then 
-            echo "Changes in branch will be commited"
             git config --local user.name "$GITHUB_ACTOR"
             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-            git add .
-            git commit -m "commit json_test.yml results"
-          else 
-            echo "nothing to commit"
-            echo "Note that tests will still be run in the next job"
-          fi
+            git commit -a -m "commit json_test.yml results"
     
       - name: Push changes
         uses: ad-m/github-push-action@master
