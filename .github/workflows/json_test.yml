@@ -1,0 +1,51 @@
+# This workflow is used to convert changed ark.model.csv to ark.model.jsonld
+# and push the updated ark.model.jsonld to feature branch
+
+name: ci-schema-convert
+
+on:
+  push:
+    branches: [mk_templates]
+    paths: 
+      - '.github/workflows/json_test.yml'
+      - 'utils/json_test.sh'
+
+env:
+  SCHEMATIC_VERSION: 24.12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FAKE_JSON: ${{ secrets.FAKE_JSON }}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      # Set up supported python.
+
+      - name: Test secrets to json write
+        run: |
+          utils/json_test.sh
+
+      - name: Commit files if there are changes
+        run: |
+          if [[ $(git diff --exit-code) ]]; then 
+            echo "Changes in branch will be commited"
+            git config --local user.name "$GITHUB_ACTOR"
+            git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+            git add .
+            git commit -m "commit json_test.yml results"
+          else 
+            echo "nothing to commit"
+            echo "Note that tests will still be run in the next job"
+          fi
+    
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         branch: ${{ github.event.pull_request.head.ref }} #The name of the branch being merged into main
+         force: true
