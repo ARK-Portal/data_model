@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
+      SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.TEST_JSON }}
     
     steps:
       - uses: actions/checkout@v4
@@ -23,3 +23,6 @@ jobs:
       - name: test json write
         run: |
           bash utils/test_json.sh
+      - name: reveal fake json
+        run: |
+          cat schematic_service_account_creds.json
