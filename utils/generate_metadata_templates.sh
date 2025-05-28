@@ -4,11 +4,8 @@
 # exit on error
 set -e
 
-# define script variables
-CREDS=./schematic_service_account_creds.json
-
 # create schematic config yml
-echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > $CREDS
+echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
 echo "✓ Created temp $CREDS from secrets for template generation."
 
 # generate list of templates defined in model
