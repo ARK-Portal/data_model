@@ -1,0 +1,32 @@
+# This workflow is used to convert changed ark.model.csv to ark.model.jsonld
+# and push the updated ark.model.jsonld to feature branch
+
+name: test
+
+on:
+  push:
+    branches: [mk_templates]
+    paths: 
+      - '.github/workflows/test.yml'
+      - 'utils/test.sh'
+
+env:
+  SCHEMATIC_VERSION: 24.12.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token
+      # Set up supported python.
+          ref: mk_templates
+          
+      - name: Generate metadata collection templates defined in model
+        run: |
+          bash utils/test.sh
+          ls
