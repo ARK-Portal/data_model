@@ -3,9 +3,9 @@ title: salivaCollectionProcedure
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 71
+nav_order: 72
 permalink: docs/attributes/salivaCollectionProcedure.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% assign mydata=site.data.csv.attributes.salivaCollectionProcedure %}
 {% include content/salivaCollectionProcedure.md %}

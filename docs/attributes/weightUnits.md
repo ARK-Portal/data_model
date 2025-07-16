@@ -3,9 +3,9 @@ title: weightUnits
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 91
+nav_order: 94
 permalink: docs/attributes/weightUnits.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% assign mydata=site.data.csv.attributes.weightUnits %}
 {% include content/weightUnits.md %}

@@ -1,5 +1,5 @@
 # cellOntologyID
-Cell Ontology CL identifier that best describes a biopsecimen used to generate data.
+Cell Ontology CL identifier that best describes a biopsecimen used to generate data, e.g., CL:0000084 for T cell.
 
 
 {: .note }

@@ -3,8 +3,8 @@ title: weight
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 90
+nav_order: 93
 permalink: docs/attributes/weight.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% include content/weight.md %}

@@ -3,9 +3,9 @@ title: publicationType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 67
+nav_order: 68
 permalink: docs/attributes/publicationType.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% assign mydata=site.data.csv.attributes.publicationType %}
 {% include content/publicationType.md %}

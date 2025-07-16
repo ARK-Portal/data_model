@@ -3,8 +3,8 @@ title: PASI
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 57
+nav_order: 58
 permalink: docs/attributes/PASI.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% include content/PASI.md %}

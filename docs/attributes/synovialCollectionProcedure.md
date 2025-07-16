@@ -3,9 +3,9 @@ title: synovialCollectionProcedure
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 78
+nav_order: 81
 permalink: docs/attributes/synovialCollectionProcedure.html
-date: 2025-05-21
+date: 2025-07-16
 ---
 {% assign mydata=site.data.csv.attributes.synovialCollectionProcedure %}
 {% include content/synovialCollectionProcedure.md %}
