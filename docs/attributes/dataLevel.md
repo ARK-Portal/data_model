@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 25
 permalink: docs/attributes/dataLevel.html
-date: 2025-07-16
+date: 2025-09-12
 ---
 {% assign mydata=site.data.csv.attributes.dataLevel %}
 {% include content/dataLevel.md %}
