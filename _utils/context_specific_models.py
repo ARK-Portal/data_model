@@ -42,38 +42,38 @@ for context in os.listdir("model_contexts/"):
 
 print("\nAll context model csv files created!\n")
 
-# run schematic schema convert on each model csv
-for context in os.listdir("model_contexts/"):
-  path = f"model_contexts/{context}"
-  model_csv = f"{path}/ark.{context}_model.csv"
-  model_jsonld = f"{path}/ark.{context}_model.jsonld"
-  #schematic schema convert ark.model.csv
-  args = ["schematic", "schema", "convert", model_csv]
-  result = subprocess.run(args, capture_output=True, text=True, check=True)
-  print(result.stdout)
-  if result.stderr:
-    print(f"Error: {result.stderr}")
-  
-  # make csv templates for each context model
-  with open(f"{path}/ark.{context}_templates.txt", "r") as f:
-    templates = [t.rstrip('\n') for t in f.readlines()]
-  for t in templates:
-    out_csv = f"model_templates/ark.{t}.csv"
-    out_json = f"model_json_schema/ark.{t}.schema.json"
-    args = ["schematic", "manifest", "-c", "schematic_config.yml", "get", "-dt", t, "-p", model_jsonld, "-o", out_csv]
-    result = subprocess.run(args, capture_output=True, text=True, check=True)
-    print(result.stdout)
-    if result.stderr:
-      print(f"Error: {result.stderr}")
-    
-    # manage json schema output
-    orig = f"{path}/ark.{context}_model.{t}.schema.json"
-    os.rename(orig, out_json)
-    
-    # sleep for 5 seconds to keep google API from complaining
-    time.sleep(5)
-
-print("\nDone!\n")
+## run schematic schema convert on each model csv
+#for context in os.listdir("model_contexts/"):
+#  path = f"model_contexts/{context}"
+#  model_csv = f"{path}/ark.{context}_model.csv"
+#  model_jsonld = f"{path}/ark.{context}_model.jsonld"
+#  #schematic schema convert ark.model.csv
+#  args = ["schematic", "schema", "convert", model_csv]
+#  result = subprocess.run(args, capture_output=True, text=True, check=True)
+#  print(result.stdout)
+#  if result.stderr:
+#    print(f"Error: {result.stderr}")
+#  
+#  # make csv templates for each context model
+#  with open(f"{path}/ark.{context}_templates.txt", "r") as f:
+#    templates = [t.rstrip('\n') for t in f.readlines()]
+#  for t in templates:
+#    out_csv = f"model_templates/ark.{t}.csv"
+#    out_json = f"model_json_schema/ark.{t}.schema.json"
+#    args = ["schematic", "manifest", "-c", "schematic_config.yml", "get", "-dt", t, "-p", model_jsonld, "-o", out_csv]
+#    result = subprocess.run(args, capture_output=True, text=True, check=True)
+#    print(result.stdout)
+#    if result.stderr:
+#      print(f"Error: {result.stderr}")
+#    
+#    # manage json schema output
+#    orig = f"{path}/ark.{context}_model.{t}.schema.json"
+#    os.rename(orig, out_json)
+#    
+#    # sleep for 5 seconds to keep google API from complaining
+#    time.sleep(5)
+#
+#print("\nDone!\n")
 
 
 

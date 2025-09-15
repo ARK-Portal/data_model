@@ -35,15 +35,19 @@ jobs:
           pip install schematicpy==${{ env.SCHEMATIC_VERSION }}
           pip show schematicpy
 
-      - name: Create context-specific models
+      - name: Create creds file
         run: |
           echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
 
       - name: Create context-specific models
         run: |
-          python _utils/context_specific_models.py
+          python utils/context_specific_models.py
 
-      - name: Create context-specific models
+      - name: convert model csv to jsonld
+        run: |
+          bash utils/schema_convert.sh
+
+      - name: Clean up sensitive info
         run: |
           rm schematic_service_account_creds.json
 
