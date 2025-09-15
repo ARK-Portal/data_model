@@ -14,6 +14,7 @@ on:
 
 env:
   SCHEMATIC_VERSION: 24.11.2
+  SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
 
 jobs:
   build:
@@ -36,7 +37,15 @@ jobs:
 
       - name: Create context-specific models
         run: |
+          echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
+
+      - name: Create context-specific models
+        run: |
           python _utils/context_specific_models.py
+
+      - name: Create context-specific models
+        run: |
+          rm schematic_service_account_creds.json
 
       - name: Commit files if there are changes
         run: |
