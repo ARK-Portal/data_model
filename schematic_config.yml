@@ -1,10 +1,3 @@
-# Do not change the 'definitions' section unless you know what you're doing
-definitions:
-  synapse_config: ".synapseConfig"
-  creds_path: "credentials.json"
-  token_pickle: "token.pickle"
-  service_acct_creds: "schematic_service_account_creds.json"
-
 synapse:
   master_fileview: 'syn23643253'
   manifest_folder: 'manifests'
@@ -12,18 +5,15 @@ synapse:
   token_creds: 'syn23643259'
   service_acct_creds: 'syn25171627'
 
-manifest:
-  # if making many manifests, just include name prefix
-  title: 'example'
-  # to make all manifests enter only 'all manifests'
-  data_type: 
-    - 'Biospecimen'
-    - 'Patient'
+asset_store:
+  synapse:
+    config: ".synapseConfig"
+    manifest_basename: 'synapse_storage_manifest'
+    master_fileview_id:  'syn64411960'
 
-model:
-  input:
-    location: 'tests/data/example.model.jsonld'
-    file_type: 'local'
+google_sheets:
+  service_acct_creds: "schematic_service_account_creds.json"
+  strict_validation: true
 
 style:
   google_manifest:
