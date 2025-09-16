@@ -15,65 +15,56 @@ def get_model_template_name(df):
   for i in range(len(templates)):
     nchar = len(templates[i])
     templates[i] = templates[i][0].capitalize() + templates[i][1:nchar]
+  templates.sort()
   return templates
+
+def delete_templates(templates):
+  for t in templates:
+    print(f"Deleting template files for {t}...")
+    csv_fid = f"model_templates/ark.{t}.csv"
+    json_fid = f"model_templates/ark.{t}.schema.json"
+    if os.path.exists(csv_fid):
+      os.remove(csv_fid)
+    if os.path.exists(json_fid):
+      os.remove(json_fid)
 
 ####
 #### concat context csv with all attr csv to make context model csv
 ####
-allAttr = pd.read_csv("ark.all_attributes.csv")
-model_fids = []
-templates = []
-
 for context in os.listdir("model_contexts/"):
   #print(context)
   path = f"model_contexts/{context}"
   contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
-  contextModel = pd.concat([contextCSV, allAttr], ignore_index=True)
+  context_attrs = list(contextCSV.Attribute)
   
+  # read in and prep all attributes csv
+  allAttr = pd.read_csv("ark.all_attributes.csv")
+  allAttr = allAttr[allAttr.Attribute.isin(context_attrs) == False]
+  
+  # merge context and all attributes to create a model csv
+  contextModel = pd.concat([contextCSV, allAttr], ignore_index=True)
+  fid = f"{path}/ark.{context}_model.csv"
+  contextModel.to_csv(fid, index=False, quoting=csv.QUOTE_ALL)
+  
+  # template management
+  templates_fid = f"{path}/ark.{context}_templates.txt"
   templates = get_model_template_name(contextModel)
-  with open(f"{path}/ark.{context}_templates.txt", "w") as f:
+  # catalog changes to context templates
+  if os.path.exists(templates_fid):
+    with open(templates_fid, "r") as f:
+      old_templates = [f.strip() for f in f.readlines()]
+    f.close()
+    del_templates = [t for t in old_templates if t not in templates]
+    # delete template csv and json schema files
+    delete_templates(del_templates)
+  
+  # write most up-to-date list of context templates to file
+  with open(templates_fid, "w") as f:
     for t in set(templates):
       a = f.write(f"{t}\n")
   f.close()
-  
-  fid = f"{path}/ark.{context}_model.csv"
-  model_fids.append(fid)
-  contextModel.to_csv(fid, index=False, quoting=csv.QUOTE_ALL)
 
 print("\nAll context model csv files created!\n")
-
-## run schematic schema convert on each model csv
-#for context in os.listdir("model_contexts/"):
-#  path = f"model_contexts/{context}"
-#  model_csv = f"{path}/ark.{context}_model.csv"
-#  model_jsonld = f"{path}/ark.{context}_model.jsonld"
-#  #schematic schema convert ark.model.csv
-#  args = ["schematic", "schema", "convert", model_csv]
-#  result = subprocess.run(args, capture_output=True, text=True, check=True)
-#  print(result.stdout)
-#  if result.stderr:
-#    print(f"Error: {result.stderr}")
-#  
-#  # make csv templates for each context model
-#  with open(f"{path}/ark.{context}_templates.txt", "r") as f:
-#    templates = [t.rstrip('\n') for t in f.readlines()]
-#  for t in templates:
-#    out_csv = f"model_templates/ark.{t}.csv"
-#    out_json = f"model_json_schema/ark.{t}.schema.json"
-#    args = ["schematic", "manifest", "-c", "schematic_config.yml", "get", "-dt", t, "-p", model_jsonld, "-o", out_csv]
-#    result = subprocess.run(args, capture_output=True, text=True, check=True)
-#    print(result.stdout)
-#    if result.stderr:
-#      print(f"Error: {result.stderr}")
-#    
-#    # manage json schema output
-#    orig = f"{path}/ark.{context}_model.{t}.schema.json"
-#    os.rename(orig, out_json)
-#    
-#    # sleep for 5 seconds to keep google API from complaining
-#    time.sleep(5)
-#
-#print("\nDone!\n")
 
 
 
