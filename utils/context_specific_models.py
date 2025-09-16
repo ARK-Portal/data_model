@@ -27,7 +27,7 @@ templates = []
 for context in os.listdir("model_contexts/"):
   #print(context)
   path = f"model_contexts/{context}"
-  contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv")
+  contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
   contextModel = pd.concat([contextCSV, allAttr], ignore_index=True)
   
   templates = get_model_template_name(contextModel)
