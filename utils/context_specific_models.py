@@ -22,7 +22,7 @@ def delete_templates(templates):
   for t in templates:
     print(f"Deleting template files for {t}...")
     csv_fid = f"model_templates/ark.{t}.csv"
-    json_fid = f"model_templates/ark.{t}.schema.json"
+    json_fid = f"model_json_schema/ark.{t}.schema.json"
     if os.path.exists(csv_fid):
       os.remove(csv_fid)
     if os.path.exists(json_fid):
@@ -31,18 +31,25 @@ def delete_templates(templates):
 ####
 #### concat context csv with all attr csv to make context model csv
 ####
+# read in and prep all attributes csv
+allAttr = pd.read_csv("ark.all_attributes.csv")
+# create dictionary of attribute descriptions that can be pulled into context models
+descriptions = allAttr.loc[:, ["Attribute", "Description"]].set_index("Attribute").to_dict("index")
+  
 for context in os.listdir("model_contexts/"):
   #print(context)
   path = f"model_contexts/{context}"
   contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
   context_attrs = list(contextCSV.Attribute)
+  common = [a for a in context_attrs if a in list(allAttr.Attribute)]
+  for a in common:
+    contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
-  # read in and prep all attributes csv
-  allAttr = pd.read_csv("ark.all_attributes.csv")
-  allAttr = allAttr[allAttr.Attribute.isin(context_attrs) == False]
+  # prep all attributes csv for merging
+  temp_allAttr = allAttr[allAttr.Attribute.isin(context_attrs) == False]
   
   # merge context and all attributes to create a model csv
-  contextModel = pd.concat([contextCSV, allAttr], ignore_index=True)
+  contextModel = pd.concat([contextCSV, temp_allAttr], ignore_index=True)
   fid = f"{path}/ark.{context}_model.csv"
   contextModel.to_csv(fid, index=False, quoting=csv.QUOTE_ALL)
   
