@@ -4,6 +4,36 @@
   "title": "example",
   "type": "object",
   "properties": {
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "enum": [
+        "AIM for RA",
+        "ELLIPSS",
+        "RA",
+        "STAMP",
+        "LOCKIT",
+        "SLE",
+        "V-CoRT"
+      ]
+    },
+    "publicationType": {
+      "enum": [
+        "correction",
+        "pre-print",
+        "peer-reviewed"
+      ]
+    },
     "Component": {
       "not": {
         "type": "null"
@@ -16,51 +46,7 @@
       },
       "minLength": 1
     },
-    "project": {
-      "enum": [
-        "AIM for RA",
-        "SLE",
-        "V-CoRT",
-        "RA",
-        "ELLIPSS",
-        "STAMP",
-        "LOCKIT"
-      ]
-    },
-    "associatedDataset": {},
-    "publicationType": {
-      "enum": [
-        "correction",
-        "pre-print",
-        "peer-reviewed"
-      ]
-    },
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "AMP AIM",
-        "Community Contribution"
-      ]
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "DOI": {
       "not": {
         "type": "null"
       },
@@ -72,25 +58,39 @@
       },
       "minLength": 1
     },
+    "year": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "AMP AIM",
+        "Community Contribution",
+        "AMP RA/SLE"
+      ]
+    },
+    "associatedDataset": {},
     "programPhase": {
       "enum": [
-        "II",
         "I",
+        "II",
         ""
       ]
     }
   },
   "required": [
-    "Component",
-    "journal",
+    "DOI",
+    "publicationDate",
     "project",
     "publicationType",
-    "program",
-    "publicationDate",
-    "year",
+    "Component",
+    "journal",
     "title",
-    "DOI",
-    "PMID"
+    "PMID",
+    "year",
+    "program"
   ],
   "allOf": [
     {
@@ -110,8 +110,8 @@
         "properties": {
           "programPhase": {
             "enum": [
-              "II",
-              "I"
+              "I",
+              "II"
             ]
           }
         },
