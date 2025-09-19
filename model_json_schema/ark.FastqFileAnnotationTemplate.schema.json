@@ -4,56 +4,10 @@
   "title": "example",
   "type": "object",
   "properties": {
-    "resourceType": {
-      "enum": [
-        "experimental data",
-        ""
-      ]
-    },
     "fileFormat": {
       "enum": [
         "fastq",
         ""
-      ]
-    },
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "flow cytometry",
-          "serial IHC",
-          "Xenium",
-          "snRNASeq",
-          "CE-MS",
-          "multiplexed ELISA",
-          "SNP array",
-          "ASAPSeq",
-          "VDJSeq",
-          "imaging mass cytometry",
-          "snATACSeq",
-          "NULISA",
-          "LC-MS/MS",
-          "imaging mass spectrometry",
-          "Olink Explore HT",
-          "RNASeq",
-          "feature barcode sequencing",
-          "WES",
-          "SomaScan",
-          "CITESeq",
-          "CosMX",
-          "H&E",
-          "WGS",
-          "CyTOF",
-          "scVDJSeq",
-          "scRNASeq"
-        ]
-      },
-      "maxItems": 26
-    },
-    "specimenModality": {
-      "enum": [
-        "single specimen",
-        "multispecimen"
       ]
     },
     "Filename": {
@@ -62,72 +16,91 @@
       },
       "minLength": 1
     },
+    "resourceType": {
+      "enum": [
+        "experimental data",
+        ""
+      ]
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
+      ]
+    },
+    "readLength": {},
+    "assay": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "WES",
+          "LC-MS/MS",
+          "SomaScan",
+          "RNASeq",
+          "serial IHC",
+          "Olink Explore HT",
+          "imaging mass spectrometry",
+          "snATACSeq",
+          "ASAPSeq",
+          "scVDJSeq",
+          "NULISA",
+          "snRNASeq",
+          "WGS",
+          "flow cytometry",
+          "H&E",
+          "CyTOF",
+          "Xenium",
+          "CosMX",
+          "multiplexed ELISA",
+          "imaging mass cytometry",
+          "VDJSeq",
+          "SNP array",
+          "feature barcode sequencing",
+          "scRNASeq",
+          "CE-MS",
+          "CITESeq"
+        ]
+      },
+      "maxItems": 26
+    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "readLength": {},
-    "targetPanelSynID": {},
-    "targetPanel": {},
+    "libraryID": {},
     "individualID": {},
     "biospecimenID": {},
-    "libraryID": {}
+    "targetPanel": {},
+    "targetPanelSynID": {}
   },
   "required": [
-    "assay",
-    "specimenModality",
     "Filename",
+    "specimenModality",
+    "assay",
     "Component"
   ],
   "allOf": [
     {
       "if": {
         "properties": {
-          "assay": {
+          "specimenModality": {
             "enum": [
-              "feature barcode sequencing"
+              "multispecimen"
             ]
           }
         },
         "required": [
-          "assay"
+          "specimenModality"
         ]
       },
       "then": {
         "properties": {
-          "targetPanelSynID": {}
+          "libraryID": {}
         },
         "required": [
-          "targetPanelSynID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanel": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "targetPanel"
+          "libraryID"
         ]
       }
     },
@@ -188,22 +161,54 @@
     {
       "if": {
         "properties": {
-          "specimenModality": {
+          "assay": {
             "enum": [
-              "multispecimen"
+              "feature barcode sequencing"
             ]
           }
         },
         "required": [
-          "specimenModality"
+          "assay"
         ]
       },
       "then": {
         "properties": {
-          "libraryID": {}
+          "targetPanel": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
         },
         "required": [
-          "libraryID"
+          "targetPanel"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "assay": {
+            "enum": [
+              "feature barcode sequencing"
+            ]
+          }
+        },
+        "required": [
+          "assay"
+        ]
+      },
+      "then": {
+        "properties": {
+          "targetPanelSynID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "targetPanelSynID"
         ]
       }
     }

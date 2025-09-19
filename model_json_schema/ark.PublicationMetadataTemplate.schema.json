@@ -7,17 +7,37 @@
     "publicationType": {
       "enum": [
         "correction",
-        "pre-print",
-        "peer-reviewed"
+        "peer-reviewed",
+        "pre-print"
       ]
     },
-    "title": {
+    "associatedDataset": {},
+    "DOI": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "DOI": {
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "PMID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "Community Contribution",
+        "AMP AIM"
+      ]
+    },
+    "year": {
       "not": {
         "type": "null"
       },
@@ -25,27 +45,14 @@
     },
     "project": {
       "enum": [
+        "LOCKIT",
         "RA",
+        "ELLIPSS",
+        "SLE",
         "V-CoRT",
         "AIM for RA",
-        "ELLIPSS",
-        "LOCKIT",
-        "SLE",
         "STAMP"
       ]
-    },
-    "program": {
-      "enum": [
-        "Community Contribution",
-        "AMP RA/SLE",
-        "AMP AIM"
-      ]
-    },
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
     },
     "publicationDate": {
       "not": {
@@ -59,38 +66,31 @@
       },
       "minLength": 1
     },
-    "PMID": {
+    "title": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "associatedDataset": {},
     "programPhase": {
       "enum": [
-        "I",
         "II",
+        "I",
         ""
       ]
     }
   },
   "required": [
     "publicationType",
-    "title",
     "DOI",
-    "project",
-    "program",
     "journal",
+    "PMID",
+    "program",
+    "year",
+    "project",
     "publicationDate",
     "Component",
-    "PMID",
-    "year"
+    "title"
   ],
   "allOf": [
     {
@@ -110,8 +110,8 @@
         "properties": {
           "programPhase": {
             "enum": [
-              "I",
-              "II"
+              "II",
+              "I"
             ]
           }
         },

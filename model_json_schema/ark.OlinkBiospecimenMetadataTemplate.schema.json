@@ -10,56 +10,28 @@
       },
       "minLength": 1
     },
-    "project": {
-      "enum": [
-        "RA",
-        "STAMP",
-        "AIM for RA",
-        "LOCKIT",
-        "V-CoRT",
-        "SLE",
-        "ELLIPSS"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "AMP AIM",
-        "Community Contribution"
-      ]
-    },
     "biospecimenType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "fibroblast-like synoviocyte",
-          "skin swab",
-          "none",
-          "kidney biopsy",
-          "synovial fluid",
-          "saliva",
-          "salivary gland",
-          "suction blister fluid",
-          "urine",
-          "suction blister cells",
-          "serum",
-          "PBMCs",
-          "total leukocytes",
-          "synovial tissue",
-          "stool",
-          "plasma",
-          "uvea",
-          "whole blood",
-          "skin biopsy"
-        ]
-      },
-      "maxItems": 19
+      "enum": [
+        "synovial tissue",
+        "PBMCs",
+        "saliva",
+        "suction blister cells",
+        "total leukocytes",
+        "synovial fluid",
+        "suction blister fluid",
+        "serum",
+        "fibroblast-like synoviocyte",
+        "skin swab",
+        "whole blood",
+        "none",
+        "plasma",
+        "urine",
+        "uvea",
+        "kidney biopsy",
+        "skin biopsy",
+        "stool",
+        "salivary gland"
+      ]
     },
     "individualID": {
       "not": {
@@ -67,9 +39,14 @@
       },
       "minLength": 1
     },
-    "visitID": {},
-    "parentBiospecimenID": {},
     "biospecimenID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "visitID": {},
+    "Component": {
       "not": {
         "type": "null"
       },
@@ -77,60 +54,43 @@
     },
     "biospecimenSubtype": {
       "enum": [
-        "FFPE tissue",
-        "cell suspension",
         "fresh tissue",
-        "PFA-fixed tissue",
-        "frozen tissue",
-        "nuclei suspension",
         "flow-sorted cells",
+        "nuclei suspension",
+        "cell suspension",
+        "frozen tissue",
+        "FFPE tissue",
+        "PFA-fixed tissue",
         ""
       ]
     },
-    "programPhase": {
+    "project": {
       "enum": [
-        "II",
-        "I",
-        ""
+        "LOCKIT",
+        "V-CoRT",
+        "SLE",
+        "AIM for RA",
+        "RA",
+        "ELLIPSS",
+        "STAMP"
+      ]
+    },
+    "parentBiospecimenID": {},
+    "program": {
+      "enum": [
+        "AMP AIM",
+        "Community Contribution",
+        "AMP RA/SLE"
       ]
     }
   },
   "required": [
     "plateID",
-    "project",
-    "Component",
-    "program",
     "biospecimenType",
     "individualID",
-    "biospecimenID"
-  ],
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "program": {
-            "enum": [
-              "AMP RA/SLE"
-            ]
-          }
-        },
-        "required": [
-          "program"
-        ]
-      },
-      "then": {
-        "properties": {
-          "programPhase": {
-            "enum": [
-              "II",
-              "I"
-            ]
-          }
-        },
-        "required": [
-          "programPhase"
-        ]
-      }
-    }
+    "biospecimenID",
+    "Component",
+    "project",
+    "program"
   ]
 }

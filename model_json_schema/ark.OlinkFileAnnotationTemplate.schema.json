@@ -4,18 +4,12 @@
   "title": "example",
   "type": "object",
   "properties": {
-    "specimenModality": {
-      "enum": [
-        "single specimen",
-        "multispecimen"
-      ]
-    },
     "resourceType": {
       "enum": [
-        "code",
-        "figure",
+        "metadata",
         "experimental data",
-        "metadata"
+        "code",
+        "figure"
       ]
     },
     "plateID": {
@@ -24,7 +18,7 @@
       },
       "minLength": 1
     },
-    "Component": {
+    "Filename": {
       "not": {
         "type": "null"
       },
@@ -32,38 +26,44 @@
     },
     "fileFormat": {
       "enum": [
-        "erate",
-        "csv",
-        "xls",
-        "tgz",
-        "tsv",
-        "parquet",
-        "vcf",
-        "rds",
-        "bam",
         "fastq",
-        "pdf",
-        "bim",
-        "tbi",
-        "bed",
-        "rec",
-        "h5",
-        "tar.gz",
-        "h5ad",
-        "dose",
-        "docx",
         "txt",
-        "info",
-        "mtx",
-        "zip",
-        "xlsx",
+        "rec",
         "geojson",
+        "tgz",
+        "rds",
+        "xlsx",
+        "parquet",
+        "mtx",
+        "pdf",
+        "tsv",
+        "tbi",
+        "h5",
+        "xls",
+        "bim",
+        "bed",
+        "bam",
+        "dose",
+        "vcf",
+        "info",
+        "zip",
+        "erate",
         "fcs",
         "fam",
-        "bai"
+        "bai",
+        "csv",
+        "h5ad",
+        "docx",
+        "tar.gz"
       ]
     },
-    "Filename": {
+    "specimenModality": {
+      "enum": [
+        "single specimen",
+        "multispecimen"
+      ]
+    },
+    "Component": {
       "not": {
         "type": "null"
       },
@@ -71,11 +71,11 @@
     }
   },
   "required": [
-    "specimenModality",
     "resourceType",
     "plateID",
-    "Component",
+    "Filename",
     "fileFormat",
-    "Filename"
+    "specimenModality",
+    "Component"
   ]
 }
