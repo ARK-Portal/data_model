@@ -96,7 +96,6 @@ for context in contexts:
   common = [a for a in context_attrs if a in list(allAttr.Attribute)]
   # add a description to context csv if none exists
   for a in common:
-    df = df[df['Valid Values'].isna() == False]
     if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna():
       contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
