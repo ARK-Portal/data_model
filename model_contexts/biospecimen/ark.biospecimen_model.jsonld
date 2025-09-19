@@ -8,10 +8,10 @@
     },
     "@graph": [
         {
-            "@id": "bts:RASLEBiospecimenMetadataTemplate",
+            "@id": "bts:BiospecimenMetadataTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A template outlining metadata to be collected for biospecimen from the AMP RA/SLE program. Distinct validation rules are in place for this template relative to other biospecimen metadata templates.",
-            "rdfs:label": "RASLEBiospecimenMetadataTemplate",
+            "rdfs:comment": "A general template outlining metadata to be collected for biospecimen profiled in a dataset.",
+            "rdfs:label": "BiospecimenMetadataTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -20,7 +20,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "RASLE Biospecimen Metadata Template",
+            "sms:displayName": "Biospecimen Metadata Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
@@ -156,7 +156,6 @@
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "str",
                 "ClinicalMetadataTemplate": "unique error",
-                "RASLEBiospecimenMetadataTemplate": "str",
                 "all_other_components": "list like error"
             }
         },
@@ -175,9 +174,7 @@
             },
             "sms:displayName": "visitID",
             "sms:required": "sms:false",
-            "sms:validationRules": {
-                "RASLEBiospecimenMetadataTemplate": "required"
-            }
+            "sms:validationRules": []
         },
         {
             "@id": "bts:BiospecimenID",
@@ -196,7 +193,7 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "unique error",
-                "RASLEBiospecimenMetadataTemplate": "unique error",
+                "OlinkBiospecimenMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
         },
@@ -293,7 +290,7 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "str",
-                "RASLEBiospecimenMetadataTemplate": "str",
+                "OlinkBiospecimenMetadataTemplate": "str",
                 "all_other_components": "list like error"
             }
         },
@@ -335,99 +332,6 @@
             ],
             "sms:displayName": "biospecimenSubtype",
             "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:BiospecimenMetadataTemplate",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A template outlining metadata to be collected for biospecimen.",
-            "rdfs:label": "BiospecimenMetadataTemplate",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Biospecimen Metadata Template",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:Component"
-                },
-                {
-                    "@id": "bts:Program"
-                },
-                {
-                    "@id": "bts:Project"
-                },
-                {
-                    "@id": "bts:IndividualID"
-                },
-                {
-                    "@id": "bts:VisitID"
-                },
-                {
-                    "@id": "bts:BiospecimenID"
-                },
-                {
-                    "@id": "bts:ParentBiospecimenID"
-                },
-                {
-                    "@id": "bts:BiospecimenType"
-                },
-                {
-                    "@id": "bts:BiospecimenSubtype"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:AMPRA/SLE",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
-            "rdfs:label": "AMPRA/SLE",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Program"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "AMP RA/SLE",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:ProgramPhase"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:ProgramPhase",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label noting which AMP RA/SLE program phase generated the data.",
-            "rdfs:label": "ProgramPhase",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:I"
-                },
-                {
-                    "@id": "bts:II"
-                }
-            ],
-            "sms:displayName": "programPhase",
-            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -1000,6 +904,28 @@
                 },
                 {
                     "@id": "bts:UserDefinedCellType"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:AMPRA/SLE",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
+            "rdfs:label": "AMPRA/SLE",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "AMP RA/SLE",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:VisitID"
                 }
             ],
             "sms:validationRules": []
@@ -1816,6 +1742,31 @@
             },
             "sms:displayName": "ELLIPSS",
             "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ProgramPhase",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label noting which AMP RA/SLE program phase generated the data.",
+            "rdfs:label": "ProgramPhase",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:I"
+                },
+                {
+                    "@id": "bts:II"
+                }
+            ],
+            "sms:displayName": "programPhase",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -4927,9 +4878,28 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "targetPanelSynID",
-            "sms:required": "sms:false",
+            "sms:required": "sms:true",
             "sms:validationRules": [
                 "regex search ^syn[0-9]{8} error"
+            ]
+        },
+        {
+            "@id": "bts:TargetPanelSize",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+            "rdfs:label": "TargetPanelSize",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "targetPanelSize",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "int error"
             ]
         },
         {
@@ -5612,7 +5582,7 @@
                     "@id": "bts:10xChromiumGEM-XSingleCell3'v4"
                 },
                 {
-                    "@id": "bts:10xGEM-XUniversal5’GeneExpressionv3"
+                    "@id": "bts:10xGEM-XUniversal5?GeneExpressionv3"
                 },
                 {
                     "@id": "bts:10xGEM-XFlexGeneExpressionHuman"
@@ -6018,10 +5988,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:10xGEM-XUniversal5’GeneExpressionv3",
+            "@id": "bts:10xGEM-XUniversal5?GeneExpressionv3",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "10xGEM-XUniversal5’GeneExpressionv3",
+            "rdfs:label": "10xGEM-XUniversal5?GeneExpressionv3",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:LibraryPrepMethod"
@@ -6030,7 +6000,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "10x GEM-X Universal 5’ Gene Expression v3",
+            "sms:displayName": "10x GEM-X Universal 5? Gene Expression v3",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -6964,7 +6934,7 @@
                     "@id": "bts:Scleroderma"
                 },
                 {
-                    "@id": "bts:Sjögren'sdisease"
+                    "@id": "bts:Sjogren'sdisease"
                 },
                 {
                     "@id": "bts:Lupusnephritis"
@@ -7108,10 +7078,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Sjögren'sdisease",
+            "@id": "bts:Sjogren'sdisease",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "Sjögren'sdisease",
+            "rdfs:label": "Sjogren'sdisease",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Diagnosis"
@@ -7120,7 +7090,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "Sjögren's disease",
+            "sms:displayName": "Sjogren's disease",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -7550,7 +7520,7 @@
         {
             "@id": "bts:PMID",
             "@type": "rdfs:Class",
-            "rdfs:comment": "PubMed® Identifier",
+            "rdfs:comment": "PubMed(R) Identifier",
             "rdfs:label": "PMID",
             "rdfs:subClassOf": [
                 {
@@ -9585,6 +9555,45 @@
             "sms:displayName": "librarySpikeIn",
             "sms:required": "sms:false",
             "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ReadLength",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The number of base pairs (bp) sequenced from library fragment.",
+            "rdfs:label": "ReadLength",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "readLength",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "int error"
+            ]
+        },
+        {
+            "@id": "bts:PlateID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.",
+            "rdfs:label": "PlateID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "plateID",
+            "sms:required": "sms:false",
+            "sms:validationRules": {
+                "OlinkAssayMetadataTemplate": "unique error",
+                "OlinkBiospecimenMetadataTemplate": "required"
+            }
         }
     ],
     "@id": "http://schema.biothings.io/#0.1"

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/example",
+  "title": "example",
+  "type": "object",
+  "properties": {
+    "targetPanel": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "plateID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "assay": {
+      "enum": [
+        "Olink Target 48",
+        "Olink Explore HT",
+        "Olink Reveal",
+        "Olink Focus",
+        "Olink Target 96",
+        "Olink Flex"
+      ]
+    },
+    "targetPanelSize": {},
+    "targetPanelSynID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "platform": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Illumina NovaSeq 6000",
+          "Illumina NextSeq 500",
+          "Olink Signature Q100",
+          "Fluidigm BioMark",
+          ""
+        ]
+      },
+      "maxItems": 4
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    }
+  },
+  "required": [
+    "targetPanel",
+    "plateID",
+    "assay",
+    "targetPanelSynID",
+    "Component"
+  ]
+}
