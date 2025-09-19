@@ -1,0 +1,262 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/example",
+  "title": "example",
+  "type": "object",
+  "properties": {
+    "biospecimenType": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "uvea",
+          "salivary gland",
+          "serum",
+          "suction blister fluid",
+          "stool",
+          "fibroblast-like synoviocyte",
+          "total leukocytes",
+          "urine",
+          "synovial fluid",
+          "PBMCs",
+          "saliva",
+          "none",
+          "synovial tissue",
+          "plasma",
+          "whole blood",
+          "suction blister cells",
+          "skin biopsy",
+          "kidney biopsy",
+          "skin swab"
+        ]
+      },
+      "maxItems": 19
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
+      ]
+    },
+    "dataSubtype": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "pseudobulk",
+          "spatial",
+          "single-cell",
+          "single-nucleus",
+          "bulk",
+          "none"
+        ]
+      },
+      "maxItems": 6
+    },
+    "project": {
+      "enum": [
+        "LOCKIT",
+        "ELLIPSS",
+        "V-CoRT",
+        "STAMP",
+        "SLE",
+        "AIM for RA",
+        "RA"
+      ]
+    },
+    "targetPanelSynID": {},
+    "plateID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "visitID": {},
+    "Filename": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "fileFormat": {
+      "enum": [
+        "csv",
+        "parquet",
+        "info",
+        "zip",
+        "txt",
+        "tgz",
+        "mtx",
+        "tar.gz",
+        "bam",
+        "vcf",
+        "docx",
+        "rec",
+        "h5",
+        "dose",
+        "xlsx",
+        "fcs",
+        "fam",
+        "fastq",
+        "tsv",
+        "bed",
+        "bim",
+        "h5ad",
+        "pdf",
+        "geojson",
+        "erate",
+        "bai",
+        "tbi",
+        "rds",
+        "xls"
+      ]
+    },
+    "dataType": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "transcriptomics",
+          "immune repertoire profiling",
+          "histology",
+          "proteomics",
+          "metabolomics",
+          "lipidomics",
+          "microbiome",
+          "immunostaining",
+          "genomics",
+          "cytometry",
+          "epigenomics",
+          "multimodal"
+        ]
+      },
+      "maxItems": 12
+    },
+    "targetPanelSize": {},
+    "diagnosis": {
+      "enum": [
+        "psoriatic arthritis",
+        "vitiligo",
+        "Sjogren's disease",
+        "psoriasis",
+        "SLE",
+        "cutaneous lupus erythematosus",
+        "At-Risk RA",
+        "scleroderma",
+        "OA",
+        "RA",
+        "control",
+        "lupus nephritis",
+        "dermatomyositis"
+      ]
+    },
+    "platform": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Illumina NovaSeq 6000",
+          "BD FACSAria Fusion cell sorter",
+          "Hyperion",
+          "Illumina HiSeq 2500",
+          "Chromium Next GEM Chip G",
+          "CyTOF XT",
+          "Chromium Xo",
+          "Chromium X",
+          "Chromium Controller",
+          "Chromium GEM-X Single Cell 3' Chip v4",
+          "Chromium Next GEM Chip H",
+          "Xenium",
+          "Helios Mass Cytometer",
+          "none",
+          "GEM-X OCM 5' Chip",
+          "Chromium iX",
+          "Chromium Next GEM Chip M",
+          "Visium CytAssist",
+          "GEM-X Flex Gene Expression Chip",
+          "Chromium Next GEM Chip K",
+          "Illumina NextSeq 500",
+          "Chromium Next GEM Chip Q",
+          "Illumina NovaSeq X",
+          "Illumina HiSeq X Ten",
+          ""
+        ]
+      },
+      "maxItems": 24
+    },
+    "targetPanel": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "resourceType": {
+      "enum": [
+        "experimental data",
+        "figure",
+        "code",
+        "metadata"
+      ]
+    },
+    "programPhase": {
+      "enum": [
+        "II",
+        "I",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "biospecimenType",
+    "specimenModality",
+    "dataSubtype",
+    "project",
+    "plateID",
+    "Filename",
+    "fileFormat",
+    "dataType",
+    "diagnosis",
+    "targetPanel",
+    "program",
+    "Component",
+    "resourceType"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "program": {
+            "enum": [
+              "AMP RA/SLE"
+            ]
+          }
+        },
+        "required": [
+          "program"
+        ]
+      },
+      "then": {
+        "properties": {
+          "programPhase": {
+            "enum": [
+              "II",
+              "I"
+            ]
+          }
+        },
+        "required": [
+          "programPhase"
+        ]
+      }
+    }
+  ]
+}

@@ -4,76 +4,17 @@
   "title": "example",
   "type": "object",
   "properties": {
-    "associatedDataset": {},
     "associatedCodeURL": {},
-    "ImmPortAccession": {},
-    "diagnosis": {
+    "datasetStatus": {
       "enum": [
-        "psoriasis",
-        "RA",
-        "dermatomyositis",
-        "psoriatic arthritis",
-        "cutaneous lupus erythematosus",
-        "scleroderma",
-        "control",
-        "vitiligo",
-        "OA",
-        "SLE",
-        "At-Risk RA",
-        "Sjogren's disease",
-        "lupus nephritis"
+        "unreleased",
+        "released",
+        "deprecated",
+        "under peer review",
+        "test"
       ]
     },
-    "biospecimenType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "serum",
-          "fibroblast-like synoviocyte",
-          "salivary gland",
-          "synovial tissue",
-          "suction blister fluid",
-          "whole blood",
-          "total leukocytes",
-          "stool",
-          "skin swab",
-          "kidney biopsy",
-          "PBMCs",
-          "skin biopsy",
-          "plasma",
-          "suction blister cells",
-          "urine",
-          "none",
-          "synovial fluid",
-          "saliva",
-          "uvea"
-        ]
-      },
-      "maxItems": 19
-    },
-    "project": {
-      "enum": [
-        "RA",
-        "STAMP",
-        "LOCKIT",
-        "SLE",
-        "V-CoRT",
-        "ELLIPSS",
-        "AIM for RA"
-      ]
-    },
-    "biospecimenSubtype": {
-      "enum": [
-        "FFPE tissue",
-        "PFA-fixed tissue",
-        "fresh tissue",
-        "flow-sorted cells",
-        "frozen tissue",
-        "nuclei suspension",
-        "cell suspension",
-        ""
-      ]
-    },
+    "publicationSynID": {},
     "dbGapAccession": {},
     "acknowledgmentStatement": {
       "enum": [
@@ -86,36 +27,118 @@
         "publication"
       ]
     },
+    "datasetDescription": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "enum": [
+        "STAMP",
+        "LOCKIT",
+        "V-CoRT",
+        "SLE",
+        "ELLIPSS",
+        "AIM for RA",
+        "RA"
+      ]
+    },
+    "biospecimenSubtype": {
+      "enum": [
+        "nuclei suspension",
+        "flow-sorted cells",
+        "frozen tissue",
+        "fresh tissue",
+        "FFPE tissue",
+        "cell suspension",
+        "PFA-fixed tissue",
+        ""
+      ]
+    },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "AMP AIM",
+        "Community Contribution"
+      ]
+    },
+    "ImmPortAccession": {},
+    "dataSubtype": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "single-nucleus",
+          "pseudobulk",
+          "none",
+          "spatial",
+          "bulk",
+          "single-cell"
+        ]
+      },
+      "maxItems": 6
+    },
+    "associatedDataset": {},
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "ARKRelease": {
+      "enum": [
+        "2025.01.R1",
+        "2025.11.R1",
+        "2024.06.R1",
+        "2024.08.R1",
+        "2024.09.R1",
+        "2025.07.R1",
+        "2025.09.R1",
+        "2024.10.R1",
+        "2024.07.R1",
+        "2025.04.R1",
+        "1.0",
+        "2025.10.R1",
+        "2025.02.R1",
+        "2025.03.R1",
+        "2025.12.R1",
+        "2025.05.R1",
+        "2024.12.R1",
+        "2025.06.R1",
+        "2025.08.R1",
+        "2.0"
+      ]
+    },
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "scRNASeq",
-          "scVDJSeq",
-          "snATACSeq",
-          "SNP array",
-          "CE-MS",
-          "snRNASeq",
-          "CITESeq",
-          "Xenium",
-          "SomaScan",
-          "imaging mass spectrometry",
-          "RNASeq",
-          "flow cytometry",
-          "NULISA",
-          "CyTOF",
-          "feature barcode sequencing",
           "VDJSeq",
-          "WGS",
-          "Olink Explore HT",
-          "imaging mass cytometry",
-          "multiplexed ELISA",
-          "H&E",
           "ASAPSeq",
+          "CITESeq",
+          "NULISA",
+          "imaging mass spectrometry",
+          "Xenium",
+          "WGS",
+          "CyTOF",
+          "LC-MS/MS",
+          "flow cytometry",
+          "scRNASeq",
+          "SomaScan",
           "CosMX",
-          "serial IHC",
+          "snRNASeq",
+          "SNP array",
+          "Olink Explore HT",
+          "H&E",
+          "scVDJSeq",
+          "imaging mass cytometry",
+          "CE-MS",
           "WES",
-          "LC-MS/MS"
+          "snATACSeq",
+          "RNASeq",
+          "serial IHC",
+          "feature barcode sequencing",
+          "multiplexed ELISA"
         ]
       },
       "maxItems": 26
@@ -124,111 +147,88 @@
       "type": "array",
       "items": {
         "enum": [
-          "metabolomics",
-          "microbiome",
-          "multimodal",
           "transcriptomics",
-          "histology",
-          "immune repertoire profiling",
+          "multimodal",
           "immunostaining",
+          "histology",
           "genomics",
-          "proteomics",
+          "microbiome",
+          "metabolomics",
           "cytometry",
+          "epigenomics",
           "lipidomics",
-          "epigenomics"
+          "immune repertoire profiling",
+          "proteomics"
         ]
       },
       "maxItems": 12
     },
-    "program": {
-      "enum": [
-        "Community Contribution",
-        "AMP RA/SLE",
-        "AMP AIM"
-      ]
-    },
-    "ARKRelease": {
-      "enum": [
-        "2024.10.R1",
-        "2024.07.R1",
-        "2024.08.R1",
-        "2025.09.R1",
-        "2025.03.R1",
-        "2025.06.R1",
-        "2025.11.R1",
-        "2025.01.R1",
-        "2025.07.R1",
-        "2025.02.R1",
-        "2024.12.R1",
-        "2025.12.R1",
-        "2.0",
-        "2025.04.R1",
-        "2024.09.R1",
-        "2024.06.R1",
-        "2025.05.R1",
-        "1.0",
-        "2025.08.R1",
-        "2025.10.R1"
-      ]
-    },
-    "dataSubtype": {
+    "biospecimenType": {
       "type": "array",
       "items": {
         "enum": [
-          "spatial",
-          "single-cell",
-          "single-nucleus",
-          "pseudobulk",
+          "total leukocytes",
+          "plasma",
+          "fibroblast-like synoviocyte",
+          "PBMCs",
+          "suction blister fluid",
+          "urine",
+          "saliva",
           "none",
-          "bulk"
+          "uvea",
+          "serum",
+          "synovial fluid",
+          "synovial tissue",
+          "salivary gland",
+          "suction blister cells",
+          "skin biopsy",
+          "kidney biopsy",
+          "skin swab",
+          "stool",
+          "whole blood"
         ]
       },
-      "maxItems": 6
+      "maxItems": 19
     },
-    "publicationSynID": {},
-    "datasetStatus": {
+    "diagnosis": {
       "enum": [
-        "released",
-        "unreleased",
-        "deprecated",
-        "under peer review",
-        "test"
+        "psoriatic arthritis",
+        "At-Risk RA",
+        "dermatomyositis",
+        "psoriasis",
+        "lupus nephritis",
+        "control",
+        "OA",
+        "Sjogren's disease",
+        "SLE",
+        "cutaneous lupus erythematosus",
+        "vitiligo",
+        "scleroderma",
+        "RA"
       ]
-    },
-    "datasetDescription": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
     },
     "programPhase": {
       "enum": [
-        "II",
         "I",
+        "II",
         ""
       ]
     }
   },
   "required": [
-    "diagnosis",
-    "biospecimenType",
-    "project",
+    "datasetStatus",
     "acknowledgmentStatement",
     "datasetType",
+    "datasetDescription",
+    "project",
+    "program",
+    "dataSubtype",
+    "Component",
+    "ARKRelease",
     "assay",
     "dataType",
-    "program",
-    "ARKRelease",
-    "dataSubtype",
-    "datasetStatus",
-    "datasetDescription",
-    "Component"
+    "biospecimenType",
+    "diagnosis"
   ],
   "allOf": [
     {
@@ -248,8 +248,8 @@
         "properties": {
           "programPhase": {
             "enum": [
-              "II",
-              "I"
+              "I",
+              "II"
             ]
           }
         },

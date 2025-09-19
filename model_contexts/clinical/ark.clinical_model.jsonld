@@ -174,7 +174,6 @@
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "str",
                 "ClinicalMetadataTemplate": "unique error",
-                "RASLEBiospecimenMetadataTemplate": "str",
                 "all_other_components": "list like error"
             }
         },
@@ -543,53 +542,6 @@
             "sms:validationRules": [
                 "list like error"
             ]
-        },
-        {
-            "@id": "bts:AMPRA/SLE",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
-            "rdfs:label": "AMPRA/SLE",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Program"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "AMP RA/SLE",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:ProgramPhase"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:ProgramPhase",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label noting which AMP RA/SLE program phase generated the data.",
-            "rdfs:label": "ProgramPhase",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:I"
-                },
-                {
-                    "@id": "bts:II"
-                }
-            ],
-            "sms:displayName": "programPhase",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
         },
         {
             "@id": "bts:Vitiligo",
@@ -1496,6 +1448,28 @@
             ]
         },
         {
+            "@id": "bts:AMPRA/SLE",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
+            "rdfs:label": "AMPRA/SLE",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "AMP RA/SLE",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:ProgramPhase"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:AMPAIM",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -1652,6 +1626,31 @@
             },
             "sms:displayName": "ELLIPSS",
             "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ProgramPhase",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label noting which AMP RA/SLE program phase generated the data.",
+            "rdfs:label": "ProgramPhase",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:I"
+                },
+                {
+                    "@id": "bts:II"
+                }
+            ],
+            "sms:displayName": "programPhase",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -3542,7 +3541,6 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "unique error",
-                "RASLEBiospecimenMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
         },
@@ -3639,7 +3637,6 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "str",
-                "RASLEBiospecimenMetadataTemplate": "str",
                 "all_other_components": "list like error"
             }
         },
@@ -4365,9 +4362,7 @@
             },
             "sms:displayName": "visitID",
             "sms:required": "sms:false",
-            "sms:validationRules": {
-                "RASLEBiospecimenMetadataTemplate": "required"
-            }
+            "sms:validationRules": []
         },
         {
             "@id": "bts:SoftwareAndVersion",
@@ -9497,6 +9492,26 @@
             "sms:validationRules": [
                 "int error"
             ]
+        },
+        {
+            "@id": "bts:PlateID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.",
+            "rdfs:label": "PlateID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "plateID",
+            "sms:required": "sms:false",
+            "sms:validationRules": {
+                "OlinkAssayMetadataTemplate": "unique error",
+                "OlinkBiospecimenMetadataTemplate": "required"
+            }
         }
     ],
     "@id": "http://schema.biothings.io/#0.1"

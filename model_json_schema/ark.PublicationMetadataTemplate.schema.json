@@ -4,7 +4,44 @@
   "title": "example",
   "type": "object",
   "properties": {
+    "publicationType": {
+      "enum": [
+        "correction",
+        "pre-print",
+        "peer-reviewed"
+      ]
+    },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "enum": [
+        "RA",
+        "V-CoRT",
+        "AIM for RA",
+        "ELLIPSS",
+        "LOCKIT",
+        "SLE",
+        "STAMP"
+      ]
+    },
+    "program": {
+      "enum": [
+        "Community Contribution",
+        "AMP RA/SLE",
+        "AMP AIM"
+      ]
+    },
+    "journal": {
       "not": {
         "type": "null"
       },
@@ -16,37 +53,7 @@
       },
       "minLength": 1
     },
-    "project": {
-      "enum": [
-        "AIM for RA",
-        "ELLIPSS",
-        "RA",
-        "STAMP",
-        "LOCKIT",
-        "SLE",
-        "V-CoRT"
-      ]
-    },
-    "publicationType": {
-      "enum": [
-        "correction",
-        "pre-print",
-        "peer-reviewed"
-      ]
-    },
     "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "title": {
       "not": {
         "type": "null"
       },
@@ -64,13 +71,6 @@
       },
       "minLength": 1
     },
-    "program": {
-      "enum": [
-        "AMP AIM",
-        "Community Contribution",
-        "AMP RA/SLE"
-      ]
-    },
     "associatedDataset": {},
     "programPhase": {
       "enum": [
@@ -81,16 +81,16 @@
     }
   },
   "required": [
-    "DOI",
-    "publicationDate",
-    "project",
     "publicationType",
-    "Component",
-    "journal",
     "title",
+    "DOI",
+    "project",
+    "program",
+    "journal",
+    "publicationDate",
+    "Component",
     "PMID",
-    "year",
-    "program"
+    "year"
   ],
   "allOf": [
     {
