@@ -60,9 +60,8 @@ for context in contexts:
   templates = get_model_template_name(contextModel)
   # catalog changes to context templates
   if os.path.exists(templates_fid):
-    with open(templates_fid, "r") as f:
-      old_templates = [f.strip() for f in f.readlines()]
-    f.close()
+    old_templates = pd.read_table(templates_fid, header=None, names=["Template", "Context"])
+    old_templates = list(old_templates.Template)
     del_templates = [t for t in old_templates if t not in templates]
     # delete template csv and json schema files
     delete_templates(del_templates)
@@ -70,7 +69,7 @@ for context in contexts:
   # write most up-to-date list of context templates to file
   with open(templates_fid, "w") as f:
     for t in set(templates):
-      a = f.write(f"{t}\n")
+      a = f.write(f"{t}\t{context}\n")
   f.close()
 
 print("\nAll context model csv files created!\n")
