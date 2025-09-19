@@ -35,8 +35,10 @@ def delete_templates(templates):
 allAttr = pd.read_csv("ark.all_attributes.csv")
 # create dictionary of attribute descriptions that can be pulled into context models
 descriptions = allAttr.loc[:, ["Attribute", "Description"]].set_index("Attribute").to_dict("index")
-  
-for context in os.listdir("model_contexts/"):
+
+contexts = os.listdir("model_contexts/")
+contexts = [c for c in contexts if c not in [".DS_Store", ".Rhistory"]] # for local execution
+for context in contexts:
   #print(context)
   path = f"model_contexts/{context}"
   contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
