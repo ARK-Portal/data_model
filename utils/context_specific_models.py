@@ -94,8 +94,11 @@ for context in contexts:
   contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
   context_attrs = list(contextCSV.Attribute)
   common = [a for a in context_attrs if a in list(allAttr.Attribute)]
+  # add a description to context csv if none exists
   for a in common:
-    contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
+    df = df[df['Valid Values'].isna() == False]
+    if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna()
+      contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
   # prep all attributes csv for merging
   temp_allAttr = allAttr[allAttr.Attribute.isin(context_attrs) == False]
