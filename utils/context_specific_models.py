@@ -97,7 +97,7 @@ for context in contexts:
   # add a description to context csv if none exists
   for a in common:
     df = df[df['Valid Values'].isna() == False]
-    if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna()
+    if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna():
       contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
   # prep all attributes csv for merging
