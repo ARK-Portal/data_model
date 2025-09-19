@@ -96,7 +96,7 @@ for context in contexts:
   common = [a for a in context_attrs if a in list(allAttr.Attribute)]
   # add a description to context csv if none exists
   for a in common:
-    if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna():
+    if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna().any():
       contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
   # prep all attributes csv for merging
