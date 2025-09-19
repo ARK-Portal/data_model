@@ -76,7 +76,8 @@ for context in contexts:
       merged = list(set(all_vv[a] + context_vv[a]))
       all_vv[a] = merged
     else:
-      sys.exit(f"Error: {a} currently not defined in ark.all_attributes.csv with valid values. Please update.")
+      print(f"Error: {a} currently not defined in ark.all_attributes.csv with valid values. Please update.")
+      sys.exit(1)
 
 # adding any context-specific valid values to ark.all_attributes.csv just in case they weren't tracked there
 update_all_attributes(allAttr, all_vv)
