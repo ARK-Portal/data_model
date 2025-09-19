@@ -28,16 +28,65 @@ def delete_templates(templates):
     if os.path.exists(json_fid):
       os.remove(json_fid)
 
+def get_valid_values_dict(df):
+  df = df[df['Valid Values'].isna() == False]
+  df = df.loc[:, ["Attribute", "Valid Values"]]
+  validvals = df.set_index("Attribute").to_dict("index")
+  # split valid values into list
+  for attribute in validvals.keys():
+    validvals[attribute] = str(validvals[attribute]["Valid Values"])
+    validvals[attribute] = validvals[attribute].replace(", ", ",")
+    validvals[attribute] = validvals[attribute].replace(" ,", ",")
+    validvals[attribute] = validvals[attribute].split(",")
+  
+  return validvals
+
+def update_all_attributes(allAttr, vv):
+  # update allAttr with valid values from all_vv
+  for a in all_vv.keys():
+    vv_string = ", ".join(all_vv[a])
+    allAttr.loc[allAttr.Attribute == a, "Valid Values"] = vv_string
+  # write updated all attributes csv
+  allAttr.to_csv("ark.all_attributes.csv", index=False, quoting=csv.QUOTE_ALL)
+  print("\nUpdated ark.all_attributes.csv with context-specific valid values!\n")
+  
 ####
-#### concat context csv with all attr csv to make context model csv
+#### MAIN
 ####
-# read in and prep all attributes csv
+
+# define list of contexts
+contexts = os.listdir("model_contexts/")
+contexts = [c for c in contexts if c not in [".DS_Store", ".Rhistory"]] # for local execution
+
+# shore-up attribute valid values so that all context-specific valid values are included in all_attributes.csv
+allAttr = pd.read_csv("ark.all_attributes.csv")
+all_vv = get_valid_values_dict(allAttr)
+
+# then compile context-specific valid values
+for context in contexts:
+  #print(context)
+  path = f"model_contexts/{context}"
+  contextCSV = pd.read_csv(f"{path}/ark.{context}_context.csv", dtype="object")
+  # build dict of context-defined attributes with valid values
+  context_vv = get_valid_values_dict(contextCSV)
+  # update all_vv with any context-specific valid values
+  for a in context_vv.keys():
+    if a in all_vv.keys():
+      # merge lists and remove duplicates
+      merged = list(set(all_vv[a] + context_vv[a]))
+      all_vv[a] = merged
+    else:
+      sys.exit(f"Error: {a} currently not defined in ark.all_attributes.csv with valid values. Please update.")
+
+# adding any context-specific valid values to ark.all_attributes.csv just in case they weren't tracked there
+update_all_attributes(allAttr, all_vv)
+
+# read in newest version and prep all attributes csv
 allAttr = pd.read_csv("ark.all_attributes.csv")
 # create dictionary of attribute descriptions that can be pulled into context models
 descriptions = allAttr.loc[:, ["Attribute", "Description"]].set_index("Attribute").to_dict("index")
 
-contexts = os.listdir("model_contexts/")
-contexts = [c for c in contexts if c not in [".DS_Store", ".Rhistory"]] # for local execution
+# concat context csv with all attr csv to make context model csv
 for context in contexts:
   #print(context)
   path = f"model_contexts/{context}"
