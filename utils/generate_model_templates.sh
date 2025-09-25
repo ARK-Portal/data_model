@@ -26,5 +26,5 @@ for context_dir in ${CONTEXTS[@]}; do
     
     # sleep for 10 seconds to keep google API from complaining
     sleep 10
-  done < $TEMPLATES
+  done < <(cut -f 1 $TEMPLATES)
 done
