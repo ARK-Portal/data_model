@@ -8,10 +8,35 @@
     },
     "@graph": [
         {
-            "@id": "bts:ClinicalMetadataTemplate",
+            "@id": "bts:Singlespecimen",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A template outlining clinical metadata to collect for study subjects.",
-            "rdfs:label": "ClinicalMetadataTemplate",
+            "rdfs:comment": "Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Singlespecimen",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:SpecimenModality"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "single specimen",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:BiospecimenID"
+                },
+                {
+                    "@id": "bts:IndividualID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:BiospecimenID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+            "rdfs:label": "BiospecimenID",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -20,53 +45,693 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "Clinical Metadata Template",
+            "sms:displayName": "biospecimenID",
+            "sms:required": "sms:true",
+            "sms:validationRules": {
+                "BiospecimenMetadataTemplate": "unique error",
+                "OlinkBiospecimenMetadataTemplate": "unique error",
+                "all_other_components": "list like error"
+            }
+        },
+        {
+            "@id": "bts:IndividualID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+            "rdfs:label": "IndividualID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "individualID",
+            "sms:required": "sms:true",
+            "sms:validationRules": {
+                "BiospecimenMetadataTemplate": "str",
+                "ClinicalMetadataTemplate": "unique error",
+                "all_other_components": "list like error"
+            }
+        },
+        {
+            "@id": "bts:ResourceType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "High-level classification of the file content",
+            "rdfs:label": "ResourceType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Experimentaldata"
+                },
+                {
+                    "@id": "bts:Metadata"
+                }
+            ],
+            "sms:displayName": "resourceType",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:Experimentaldata",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of 'resourceType' that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Experimentaldata",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:ResourceType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "experimental data",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:ProcessedDataType"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Metadata",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Any file that contains curated data describing an experiment and experimental-derived data, including metadata about study subjects, biospecimens, protocols, assay reagents, marker panels, and ID mappings. Is a valid value of Resource Type that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Metadata",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:ResourceType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "metadata",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:MetadataType"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:FileFormat",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Standard file format name or file extension",
+            "rdfs:label": "FileFormat",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Csv"
+                },
+                {
+                    "@id": "bts:Tsv"
+                },
+                {
+                    "@id": "bts:Txt"
+                },
+                {
+                    "@id": "bts:Xlsx"
+                },
+                {
+                    "@id": "bts:Xls"
+                },
+                {
+                    "@id": "bts:Fam"
+                },
+                {
+                    "@id": "bts:Bim"
+                },
+                {
+                    "@id": "bts:Bed"
+                },
+                {
+                    "@id": "bts:Bam"
+                },
+                {
+                    "@id": "bts:H5"
+                },
+                {
+                    "@id": "bts:Mtx"
+                },
+                {
+                    "@id": "bts:Bai"
+                },
+                {
+                    "@id": "bts:Rds"
+                },
+                {
+                    "@id": "bts:Tgz"
+                },
+                {
+                    "@id": "bts:Zip"
+                },
+                {
+                    "@id": "bts:H5ad"
+                }
+            ],
+            "sms:displayName": "fileFormat",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Csv",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Csv",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "csv",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Tsv",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Tsv",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "tsv",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Txt",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Txt",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "txt",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Xlsx",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Xlsx",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "xlsx",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Xls",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Xls",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "xls",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Fam",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Fam",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "fam",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Bim",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Bim",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "bim",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Bed",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Bed",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "bed",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Bam",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Bam",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "bam",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:H5",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "H5",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "h5",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Mtx",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Mtx",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "mtx",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Bai",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Bai",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "bai",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Rds",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of 'fileFormat' that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Rds",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Rds",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:RObjectClass"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Tgz",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Tgz",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "tgz",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Zip",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Zip",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "zip",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:H5ad",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "H5ad",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:FileFormat"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "h5ad",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Featurebarcodesequencing",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of `assay` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Featurebarcodesequencing",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Assay"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "feature barcode sequencing",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:TargetPanel"
+                },
+                {
+                    "@id": "bts:TargetPanelSynID"
+                },
+                {
+                    "@id": "bts:TargetPanelSize"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:TargetPanel",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+            "rdfs:label": "TargetPanel",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "targetPanel",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:TargetPanelSynID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+            "rdfs:label": "TargetPanelSynID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "targetPanelSynID",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "regex search ^syn[0-9]{8} error"
+            ]
+        },
+        {
+            "@id": "bts:TargetPanelSize",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+            "rdfs:label": "TargetPanelSize",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "targetPanelSize",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "int error"
+            ]
+        },
+        {
+            "@id": "bts:RObjectClass",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
+            "rdfs:label": "RObjectClass",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:List"
+                },
+                {
+                    "@id": "bts:Vector"
+                },
+                {
+                    "@id": "bts:Sparsematrix"
+                },
+                {
+                    "@id": "bts:Seuratobject"
+                },
+                {
+                    "@id": "bts:Data.frame"
+                },
+                {
+                    "@id": "bts:Matrix"
+                },
+                {
+                    "@id": "bts:SummarizedExperiment"
+                },
+                {
+                    "@id": "bts:Symphonyreference"
+                },
+                {
+                    "@id": "bts:ROCRprediction.object"
+                }
+            ],
+            "sms:displayName": "RObjectClass",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ProcessedDataType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label used for file annotations to provide a brief description of the processed data file.",
+            "rdfs:label": "ProcessedDataType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Alignedreads"
+                },
+                {
+                    "@id": "bts:Geneand/orbarcodecounts"
+                },
+                {
+                    "@id": "bts:Peaks"
+                },
+                {
+                    "@id": "bts:Differentialexpressionresults"
+                },
+                {
+                    "@id": "bts:Filtered/QC'ddata"
+                }
+            ],
+            "sms:displayName": "processedDataType",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:MetadataType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label further classifying the content of metadata resource.",
+            "rdfs:label": "MetadataType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Single-cellmetadata"
+                }
+            ],
+            "sms:displayName": "metadataType",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Single-cellmetadata",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Single-cellmetadata",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "single-cell metadata",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ScRNASeqProcessedDataAnnotationTemplate",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A data contributor template outlining metadata to be collected as file annotations for scRNA-seq processed data files (i.e., anything not a fastq file).",
+            "rdfs:label": "ScRNASeqProcessedDataAnnotationTemplate",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "scRNASeq Processed Data Annotation Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
                     "@id": "bts:Component"
                 },
                 {
-                    "@id": "bts:Program"
+                    "@id": "bts:Filename"
                 },
                 {
-                    "@id": "bts:Project"
+                    "@id": "bts:FileFormat"
                 },
                 {
-                    "@id": "bts:IndividualID"
+                    "@id": "bts:Assay"
                 },
                 {
-                    "@id": "bts:Diagnosis"
+                    "@id": "bts:ResourceType"
                 },
                 {
-                    "@id": "bts:Age"
+                    "@id": "bts:DataLevel"
                 },
                 {
-                    "@id": "bts:AgeUnits"
+                    "@id": "bts:SpecimenModality"
                 },
                 {
-                    "@id": "bts:Sex"
-                },
-                {
-                    "@id": "bts:Race"
-                },
-                {
-                    "@id": "bts:Ethnicity"
-                },
-                {
-                    "@id": "bts:Height"
-                },
-                {
-                    "@id": "bts:HeightUnits"
-                },
-                {
-                    "@id": "bts:Weight"
-                },
-                {
-                    "@id": "bts:WeightUnits"
-                },
-                {
-                    "@id": "bts:Comorbidities"
+                    "@id": "bts:CellRangerOutput"
                 }
             ],
             "sms:validationRules": []
@@ -86,6 +751,940 @@
             },
             "sms:displayName": "Component",
             "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Filename",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Name of a file. Must be included in DependsOn for all file manifest/annotation templates.",
+            "rdfs:label": "Filename",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "Filename",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Assay",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+            "rdfs:label": "Assay",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:VDJSeq"
+                },
+                {
+                    "@id": "bts:OlinkReveal"
+                },
+                {
+                    "@id": "bts:SnATACSeq"
+                },
+                {
+                    "@id": "bts:OlinkTarget48"
+                },
+                {
+                    "@id": "bts:Featurebarcodesequencing"
+                },
+                {
+                    "@id": "bts:Xenium"
+                },
+                {
+                    "@id": "bts:OlinkExploreHT"
+                },
+                {
+                    "@id": "bts:CITESeq"
+                },
+                {
+                    "@id": "bts:SNParray"
+                },
+                {
+                    "@id": "bts:WGS"
+                },
+                {
+                    "@id": "bts:CE-MS"
+                },
+                {
+                    "@id": "bts:LC-MS/MS"
+                },
+                {
+                    "@id": "bts:RNASeq"
+                },
+                {
+                    "@id": "bts:CyTOF"
+                },
+                {
+                    "@id": "bts:OlinkTarget96"
+                },
+                {
+                    "@id": "bts:Flowcytometry"
+                },
+                {
+                    "@id": "bts:Imagingmasscytometry"
+                },
+                {
+                    "@id": "bts:OlinkFlex"
+                },
+                {
+                    "@id": "bts:H&E"
+                },
+                {
+                    "@id": "bts:ScRNASeq"
+                },
+                {
+                    "@id": "bts:MultiplexedELISA"
+                },
+                {
+                    "@id": "bts:CosMX"
+                },
+                {
+                    "@id": "bts:Imagingmassspectrometry"
+                },
+                {
+                    "@id": "bts:SomaScan"
+                },
+                {
+                    "@id": "bts:OlinkFocus"
+                },
+                {
+                    "@id": "bts:SerialIHC"
+                },
+                {
+                    "@id": "bts:WES"
+                },
+                {
+                    "@id": "bts:ASAPSeq"
+                },
+                {
+                    "@id": "bts:NULISA"
+                },
+                {
+                    "@id": "bts:ScVDJSeq"
+                },
+                {
+                    "@id": "bts:SnRNASeq"
+                }
+            ],
+            "sms:displayName": "assay",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:DataLevel",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Level of data processing applied to file. Levels refer to pre-defined standards of processing for the given assay.",
+            "rdfs:label": "DataLevel",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:5"
+                },
+                {
+                    "@id": "bts:4"
+                },
+                {
+                    "@id": "bts:2"
+                },
+                {
+                    "@id": "bts:3"
+                },
+                {
+                    "@id": "bts:1"
+                }
+            ],
+            "sms:displayName": "dataLevel",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:SpecimenModality",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
+            "rdfs:label": "SpecimenModality",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Singlespecimen"
+                },
+                {
+                    "@id": "bts:Multispecimen"
+                }
+            ],
+            "sms:displayName": "specimenModality",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:CellRangerOutput",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "10x Genomics Cell Ranger software output several different counts results and formats, some with different processing applied. This label distinguishes between these types and is particularly helpful when multiple files are uploaded with the sample name, e.g., barcodes.tsv.gz",
+            "rdfs:label": "CellRangerOutput",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:RawMEX"
+                },
+                {
+                    "@id": "bts:FilteredMEX"
+                },
+                {
+                    "@id": "bts:FilteredFeatureBcMatrix"
+                },
+                {
+                    "@id": "bts:RawFeatureBcMatrix"
+                },
+                {
+                    "@id": "bts:FilteredPeakBcMatrix"
+                },
+                {
+                    "@id": "bts:RawPeakBcMatrix"
+                },
+                {
+                    "@id": "bts:NotApplicable"
+                }
+            ],
+            "sms:displayName": "cellRangerOutput",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:BDMscRNASeqProcessedDataAnnotationTemplate",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A template outlining metadata to be collected as file annotations for scRNA-seq processed data files (i.e., anything not a fastq file). to be compiled by ARK BDM.",
+            "rdfs:label": "BDMscRNASeqProcessedDataAnnotationTemplate",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "BDM scRNASeq Processed Data Annotation Template",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:Component"
+                },
+                {
+                    "@id": "bts:Filename"
+                },
+                {
+                    "@id": "bts:FileFormat"
+                },
+                {
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
+                },
+                {
+                    "@id": "bts:CellRangerOutput"
+                },
+                {
+                    "@id": "bts:ParentBiospecimenID"
+                },
+                {
+                    "@id": "bts:BiospecimenType"
+                },
+                {
+                    "@id": "bts:BiospecimenSubtype"
+                },
+                {
+                    "@id": "bts:DataType"
+                },
+                {
+                    "@id": "bts:DataSubtype"
+                },
+                {
+                    "@id": "bts:Diagnosis"
+                },
+                {
+                    "@id": "bts:VisitID"
+                },
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                },
+                {
+                    "@id": "bts:NucleicAcidSource"
+                },
+                {
+                    "@id": "bts:AlignmentReference"
+                },
+                {
+                    "@id": "bts:SoftwareAndVersion"
+                },
+                {
+                    "@id": "bts:Program"
+                },
+                {
+                    "@id": "bts:Project"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ParentBiospecimenID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The biospecimenID associated with the originating biospecimen for derived or child biospecimens.",
+            "rdfs:label": "ParentBiospecimenID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "parentBiospecimenID",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:BiospecimenType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.",
+            "rdfs:label": "BiospecimenType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:None"
+                },
+                {
+                    "@id": "bts:Urine"
+                },
+                {
+                    "@id": "bts:Stool"
+                },
+                {
+                    "@id": "bts:Wholeblood"
+                },
+                {
+                    "@id": "bts:Serum"
+                },
+                {
+                    "@id": "bts:Plasma"
+                },
+                {
+                    "@id": "bts:PBMCs"
+                },
+                {
+                    "@id": "bts:Totalleukocytes"
+                },
+                {
+                    "@id": "bts:Kidneybiopsy"
+                },
+                {
+                    "@id": "bts:Synovialfluid"
+                },
+                {
+                    "@id": "bts:Skinbiopsy"
+                },
+                {
+                    "@id": "bts:Salivarygland"
+                },
+                {
+                    "@id": "bts:Saliva"
+                },
+                {
+                    "@id": "bts:Skinswab"
+                },
+                {
+                    "@id": "bts:Synovialtissue"
+                },
+                {
+                    "@id": "bts:Suctionblistercells"
+                },
+                {
+                    "@id": "bts:Suctionblisterfluid"
+                },
+                {
+                    "@id": "bts:Uvea"
+                },
+                {
+                    "@id": "bts:Fibroblast-likesynoviocyte"
+                }
+            ],
+            "sms:displayName": "biospecimenType",
+            "sms:required": "sms:true",
+            "sms:validationRules": {
+                "BiospecimenMetadataTemplate": "str",
+                "OlinkBiospecimenMetadataTemplate": "str",
+                "all_other_components": "list like error"
+            }
+        },
+        {
+            "@id": "bts:BiospecimenSubtype",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Biospecimen status before sample is processed into a scRNA-seq library. Several scRNA-seq technologies support a variety of sample processing methods which can introduces sources of technical variation.",
+            "rdfs:label": "BiospecimenSubtype",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Nucleisuspension"
+                },
+                {
+                    "@id": "bts:Cellsuspension"
+                },
+                {
+                    "@id": "bts:Freshtissue"
+                },
+                {
+                    "@id": "bts:Frozentissue"
+                },
+                {
+                    "@id": "bts:FFPEtissue"
+                },
+                {
+                    "@id": "bts:Flow-sortedcells"
+                },
+                {
+                    "@id": "bts:PFA-fixedtissue"
+                },
+                {
+                    "@id": "bts:Cellortissuelysate"
+                }
+            ],
+            "sms:displayName": "biospecimenSubtype",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:DataType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "High-level classification of the type of data contained in the file, loosely related to the experimental method or biological entity that is being profiled. Select all that apply using a comma-delimited list, though in most cases only a single label is expected. For multimodal datasets with concomitant profiling of biospecimen include 'multimodal'.",
+            "rdfs:label": "DataType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Transcriptomics"
+                },
+                {
+                    "@id": "bts:Immunerepertoireprofiling"
+                },
+                {
+                    "@id": "bts:Proteomics"
+                },
+                {
+                    "@id": "bts:Multimodal"
+                },
+                {
+                    "@id": "bts:Epigenomics"
+                },
+                {
+                    "@id": "bts:Genomics"
+                },
+                {
+                    "@id": "bts:Metabolomics"
+                },
+                {
+                    "@id": "bts:Lipidomics"
+                },
+                {
+                    "@id": "bts:Microbiome"
+                },
+                {
+                    "@id": "bts:Histology"
+                },
+                {
+                    "@id": "bts:Immunostaining"
+                },
+                {
+                    "@id": "bts:Cytometry"
+                }
+            ],
+            "sms:displayName": "dataType",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:DataSubtype",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "General classification to differentiate between omics profiling modalities. If N/A please select 'none'. Multiple selections can be provided in a comma-delimited list, however this is largely only expected in the context of Datasets and files that contain integrated experimental data spanning multiple types.",
+            "rdfs:label": "DataSubtype",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Bulk"
+                },
+                {
+                    "@id": "bts:Pseudobulk"
+                },
+                {
+                    "@id": "bts:Single-cell"
+                },
+                {
+                    "@id": "bts:Single-nucleus"
+                },
+                {
+                    "@id": "bts:Spatial"
+                },
+                {
+                    "@id": "bts:None"
+                }
+            ],
+            "sms:displayName": "dataSubtype",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:Diagnosis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A high-level classifier indicating the disease status of an individual.",
+            "rdfs:label": "Diagnosis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Control"
+                },
+                {
+                    "@id": "bts:SLE"
+                },
+                {
+                    "@id": "bts:RA"
+                },
+                {
+                    "@id": "bts:At-RiskRA"
+                },
+                {
+                    "@id": "bts:Vitiligo"
+                },
+                {
+                    "@id": "bts:Dermatomyositis"
+                },
+                {
+                    "@id": "bts:Psoriasis"
+                },
+                {
+                    "@id": "bts:Psoriaticarthritis"
+                },
+                {
+                    "@id": "bts:Scleroderma"
+                },
+                {
+                    "@id": "bts:Sjogren'sdisease"
+                },
+                {
+                    "@id": "bts:Lupusnephritis"
+                },
+                {
+                    "@id": "bts:Cutaneouslupuserythematosus"
+                },
+                {
+                    "@id": "bts:OA"
+                }
+            ],
+            "sms:displayName": "diagnosis",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "regex search ^DOID error"
+            ]
+        },
+        {
+            "@id": "bts:VisitID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
+            "rdfs:label": "VisitID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "visitID",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:LibraryPrepMethod",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Sequencing library preparation method or kit used to create the library. If no commercially available kit was used, please select 'in-house library prep'.",
+            "rdfs:label": "LibraryPrepMethod",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:NEBNextUltraIIDirectionalRNALibrary"
+                },
+                {
+                    "@id": "bts:QIAseqmiRNALibrary"
+                },
+                {
+                    "@id": "bts:SMART-Seqv4UltraLowInputRNA"
+                },
+                {
+                    "@id": "bts:NexteraXT"
+                },
+                {
+                    "@id": "bts:SMARTerStrandedTotalRNAv2"
+                },
+                {
+                    "@id": "bts:NexteraXTDNA"
+                },
+                {
+                    "@id": "bts:TruSeqStrandedmRNA"
+                },
+                {
+                    "@id": "bts:SMART-SeqHumanBCRwithUMI"
+                },
+                {
+                    "@id": "bts:SMART-SeqHumanTCRwithUMI"
+                },
+                {
+                    "@id": "bts:TakaraHumanBCRprofilingforIllumina"
+                },
+                {
+                    "@id": "bts:TakaraHumanTCRprofilingforIllumina"
+                },
+                {
+                    "@id": "bts:TakaraHumanTCRv2profilingforIllumina"
+                },
+                {
+                    "@id": "bts:TakaraHumanscTCRprofilingforIllumina"
+                },
+                {
+                    "@id": "bts:NEBNextHumanImmuneSequencingKit"
+                },
+                {
+                    "@id": "bts:CEL-Seq2"
+                },
+                {
+                    "@id": "bts:In-houselibraryprep"
+                },
+                {
+                    "@id": "bts:FluidigmC1HT"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell3'"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell3'3.1"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell5'v2"
+                },
+                {
+                    "@id": "bts:10xChromiumGEM-XSingleCell5'v3"
+                },
+                {
+                    "@id": "bts:10xChromiumGEM-XSingleCell3'v4"
+                },
+                {
+                    "@id": "bts:10xGEM-XUniversal5?GeneExpressionv3"
+                },
+                {
+                    "@id": "bts:10xGEM-XFlexGeneExpressionHuman"
+                },
+                {
+                    "@id": "bts:10xChromiumFixedRNAHumanTranscriptome"
+                },
+                {
+                    "@id": "bts:10xChromiumSingleCellHumanTCR"
+                },
+                {
+                    "@id": "bts:10xChromiumSingleCellHumanBCR"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCellATACv2"
+                },
+                {
+                    "@id": "bts:10xChromiumNextGEMSingleCell5'v1.1"
+                },
+                {
+                    "@id": "bts:ChromiumNextGEMSingleCellATACv1.1"
+                },
+                {
+                    "@id": "bts:CustomDASH-treatment"
+                }
+            ],
+            "sms:displayName": "libraryPrepMethod",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:NucleicAcidSource",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The source of the nucleic acid used as input for sequencing library fragments. Select all that apply, though in most cases only a single label is expected.",
+            "rdfs:label": "NucleicAcidSource",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Poly(A)RNA"
+                },
+                {
+                    "@id": "bts:RRNA-depletedRNA"
+                },
+                {
+                    "@id": "bts:GDNA"
+                },
+                {
+                    "@id": "bts:Surfaceproteinfeaturebarcode"
+                },
+                {
+                    "@id": "bts:Intracellularproteinfeaturebarcode"
+                },
+                {
+                    "@id": "bts:Antigencapturebarcode"
+                },
+                {
+                    "@id": "bts:Multiplexingoligo"
+                },
+                {
+                    "@id": "bts:BCRmRNA"
+                },
+                {
+                    "@id": "bts:TCRmRNA"
+                },
+                {
+                    "@id": "bts:Tn5-accessiblegDNA"
+                },
+                {
+                    "@id": "bts:Globin-depletedRNA"
+                },
+                {
+                    "@id": "bts:CRISPRprotospacerfeaturebarcode"
+                }
+            ],
+            "sms:displayName": "nucleicAcidSource",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:AlignmentReference",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The genomic/transcriptomic reference used for performing read alignment against.",
+            "rdfs:label": "AlignmentReference",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:10xCellRangerHumanGRCh382024-A"
+                },
+                {
+                    "@id": "bts:10xCellRangerHumanGRCh382020-A"
+                },
+                {
+                    "@id": "bts:Unknown"
+                },
+                {
+                    "@id": "bts:VdjGRCh38AltsEnsembl-4.0.0"
+                }
+            ],
+            "sms:displayName": "alignmentReference",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:SoftwareAndVersion",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Relevant software and version used to generate the data file.",
+            "rdfs:label": "SoftwareAndVersion",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:CellRanger9.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv9.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv8.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv8.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv7.2.0"
+                },
+                {
+                    "@id": "bts:CellRangerv7.1.0"
+                },
+                {
+                    "@id": "bts:CellRangerv7.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv7.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv6.1.2"
+                },
+                {
+                    "@id": "bts:CellRangerv6.1.1"
+                },
+                {
+                    "@id": "bts:CellRangerv6.1.0"
+                },
+                {
+                    "@id": "bts:CellRangerv6.0.2"
+                },
+                {
+                    "@id": "bts:CellRangerv6.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv6.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv5.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv5.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv4.0.0"
+                },
+                {
+                    "@id": "bts:CellRangerv3.1.0"
+                },
+                {
+                    "@id": "bts:CellRangerv3.0.2"
+                },
+                {
+                    "@id": "bts:CellRangerv3.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerv3.0.0"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.1.3"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.1.2"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.1.1"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.1.0"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.0.1"
+                },
+                {
+                    "@id": "bts:SpaceRanger3.0.0"
+                },
+                {
+                    "@id": "bts:Demuxlet"
+                },
+                {
+                    "@id": "bts:BDFACSDiva8.0.1"
+                },
+                {
+                    "@id": "bts:CellRangerATACv1.1.0"
+                }
+            ],
+            "sms:displayName": "softwareAndVersion",
+            "sms:required": "sms:false",
             "sms:validationRules": []
         },
         {
@@ -157,10 +1756,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:IndividualID",
+            "@id": "bts:SnRNASeqProcessedDataAnnotationTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
-            "rdfs:label": "IndividualID",
+            "rdfs:comment": "A data contributor template outlining metadata to be collected as file annotations for snRNA-seq processed data files (i.e., anything not a fastq file).",
+            "rdfs:label": "SnRNASeqProcessedDataAnnotationTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -169,416 +1768,41 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "individualID",
-            "sms:required": "sms:true",
-            "sms:validationRules": {
-                "BiospecimenMetadataTemplate": "str",
-                "ClinicalMetadataTemplate": "unique error",
-                "all_other_components": "list like error"
-            }
-        },
-        {
-            "@id": "bts:Diagnosis",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A high-level classifier indicating the disease status of an individual.",
-            "rdfs:label": "Diagnosis",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Control"
-                },
-                {
-                    "@id": "bts:SLE"
-                },
-                {
-                    "@id": "bts:RA"
-                },
-                {
-                    "@id": "bts:At-RiskRA"
-                },
-                {
-                    "@id": "bts:Vitiligo"
-                },
-                {
-                    "@id": "bts:Dermatomyositis"
-                },
-                {
-                    "@id": "bts:Psoriasis"
-                },
-                {
-                    "@id": "bts:Psoriaticarthritis"
-                },
-                {
-                    "@id": "bts:Scleroderma"
-                },
-                {
-                    "@id": "bts:Sjogren'sdisease"
-                },
-                {
-                    "@id": "bts:Lupusnephritis"
-                },
-                {
-                    "@id": "bts:Cutaneouslupuserythematosus"
-                },
-                {
-                    "@id": "bts:OA"
-                }
-            ],
-            "sms:displayName": "diagnosis",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "regex search ^DOID error"
-            ]
-        },
-        {
-            "@id": "bts:Age",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Age at which subject was enrolled in study or age at corresponding visit and data collection event.",
-            "rdfs:label": "Age",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "age",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "num error"
-            ]
-        },
-        {
-            "@id": "bts:AgeUnits",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The unit of measure used for `ageEnrollment` and `ageDiagnosis`",
-            "rdfs:label": "AgeUnits",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Years"
-                },
-                {
-                    "@id": "bts:Months"
-                }
-            ],
-            "sms:displayName": "ageUnits",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Sex",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A textual description of a person's sex at birth.",
-            "rdfs:label": "Sex",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Female"
-                },
-                {
-                    "@id": "bts:Male"
-                },
-                {
-                    "@id": "bts:Intersex"
-                },
-                {
-                    "@id": "bts:Unknown"
-                }
-            ],
-            "sms:displayName": "sex",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Race",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A textual description of a person's race.",
-            "rdfs:label": "Race",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Asian"
-                },
-                {
-                    "@id": "bts:BlackorAfricanAmerican"
-                },
-                {
-                    "@id": "bts:White"
-                },
-                {
-                    "@id": "bts:Hispanic"
-                },
-                {
-                    "@id": "bts:AmericanIndianorAlaskaNative"
-                },
-                {
-                    "@id": "bts:MixedRace"
-                },
-                {
-                    "@id": "bts:NativeHawaiianorOtherPacificIslander"
-                },
-                {
-                    "@id": "bts:Other"
-                },
-                {
-                    "@id": "bts:Unknown"
-                }
-            ],
-            "sms:displayName": "race",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Ethnicity",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The ethnicity of a person.",
-            "rdfs:label": "Ethnicity",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:HispanicorLatino"
-                },
-                {
-                    "@id": "bts:NotHispanicorLatino"
-                },
-                {
-                    "@id": "bts:Unknown"
-                }
-            ],
-            "sms:displayName": "ethnicity",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Height",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Standing height of subject.",
-            "rdfs:label": "Height",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "height",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "num error"
-            ]
-        },
-        {
-            "@id": "bts:HeightUnits",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Unit of measure of value provided for `height`.",
-            "rdfs:label": "HeightUnits",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Inches"
-                },
-                {
-                    "@id": "bts:Centimeters"
-                },
-                {
-                    "@id": "bts:Meters"
-                },
-                {
-                    "@id": "bts:Feet"
-                }
-            ],
-            "sms:displayName": "heightUnits",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Weight",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Weight of subject.",
-            "rdfs:label": "Weight",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "weight",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "num error"
-            ]
-        },
-        {
-            "@id": "bts:WeightUnits",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Abbreviated unit of measure of value provided for `weight`.",
-            "rdfs:label": "WeightUnits",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Lb"
-                },
-                {
-                    "@id": "bts:Kg"
-                },
-                {
-                    "@id": "bts:G"
-                },
-                {
-                    "@id": "bts:Oz"
-                }
-            ],
-            "sms:displayName": "weightUnits",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Comorbidities",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
-            "rdfs:label": "Comorbidities",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Diabetes"
-                },
-                {
-                    "@id": "bts:Cardiovasculardisease"
-                },
-                {
-                    "@id": "bts:Pulmonarydisease"
-                },
-                {
-                    "@id": "bts:Autoimmunethyroiddisease"
-                },
-                {
-                    "@id": "bts:Inflammatoryboweldisease"
-                },
-                {
-                    "@id": "bts:Psoriasis"
-                },
-                {
-                    "@id": "bts:Multiplesclerosis"
-                },
-                {
-                    "@id": "bts:Systemiclupuserythematosus"
-                },
-                {
-                    "@id": "bts:Rheumatoidarthritis"
-                },
-                {
-                    "@id": "bts:Psoriaticarthritis"
-                },
-                {
-                    "@id": "bts:Hashimoto'sThyroiditis"
-                },
-                {
-                    "@id": "bts:Other"
-                }
-            ],
-            "sms:displayName": "comorbidities",
-            "sms:required": "sms:false",
-            "sms:validationRules": [
-                "list like error"
-            ]
-        },
-        {
-            "@id": "bts:Vitiligo",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Vitiligo",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Diagnosis"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "vitiligo",
+            "sms:displayName": "snRNASeq Processed Data Annotation Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
-                    "@id": "bts:VitiligoType"
+                    "@id": "bts:Component"
                 },
                 {
-                    "@id": "bts:VIDA"
+                    "@id": "bts:Filename"
                 },
                 {
-                    "@id": "bts:VASI"
+                    "@id": "bts:FileFormat"
                 },
                 {
-                    "@id": "bts:VETI"
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
+                },
+                {
+                    "@id": "bts:CellRangerOutput"
                 }
             ],
             "sms:validationRules": []
         },
         {
-            "@id": "bts:VitiligoType",
+            "@id": "bts:BDMsnRNASeqProcessedDataAnnotationTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A high-level classification of vitiligo based on the distribution and patterning of lesions across the body.",
-            "rdfs:label": "VitiligoType",
+            "rdfs:comment": "A template outlining metadata to be collected as file annotations for snRNA-seq processed data files (i.e., anything not a fastq file). to be compiled by ARK BDM.",
+            "rdfs:label": "BDMsnRNASeqProcessedDataAnnotationTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -587,160 +1811,80 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Segmental"
-                },
-                {
-                    "@id": "bts:Non-segmental"
-                },
-                {
-                    "@id": "bts:Mixed"
-                },
-                {
-                    "@id": "bts:Unclassified"
-                }
-            ],
-            "sms:displayName": "vitiligoType",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:VIDA",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
-            "rdfs:label": "VIDA",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "VIDA",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:VASI",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
-            "rdfs:label": "VASI",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "VASI",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:VETI",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
-            "rdfs:label": "VETI",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "VETI",
-            "sms:required": "sms:false",
-            "sms:validationRules": [
-                "num error"
-            ]
-        },
-        {
-            "@id": "bts:Diabetes",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `comorbidities` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Diabetes",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Comorbidities"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "diabetes",
+            "sms:displayName": "BDM snRNASeq Processed Data Annotation Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
-                    "@id": "bts:DiabetesType"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:DiabetesType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Type of diabetes mellitus.",
-            "rdfs:label": "DiabetesType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Type1"
+                    "@id": "bts:Component"
                 },
                 {
-                    "@id": "bts:Type2"
+                    "@id": "bts:Filename"
                 },
                 {
-                    "@id": "bts:Unknown"
+                    "@id": "bts:FileFormat"
                 },
                 {
-                    "@id": "bts:Gestational"
-                }
-            ],
-            "sms:displayName": "diabetesType",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Psoriasis",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Psoriasis",
-            "rdfs:subClassOf": [
+                    "@id": "bts:Assay"
+                },
                 {
-                    "@id": "bts:Comorbidities"
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
+                },
+                {
+                    "@id": "bts:CellRangerOutput"
+                },
+                {
+                    "@id": "bts:ParentBiospecimenID"
+                },
+                {
+                    "@id": "bts:BiospecimenType"
+                },
+                {
+                    "@id": "bts:BiospecimenSubtype"
+                },
+                {
+                    "@id": "bts:DataType"
+                },
+                {
+                    "@id": "bts:DataSubtype"
                 },
                 {
                     "@id": "bts:Diagnosis"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "psoriasis",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
+                },
                 {
-                    "@id": "bts:PASI"
+                    "@id": "bts:VisitID"
+                },
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                },
+                {
+                    "@id": "bts:NucleicAcidSource"
+                },
+                {
+                    "@id": "bts:AlignmentReference"
+                },
+                {
+                    "@id": "bts:SoftwareAndVersion"
+                },
+                {
+                    "@id": "bts:Program"
+                },
+                {
+                    "@id": "bts:Project"
                 }
             ],
             "sms:validationRules": []
         },
         {
-            "@id": "bts:PASI",
+            "@id": "bts:SnATACSeqProcessedDataAnnotationTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
-            "rdfs:label": "PASI",
+            "rdfs:comment": "A data contributor template outlining metadata to be collected as file annotations for snATAC-seq processed data files (i.e., anything not a fastq file).",
+            "rdfs:label": "SnATACSeqProcessedDataAnnotationTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -749,37 +1893,163 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "PASI",
+            "sms:displayName": "snATACSeq Processed Data Annotation Template",
             "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:Component"
+                },
+                {
+                    "@id": "bts:Filename"
+                },
+                {
+                    "@id": "bts:FileFormat"
+                },
+                {
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
+                },
+                {
+                    "@id": "bts:CellRangerOutput"
+                }
+            ],
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Dermatomyositis",
+            "@id": "bts:BDMsnATACSeqProcessedDataAnnotationTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `diagnosis` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Dermatomyositis",
+            "rdfs:comment": "A template outlining metadata to be collected as file annotations for snATAC-seq processed data files (i.e., anything not a fastq file). to be compiled by ARK BDM.",
+            "rdfs:label": "BDMsnATACSeqProcessedDataAnnotationTemplate",
             "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "BDM snATACSeq Processed Data Annotation Template",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:Component"
+                },
+                {
+                    "@id": "bts:Filename"
+                },
+                {
+                    "@id": "bts:FileFormat"
+                },
+                {
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
+                },
+                {
+                    "@id": "bts:CellRangerOutput"
+                },
+                {
+                    "@id": "bts:ParentBiospecimenID"
+                },
+                {
+                    "@id": "bts:BiospecimenType"
+                },
+                {
+                    "@id": "bts:BiospecimenSubtype"
+                },
+                {
+                    "@id": "bts:DataType"
+                },
+                {
+                    "@id": "bts:DataSubtype"
+                },
                 {
                     "@id": "bts:Diagnosis"
+                },
+                {
+                    "@id": "bts:VisitID"
+                },
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                },
+                {
+                    "@id": "bts:NucleicAcidSource"
+                },
+                {
+                    "@id": "bts:AlignmentReference"
+                },
+                {
+                    "@id": "bts:SoftwareAndVersion"
+                },
+                {
+                    "@id": "bts:Program"
+                },
+                {
+                    "@id": "bts:Project"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:ScVDJSeqProcessedDataAnnotationTemplate",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A data contributor template outlining metadata to be collected as file annotations for scVDJ-seq (i.e., immune repertoire profiling) processed data files (i.e., anything not a fastq file).",
+            "rdfs:label": "ScVDJSeqProcessedDataAnnotationTemplate",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
                 }
             ],
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "dermatomyositis",
+            "sms:displayName": "scVDJSeq Processed Data Annotation Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
-                    "@id": "bts:CDASI"
+                    "@id": "bts:Component"
+                },
+                {
+                    "@id": "bts:Filename"
+                },
+                {
+                    "@id": "bts:FileFormat"
+                },
+                {
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:ResourceType"
+                },
+                {
+                    "@id": "bts:DataLevel"
+                },
+                {
+                    "@id": "bts:SpecimenModality"
                 }
             ],
             "sms:validationRules": []
         },
         {
-            "@id": "bts:CDASI",
+            "@id": "bts:BDMscVDJSeqProcessedDataAnnotationTemplate",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
-            "rdfs:label": "CDASI",
+            "rdfs:comment": "A template outlining metadata to be collected as file annotations for scVDJ-seq (i.e., immune repertoire profiling) processed data files (i.e., anything not a fastq file). to be compiled by ARK BDM.",
+            "rdfs:label": "BDMscVDJSeqProcessedDataAnnotationTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -788,604 +2058,70 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "CDASI",
+            "sms:displayName": "BDM scVDJSeq Processed Data Annotation Template",
             "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:FileFormat",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Standard file format name or file extension",
-            "rdfs:label": "FileFormat",
-            "rdfs:subClassOf": [
+            "sms:requiresDependency": [
                 {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Mtx"
+                    "@id": "bts:Component"
                 },
                 {
-                    "@id": "bts:Xls"
+                    "@id": "bts:Filename"
                 },
                 {
-                    "@id": "bts:Csv"
+                    "@id": "bts:FileFormat"
                 },
                 {
-                    "@id": "bts:Xlsx"
+                    "@id": "bts:Assay"
                 },
                 {
-                    "@id": "bts:Tgz"
+                    "@id": "bts:ResourceType"
                 },
                 {
-                    "@id": "bts:Rds"
+                    "@id": "bts:DataLevel"
                 },
                 {
-                    "@id": "bts:Txt"
+                    "@id": "bts:SpecimenModality"
                 },
                 {
-                    "@id": "bts:Rec"
+                    "@id": "bts:ParentBiospecimenID"
                 },
                 {
-                    "@id": "bts:Erate"
+                    "@id": "bts:BiospecimenType"
                 },
                 {
-                    "@id": "bts:Fcs"
+                    "@id": "bts:BiospecimenSubtype"
                 },
                 {
-                    "@id": "bts:H5"
+                    "@id": "bts:DataType"
                 },
                 {
-                    "@id": "bts:Bam"
+                    "@id": "bts:DataSubtype"
                 },
                 {
-                    "@id": "bts:Info"
+                    "@id": "bts:Diagnosis"
                 },
                 {
-                    "@id": "bts:Parquet"
+                    "@id": "bts:VisitID"
                 },
                 {
-                    "@id": "bts:Bed"
+                    "@id": "bts:LibraryPrepMethod"
                 },
                 {
-                    "@id": "bts:Geojson"
+                    "@id": "bts:NucleicAcidSource"
                 },
                 {
-                    "@id": "bts:Docx"
+                    "@id": "bts:AlignmentReference"
                 },
                 {
-                    "@id": "bts:H5ad"
+                    "@id": "bts:SoftwareAndVersion"
                 },
                 {
-                    "@id": "bts:Tbi"
+                    "@id": "bts:Program"
                 },
                 {
-                    "@id": "bts:Fam"
-                },
-                {
-                    "@id": "bts:Bai"
-                },
-                {
-                    "@id": "bts:Zip"
-                },
-                {
-                    "@id": "bts:Vcf"
-                },
-                {
-                    "@id": "bts:Pdf"
-                },
-                {
-                    "@id": "bts:Dose"
-                },
-                {
-                    "@id": "bts:Tsv"
-                },
-                {
-                    "@id": "bts:Fastq"
-                },
-                {
-                    "@id": "bts:Bim"
+                    "@id": "bts:Project"
                 }
             ],
-            "sms:displayName": "fileFormat",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Mtx",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Mtx",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "mtx",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Xls",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Xls",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "xls",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Csv",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Csv",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "csv",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Xlsx",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Xlsx",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "xlsx",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Tgz",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Tgz",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "tgz",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Rds",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Rds",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "rds",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Txt",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Txt",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "txt",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Rec",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Rec",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "rec",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Erate",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Erate",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "erate",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Fcs",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Fcs",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "fcs",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:H5",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "H5",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "h5",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Bam",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Bam",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "bam",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Info",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Info",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "info",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Parquet",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Parquet",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "parquet",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Bed",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Bed",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "bed",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Geojson",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Geojson",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "geojson",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Docx",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Docx",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "docx",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:H5ad",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "H5ad",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "h5ad",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Tbi",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Tbi",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "tbi",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Fam",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Fam",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "fam",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Bai",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Bai",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "bai",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Zip",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Zip",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "zip",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Vcf",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Vcf",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "vcf",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Pdf",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Pdf",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "pdf",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Dose",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Dose",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "dose",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Tsv",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Tsv",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "tsv",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Fastq",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Fastq",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "fastq",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Bim",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Bim",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:FileFormat"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "bim",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Filename",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Name of a file. Must be included in DependsOn for all file manifest/annotation templates.",
-            "rdfs:label": "Filename",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "Filename",
-            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -1668,162 +2404,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:ResourceType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "High-level classification of the file content",
-            "rdfs:label": "ResourceType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Metadata"
-                },
-                {
-                    "@id": "bts:Experimentaldata"
-                },
-                {
-                    "@id": "bts:Figure"
-                },
-                {
-                    "@id": "bts:Code"
-                }
-            ],
-            "sms:displayName": "resourceType",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Metadata",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Metadata",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:ResourceType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "metadata",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Experimentaldata",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Experimentaldata",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:ResourceType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "experimental data",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Figure",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Figure",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:ResourceType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "figure",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Code",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Code",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:ResourceType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "code",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:DataType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "High-level classification of the type of data contained in the file, loosely related to the experimental method or biological entity that is being profiled. Select all that apply using a comma-delimited list, though in most cases only a single label is expected. For multimodal datasets with concomitant profiling of biospecimen include 'multimodal'.",
-            "rdfs:label": "DataType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Transcriptomics"
-                },
-                {
-                    "@id": "bts:Immunerepertoireprofiling"
-                },
-                {
-                    "@id": "bts:Proteomics"
-                },
-                {
-                    "@id": "bts:Multimodal"
-                },
-                {
-                    "@id": "bts:Epigenomics"
-                },
-                {
-                    "@id": "bts:Genomics"
-                },
-                {
-                    "@id": "bts:Metabolomics"
-                },
-                {
-                    "@id": "bts:Lipidomics"
-                },
-                {
-                    "@id": "bts:Microbiome"
-                },
-                {
-                    "@id": "bts:Histology"
-                },
-                {
-                    "@id": "bts:Immunostaining"
-                },
-                {
-                    "@id": "bts:Cytometry"
-                }
-            ],
-            "sms:displayName": "dataType",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "list like error"
-            ]
-        },
-        {
             "@id": "bts:Transcriptomics",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2028,45 +2608,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:DataSubtype",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "General classification to differentiate between omics profiling modalities. If N/A please select 'none'. Multiple selections can be provided in a comma-delimited list, however this is largely only expected in the context of Datasets and files that contain integrated experimental data spanning multiple types.",
-            "rdfs:label": "DataSubtype",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Bulk"
-                },
-                {
-                    "@id": "bts:Pseudobulk"
-                },
-                {
-                    "@id": "bts:Single-cell"
-                },
-                {
-                    "@id": "bts:Single-nucleus"
-                },
-                {
-                    "@id": "bts:Spatial"
-                },
-                {
-                    "@id": "bts:None"
-                }
-            ],
-            "sms:displayName": "dataSubtype",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "list like error"
-            ]
-        },
-        {
             "@id": "bts:Bulk",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2178,40 +2719,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:DataLevel",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Level of data processing applied to file. Levels refer to pre-defined standards of processing for the given assay.",
-            "rdfs:label": "DataLevel",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:5"
-                },
-                {
-                    "@id": "bts:4"
-                },
-                {
-                    "@id": "bts:2"
-                },
-                {
-                    "@id": "bts:3"
-                },
-                {
-                    "@id": "bts:1"
-                }
-            ],
-            "sms:displayName": "dataLevel",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:5",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2297,120 +2804,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Assay",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
-            "rdfs:label": "Assay",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:VDJSeq"
-                },
-                {
-                    "@id": "bts:OlinkReveal"
-                },
-                {
-                    "@id": "bts:SnATACSeq"
-                },
-                {
-                    "@id": "bts:OlinkTarget48"
-                },
-                {
-                    "@id": "bts:Featurebarcodesequencing"
-                },
-                {
-                    "@id": "bts:Xenium"
-                },
-                {
-                    "@id": "bts:OlinkExploreHT"
-                },
-                {
-                    "@id": "bts:CITESeq"
-                },
-                {
-                    "@id": "bts:SNParray"
-                },
-                {
-                    "@id": "bts:WGS"
-                },
-                {
-                    "@id": "bts:CE-MS"
-                },
-                {
-                    "@id": "bts:LC-MS/MS"
-                },
-                {
-                    "@id": "bts:RNASeq"
-                },
-                {
-                    "@id": "bts:CyTOF"
-                },
-                {
-                    "@id": "bts:OlinkTarget96"
-                },
-                {
-                    "@id": "bts:Flowcytometry"
-                },
-                {
-                    "@id": "bts:Imagingmasscytometry"
-                },
-                {
-                    "@id": "bts:OlinkFlex"
-                },
-                {
-                    "@id": "bts:H&E"
-                },
-                {
-                    "@id": "bts:ScRNASeq"
-                },
-                {
-                    "@id": "bts:MultiplexedELISA"
-                },
-                {
-                    "@id": "bts:CosMX"
-                },
-                {
-                    "@id": "bts:Imagingmassspectrometry"
-                },
-                {
-                    "@id": "bts:SomaScan"
-                },
-                {
-                    "@id": "bts:OlinkFocus"
-                },
-                {
-                    "@id": "bts:SerialIHC"
-                },
-                {
-                    "@id": "bts:WES"
-                },
-                {
-                    "@id": "bts:ASAPSeq"
-                },
-                {
-                    "@id": "bts:NULISA"
-                },
-                {
-                    "@id": "bts:ScVDJSeq"
-                },
-                {
-                    "@id": "bts:SnRNASeq"
-                }
-            ],
-            "sms:displayName": "assay",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "list like error"
-            ]
-        },
-        {
             "@id": "bts:VDJSeq",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2475,23 +2868,6 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "Olink Target 48",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Featurebarcodesequencing",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Featurebarcodesequencing",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Assay"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "feature barcode sequencing",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -3650,48 +4026,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:SpecimenModality",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
-            "rdfs:label": "SpecimenModality",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Singlespecimen"
-                },
-                {
-                    "@id": "bts:Multispecimen"
-                }
-            ],
-            "sms:displayName": "specimenModality",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Singlespecimen",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Singlespecimen",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:SpecimenModality"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "single specimen",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:Multispecimen",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -3707,124 +4041,6 @@
             "sms:displayName": "multispecimen",
             "sms:required": "sms:false",
             "sms:validationRules": []
-        },
-        {
-            "@id": "bts:BiospecimenID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
-            "rdfs:label": "BiospecimenID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "biospecimenID",
-            "sms:required": "sms:true",
-            "sms:validationRules": {
-                "BiospecimenMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "unique error",
-                "all_other_components": "list like error"
-            }
-        },
-        {
-            "@id": "bts:ParentBiospecimenID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The biospecimenID associated with the originating biospecimen for derived or child biospecimens.",
-            "rdfs:label": "ParentBiospecimenID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "parentBiospecimenID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:BiospecimenType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.",
-            "rdfs:label": "BiospecimenType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:None"
-                },
-                {
-                    "@id": "bts:Urine"
-                },
-                {
-                    "@id": "bts:Stool"
-                },
-                {
-                    "@id": "bts:Wholeblood"
-                },
-                {
-                    "@id": "bts:Serum"
-                },
-                {
-                    "@id": "bts:Plasma"
-                },
-                {
-                    "@id": "bts:PBMCs"
-                },
-                {
-                    "@id": "bts:Totalleukocytes"
-                },
-                {
-                    "@id": "bts:Kidneybiopsy"
-                },
-                {
-                    "@id": "bts:Synovialfluid"
-                },
-                {
-                    "@id": "bts:Skinbiopsy"
-                },
-                {
-                    "@id": "bts:Salivarygland"
-                },
-                {
-                    "@id": "bts:Saliva"
-                },
-                {
-                    "@id": "bts:Skinswab"
-                },
-                {
-                    "@id": "bts:Synovialtissue"
-                },
-                {
-                    "@id": "bts:Suctionblistercells"
-                },
-                {
-                    "@id": "bts:Suctionblisterfluid"
-                },
-                {
-                    "@id": "bts:Uvea"
-                },
-                {
-                    "@id": "bts:Fibroblast-likesynoviocyte"
-                }
-            ],
-            "sms:displayName": "biospecimenType",
-            "sms:required": "sms:true",
-            "sms:validationRules": {
-                "BiospecimenMetadataTemplate": "str",
-                "OlinkBiospecimenMetadataTemplate": "str",
-                "all_other_components": "list like error"
-            }
         },
         {
             "@id": "bts:Urine",
@@ -4133,228 +4349,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:MetadataType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label further classifying the content of metadata resource.",
-            "rdfs:label": "MetadataType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Filemanifest"
-                },
-                {
-                    "@id": "bts:Usermanual"
-                },
-                {
-                    "@id": "bts:Protocol"
-                },
-                {
-                    "@id": "bts:Assay"
-                },
-                {
-                    "@id": "bts:Biospecimen"
-                },
-                {
-                    "@id": "bts:Targetpanel"
-                },
-                {
-                    "@id": "bts:Datadictionary"
-                },
-                {
-                    "@id": "bts:Template"
-                },
-                {
-                    "@id": "bts:Single-cellmetadata"
-                },
-                {
-                    "@id": "bts:Medication"
-                },
-                {
-                    "@id": "bts:Phenotype"
-                }
-            ],
-            "sms:displayName": "metadataType",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Filemanifest",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Filemanifest",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "file manifest",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Usermanual",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Usermanual",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "user manual",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Protocol",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Protocol",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "protocol",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Biospecimen",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Biospecimen",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "biospecimen",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Targetpanel",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Targetpanel",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "target panel",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Datadictionary",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Datadictionary",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "data dictionary",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Template",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Template",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "template",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Single-cellmetadata",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Single-cellmetadata",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "single-cell metadata",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Medication",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Medication",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "medication",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Phenotype",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Phenotype",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "phenotype",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:CodingLanguage",
             "@type": "rdfs:Class",
             "rdfs:comment": "The coding, aka programming, language(s) contained in the file marked with `resourceType = code`. Select all that apply.",
@@ -4590,132 +4584,6 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "Matlab",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:VisitID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
-            "rdfs:label": "VisitID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "visitID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:SoftwareAndVersion",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Relevant software and version used to generate the data file.",
-            "rdfs:label": "SoftwareAndVersion",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:CellRanger9.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv9.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv8.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv8.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv7.2.0"
-                },
-                {
-                    "@id": "bts:CellRangerv7.1.0"
-                },
-                {
-                    "@id": "bts:CellRangerv7.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv7.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv6.1.2"
-                },
-                {
-                    "@id": "bts:CellRangerv6.1.1"
-                },
-                {
-                    "@id": "bts:CellRangerv6.1.0"
-                },
-                {
-                    "@id": "bts:CellRangerv6.0.2"
-                },
-                {
-                    "@id": "bts:CellRangerv6.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv6.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv5.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv5.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv4.0.0"
-                },
-                {
-                    "@id": "bts:CellRangerv3.1.0"
-                },
-                {
-                    "@id": "bts:CellRangerv3.0.2"
-                },
-                {
-                    "@id": "bts:CellRangerv3.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerv3.0.0"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.1.3"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.1.2"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.1.1"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.1.0"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.0.1"
-                },
-                {
-                    "@id": "bts:SpaceRanger3.0.0"
-                },
-                {
-                    "@id": "bts:Demuxlet"
-                },
-                {
-                    "@id": "bts:BDFACSDiva8.0.1"
-                },
-                {
-                    "@id": "bts:CellRangerATACv1.1.0"
-                }
-            ],
-            "sms:displayName": "softwareAndVersion",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -5230,118 +5098,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:TargetPanel",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
-            "rdfs:label": "TargetPanel",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "targetPanel",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:TargetPanelSynID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
-            "rdfs:label": "TargetPanelSynID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "targetPanelSynID",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "regex search ^syn[0-9]{8} error"
-            ]
-        },
-        {
-            "@id": "bts:TargetPanelSize",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
-            "rdfs:label": "TargetPanelSize",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "targetPanelSize",
-            "sms:required": "sms:false",
-            "sms:validationRules": [
-                "int error"
-            ]
-        },
-        {
-            "@id": "bts:NucleicAcidSource",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The source of the nucleic acid used as input for sequencing library fragments. Select all that apply, though in most cases only a single label is expected.",
-            "rdfs:label": "NucleicAcidSource",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Poly(A)RNA"
-                },
-                {
-                    "@id": "bts:RRNA-depletedRNA"
-                },
-                {
-                    "@id": "bts:GDNA"
-                },
-                {
-                    "@id": "bts:Surfaceproteinfeaturebarcode"
-                },
-                {
-                    "@id": "bts:Intracellularproteinfeaturebarcode"
-                },
-                {
-                    "@id": "bts:Antigencapturebarcode"
-                },
-                {
-                    "@id": "bts:Multiplexingoligo"
-                },
-                {
-                    "@id": "bts:BCRmRNA"
-                },
-                {
-                    "@id": "bts:TCRmRNA"
-                },
-                {
-                    "@id": "bts:Tn5-accessiblegDNA"
-                },
-                {
-                    "@id": "bts:Globin-depletedRNA"
-                },
-                {
-                    "@id": "bts:CRISPRprotospacerfeaturebarcode"
-                }
-            ],
-            "sms:displayName": "nucleicAcidSource",
-            "sms:required": "sms:true",
-            "sms:validationRules": [
-                "list like error"
-            ]
-        },
-        {
             "@id": "bts:Poly(A)RNA",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -5546,49 +5302,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:BiospecimenSubtype",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Biospecimen status before sample is processed into a scRNA-seq library. Several scRNA-seq technologies support a variety of sample processing methods which can introduces sources of technical variation.",
-            "rdfs:label": "BiospecimenSubtype",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Nucleisuspension"
-                },
-                {
-                    "@id": "bts:Cellsuspension"
-                },
-                {
-                    "@id": "bts:Freshtissue"
-                },
-                {
-                    "@id": "bts:Frozentissue"
-                },
-                {
-                    "@id": "bts:FFPEtissue"
-                },
-                {
-                    "@id": "bts:Flow-sortedcells"
-                },
-                {
-                    "@id": "bts:PFA-fixedtissue"
-                },
-                {
-                    "@id": "bts:Cellortissuelysate"
-                }
-            ],
-            "sms:displayName": "biospecimenSubtype",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:Nucleisuspension",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -5725,46 +5438,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:CellRangerOutput",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "10x Genomics Cell Ranger software output several different counts results and formats, some with different processing applied. This label distinguishes between these types and is particularly helpful when multiple files are uploaded with the sample name, e.g., barcodes.tsv.gz",
-            "rdfs:label": "CellRangerOutput",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:RawMEX"
-                },
-                {
-                    "@id": "bts:FilteredMEX"
-                },
-                {
-                    "@id": "bts:FilteredFeatureBcMatrix"
-                },
-                {
-                    "@id": "bts:RawFeatureBcMatrix"
-                },
-                {
-                    "@id": "bts:FilteredPeakBcMatrix"
-                },
-                {
-                    "@id": "bts:RawPeakBcMatrix"
-                },
-                {
-                    "@id": "bts:NotApplicable"
-                }
-            ],
-            "sms:displayName": "cellRangerOutput",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:RawMEX",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -5867,37 +5540,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:AlignmentReference",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "The genomic/transcriptomic reference used for performing read alignment against.",
-            "rdfs:label": "AlignmentReference",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:10xCellRangerHumanGRCh382024-A"
-                },
-                {
-                    "@id": "bts:10xCellRangerHumanGRCh382020-A"
-                },
-                {
-                    "@id": "bts:Unknown"
-                },
-                {
-                    "@id": "bts:VdjGRCh38AltsEnsembl-4.0.0"
-                }
-            ],
-            "sms:displayName": "alignmentReference",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:10xCellRangerHumanGRCh382024-A",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -5946,118 +5588,6 @@
             },
             "sms:displayName": "vdj_GRCh38_alts_ensembl-4.0.0",
             "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:LibraryPrepMethod",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Sequencing library preparation method or kit used to create the library. If no commercially available kit was used, please select 'in-house library prep'.",
-            "rdfs:label": "LibraryPrepMethod",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:NEBNextUltraIIDirectionalRNALibrary"
-                },
-                {
-                    "@id": "bts:QIAseqmiRNALibrary"
-                },
-                {
-                    "@id": "bts:SMART-Seqv4UltraLowInputRNA"
-                },
-                {
-                    "@id": "bts:NexteraXT"
-                },
-                {
-                    "@id": "bts:SMARTerStrandedTotalRNAv2"
-                },
-                {
-                    "@id": "bts:NexteraXTDNA"
-                },
-                {
-                    "@id": "bts:TruSeqStrandedmRNA"
-                },
-                {
-                    "@id": "bts:SMART-SeqHumanBCRwithUMI"
-                },
-                {
-                    "@id": "bts:SMART-SeqHumanTCRwithUMI"
-                },
-                {
-                    "@id": "bts:TakaraHumanBCRprofilingforIllumina"
-                },
-                {
-                    "@id": "bts:TakaraHumanTCRprofilingforIllumina"
-                },
-                {
-                    "@id": "bts:TakaraHumanTCRv2profilingforIllumina"
-                },
-                {
-                    "@id": "bts:TakaraHumanscTCRprofilingforIllumina"
-                },
-                {
-                    "@id": "bts:NEBNextHumanImmuneSequencingKit"
-                },
-                {
-                    "@id": "bts:CEL-Seq2"
-                },
-                {
-                    "@id": "bts:In-houselibraryprep"
-                },
-                {
-                    "@id": "bts:FluidigmC1HT"
-                },
-                {
-                    "@id": "bts:10xChromiumNextGEMSingleCell3'"
-                },
-                {
-                    "@id": "bts:10xChromiumNextGEMSingleCell3'3.1"
-                },
-                {
-                    "@id": "bts:10xChromiumNextGEMSingleCell5'v2"
-                },
-                {
-                    "@id": "bts:10xChromiumGEM-XSingleCell5'v3"
-                },
-                {
-                    "@id": "bts:10xChromiumGEM-XSingleCell3'v4"
-                },
-                {
-                    "@id": "bts:10xGEM-XUniversal5?GeneExpressionv3"
-                },
-                {
-                    "@id": "bts:10xGEM-XFlexGeneExpressionHuman"
-                },
-                {
-                    "@id": "bts:10xChromiumFixedRNAHumanTranscriptome"
-                },
-                {
-                    "@id": "bts:10xChromiumSingleCellHumanTCR"
-                },
-                {
-                    "@id": "bts:10xChromiumSingleCellHumanBCR"
-                },
-                {
-                    "@id": "bts:10xChromiumNextGEMSingleCellATACv2"
-                },
-                {
-                    "@id": "bts:10xChromiumNextGEMSingleCell5'v1.1"
-                },
-                {
-                    "@id": "bts:ChromiumNextGEMSingleCellATACv1.1"
-                },
-                {
-                    "@id": "bts:CustomDASH-treatment"
-                }
-            ],
-            "sms:displayName": "libraryPrepMethod",
-            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -7124,52 +6654,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:RObjectClass",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
-            "rdfs:label": "RObjectClass",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:List"
-                },
-                {
-                    "@id": "bts:Vector"
-                },
-                {
-                    "@id": "bts:Sparsematrix"
-                },
-                {
-                    "@id": "bts:Seuratobject"
-                },
-                {
-                    "@id": "bts:Data.frame"
-                },
-                {
-                    "@id": "bts:Matrix"
-                },
-                {
-                    "@id": "bts:SummarizedExperiment"
-                },
-                {
-                    "@id": "bts:Symphonyreference"
-                },
-                {
-                    "@id": "bts:ROCRprediction.object"
-                }
-            ],
-            "sms:displayName": "RObjectClass",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:List",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -7370,6 +6854,60 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "At-Risk RA",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Vitiligo",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Vitiligo",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "vitiligo",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Dermatomyositis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Dermatomyositis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "dermatomyositis",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Psoriasis",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Psoriasis",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                },
+                {
+                    "@id": "bts:Diagnosis"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "psoriasis",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -8295,6 +7833,37 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:VitiligoType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A high-level classification of vitiligo based on the distribution and patterning of lesions across the body.",
+            "rdfs:label": "VitiligoType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Segmental"
+                },
+                {
+                    "@id": "bts:Non-segmental"
+                },
+                {
+                    "@id": "bts:Mixed"
+                },
+                {
+                    "@id": "bts:Unclassified"
+                }
+            ],
+            "sms:displayName": "vitiligoType",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:Segmental",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -8605,6 +8174,50 @@
             ]
         },
         {
+            "@id": "bts:Age",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Age at which subject was enrolled in study or age at corresponding visit and data collection event.",
+            "rdfs:label": "Age",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "age",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num error"
+            ]
+        },
+        {
+            "@id": "bts:AgeUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The unit of measure used for `ageEnrollment` and `ageDiagnosis`",
+            "rdfs:label": "AgeUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Years"
+                },
+                {
+                    "@id": "bts:Months"
+                }
+            ],
+            "sms:displayName": "ageUnits",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:Years",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -8636,6 +8249,37 @@
             },
             "sms:displayName": "months",
             "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Sex",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A textual description of a person's sex at birth.",
+            "rdfs:label": "Sex",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Female"
+                },
+                {
+                    "@id": "bts:Male"
+                },
+                {
+                    "@id": "bts:Intersex"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "sex",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -8686,6 +8330,71 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "intersex",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Height",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Standing height of subject.",
+            "rdfs:label": "Height",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "height",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num error"
+            ]
+        },
+        {
+            "@id": "bts:Race",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A textual description of a person's race.",
+            "rdfs:label": "Race",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Asian"
+                },
+                {
+                    "@id": "bts:BlackorAfricanAmerican"
+                },
+                {
+                    "@id": "bts:White"
+                },
+                {
+                    "@id": "bts:Hispanic"
+                },
+                {
+                    "@id": "bts:AmericanIndianorAlaskaNative"
+                },
+                {
+                    "@id": "bts:MixedRace"
+                },
+                {
+                    "@id": "bts:NativeHawaiianorOtherPacificIslander"
+                },
+                {
+                    "@id": "bts:Other"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "race",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -8829,6 +8538,34 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:Ethnicity",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The ethnicity of a person.",
+            "rdfs:label": "Ethnicity",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:HispanicorLatino"
+                },
+                {
+                    "@id": "bts:NotHispanicorLatino"
+                },
+                {
+                    "@id": "bts:Unknown"
+                }
+            ],
+            "sms:displayName": "ethnicity",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:HispanicorLatino",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -8860,6 +8597,37 @@
             },
             "sms:displayName": "Not Hispanic or Latino",
             "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:HeightUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Unit of measure of value provided for `height`.",
+            "rdfs:label": "HeightUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Inches"
+                },
+                {
+                    "@id": "bts:Centimeters"
+                },
+                {
+                    "@id": "bts:Meters"
+                },
+                {
+                    "@id": "bts:Feet"
+                }
+            ],
+            "sms:displayName": "heightUnits",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -8931,6 +8699,56 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:Weight",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Weight of subject.",
+            "rdfs:label": "Weight",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "weight",
+            "sms:required": "sms:true",
+            "sms:validationRules": [
+                "num error"
+            ]
+        },
+        {
+            "@id": "bts:WeightUnits",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Abbreviated unit of measure of value provided for `weight`.",
+            "rdfs:label": "WeightUnits",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Lb"
+                },
+                {
+                    "@id": "bts:Kg"
+                },
+                {
+                    "@id": "bts:G"
+                },
+                {
+                    "@id": "bts:Oz"
+                }
+            ],
+            "sms:displayName": "weightUnits",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:Lb",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -8995,6 +8813,80 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "oz",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Comorbidities",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
+            "rdfs:label": "Comorbidities",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Diabetes"
+                },
+                {
+                    "@id": "bts:Cardiovasculardisease"
+                },
+                {
+                    "@id": "bts:Pulmonarydisease"
+                },
+                {
+                    "@id": "bts:Autoimmunethyroiddisease"
+                },
+                {
+                    "@id": "bts:Inflammatoryboweldisease"
+                },
+                {
+                    "@id": "bts:Psoriasis"
+                },
+                {
+                    "@id": "bts:Multiplesclerosis"
+                },
+                {
+                    "@id": "bts:Systemiclupuserythematosus"
+                },
+                {
+                    "@id": "bts:Rheumatoidarthritis"
+                },
+                {
+                    "@id": "bts:Psoriaticarthritis"
+                },
+                {
+                    "@id": "bts:Hashimoto'sThyroiditis"
+                },
+                {
+                    "@id": "bts:Other"
+                }
+            ],
+            "sms:displayName": "comorbidities",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "list like error"
+            ]
+        },
+        {
+            "@id": "bts:Diabetes",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Diabetes",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Comorbidities"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "diabetes",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -9135,6 +9027,37 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:DiabetesType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Type of diabetes mellitus.",
+            "rdfs:label": "DiabetesType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Type1"
+                },
+                {
+                    "@id": "bts:Type2"
+                },
+                {
+                    "@id": "bts:Unknown"
+                },
+                {
+                    "@id": "bts:Gestational"
+                }
+            ],
+            "sms:displayName": "diabetesType",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:Type1",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -9182,6 +9105,93 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "gestational",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VIDA",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
+            "rdfs:label": "VIDA",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VIDA",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
+            "rdfs:label": "VASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VASI",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VETI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
+            "rdfs:label": "VETI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "VETI",
+            "sms:required": "sms:false",
+            "sms:validationRules": [
+                "num error"
+            ]
+        },
+        {
+            "@id": "bts:PASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
+            "rdfs:label": "PASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "PASI",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:CDASI",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
+            "rdfs:label": "CDASI",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "CDASI",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -9789,42 +9799,6 @@
             "sms:required": "sms:false",
             "sms:validationRules": [
                 "regex search ^pmc:PMC[0-9]{8} error"
-            ]
-        },
-        {
-            "@id": "bts:ProcessedDataType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label used for file annotations to provide a brief description of the processed data file.",
-            "rdfs:label": "ProcessedDataType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Alignedreads"
-                },
-                {
-                    "@id": "bts:Geneand/orbarcodecounts"
-                },
-                {
-                    "@id": "bts:Peaks"
-                },
-                {
-                    "@id": "bts:Differentialexpressionresults"
-                },
-                {
-                    "@id": "bts:Filtered/QC'ddata"
-                }
-            ],
-            "sms:displayName": "processedDataType",
-            "sms:required": "sms:false",
-            "sms:validationRules": [
-                "list like error"
             ]
         },
         {

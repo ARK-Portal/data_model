@@ -6,6 +6,7 @@
 # exit on error
 set -e
 
+ALL_TEMPLATES=()
 CONTEXTS=( "model_contexts"/*/ )  # would match directories of depth 1
 
 for context_dir in ${CONTEXTS[@]}; do
@@ -15,6 +16,7 @@ for context_dir in ${CONTEXTS[@]}; do
   JSONLD="${context_dir}ark.${context}_model.jsonld"
   echo $JSONLD
   TEMPLATES="${context_dir}ark.${context}_templates.txt"
+  ALL_TEMPLATES+=("$TEMPLATES") # Append a new element in each iteration
   while read template; do
     CSV="model_templates/ark.${template}.csv"
     OUTJSON="model_json_schema/ark.${template}.schema.json"
@@ -28,3 +30,14 @@ for context_dir in ${CONTEXTS[@]}; do
     sleep 10
   done < <(cut -f 1 $TEMPLATES)
 done
+
+# concat all template files into one
+if [ -f templates_by_context.txt ]; then
+  rm all_model_templates.txt
+fi
+for template in ${ALL_TEMPLATES[@]}; do
+  cat $template >> templates_by_context.txt
+done
+
+# delete BDM-specific json schema files
+rm model_json_schema/ark.BDM*
