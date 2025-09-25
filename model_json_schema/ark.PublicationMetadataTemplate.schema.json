@@ -4,55 +4,56 @@
   "title": "example",
   "type": "object",
   "properties": {
-    "publicationType": {
+    "program": {
       "enum": [
-        "correction",
-        "peer-reviewed",
-        "pre-print"
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
       ]
     },
-    "associatedDataset": {},
-    "DOI": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
+    "PMCID": {},
     "journal": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "PMID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "Community Contribution",
-        "AMP AIM"
-      ]
-    },
+    "associatedDataset": {},
     "year": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "publicationType": {
+      "enum": [
+        "pre-print",
+        "correction",
+        "peer-reviewed"
+      ]
+    },
     "project": {
       "enum": [
-        "LOCKIT",
-        "RA",
-        "ELLIPSS",
-        "SLE",
         "V-CoRT",
+        "LOCKIT",
+        "STAMP",
+        "SLE",
+        "ELLIPSS",
         "AIM for RA",
-        "STAMP"
+        "RA"
       ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "publicationDate": {
       "not": {
@@ -60,7 +61,7 @@
       },
       "minLength": 1
     },
-    "Component": {
+    "PMID": {
       "not": {
         "type": "null"
       },
@@ -74,22 +75,22 @@
     },
     "programPhase": {
       "enum": [
-        "II",
         "I",
+        "II",
         ""
       ]
     }
   },
   "required": [
-    "publicationType",
-    "DOI",
-    "journal",
-    "PMID",
     "program",
+    "journal",
     "year",
+    "DOI",
+    "publicationType",
     "project",
-    "publicationDate",
     "Component",
+    "publicationDate",
+    "PMID",
     "title"
   ],
   "allOf": [
@@ -110,8 +111,8 @@
         "properties": {
           "programPhase": {
             "enum": [
-              "II",
-              "I"
+              "I",
+              "II"
             ]
           }
         },
