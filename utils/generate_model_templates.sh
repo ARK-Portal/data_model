@@ -18,13 +18,15 @@ for context_dir in ${CONTEXTS[@]}; do
   TEMPLATES="${context_dir}ark.${context}_templates.txt"
   ALL_TEMPLATES+=("$TEMPLATES") # Append a new element in each iteration
   while read template; do
-    CSV="model_templates/ark.${template}.csv"
+    #CSV="model_templates/ark.${template}.csv"
+    XLSX="model_templates/ark.${template}.xlsx"
     OUTJSON="model_json_schema/ark.${template}.schema.json"
     ORIGJSON="${context_dir}ark.${context}_model.${template}.schema.json"
     #echo $CSV
     #echo $OUTJSON
-    schematic manifest -c schematic_config.yml get -dt $template -o $CSV -p $JSONLD
+    schematic manifest -c schematic_config.yml get -dt $template -oxlsx $XLSX -p $JSONLD
     mv $ORIGJSON $OUTJSON
+    mv model_templates/ark.xlsx $XLSX # schematic bug only writes output to this name for some weird reason
     
     # sleep for 10 seconds to keep google API from complaining
     sleep 10
@@ -33,7 +35,7 @@ done
 
 # concat all template files into one
 if [ -f templates_by_context.txt ]; then
-  rm all_model_templates.txt
+  rm templates_by_context.txt
 fi
 for template in ${ALL_TEMPLATES[@]}; do
   cat $template >> templates_by_context.txt
