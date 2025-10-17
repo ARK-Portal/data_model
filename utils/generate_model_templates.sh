@@ -26,7 +26,10 @@ for context_dir in ${CONTEXTS[@]}; do
     #echo $OUTJSON
     schematic manifest -c schematic_config.yml get -dt $template -oxlsx $XLSX -p $JSONLD
     mv $ORIGJSON $OUTJSON
-    mv model_templates/ark.xlsx $XLSX # schematic bug only writes output to this name for some weird reason
+    
+    if [ -f model_templates/ark.xlsx ]; then
+      mv model_templates/ark.xlsx $XLSX # schematic 24.11.2 bug only writes output to this when executed locally for some weird reason
+    fi
     
     # sleep for 10 seconds to keep google API from complaining
     sleep 10
