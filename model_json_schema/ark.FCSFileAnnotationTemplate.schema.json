@@ -4,6 +4,19 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "fileFormat": {
+      "enum": [
+        "fcs",
+        ""
+      ]
+    },
+    "eventCount": {},
+    "assay": {
+      "enum": [
+        "flow cytometry",
+        "CyTOF"
+      ]
+    },
     "Filename": {
       "not": {
         "type": "null"
@@ -16,128 +29,34 @@
       },
       "minLength": 1
     },
-    "fileFormat": {
+    "dataLevel": {
       "enum": [
-        "fastq",
-        ""
+        "3",
+        "5",
+        "1",
+        "2",
+        "4"
       ]
     },
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "RNASeq",
-          "feature barcode sequencing",
-          "snRNASeq",
-          "ASAPSeq",
-          "scVDJSeq",
-          "snATACSeq",
-          "WES",
-          "scRNASeq",
-          "CITESeq",
-          "WGS",
-          "VDJSeq"
-        ]
-      },
-      "maxItems": 11
-    },
-    "readLength": {},
     "specimenModality": {
       "enum": [
         "single specimen",
         "multispecimen"
       ]
     },
-    "targetPanel": {},
-    "targetPanelSize": {},
-    "targetPanelSynID": {},
     "individualID": {},
     "biospecimenID": {},
-    "libraryID": {}
+    "dataCollectionBatch": {},
+    "sampleProcessingBatch": {}
   },
   "required": [
+    "assay",
     "Filename",
     "Component",
-    "assay",
+    "dataLevel",
     "specimenModality"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanel": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "targetPanel"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanelSize": {}
-        },
-        "required": [
-          "targetPanelSize"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanelSynID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "targetPanelSynID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
@@ -207,10 +126,32 @@
       },
       "then": {
         "properties": {
-          "libraryID": {}
+          "dataCollectionBatch": {}
         },
         "required": [
-          "libraryID"
+          "dataCollectionBatch"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sampleProcessingBatch": {}
+        },
+        "required": [
+          "sampleProcessingBatch"
         ]
       }
     }
