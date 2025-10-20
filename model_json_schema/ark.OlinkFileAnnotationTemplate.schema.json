@@ -1,15 +1,45 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/example",
-  "title": "example",
+  "$id": "http://example.com/ark",
+  "title": "ark",
   "type": "object",
   "properties": {
-    "resourceType": {
+    "fileFormat": {
       "enum": [
-        "code",
-        "metadata",
-        "figure",
-        "experimental data"
+        "fcs",
+        "h5",
+        "info",
+        "rds",
+        "fam",
+        "csv",
+        "tgz",
+        "parquet",
+        "xlsx",
+        "mtx",
+        "bai",
+        "dose",
+        "zip",
+        "pdf",
+        "h5ad",
+        "txt",
+        "tbi",
+        "geojson",
+        "docx",
+        "fastq",
+        "erate",
+        "rec",
+        "bam",
+        "bim",
+        "xls",
+        "bed",
+        "vcf",
+        "tsv"
+      ]
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
       ]
     },
     "plateID": {
@@ -30,51 +60,21 @@
       },
       "minLength": 1
     },
-    "specimenModality": {
+    "resourceType": {
       "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
-    },
-    "fileFormat": {
-      "enum": [
-        "parquet",
-        "dose",
-        "fcs",
-        "bed",
-        "csv",
-        "tgz",
-        "rds",
-        "bim",
-        "erate",
-        "fam",
-        "vcf",
-        "tbi",
-        "fastq",
-        "info",
-        "pdf",
-        "xlsx",
-        "bam",
-        "h5",
-        "xls",
-        "mtx",
-        "h5ad",
-        "docx",
-        "txt",
-        "geojson",
-        "rec",
-        "tsv",
-        "zip",
-        "bai"
+        "metadata",
+        "figure",
+        "code",
+        "experimental data"
       ]
     }
   },
   "required": [
-    "resourceType",
+    "fileFormat",
+    "specimenModality",
     "plateID",
     "Filename",
     "Component",
-    "specimenModality",
-    "fileFormat"
+    "resourceType"
   ]
 }
