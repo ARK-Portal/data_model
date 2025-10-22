@@ -588,9 +588,7 @@
             ],
             "sms:displayName": "diagnosis",
             "sms:required": "sms:true",
-            "sms:validationRules": [
-                "regex search ^DOID error"
-            ]
+            "sms:validationRules": []
         },
         {
             "@id": "bts:VisitID",
@@ -2447,13 +2445,16 @@
             },
             "schema:rangeIncludes": [
                 {
+                    "@id": "bts:Medication"
+                },
+                {
                     "@id": "bts:Usermanual"
                 },
                 {
-                    "@id": "bts:Filemanifest"
+                    "@id": "bts:Protocol"
                 },
                 {
-                    "@id": "bts:Biospecimen"
+                    "@id": "bts:Template"
                 },
                 {
                     "@id": "bts:Single-cellmetadata"
@@ -2462,26 +2463,40 @@
                     "@id": "bts:Datadictionary"
                 },
                 {
-                    "@id": "bts:Protocol"
-                },
-                {
-                    "@id": "bts:Medication"
-                },
-                {
                     "@id": "bts:Phenotype"
+                },
+                {
+                    "@id": "bts:Filemanifest"
                 },
                 {
                     "@id": "bts:Targetpanel"
                 },
                 {
-                    "@id": "bts:Assay"
+                    "@id": "bts:Biospecimen"
                 },
                 {
-                    "@id": "bts:Template"
+                    "@id": "bts:Assay"
                 }
             ],
             "sms:displayName": "metadataType",
             "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Medication",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Medication",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "medication",
+            "sms:required": "sms:false",
             "sms:validationRules": []
         },
         {
@@ -2502,10 +2517,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Filemanifest",
+            "@id": "bts:Protocol",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "Filemanifest",
+            "rdfs:label": "Protocol",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:MetadataType"
@@ -2514,15 +2529,15 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "file manifest",
+            "sms:displayName": "protocol",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Biospecimen",
+            "@id": "bts:Template",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "Biospecimen",
+            "rdfs:label": "Template",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:MetadataType"
@@ -2531,7 +2546,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "biospecimen",
+            "sms:displayName": "template",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -2570,40 +2585,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Protocol",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Protocol",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "protocol",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Medication",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "Medication",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:MetadataType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "medication",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:Phenotype",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
@@ -2617,6 +2598,23 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "phenotype",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Filemanifest",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "TBD",
+            "rdfs:label": "Filemanifest",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:MetadataType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "file manifest",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -2638,10 +2636,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Template",
+            "@id": "bts:Biospecimen",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "Template",
+            "rdfs:label": "Biospecimen",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:MetadataType"
@@ -2650,7 +2648,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "template",
+            "sms:displayName": "biospecimen",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -5393,7 +5391,7 @@
         {
             "@id": "bts:DbGapAccession",
             "@type": "rdfs:Class",
-            "rdfs:comment": "NIH policy requires large-scale human genomics studies to be registered in dbGap. This is a Dataset-specific attribute indicating the unique identifier (i.e., accession) of the corresponding study that is registered in dbGap.",
+            "rdfs:comment": "NIH policy requires large-scale human genomics studies to be registered in dbGap. This is a Dataset-specific attribute indicating the unique identifier (i.e., accession) of the corresponding study that is registered in dbGap, formatted as a compact URI, e.g., dbgap:phs003417.v2.p1",
             "rdfs:label": "DbGapAccession",
             "rdfs:subClassOf": [
                 {
@@ -5405,7 +5403,9 @@
             },
             "sms:displayName": "dbGapAccession",
             "sms:required": "sms:false",
-            "sms:validationRules": []
+            "sms:validationRules": [
+                "regex search ^dbgap:"
+            ]
         },
         {
             "@id": "bts:Control",
@@ -5615,7 +5615,9 @@
             },
             "sms:displayName": "DOID",
             "sms:required": "sms:true",
-            "sms:validationRules": []
+            "sms:validationRules": [
+                "regex search ^DOID error"
+            ]
         },
         {
             "@id": "bts:AssociatedCodeURL",

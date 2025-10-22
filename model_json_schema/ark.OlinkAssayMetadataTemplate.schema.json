@@ -10,21 +10,29 @@
       },
       "minLength": 1
     },
+    "platform": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Illumina NovaSeq 6000",
+          "Illumina NextSeq 500",
+          "Olink Signature Q100",
+          "Fluidigm BioMark",
+          ""
+        ]
+      },
+      "maxItems": 4
+    },
+    "targetPanelSize": {},
     "assay": {
       "enum": [
-        "Olink Focus",
-        "Olink Flex",
         "Olink Explore HT",
         "Olink Target 48",
         "Olink Reveal",
-        "Olink Target 96"
+        "Olink Target 96",
+        "Olink Flex",
+        "Olink Focus"
       ]
-    },
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
     },
     "targetPanel": {
       "not": {
@@ -32,19 +40,11 @@
       },
       "minLength": 1
     },
-    "targetPanelSize": {},
-    "platform": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "Olink Signature Q100",
-          "Fluidigm BioMark",
-          "Illumina NextSeq 500",
-          "Illumina NovaSeq 6000",
-          ""
-        ]
+    "targetPanelSynID": {
+      "not": {
+        "type": "null"
       },
-      "maxItems": 4
+      "minLength": 1
     },
     "Component": {
       "not": {
@@ -56,8 +56,8 @@
   "required": [
     "plateID",
     "assay",
-    "targetPanelSynID",
     "targetPanel",
+    "targetPanelSynID",
     "Component"
   ]
 }
