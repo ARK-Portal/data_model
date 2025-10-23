@@ -4,6 +4,12 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "specimenModality": {
+      "enum": [
+        "single specimen",
+        "multispecimen"
+      ]
+    },
     "Component": {
       "not": {
         "type": "null"
@@ -16,49 +22,43 @@
       },
       "minLength": 1
     },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
-    },
     "fileFormat": {
       "enum": [
         "fastq",
         ""
       ]
     },
-    "readLength": {},
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "WES",
-          "snRNASeq",
-          "RNASeq",
-          "feature barcode sequencing",
-          "scRNASeq",
-          "CITESeq",
           "WGS",
+          "scRNASeq",
+          "WES",
+          "RNASeq",
           "snATACSeq",
-          "scVDJSeq",
+          "feature barcode sequencing",
+          "snRNASeq",
           "VDJSeq",
+          "CITESeq",
+          "scVDJSeq",
           "ASAPSeq"
         ]
       },
       "maxItems": 11
     },
-    "libraryID": {},
-    "individualID": {},
+    "readLength": {},
     "biospecimenID": {},
+    "individualID": {},
+    "libraryID": {},
     "targetPanelSynID": {},
     "targetPanelSize": {},
     "targetPanel": {}
   },
   "required": [
+    "specimenModality",
     "Component",
     "Filename",
-    "specimenModality",
     "assay"
   ],
   "allOf": [
@@ -67,7 +67,7 @@
         "properties": {
           "specimenModality": {
             "enum": [
-              "multispecimen"
+              "single specimen"
             ]
           }
         },
@@ -77,10 +77,15 @@
       },
       "then": {
         "properties": {
-          "libraryID": {}
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
         },
         "required": [
-          "libraryID"
+          "biospecimenID"
         ]
       }
     },
@@ -116,7 +121,7 @@
         "properties": {
           "specimenModality": {
             "enum": [
-              "single specimen"
+              "multispecimen"
             ]
           }
         },
@@ -126,15 +131,10 @@
       },
       "then": {
         "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
+          "libraryID": {}
         },
         "required": [
-          "biospecimenID"
+          "libraryID"
         ]
       }
     },

@@ -4,45 +4,11 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "fileFormat": {
-      "enum": [
-        "geojson",
-        "bed",
-        "rec",
-        "tgz",
-        "xls",
-        "h5",
-        "txt",
-        "pdf",
-        "tsv",
-        "tbi",
-        "rds",
-        "info",
-        "bai",
-        "bam",
-        "mtx",
-        "csv",
-        "vcf",
-        "docx",
-        "parquet",
-        "dose",
-        "erate",
-        "h5ad",
-        "fam",
-        "xlsx",
-        "zip",
-        "bim",
-        "fcs",
-        "fastq"
-      ]
-    },
-    "resourceType": {
-      "enum": [
-        "experimental data",
-        "code",
-        "figure",
-        "metadata"
-      ]
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "Filename": {
       "not": {
@@ -56,25 +22,59 @@
       },
       "minLength": 1
     },
-    "specimenModality": {
+    "fileFormat": {
       "enum": [
-        "multispecimen",
-        "single specimen"
+        "h5ad",
+        "dose",
+        "docx",
+        "rec",
+        "pdf",
+        "bam",
+        "tsv",
+        "erate",
+        "tgz",
+        "fcs",
+        "geojson",
+        "rds",
+        "bai",
+        "info",
+        "xlsx",
+        "txt",
+        "mtx",
+        "bim",
+        "fastq",
+        "tbi",
+        "xls",
+        "vcf",
+        "h5",
+        "fam",
+        "bed",
+        "zip",
+        "csv",
+        "parquet"
       ]
     },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+    "specimenModality": {
+      "enum": [
+        "single specimen",
+        "multispecimen"
+      ]
+    },
+    "resourceType": {
+      "enum": [
+        "figure",
+        "experimental data",
+        "metadata",
+        "code"
+      ]
     }
   },
   "required": [
-    "fileFormat",
-    "resourceType",
+    "Component",
     "Filename",
     "plateID",
+    "fileFormat",
     "specimenModality",
-    "Component"
+    "resourceType"
   ]
 }
