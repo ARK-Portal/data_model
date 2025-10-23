@@ -4,31 +4,51 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "fileFormat": {
+      "enum": [
+        "geojson",
+        "bed",
+        "rec",
+        "tgz",
+        "xls",
+        "h5",
+        "txt",
+        "pdf",
+        "tsv",
+        "tbi",
+        "rds",
+        "info",
+        "bai",
+        "bam",
+        "mtx",
+        "csv",
+        "vcf",
+        "docx",
+        "parquet",
+        "dose",
+        "erate",
+        "h5ad",
+        "fam",
+        "xlsx",
+        "zip",
+        "bim",
+        "fcs",
+        "fastq"
+      ]
+    },
+    "resourceType": {
+      "enum": [
+        "experimental data",
+        "code",
+        "figure",
+        "metadata"
+      ]
+    },
     "Filename": {
       "not": {
         "type": "null"
       },
       "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "resourceType": {
-      "enum": [
-        "metadata",
-        "experimental data",
-        "figure",
-        "code"
-      ]
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
     },
     "plateID": {
       "not": {
@@ -36,45 +56,25 @@
       },
       "minLength": 1
     },
-    "fileFormat": {
+    "specimenModality": {
       "enum": [
-        "geojson",
-        "fastq",
-        "fam",
-        "xls",
-        "zip",
-        "bed",
-        "h5ad",
-        "vcf",
-        "bai",
-        "dose",
-        "txt",
-        "erate",
-        "mtx",
-        "tgz",
-        "rds",
-        "tbi",
-        "bim",
-        "rec",
-        "pdf",
-        "csv",
-        "parquet",
-        "h5",
-        "docx",
-        "tsv",
-        "info",
-        "fcs",
-        "xlsx",
-        "bam"
+        "multispecimen",
+        "single specimen"
       ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     }
   },
   "required": [
-    "Filename",
-    "Component",
+    "fileFormat",
     "resourceType",
-    "specimenModality",
+    "Filename",
     "plateID",
-    "fileFormat"
+    "specimenModality",
+    "Component"
   ]
 }
