@@ -38,14 +38,13 @@ def get_valid_values_dict(df):
     validvals[attribute] = validvals[attribute].replace(", ", ",")
     validvals[attribute] = validvals[attribute].replace(" ,", ",")
     validvals[attribute] = validvals[attribute].split(",")
-    # sort alphabetically
-    validvals[attribute].sort()
   
   return validvals
 
 def update_all_attributes(allAttr, vv):
   # update allAttr with valid values from all_vv
   for a in all_vv.keys():
+    # sort alphabetically
     all_vv[a].sort()
     vv_string = ", ".join(all_vv[a])
     allAttr.loc[allAttr.Attribute == a, "Valid Values"] = vv_string
@@ -66,7 +65,7 @@ allAttr = pd.read_csv("ark.all_attributes.csv")
 all_vv = get_valid_values_dict(allAttr)
 
 # then compile context-specific valid values
-new_rows = {} # a dict to hold any new attributes to be added to allAttr later
+new_rows = [] # a list to hold any new attributes to be added to allAttr later
 add_new_rows = False # logical variable to indicate if new rows need to be added to allAttr
 for context in contexts:
   #print(context)
@@ -81,29 +80,31 @@ for context in contexts:
       merged = list(set(all_vv[a] + context_vv[a]))
       all_vv[a] = merged
     else:
-      print(f"Warning: {a} currently not defined as an attribute in ark.all_attributes.csv *with valid values*.")
+      print(f"Warning: '{a}' is currently not defined as an attribute in ark.all_attributes.csv *with valid values*.")
       #sys.exit(1)
       if a not in list(allAttr.Attribute):
         add_new_rows = True # logical variable to indicate if new rows need to be added to allAttr
-        print(f"{a} does not exist in ark.all_attributes.csv and will be added as is defined in {context}.")
+        print(f"'{a}' does not exist in ark.all_attributes.csv and will be added as is defined in {context}.")
         # collect new attr in dict to be added to allAttr at a later time
-        new_row = contextCSV[contextCSV.Attribute == a].iloc[0].to_dict()
-        new_rows = new_rows + new_row
+        #new_row = contextCSV[contextCSV.Attribute == a].iloc[0]
+        new_row = contextCSV.loc[contextCSV.Attribute == a, :]
+        new_rows.append(new_row)
       else:
         # add context-specific valid values to all_vv
-        print("Else, the context specific valid values will be added to the attribute in ark.all_attributes.csv.")
+        print(f"'{a}' context-specific valid values will be added to the attribute in ark.all_attributes.csv.")
         all_vv[a] = context_vv[a]
 
-# adding any context-specific valid values to ark.all_attributes.csv just in case they weren't tracked there
-update_all_attributes(allAttr, all_vv)
-
 if add_new_rows:
-  df = pd.DataFrame(new_rows)
+  df = pd.concat(new_rows)
+  #df.to_csv("temp_new_attributes.csv", index=False, quoting=csv.QUOTE_ALL) # testing purposes
   allAttr = pd.concat([allAttr, df], ignore_index=True)
   # sanity check for duplicated attributes
   if allAttr.Attribute.duplicated().any():
     print("Error: Duplicated attributes found in ark.all_attributes.csv after adding new attributes from contexts.")
     sys.exit(1)
+
+# adding any context-specific valid values to ark.all_attributes.csv just in case they weren't tracked there
+update_all_attributes(allAttr, all_vv)
 
 # read in newest version and prep all attributes csv
 allAttr = pd.read_csv("ark.all_attributes.csv")
