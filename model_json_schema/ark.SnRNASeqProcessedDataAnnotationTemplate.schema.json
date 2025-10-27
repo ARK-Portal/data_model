@@ -4,78 +4,89 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "Filename": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "Olink Flex",
-          "LC-MS/MS",
-          "CosMX",
-          "snATACSeq",
-          "NULISA",
-          "Olink Explore HT",
-          "serial IHC",
-          "snRNASeq",
-          "imaging mass spectrometry",
-          "scVDJSeq",
-          "Olink Target 48",
-          "Xenium",
-          "Olink Target 96",
-          "CyTOF",
-          "RNASeq",
-          "scRNASeq",
-          "WES",
-          "multiplexed ELISA",
-          "feature barcode sequencing",
-          "imaging mass cytometry",
-          "Olink Reveal",
-          "Olink Focus",
-          "H&E",
-          "kiloplex",
-          "ASAPSeq",
-          "CITESeq",
-          "CE-MS",
           "flow cytometry",
-          "SNP array",
+          "Olink Target 48",
+          "Olink Reveal",
+          "WGS",
+          "ASAPSeq",
+          "Olink Focus",
+          "Xenium",
+          "NULISA",
+          "H&E",
+          "snRNASeq",
+          "Olink Target 96",
+          "serial IHC",
           "SomaScan",
+          "CITESeq",
+          "snATACSeq",
+          "scRNASeq",
+          "kiloplex",
           "VDJSeq",
-          "WGS"
+          "Olink Flex",
+          "RNASeq",
+          "SNP array",
+          "WES",
+          "Olink Explore HT",
+          "multiplexed ELISA",
+          "LC-MS/MS",
+          "CyTOF",
+          "CosMX",
+          "scVDJSeq",
+          "imaging mass cytometry",
+          "feature barcode sequencing",
+          "imaging mass spectrometry",
+          "CE-MS"
         ]
       },
       "maxItems": 32
     },
     "fileFormat": {
       "enum": [
-        "h5",
-        "bai",
-        "tgz",
+        "h5ad",
         "csv",
-        "bam",
         "xlsx",
         "tsv",
-        "txt",
+        "tgz",
+        "zip",
+        "h5",
+        "bed",
+        "bim",
+        "fam",
+        "xls",
+        "bam",
         "mtx",
         "Rds",
-        "zip",
-        "bim",
-        "h5ad",
-        "fam",
-        "bed",
-        "xls"
+        "bai",
+        "txt"
       ]
+    },
+    "cellRangerOutput": {
+      "enum": [
+        "filtered_peak_bc_matrix",
+        "filtered_feature_bc_matrix",
+        "Not Applicable",
+        "raw_peak_bc_matrix",
+        "filtered MEX",
+        "raw MEX",
+        "raw_feature_bc_matrix"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "dataLevel": {
       "enum": [
         "2",
-        "3",
         "1",
         "4",
+        "3",
         "5"
       ]
     },
@@ -89,18 +100,7 @@
       },
       "maxItems": 2
     },
-    "cellRangerOutput": {
-      "enum": [
-        "Not Applicable",
-        "filtered_feature_bc_matrix",
-        "raw MEX",
-        "raw_feature_bc_matrix",
-        "filtered_peak_bc_matrix",
-        "raw_peak_bc_matrix",
-        "filtered MEX"
-      ]
-    },
-    "Component": {
+    "Filename": {
       "not": {
         "type": "null"
       },
@@ -108,23 +108,23 @@
     },
     "specimenModality": {
       "enum": [
-        "single specimen",
-        "multispecimen"
+        "multispecimen",
+        "single specimen"
       ]
     },
     "targetPanelSize": {},
-    "targetPanel": {},
     "targetPanelSynID": {},
+    "targetPanel": {},
     "RObjectClass": {
       "enum": [
-        "matrix",
-        "list",
-        "data.frame",
         "Symphony reference",
-        "sparse matrix",
         "Seurat object",
-        "ROCR prediction.object",
         "vector",
+        "matrix",
+        "ROCR prediction.object",
+        "data.frame",
+        "list",
+        "sparse matrix",
         "SummarizedExperiment",
         ""
       ]
@@ -139,10 +139,10 @@
       "type": "array",
       "items": {
         "enum": [
+          "epigenomic peaks",
+          "differential expression results",
           "barcode counts",
           "gene counts",
-          "differential expression results",
-          "epigenomic peaks",
           ""
         ]
       },
@@ -152,13 +152,13 @@
     "individualID": {}
   },
   "required": [
-    "Filename",
     "assay",
     "fileFormat",
-    "dataLevel",
-    "resourceType",
     "cellRangerOutput",
     "Component",
+    "dataLevel",
+    "resourceType",
+    "Filename",
     "specimenModality"
   ],
   "allOf": [
@@ -199,7 +199,7 @@
       },
       "then": {
         "properties": {
-          "targetPanel": {
+          "targetPanelSynID": {
             "not": {
               "type": "null"
             },
@@ -207,7 +207,7 @@
           }
         },
         "required": [
-          "targetPanel"
+          "targetPanelSynID"
         ]
       }
     },
@@ -226,7 +226,7 @@
       },
       "then": {
         "properties": {
-          "targetPanelSynID": {
+          "targetPanel": {
             "not": {
               "type": "null"
             },
@@ -234,7 +234,7 @@
           }
         },
         "required": [
-          "targetPanelSynID"
+          "targetPanel"
         ]
       }
     },
@@ -255,14 +255,14 @@
         "properties": {
           "RObjectClass": {
             "enum": [
-              "matrix",
-              "list",
-              "data.frame",
               "Symphony reference",
-              "sparse matrix",
               "Seurat object",
-              "ROCR prediction.object",
               "vector",
+              "matrix",
+              "ROCR prediction.object",
+              "data.frame",
+              "list",
+              "sparse matrix",
               "SummarizedExperiment",
               ""
             ]
@@ -318,10 +318,10 @@
             "type": "array",
             "items": {
               "enum": [
+                "epigenomic peaks",
+                "differential expression results",
                 "barcode counts",
                 "gene counts",
-                "differential expression results",
-                "epigenomic peaks",
                 ""
               ]
             },

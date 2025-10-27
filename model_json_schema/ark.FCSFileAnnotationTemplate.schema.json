@@ -4,22 +4,25 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "dataLevel": {
+    "assay": {
       "enum": [
-        "5",
-        "2",
-        "3",
-        "4",
-        "1"
+        "CyTOF",
+        "flow cytometry"
       ]
     },
-    "eventCount": {},
     "Filename": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "eventCount": {},
     "fileFormat": {
       "enum": [
         "fcs",
@@ -32,29 +35,16 @@
         "single specimen"
       ]
     },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "assay": {
-      "enum": [
-        "CyTOF",
-        "flow cytometry"
-      ]
-    },
     "dataCollectionBatch": {},
     "sampleProcessingBatch": {},
     "individualID": {},
     "biospecimenID": {}
   },
   "required": [
-    "dataLevel",
+    "assay",
     "Filename",
-    "specimenModality",
     "Component",
-    "assay"
+    "specimenModality"
   ],
   "allOf": [
     {
