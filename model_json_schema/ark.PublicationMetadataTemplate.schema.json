@@ -4,26 +4,7 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "PMCID": {},
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "PMID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
       "not": {
         "type": "null"
       },
@@ -35,27 +16,44 @@
       },
       "minLength": 1
     },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "AIM for RA",
-          "STAMP",
-          "SLE",
-          "V-CoRT",
-          "RA",
-          "LOCKIT",
-          "ELLIPSS"
-        ]
+    "associatedDataset": {},
+    "journal": {
+      "not": {
+        "type": "null"
       },
-      "maxItems": 7
+      "minLength": 1
     },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "PMCID": {},
     "program": {
       "enum": [
-        "AMP AIM",
+        "Community Contribution",
         "AMP RA/SLE",
-        "Community Contribution"
+        "AMP AIM"
       ]
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "PMID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "publicationType": {
       "enum": [
@@ -64,18 +62,20 @@
         "peer-reviewed"
       ]
     },
-    "associatedDataset": {},
-    "journal": {
-      "not": {
-        "type": "null"
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SLE",
+          "ELLIPSS",
+          "LOCKIT",
+          "V-CoRT",
+          "RA",
+          "AIM for RA",
+          "STAMP"
+        ]
       },
-      "minLength": 1
-    },
-    "DOI": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+      "maxItems": 7
     },
     "programPhase": {
       "type": "array",
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "title",
-    "PMID",
     "year",
-    "Component",
     "publicationDate",
-    "project",
-    "program",
-    "publicationType",
     "journal",
-    "DOI"
+    "title",
+    "program",
+    "DOI",
+    "Component",
+    "PMID",
+    "publicationType",
+    "project"
   ],
   "allOf": [
     {
