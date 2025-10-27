@@ -4,6 +4,12 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
+      ]
+    },
     "Component": {
       "not": {
         "type": "null"
@@ -16,65 +22,59 @@
       },
       "minLength": 1
     },
+    "resourceType": {
+      "enum": [
+        "metadata",
+        "figure",
+        "code",
+        "experimental data"
+      ]
+    },
+    "fileFormat": {
+      "enum": [
+        "zip",
+        "bed",
+        "bai",
+        "dose",
+        "pdf",
+        "bim",
+        "rec",
+        "tbi",
+        "xls",
+        "tgz",
+        "parquet",
+        "vcf",
+        "xlsx",
+        "h5",
+        "bam",
+        "fastq",
+        "txt",
+        "h5ad",
+        "rds",
+        "erate",
+        "docx",
+        "fam",
+        "tsv",
+        "csv",
+        "geojson",
+        "mtx",
+        "fcs",
+        "info"
+      ]
+    },
     "plateID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
-    },
-    "fileFormat": {
-      "enum": [
-        "h5ad",
-        "dose",
-        "docx",
-        "rec",
-        "pdf",
-        "bam",
-        "tsv",
-        "erate",
-        "tgz",
-        "fcs",
-        "geojson",
-        "rds",
-        "bai",
-        "info",
-        "xlsx",
-        "txt",
-        "mtx",
-        "bim",
-        "fastq",
-        "tbi",
-        "xls",
-        "vcf",
-        "h5",
-        "fam",
-        "bed",
-        "zip",
-        "csv",
-        "parquet"
-      ]
-    },
-    "specimenModality": {
-      "enum": [
-        "single specimen",
-        "multispecimen"
-      ]
-    },
-    "resourceType": {
-      "enum": [
-        "figure",
-        "experimental data",
-        "metadata",
-        "code"
-      ]
     }
   },
   "required": [
+    "specimenModality",
     "Component",
     "Filename",
-    "plateID",
+    "resourceType",
     "fileFormat",
-    "specimenModality",
-    "resourceType"
+    "plateID"
   ]
 }

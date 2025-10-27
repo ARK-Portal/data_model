@@ -4,14 +4,8 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "PMCID": {},
-    "DOI": {
+    "title": {
       "not": {
         "type": "null"
       },
@@ -23,19 +17,13 @@
       },
       "minLength": 1
     },
+    "year": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "journal": {
       "not": {
         "type": "null"
       },
@@ -47,18 +35,17 @@
       },
       "minLength": 1
     },
-    "associatedDataset": {},
     "project": {
       "type": "array",
       "items": {
         "enum": [
-          "RA",
-          "ELLIPSS",
-          "LOCKIT",
-          "STAMP",
           "AIM for RA",
+          "STAMP",
+          "SLE",
           "V-CoRT",
-          "SLE"
+          "RA",
+          "LOCKIT",
+          "ELLIPSS"
         ]
       },
       "maxItems": 7
@@ -66,16 +53,29 @@
     "program": {
       "enum": [
         "AMP AIM",
-        "Community Contribution",
-        "AMP RA/SLE"
+        "AMP RA/SLE",
+        "Community Contribution"
       ]
     },
     "publicationType": {
       "enum": [
+        "correction",
         "pre-print",
-        "peer-reviewed",
-        "correction"
+        "peer-reviewed"
       ]
+    },
+    "associatedDataset": {},
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "programPhase": {
       "type": "array",
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "year",
-    "DOI",
-    "PMID",
-    "Component",
     "title",
-    "journal",
+    "PMID",
+    "year",
+    "Component",
     "publicationDate",
     "project",
     "program",
-    "publicationType"
+    "publicationType",
+    "journal",
+    "DOI"
   ],
   "allOf": [
     {
