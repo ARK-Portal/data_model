@@ -4,40 +4,9 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "associatedDataset": {},
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "PMCID": {},
-    "program": {
-      "enum": [
-        "Community Contribution",
-        "AMP RA/SLE",
-        "AMP AIM"
-      ]
-    },
-    "DOI": {
+    "year": {
       "not": {
         "type": "null"
       },
@@ -49,40 +18,71 @@
       },
       "minLength": 1
     },
+    "publicationType": {
+      "enum": [
+        "pre-print",
+        "correction",
+        "peer-reviewed"
+      ]
+    },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "Community Contribution",
+        "AMP RA/SLE",
+        "AMP AIM"
+      ]
+    },
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "V-CoRT",
+          "ELLIPSS",
+          "STAMP",
+          "AIM for RA",
+          "RA",
+          "SLE",
+          "LOCKIT"
+        ]
+      },
+      "maxItems": 7
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "PMID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "publicationType": {
-      "enum": [
-        "correction",
-        "pre-print",
-        "peer-reviewed"
-      ]
-    },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "SLE",
-          "ELLIPSS",
-          "LOCKIT",
-          "V-CoRT",
-          "RA",
-          "AIM for RA",
-          "STAMP"
-        ]
-      },
-      "maxItems": 7
-    },
     "programPhase": {
       "type": "array",
       "items": {
         "enum": [
-          "II",
           "I",
+          "II",
           ""
         ]
       },
@@ -91,15 +91,15 @@
   },
   "required": [
     "year",
-    "publicationDate",
-    "journal",
+    "Component",
+    "publicationType",
     "title",
     "program",
+    "journal",
+    "publicationDate",
+    "project",
     "DOI",
-    "Component",
-    "PMID",
-    "publicationType",
-    "project"
+    "PMID"
   ],
   "allOf": [
     {
@@ -121,8 +121,8 @@
             "type": "array",
             "items": {
               "enum": [
-                "II",
-                "I"
+                "I",
+                "II"
               ]
             },
             "maxItems": 2

@@ -6,59 +6,53 @@
   "properties": {
     "biospecimenType": {
       "enum": [
-        "fibroblast-like synoviocyte",
-        "synovial fluid",
         "synovial tissue",
-        "total leukocytes",
+        "serum",
         "urine",
         "salivary gland",
-        "serum",
-        "PBMCs",
-        "kidney biopsy",
-        "none",
-        "plasma",
         "stool",
-        "skin swab",
-        "skin biopsy",
-        "saliva",
+        "uvea",
+        "PBMCs",
         "suction blister cells",
-        "suction blister fluid",
+        "synovial fluid",
+        "plasma",
+        "none",
         "whole blood",
-        "uvea"
+        "kidney biopsy",
+        "fibroblast-like synoviocyte",
+        "skin biopsy",
+        "total leukocytes",
+        "saliva",
+        "suction blister fluid",
+        "skin swab"
       ]
     },
-    "visitID": {},
-    "individualID": {
-      "not": {
-        "type": "null"
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "V-CoRT",
+          "RA",
+          "SLE",
+          "ELLIPSS",
+          "LOCKIT",
+          "AIM for RA",
+          "STAMP"
+        ]
       },
-      "minLength": 1
+      "maxItems": 7
     },
     "biospecimenSubtype": {
       "enum": [
-        "nuclei suspension",
-        "PFA-fixed tissue",
-        "flow-sorted cells",
-        "fresh tissue",
-        "cell or tissue lysate",
-        "frozen tissue",
         "cell suspension",
+        "nuclei suspension",
+        "fresh tissue",
         "FFPE tissue",
+        "cell or tissue lysate",
+        "PFA-fixed tissue",
+        "frozen tissue",
+        "flow-sorted cells",
         ""
-      ]
-    },
-    "biospecimenID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "parentBiospecimenID": {},
-    "program": {
-      "enum": [
-        "AMP AIM",
-        "AMP RA/SLE",
-        "Community Contribution"
       ]
     },
     "Component": {
@@ -67,67 +61,73 @@
       },
       "minLength": 1
     },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "LOCKIT",
-          "ELLIPSS",
-          "SLE",
-          "V-CoRT",
-          "AIM for RA",
-          "RA",
-          "STAMP"
-        ]
+    "parentBiospecimenID": {},
+    "visitID": {},
+    "individualID": {
+      "not": {
+        "type": "null"
       },
-      "maxItems": 7
+      "minLength": 1
     },
-    "synovialCollectionProcedure": {
+    "program": {
       "enum": [
-        "arthroplasty",
-        "biopsy",
-        "unknown",
-        "synovectomy",
-        ""
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
       ]
     },
+    "biospecimenID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "krennSynovitisScore": {},
+    "krennInflammatory": {},
+    "krennStroma": {},
+    "krennLining": {},
     "anatomicalSite": {
       "enum": [
-        "right ankle joint",
         "left ankle joint",
-        "right 2nd MTP joint",
         "left wrist joint",
-        "left hip joint",
-        "right 1st MTP joint",
-        "left 2nd MCP joint",
-        "right 2nd MCP joint",
         "right 3rd MCP joint",
         "right hip joint",
         "right knee joint",
-        "left knee joint",
+        "right 2nd MTP joint",
+        "right 2nd MCP joint",
+        "left hip joint",
         "right wrist joint",
-        "unknown",
+        "left knee joint",
         "other site",
+        "right 1st MTP joint",
+        "unknown",
+        "left 2nd MCP joint",
+        "right ankle joint",
         ""
       ]
     },
-    "krennLining": {},
-    "krennStroma": {},
-    "krennSynovitisScore": {},
-    "krennInflammatory": {},
+    "synovialCollectionProcedure": {
+      "enum": [
+        "unknown",
+        "biopsy",
+        "synovectomy",
+        "arthroplasty",
+        ""
+      ]
+    },
     "skinSiteStatus": {
       "enum": [
-        "healthy control",
-        "lesional",
         "lesional proximal",
+        "healthy control",
         "non-lesional",
+        "lesional",
         ""
       ]
     },
     "salivaCollectionProcedure": {
       "enum": [
-        "stimulated",
         "unstimulated",
+        "stimulated",
         ""
       ]
     },
@@ -138,355 +138,13 @@
   },
   "required": [
     "biospecimenType",
-    "individualID",
-    "biospecimenID",
-    "program",
+    "project",
     "Component",
-    "project"
+    "individualID",
+    "program",
+    "biospecimenID"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial fluid"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "synovialCollectionProcedure": {
-            "enum": [
-              "arthroplasty",
-              "biopsy",
-              "unknown",
-              "synovectomy"
-            ]
-          }
-        },
-        "required": [
-          "synovialCollectionProcedure"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial tissue"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "synovialCollectionProcedure": {
-            "enum": [
-              "arthroplasty",
-              "biopsy",
-              "unknown",
-              "synovectomy"
-            ]
-          }
-        },
-        "required": [
-          "synovialCollectionProcedure"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial fluid"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial tissue"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "skin swab"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "skin biopsy"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "suction blister cells"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "suction blister fluid"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "anatomicalSite": {
-            "enum": [
-              "right ankle joint",
-              "left ankle joint",
-              "right 2nd MTP joint",
-              "left wrist joint",
-              "left hip joint",
-              "right 1st MTP joint",
-              "left 2nd MCP joint",
-              "right 2nd MCP joint",
-              "right 3rd MCP joint",
-              "right hip joint",
-              "right knee joint",
-              "left knee joint",
-              "right wrist joint",
-              "unknown",
-              "other site"
-            ]
-          }
-        },
-        "required": [
-          "anatomicalSite"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial tissue"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "krennLining": {}
-        },
-        "required": [
-          "krennLining"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "synovial tissue"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "krennStroma": {}
-        },
-        "required": [
-          "krennStroma"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
@@ -536,7 +194,349 @@
         "properties": {
           "biospecimenType": {
             "enum": [
+              "synovial tissue"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "krennStroma": {}
+        },
+        "required": [
+          "krennStroma"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "synovial tissue"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "krennLining": {}
+        },
+        "required": [
+          "krennLining"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "synovial tissue"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "suction blister cells"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "synovial fluid"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "skin biopsy"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "suction blister fluid"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
               "skin swab"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "anatomicalSite": {
+            "enum": [
+              "left ankle joint",
+              "left wrist joint",
+              "right 3rd MCP joint",
+              "right hip joint",
+              "right knee joint",
+              "right 2nd MTP joint",
+              "right 2nd MCP joint",
+              "left hip joint",
+              "right wrist joint",
+              "left knee joint",
+              "other site",
+              "right 1st MTP joint",
+              "unknown",
+              "left 2nd MCP joint",
+              "right ankle joint"
+            ]
+          }
+        },
+        "required": [
+          "anatomicalSite"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "synovial tissue"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "synovialCollectionProcedure": {
+            "enum": [
+              "unknown",
+              "biopsy",
+              "synovectomy",
+              "arthroplasty"
+            ]
+          }
+        },
+        "required": [
+          "synovialCollectionProcedure"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "synovial fluid"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "synovialCollectionProcedure": {
+            "enum": [
+              "unknown",
+              "biopsy",
+              "synovectomy",
+              "arthroplasty"
+            ]
+          }
+        },
+        "required": [
+          "synovialCollectionProcedure"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "suction blister cells"
             ]
           }
         },
@@ -548,10 +548,10 @@
         "properties": {
           "skinSiteStatus": {
             "enum": [
-              "healthy control",
-              "lesional",
               "lesional proximal",
-              "non-lesional"
+              "healthy control",
+              "non-lesional",
+              "lesional"
             ]
           }
         },
@@ -577,39 +577,10 @@
         "properties": {
           "skinSiteStatus": {
             "enum": [
-              "healthy control",
-              "lesional",
               "lesional proximal",
-              "non-lesional"
-            ]
-          }
-        },
-        "required": [
-          "skinSiteStatus"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenType": {
-            "enum": [
-              "suction blister cells"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "skinSiteStatus": {
-            "enum": [
               "healthy control",
-              "lesional",
-              "lesional proximal",
-              "non-lesional"
+              "non-lesional",
+              "lesional"
             ]
           }
         },
@@ -635,10 +606,39 @@
         "properties": {
           "skinSiteStatus": {
             "enum": [
-              "healthy control",
-              "lesional",
               "lesional proximal",
-              "non-lesional"
+              "healthy control",
+              "non-lesional",
+              "lesional"
+            ]
+          }
+        },
+        "required": [
+          "skinSiteStatus"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenType": {
+            "enum": [
+              "skin swab"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "skinSiteStatus": {
+            "enum": [
+              "lesional proximal",
+              "healthy control",
+              "non-lesional",
+              "lesional"
             ]
           }
         },
@@ -664,8 +664,8 @@
         "properties": {
           "salivaCollectionProcedure": {
             "enum": [
-              "stimulated",
-              "unstimulated"
+              "unstimulated",
+              "stimulated"
             ]
           }
         },
@@ -679,28 +679,6 @@
         "properties": {
           "biospecimenSubtype": {
             "enum": [
-              "flow-sorted cells"
-            ]
-          }
-        },
-        "required": [
-          "biospecimenSubtype"
-        ]
-      },
-      "then": {
-        "properties": {
-          "cellType": {}
-        },
-        "required": [
-          "cellType"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "biospecimenSubtype": {
-            "enum": [
               "cell suspension"
             ]
           }
@@ -733,10 +711,10 @@
       },
       "then": {
         "properties": {
-          "userDefinedCellType": {}
+          "cellType": {}
         },
         "required": [
-          "userDefinedCellType"
+          "cellType"
         ]
       }
     },
@@ -768,6 +746,28 @@
           "biospecimenSubtype": {
             "enum": [
               "flow-sorted cells"
+            ]
+          }
+        },
+        "required": [
+          "biospecimenSubtype"
+        ]
+      },
+      "then": {
+        "properties": {
+          "userDefinedCellType": {}
+        },
+        "required": [
+          "userDefinedCellType"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "biospecimenSubtype": {
+            "enum": [
+              "cell suspension"
             ]
           }
         },
@@ -789,7 +789,7 @@
         "properties": {
           "biospecimenSubtype": {
             "enum": [
-              "cell suspension"
+              "flow-sorted cells"
             ]
           }
         },

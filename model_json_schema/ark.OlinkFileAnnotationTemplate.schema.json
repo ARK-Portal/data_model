@@ -4,6 +4,32 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "resourceType": {
+      "enum": [
+        "code",
+        "figure",
+        "experimental data",
+        "metadata"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "plateID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
+      ]
+    },
     "Filename": {
       "not": {
         "type": "null"
@@ -12,69 +38,43 @@
     },
     "fileFormat": {
       "enum": [
-        "mtx",
-        "bam",
-        "bai",
-        "csv",
+        "h5",
         "pdf",
+        "xlsx",
         "tsv",
-        "info",
-        "tbi",
-        "docx",
-        "fcs",
-        "vcf",
-        "h5ad",
-        "bed",
+        "erate",
+        "fam",
         "fastq",
+        "h5ad",
+        "parquet",
+        "fcs",
+        "dose",
+        "info",
+        "bed",
+        "tgz",
         "geojson",
         "rds",
-        "tgz",
-        "h5",
-        "xlsx",
-        "parquet",
-        "dose",
-        "zip",
-        "fam",
+        "csv",
+        "mtx",
+        "docx",
+        "bam",
         "bim",
-        "erate",
-        "txt",
         "xls",
-        "rec"
+        "rec",
+        "bai",
+        "txt",
+        "tbi",
+        "zip",
+        "vcf"
       ]
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
-    },
-    "resourceType": {
-      "enum": [
-        "code",
-        "figure",
-        "metadata",
-        "experimental data"
-      ]
-    },
-    "plateID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
     }
   },
   "required": [
-    "Filename",
-    "fileFormat",
-    "specimenModality",
     "resourceType",
+    "Component",
     "plateID",
-    "Component"
+    "specimenModality",
+    "Filename",
+    "fileFormat"
   ]
 }
