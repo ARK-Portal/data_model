@@ -4,157 +4,159 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "libraryPrepMethod": {
-      "enum": [
-        "10x Chromium Next GEM Single Cell ATAC v2",
-        "10x Chromium Next GEM Single Cell 5' v2",
-        "10x GEM-X Universal 5? Gene Expression v3",
-        "Takara Human TCR profiling for Illumina",
-        "Takara Human TCRv2 profiling for Illumina",
-        "10x Chromium Single Cell Human BCR",
-        "NEBNext Human Immune Sequencing Kit",
-        "Fluidigm C1 HT",
-        "10x Chromium Next GEM Single Cell 3' 3.1",
-        "10x Chromium Single Cell Human TCR",
-        "QIAseq miRNA Library",
-        "NEBNext Ultra II Directional RNA Library",
-        "custom DASH-treatment",
-        "SMARTer Stranded Total RNA v2",
-        "10x Chromium Next GEM Single Cell 5' v1.1",
-        "SMART-Seq v4 Ultra Low Input RNA",
-        "in-house library prep",
-        "10x GEM-X Flex Gene Expression Human",
-        "Takara Human BCR profiling for Illumina",
-        "TruSeq Stranded mRNA",
-        "Chromium Next GEM Single Cell ATAC v1.1",
-        "SMART-Seq Human TCR with UMI",
-        "Takara Human scTCR profiling for Illumina",
-        "10x Chromium GEM-X Single Cell 5' v3",
-        "10x Chromium GEM-X Single Cell 3' v4",
-        "Nextera XT",
-        "SMART-Seq Human BCR with UMI",
-        "10x Chromium Fixed RNA Human Transcriptome",
-        "Nextera XT DNA",
-        "10x Chromium Next GEM Single Cell 3'",
-        "CEL-Seq2"
-      ]
-    },
     "nucleicAcidSource": {
       "type": "array",
       "items": {
         "enum": [
-          "rRNA-depleted RNA",
-          "gDNA",
-          "poly(A) RNA",
-          "surface protein feature barcode",
           "antigen capture barcode",
-          "intracellular protein feature barcode",
+          "multiplexing oligo",
+          "rRNA-depleted RNA",
+          "globin-depleted RNA",
+          "CRISPR protospacer feature barcode",
           "BCR mRNA",
           "Tn5-accessible gDNA",
-          "globin-depleted RNA",
-          "TCR mRNA",
-          "CRISPR protospacer feature barcode",
-          "multiplexing oligo"
+          "intracellular protein feature barcode",
+          "surface protein feature barcode",
+          "gDNA",
+          "poly(A) RNA",
+          "TCR mRNA"
         ]
       },
       "maxItems": 12
     },
-    "Component": {
-      "not": {
-        "type": "null"
+    "platform": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "Chromium Next GEM Chip Q",
+          "BD FACSAria III",
+          "BD FACSAria Fusion cell sorter",
+          "GEM-X Flex Gene Expression Chip",
+          "Not Applicable",
+          "Chromium Next GEM Chip K",
+          "Chromium Controller",
+          "Chromium Xo",
+          "Thermo Fisher Attune Xenith",
+          "BD FACSCanto",
+          "Visium CytAssist",
+          "BD FACSDiscover A8",
+          "GEM-X OCM 5' Chip",
+          "CyTOF XT",
+          "Xenium",
+          "unknown",
+          "Illumina NovaSeq X",
+          "BD FACSLyric Clinical",
+          "BD FACSMelody",
+          "Chromium iX",
+          "Chromium Next GEM Chip M",
+          "Illumina HiSeq 2500",
+          "BD FACSymphony S6",
+          "Cytek Aurora Evo",
+          "Chromium X",
+          "Helios Mass Cytometer",
+          "Thermo Fisher Attune NxT",
+          "Chromium Next GEM Chip H",
+          "Illumina HiSeq X Ten",
+          "Olink Signature Q100",
+          "Hyperion",
+          "Chromium GEM-X Single Cell 3' Chip v4",
+          "Sony MA900",
+          "Thermo Fisher Attune CytPix",
+          "Illumina NovaSeq 6000",
+          "Illumina NextSeq 500",
+          "Cytek Aurora",
+          "Chromium Next GEM Chip G",
+          "BD LSRFortessa",
+          "BD FACSCanto II",
+          "Fluidigm BioMark",
+          "BD FACSDiscover S8",
+          "none"
+        ]
       },
-      "minLength": 1
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
+      "maxItems": 43
     },
     "alignmentReference": {
       "enum": [
-        "10x Cell Ranger Human GRCh38 2024-A",
-        "unknown",
         "vdj_GRCh38_alts_ensembl-4.0.0",
-        "10x Cell Ranger Human GRCh38 2020-A"
+        "10x Cell Ranger Human GRCh38 2020-A",
+        "10x Cell Ranger Human GRCh38 2024-A",
+        "unknown"
       ]
     },
-    "softwareAndVersion": {
-      "enum": [
-        "Space Ranger 3.1.3",
-        "Space Ranger 3.0.0",
-        "Cell Ranger v3.0.0",
-        "Cell Ranger v7.1.0",
-        "Cell Ranger v5.0.0",
-        "Cell Ranger v7.0.0",
-        "Cell Ranger v7.0.1",
-        "BD FACSDiva 8.0.1",
-        "Cell Ranger v5.0.1",
-        "Cell Ranger v6.0.0",
-        "Cell Ranger ATAC v1.1.0",
-        "Space Ranger 3.0.1",
-        "Cell Ranger v8.0.0",
-        "Space Ranger 3.1.0",
-        "Cell Ranger v6.1.1",
-        "Cell Ranger v6.0.1",
-        "Cell Ranger 9.0.1",
-        "Space Ranger 3.1.2",
-        "Cell Ranger v3.0.1",
-        "Cell Ranger v8.0.1",
-        "Cell Ranger v6.1.2",
-        "Cell Ranger v3.1.0",
-        "Cell Ranger v6.0.2",
-        "Cell Ranger v4.0.0",
-        "Cell Ranger v7.2.0",
-        "Cell Ranger v9.0.0",
-        "Space Ranger 3.1.1",
-        "demuxlet",
-        "Cell Ranger v3.0.2",
-        "Cell Ranger v6.1.0",
-        ""
-      ]
-    },
-    "sampleProcessingBatch": {},
-    "dataCollectionBatch": {},
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "Xenium",
-          "imaging mass cytometry",
-          "LC-MS/MS",
-          "Olink Target 48",
-          "multiplexed ELISA",
-          "VDJSeq",
+          "CITESeq",
           "Olink Flex",
+          "H&E",
           "Olink Target 96",
+          "Xenium",
+          "snRNASeq",
+          "CosMX",
+          "Olink Focus",
+          "scRNASeq",
+          "RNASeq",
+          "SNP array",
+          "WGS",
+          "kiloplex",
+          "flow cytometry",
+          "VDJSeq",
+          "Olink Explore HT",
+          "Olink Reveal",
+          "LC-MS/MS",
+          "CyTOF",
+          "ASAPSeq",
+          "NULISA",
+          "imaging mass cytometry",
+          "snATACSeq",
+          "feature barcode sequencing",
+          "multiplexed ELISA",
+          "Olink Target 48",
           "imaging mass spectrometry",
           "scVDJSeq",
-          "RNASeq",
-          "CITESeq",
-          "serial IHC",
-          "kiloplex",
-          "CE-MS",
-          "snRNASeq",
-          "SNP array",
-          "Olink Explore HT",
-          "scRNASeq",
-          "CosMX",
-          "snATACSeq",
           "SomaScan",
+          "CE-MS",
           "WES",
-          "WGS",
-          "Olink Reveal",
-          "H&E",
-          "feature barcode sequencing",
-          "ASAPSeq",
-          "Olink Focus",
-          "CyTOF",
-          "NULISA",
-          "flow cytometry"
+          "serial IHC"
         ]
       },
       "maxItems": 32
+    },
+    "libraryPrepMethod": {
+      "enum": [
+        "10x Chromium Single Cell Human TCR",
+        "CEL-Seq2",
+        "Takara Human TCRv2 profiling for Illumina",
+        "10x Chromium Single Cell Human BCR",
+        "SMART-Seq v4 Ultra Low Input RNA",
+        "SMARTer Stranded Total RNA v2",
+        "Fluidigm C1 HT",
+        "10x Chromium Next GEM Single Cell ATAC v2",
+        "Chromium Next GEM Single Cell ATAC v1.1",
+        "10x Chromium Next GEM Single Cell 3'",
+        "TruSeq Stranded mRNA",
+        "10x Chromium Next GEM Single Cell 3' 3.1",
+        "QIAseq miRNA Library",
+        "NEBNext Ultra II Directional RNA Library",
+        "Nextera XT DNA",
+        "10x Chromium GEM-X Single Cell 3' v4",
+        "10x Chromium Next GEM Single Cell 5' v2",
+        "SMART-Seq Human TCR with UMI",
+        "custom DASH-treatment",
+        "in-house library prep",
+        "Takara Human scTCR profiling for Illumina",
+        "Nextera XT",
+        "10x Chromium GEM-X Single Cell 5' v3",
+        "SMART-Seq Human BCR with UMI",
+        "10x Chromium Fixed RNA Human Transcriptome",
+        "10x GEM-X Universal 5? Gene Expression v3",
+        "Takara Human TCR profiling for Illumina",
+        "10x Chromium Next GEM Single Cell 5' v1.1",
+        "10x GEM-X Flex Gene Expression Human",
+        "Takara Human BCR profiling for Illumina",
+        "NEBNext Human Immune Sequencing Kit"
+      ]
     },
     "totalReads": {
       "not": {
@@ -162,79 +164,77 @@
       },
       "minLength": 1
     },
-    "platform": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "Xenium",
-          "BD FACSAria Fusion cell sorter",
-          "Chromium Next GEM Chip G",
-          "GEM-X OCM 5' Chip",
-          "Chromium Next GEM Chip Q",
-          "Chromium Next GEM Chip M",
-          "Helios Mass Cytometer",
-          "Olink Signature Q100",
-          "Chromium GEM-X Single Cell 3' Chip v4",
-          "none",
-          "Illumina NovaSeq 6000",
-          "Chromium Controller",
-          "BD FACSymphony S6",
-          "Sony MA900",
-          "BD FACSCanto II",
-          "BD FACSCanto",
-          "BD FACSDiscover A8",
-          "Chromium iX",
-          "Illumina HiSeq X Ten",
-          "Chromium Xo",
-          "Thermo Fisher Attune CytPix",
-          "Not Applicable",
-          "BD LSRFortessa",
-          "Cytek Aurora",
-          "unknown",
-          "BD FACSDiscover S8",
-          "Illumina NextSeq 500",
-          "Fluidigm BioMark",
-          "Chromium Next GEM Chip H",
-          "Visium CytAssist",
-          "Illumina NovaSeq X",
-          "BD FACSMelody",
-          "Chromium X",
-          "Cytek Aurora Evo",
-          "BD FACSAria III",
-          "Hyperion",
-          "Illumina HiSeq 2500",
-          "Thermo Fisher Attune Xenith",
-          "CyTOF XT",
-          "Chromium Next GEM Chip K",
-          "GEM-X Flex Gene Expression Chip",
-          "Thermo Fisher Attune NxT",
-          "BD FACSLyric Clinical"
-        ]
-      },
-      "maxItems": 43
-    },
-    "10xProbeSetReference": {
+    "dataCollectionBatch": {},
+    "softwareAndVersion": {
       "enum": [
-        "Flex Human Transcriptome Probe Set v1.0.1",
-        "Visium Human Transcriptome v2",
-        "Visium Human Transcriptome v1",
-        "custom probe set",
-        "Flex Human Transcriptome Probe Set v1.1.0",
+        "Cell Ranger v6.1.0",
+        "Space Ranger 3.0.1",
+        "Cell Ranger v8.0.1",
+        "Cell Ranger v7.0.1",
+        "Cell Ranger v3.0.1",
+        "Cell Ranger v4.0.0",
+        "Cell Ranger ATAC v1.1.0",
+        "Cell Ranger v9.0.0",
+        "Cell Ranger v6.0.2",
+        "Cell Ranger 9.0.1",
+        "Space Ranger 3.1.2",
+        "Cell Ranger v3.0.2",
+        "Cell Ranger v8.0.0",
+        "Space Ranger 3.1.3",
+        "Cell Ranger v6.0.1",
+        "Space Ranger 3.0.0",
+        "Cell Ranger v6.1.2",
+        "Cell Ranger v5.0.1",
+        "Cell Ranger v3.1.0",
+        "Space Ranger 3.1.0",
+        "Space Ranger 3.1.1",
+        "Cell Ranger v7.0.0",
+        "Cell Ranger v6.1.1",
+        "demuxlet",
+        "Cell Ranger v7.1.0",
+        "Cell Ranger v5.0.0",
+        "Cell Ranger v7.2.0",
+        "Cell Ranger v6.0.0",
+        "Cell Ranger v3.0.0",
+        "BD FACSDiva 8.0.1",
         ""
       ]
     },
-    "libraryID": {},
-    "biospecimenID": {}
+    "sampleProcessingBatch": {},
+    "specimenModality": {
+      "enum": [
+        "single specimen",
+        "multispecimen"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "10xProbeSetReference": {
+      "enum": [
+        "Flex Human Transcriptome Probe Set v1.1.0",
+        "custom probe set",
+        "Visium Human Transcriptome v2",
+        "Visium Human Transcriptome v1",
+        "Flex Human Transcriptome Probe Set v1.0.1",
+        ""
+      ]
+    },
+    "biospecimenID": {},
+    "libraryID": {}
   },
   "required": [
-    "libraryPrepMethod",
     "nucleicAcidSource",
-    "Component",
-    "specimenModality",
+    "platform",
     "alignmentReference",
     "assay",
+    "libraryPrepMethod",
     "totalReads",
-    "platform"
+    "specimenModality",
+    "Component"
   ],
   "allOf": [
     {
@@ -254,38 +254,16 @@
         "properties": {
           "10xProbeSetReference": {
             "enum": [
-              "Flex Human Transcriptome Probe Set v1.0.1",
+              "Flex Human Transcriptome Probe Set v1.1.0",
+              "custom probe set",
               "Visium Human Transcriptome v2",
               "Visium Human Transcriptome v1",
-              "custom probe set",
-              "Flex Human Transcriptome Probe Set v1.1.0"
+              "Flex Human Transcriptome Probe Set v1.0.1"
             ]
           }
         },
         "required": [
           "10xProbeSetReference"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "libraryID": {}
-        },
-        "required": [
-          "libraryID"
         ]
       }
     },
@@ -313,6 +291,28 @@
         },
         "required": [
           "biospecimenID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "libraryID": {}
+        },
+        "required": [
+          "libraryID"
         ]
       }
     }

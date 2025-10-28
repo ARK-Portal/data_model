@@ -4,55 +4,11 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "Filename": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "fileFormat": {
-      "enum": [
-        "mtx",
-        "bam",
-        "bai",
-        "csv",
-        "pdf",
-        "tsv",
-        "info",
-        "tbi",
-        "docx",
-        "fcs",
-        "vcf",
-        "h5ad",
-        "bed",
-        "fastq",
-        "geojson",
-        "rds",
-        "tgz",
-        "h5",
-        "xlsx",
-        "parquet",
-        "dose",
-        "zip",
-        "fam",
-        "bim",
-        "erate",
-        "txt",
-        "xls",
-        "rec"
-      ]
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
-    },
     "resourceType": {
       "enum": [
         "code",
-        "figure",
         "metadata",
+        "figure",
         "experimental data"
       ]
     },
@@ -62,7 +18,51 @@
       },
       "minLength": 1
     },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
+      ]
+    },
     "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "fileFormat": {
+      "enum": [
+        "fam",
+        "erate",
+        "vcf",
+        "xlsx",
+        "tgz",
+        "h5ad",
+        "bim",
+        "docx",
+        "csv",
+        "h5",
+        "zip",
+        "geojson",
+        "mtx",
+        "bed",
+        "parquet",
+        "txt",
+        "tsv",
+        "pdf",
+        "fastq",
+        "fcs",
+        "bam",
+        "dose",
+        "rds",
+        "bai",
+        "rec",
+        "tbi",
+        "info",
+        "xls"
+      ]
+    },
+    "Filename": {
       "not": {
         "type": "null"
       },
@@ -70,11 +70,11 @@
     }
   },
   "required": [
-    "Filename",
-    "fileFormat",
-    "specimenModality",
     "resourceType",
     "plateID",
-    "Component"
+    "specimenModality",
+    "Component",
+    "fileFormat",
+    "Filename"
   ]
 }
