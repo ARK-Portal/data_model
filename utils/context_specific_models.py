@@ -144,7 +144,9 @@ for context in contexts:
   
   # write most up-to-date list of context templates to file
   with open(templates_fid, "w") as f:
-    for t in set(templates):
+    sorted_uniq_list = sorted(list(set(templates)))
+    #for t in set(templates):
+    for t in sorted_uniq_list:
       a = f.write(f"{t}\t{context}\n")
   f.close()
 
