@@ -26,18 +26,18 @@ for context_dir in ${CONTEXTS[@]}; do
     #echo $CSV
     #echo $OUTJSON
     schematic manifest -c schematic_config.yml get -dt $template -oxlsx $XLSX -p $JSONLD
-    #mv $ORIGJSON $OUTJSON
+    mv $ORIGJSON $OUTJSON
     
     if [ -f model_templates/ark.xlsx ]; then
       mv model_templates/ark.xlsx $XLSX # schematic 24.11.2 bug only writes output to this when executed locally for some weird reason
     fi
     
     # generate json schema
-    rm $ORIGJSON # delete json schema created using old schematic functions
+    #rm $ORIGJSON # delete json schema created using old schematic functions
     # make json schema using new schematic functions
     #ORIGJSON2="temp/ark.${context}_model/${template}_validation_schema.json"
-    schematic schema generate-jsonschema -dms $JSONLD -dt $template -od temp -dml class_label
-    mv $ORIGJSON $OUTJSON
+    #schematic schema generate-jsonschema -dms $JSONLD -dt $template -od temp -dml class_label
+    #mv $ORIGJSON $OUTJSON
     #mv $ORIGJSON2 $OUTJSON
     
     # sleep for 10 seconds to keep google API from complaining
