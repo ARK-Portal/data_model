@@ -52,15 +52,14 @@ jobs:
 
       - name: Commit files if there are changes
         run: |
-          if [[ $(git diff --exit-code) ]]; then 
-            echo "Changes in ark.model.csv affect final jsonld which will be committed"
+          if [[ $(git status -z) ]]; then 
+            echo "Changes to branch files detected, changes will be committed."
             git config --local user.name "$GITHUB_ACTOR"
             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
             git add .
-            git commit -m "GitHub Action: convert ark.model.csv to ark.model.jsonld"
+            git commit -m "committing changes resulting from execution of ci-schema-convert workflow"
           else 
-            echo "Changes in ark.model.csv did not affect final jsonld, nothing to commit"
-            echo "Note that tests will still be run in the next job"
+            echo "No changes to branch files detected, nothing to commit"
           fi
     
       - name: Push changes
