@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/scrnaseq_assay_metadata_template.html
-date: 2025-09-12
+date: 2025-10-31
 ---
 {% assign mydata=site.data.csv.metadata_templates.scrnaseq_assay_metadata_template %}
 {% include content/scrnaseq_assay_metadata_template.md %}
