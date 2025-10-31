@@ -37,10 +37,14 @@ jobs:
       - name: Convert .csv to .jsonld
         run: |
           schematic schema convert ark.model.csv
-      
+
       - name: Generate metadata collection templates defined in model
         run: |
           bash utils/generate_metadata_templates.sh
+
+      - name: Clean up sensitive info
+        run: |
+          rm schematic_service_account_creds.json
 
       - name: Commit files if there are changes
         run: |
