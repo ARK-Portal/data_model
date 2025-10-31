@@ -22,7 +22,7 @@ done < model_templates/templates.txt
 echo "✓ xlsx templates created."
 
 # clean up/reorg remaining output from manifest get
-rm *.schema.json model_templates/
+rm *.schema.json
 echo "json schemas moved to model_templates/"
 
 echo "✓ Done!"
