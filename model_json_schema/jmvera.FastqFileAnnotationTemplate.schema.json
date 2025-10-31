@@ -1,0 +1,282 @@
+{
+  "$id": "http://example.com/FastqFileAnnotationTemplate_validation",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ARK Fastq File Annotation Template",
+  "type": "object",
+  "description": "A template outlining metadata to be collected and applied to fastq file entities as annotations in Synapse.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "Assay": {
+            "enum": [
+              "Featurebarcodesequencing"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "TargetPanel": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "TargetPanel"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Assay": {
+            "enum": [
+              "Featurebarcodesequencing"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "TargetPanelSize": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "TargetPanelSize"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Assay": {
+            "enum": [
+              "Featurebarcodesequencing"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "TargetPanelSynID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "TargetPanelSynID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SpecimenModality": {
+            "enum": [
+              "Multispecimen"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "LibraryID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "LibraryID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SpecimenModality": {
+            "enum": [
+              "Singlespecimen"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "BiospecimenID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "BiospecimenID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SpecimenModality": {
+            "enum": [
+              "Singlespecimen"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "IndividualID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "IndividualID"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "Assay": {
+      "description": "The technology used to generate the data in this file. Select all assays that apply. e.g., the GEX fastq files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+              "ASAPSeq",
+              "CITESeq",
+              "RNASeq",
+              "VDJSeq",
+              "WES",
+              "WGS",
+              "feature barcode sequencing",
+              "scRNASeq",
+              "scVDJSeq",
+              "snATACSeq",
+              "snRNASeq"
+          ]
+        },
+      "title": "assay",
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "BiospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "oneOf": [
+        {
+          "title": "array",
+          "type": "array"
+        },
+        {
+          "title": "null",
+          "type": "null"
+        }
+      ],
+      "title": "biospecimenID"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "not": {
+        "type": "null"
+      },
+      "title": "Component"
+    },
+    "FileFormat": {
+      "description": "Standard file format name or file extension",
+      "const": "fastq",
+      "title": "fileFormat"
+    },
+    "IndividualID": {
+      "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "oneOf": [
+        {
+          "title": "array",
+          "type": "array"
+        },
+        {
+          "title": "null",
+          "type": "null"
+        }
+      ],
+      "title": "individualID"
+    },
+    "LibraryID": {
+      "description": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
+      "title": "libraryID"
+    },
+    "ReadLength": {
+      "description": "The number of base pairs (bp) sequenced for reads in a fastq file.",
+      "oneOf": [
+        {
+          "title": "integer",
+          "type": "integer"
+        },
+        {
+          "title": "null",
+          "type": "null"
+        }
+      ],
+      "title": "readLength"
+    },
+    "SpecimenModality": {
+      "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
+      "oneOf": [
+        {
+          "enum": [
+            "multispecimen",
+            "single specimen"
+          ],
+          "title": "enum"
+        }
+      ],
+      "title": "specimenModality"
+    },
+    "TargetPanel": {
+      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+      "title": "targetPanel"
+    },
+    "TargetPanelSize": {
+      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+      "oneOf": [
+        {
+          "title": "integer",
+          "type": "integer"
+        },
+        {
+          "title": "null",
+          "type": "null"
+        }
+      ],
+      "title": "targetPanelSize"
+    },
+    "TargetPanelSynID": {
+      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+      "oneOf": [
+        {
+          "title": "string",
+          "type": "string"
+        },
+        {
+          "title": "null",
+          "type": "null"
+        }
+      ],
+      "pattern": "^syn[0-9]{8}",
+      "title": "targetPanelSynID"
+    }
+  },
+  "required": [
+    "Assay",
+    "Component",
+    "SpecimenModality", 
+    "FileFormat"
+  ]
+}
