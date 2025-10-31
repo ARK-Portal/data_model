@@ -19,10 +19,10 @@ while read template; do
   sleep 10 # prevent google API from complaining
   
 done < model_templates/templates.txt
-echo "✓ Created xlsx templates created."
+echo "✓ xlsx templates created."
 
 # clean up/reorg remaining output from manifest get
-mv *.schema.json model_templates/
+rm *.schema.json model_templates/
 echo "json schemas moved to model_templates/"
 
 echo "✓ Done!"
