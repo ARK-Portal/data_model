@@ -4,10 +4,6 @@
 # exit on error
 set -e
 
-# create schematic config yml
-echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
-echo "✓ Created schematic_service_account_creds.json from secrets for template generation."
-
 # generate list of templates defined in model
 cut -f1 -d',' ark.model.csv | grep -i template > model_templates/templates.txt
 sed -i 's/ //g' model_templates/templates.txt

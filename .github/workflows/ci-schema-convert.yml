@@ -34,6 +34,10 @@ jobs:
           pip install schematicpy==${{ env.SCHEMATIC_VERSION }}
           pip show schematicpy
 
+      - name: Create creds file
+        run: |
+          echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
+
       - name: Convert .csv to .jsonld
         run: |
           schematic schema convert ark.model.csv
