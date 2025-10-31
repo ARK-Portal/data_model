@@ -9,19 +9,21 @@ on:
     paths: 
       - 'ark.model.csv'
       - '.github/workflows/ci-schema-convert.yml'
+      - 'utils/generate_metadata_templates.sh'
 
 env:
-  SCHEMATIC_VERSION: 24.11.2
+  SCHEMATIC_VERSION: 24.12.1
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
     
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       # Set up supported python.
       - uses: actions/setup-python@v5
         with:
@@ -32,9 +34,21 @@ jobs:
           pip install schematicpy==${{ env.SCHEMATIC_VERSION }}
           pip show schematicpy
 
+      - name: Create creds file
+        run: |
+          echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
+
       - name: Convert .csv to .jsonld
         run: |
           schematic schema convert ark.model.csv
+
+      - name: Generate metadata collection templates defined in model
+        run: |
+          bash utils/generate_metadata_templates.sh
+
+      - name: Clean up sensitive info
+        run: |
+          rm schematic_service_account_creds.json
 
       - name: Commit files if there are changes
         run: |
