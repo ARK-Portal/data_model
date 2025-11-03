@@ -4,19 +4,6 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "fileFormat": {
-      "enum": [
-        "fcs",
-        ""
-      ]
-    },
-    "assay": {
-      "enum": [
-        "CyTOF",
-        "flow cytometry"
-      ]
-    },
-    "eventCount": {},
     "Component": {
       "not": {
         "type": "null"
@@ -25,21 +12,78 @@
     },
     "specimenModality": {
       "enum": [
-        "single specimen",
-        "multispecimen"
+        "multispecimen",
+        "single specimen"
       ]
     },
-    "individualID": {},
-    "biospecimenID": {},
+    "eventCount": {},
+    "assay": {
+      "enum": [
+        "flow cytometry",
+        "CyTOF"
+      ]
+    },
+    "fileFormat": {
+      "enum": [
+        "fcs",
+        ""
+      ]
+    },
+    "dataCollectionBatch": {},
     "sampleProcessingBatch": {},
-    "dataCollectionBatch": {}
+    "individualID": {},
+    "biospecimenID": {}
   },
   "required": [
-    "assay",
     "Component",
-    "specimenModality"
+    "specimenModality",
+    "assay"
   ],
   "allOf": [
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "dataCollectionBatch": {}
+        },
+        "required": [
+          "dataCollectionBatch"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sampleProcessingBatch": {}
+        },
+        "required": [
+          "sampleProcessingBatch"
+        ]
+      }
+    },
     {
       "if": {
         "properties": {
@@ -91,50 +135,6 @@
         },
         "required": [
           "biospecimenID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "sampleProcessingBatch": {}
-        },
-        "required": [
-          "sampleProcessingBatch"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "dataCollectionBatch": {}
-        },
-        "required": [
-          "dataCollectionBatch"
         ]
       }
     }
