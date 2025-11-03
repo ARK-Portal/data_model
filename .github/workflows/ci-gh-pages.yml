@@ -54,10 +54,17 @@ jobs:
           path: main # Checkout into a different directory
           token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
 
+      - name: Sanity check
+        run: |
+          ls
 
       - name: Update site content
         run: |
           Rscript _utils/update_site_content.R https://raw.githubusercontent.com/ARK-Portal/data_model/refs/heads/main/ark.model.csv
+
+      - name: Clean up before commit
+        run: |
+          rm -Rf main/
 
       - name: Commit files if there are changes
         run: |
