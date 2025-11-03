@@ -4,35 +4,7 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "RA",
-          "STAMP",
-          "LOCKIT",
-          "AIM for RA",
-          "V-CoRT",
-          "SLE",
-          "ELLIPSS"
-        ]
-      },
-      "maxItems": 7
-    },
-    "associatedDataset": {},
     "DOI": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "journal": {
       "not": {
         "type": "null"
       },
@@ -44,20 +16,54 @@
       },
       "minLength": 1
     },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "AMP AIM",
+        "Community Contribution"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "title": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "program": {
-      "enum": [
-        "AMP AIM",
-        "AMP RA/SLE",
-        "Community Contribution"
-      ]
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "PMID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SLE",
+          "V-CoRT",
+          "RA",
+          "AIM for RA",
+          "STAMP",
+          "LOCKIT",
+          "ELLIPSS"
+        ]
+      },
+      "maxItems": 7
+    },
+    "associatedDataset": {},
+    "journal": {
       "not": {
         "type": "null"
       },
@@ -66,15 +72,9 @@
     "publicationType": {
       "enum": [
         "correction",
-        "pre-print",
-        "peer-reviewed"
+        "peer-reviewed",
+        "pre-print"
       ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
     },
     "PMCID": {},
     "programPhase": {
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "project",
     "DOI",
-    "publicationDate",
-    "journal",
     "year",
-    "title",
     "program",
+    "Component",
+    "title",
+    "publicationDate",
     "PMID",
-    "publicationType",
-    "Component"
+    "project",
+    "journal",
+    "publicationType"
   ],
   "allOf": [
     {
