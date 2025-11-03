@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 70
 permalink: docs/attributes/resourceType.html
-date: 2025-10-31
+date: 2025-11-03
 ---
 {% assign mydata=site.data.csv.attributes.resourceType %}
 {% include content/resourceType.md %}

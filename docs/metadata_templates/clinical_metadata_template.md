@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/clinical_metadata_template.html
-date: 2025-10-31
+date: 2025-11-03
 ---
 {% assign mydata=site.data.csv.metadata_templates.clinical_metadata_template %}
 {% include content/clinical_metadata_template.md %}

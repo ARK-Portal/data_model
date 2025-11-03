@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 24
 permalink: docs/attributes/dataCollectionBatch.html
-date: 2025-10-31
+date: 2025-11-03
 ---
 {% include content/dataCollectionBatch.md %}
