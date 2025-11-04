@@ -4,43 +4,7 @@
   "title": "PublicationMetadataTemplate",
   "type": "object",
   "properties": {
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationType": {
-      "enum": [
-        "pre-print",
-        "peer-reviewed",
-        "correction"
-      ]
-    },
-    "project": {
-      "enum": [
-        "SLE",
-        "AIM for RA",
-        "LOCKIT",
-        "ELLIPSS",
-        "STAMP",
-        "RA",
-        "V-CoRT"
-      ]
-    },
-    "title": {
       "not": {
         "type": "null"
       },
@@ -52,7 +16,7 @@
       },
       "minLength": 1
     },
-    "DOI": {
+    "year": {
       "not": {
         "type": "null"
       },
@@ -64,32 +28,68 @@
       },
       "minLength": 1
     },
+    "publicationType": {
+      "enum": [
+        "peer-reviewed",
+        "pre-print",
+        "correction"
+      ]
+    },
+    "project": {
+      "enum": [
+        "V-CoRT",
+        "LOCKIT",
+        "SLE",
+        "ELLIPSS",
+        "AIM for RA",
+        "RA",
+        "STAMP"
+      ]
+    },
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "program": {
       "enum": [
-        "AMP RA/SLE",
         "AMP AIM",
+        "AMP RA/SLE",
         "Community Contribution"
       ]
     },
     "associatedDataset": {},
     "programPhase": {
       "enum": [
-        "II",
         "I",
+        "II",
         ""
       ]
     }
   },
   "required": [
-    "journal",
     "Component",
+    "PMID",
     "year",
+    "publicationDate",
     "publicationType",
     "project",
-    "title",
-    "PMID",
+    "journal",
     "DOI",
-    "publicationDate",
+    "title",
     "program"
   ],
   "allOf": [
@@ -110,8 +110,8 @@
         "properties": {
           "programPhase": {
             "enum": [
-              "II",
-              "I"
+              "I",
+              "II"
             ]
           }
         },
