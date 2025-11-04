@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/PublicationMetadataTemplate",
+  "title": "PublicationMetadataTemplate",
+  "type": "object",
+  "properties": {
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "year": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "publicationType": {
+      "enum": [
+        "pre-print",
+        "peer-reviewed",
+        "correction"
+      ]
+    },
+    "project": {
+      "enum": [
+        "SLE",
+        "AIM for RA",
+        "LOCKIT",
+        "ELLIPSS",
+        "STAMP",
+        "RA",
+        "V-CoRT"
+      ]
+    },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "PMID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "AMP AIM",
+        "Community Contribution"
+      ]
+    },
+    "associatedDataset": {},
+    "programPhase": {
+      "enum": [
+        "II",
+        "I",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "journal",
+    "Component",
+    "year",
+    "publicationType",
+    "project",
+    "title",
+    "PMID",
+    "DOI",
+    "publicationDate",
+    "program"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "program": {
+            "enum": [
+              "AMP RA/SLE"
+            ]
+          }
+        },
+        "required": [
+          "program"
+        ]
+      },
+      "then": {
+        "properties": {
+          "programPhase": {
+            "enum": [
+              "II",
+              "I"
+            ]
+          }
+        },
+        "required": [
+          "programPhase"
+        ]
+      }
+    }
+  ]
+}
