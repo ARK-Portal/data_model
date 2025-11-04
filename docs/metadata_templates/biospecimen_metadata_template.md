@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/biospecimen_metadata_template.html
-date: 2025-11-03
+date: 2025-11-04
 ---
 {% assign mydata=site.data.csv.metadata_templates.biospecimen_metadata_template %}
 {% include content/biospecimen_metadata_template.md %}

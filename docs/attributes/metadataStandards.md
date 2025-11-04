@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 54
 permalink: docs/attributes/metadataStandards.html
-date: 2025-11-03
+date: 2025-11-04
 ---
 {% assign mydata=site.data.csv.attributes.metadataStandards %}
 {% include content/metadataStandards.md %}

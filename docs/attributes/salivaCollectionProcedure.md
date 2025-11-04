@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 72
 permalink: docs/attributes/salivaCollectionProcedure.html
-date: 2025-11-03
+date: 2025-11-04
 ---
 {% assign mydata=site.data.csv.attributes.salivaCollectionProcedure %}
 {% include content/salivaCollectionProcedure.md %}

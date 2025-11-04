@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 71
 permalink: docs/attributes/RObjectClass.html
-date: 2025-11-03
+date: 2025-11-04
 ---
 {% assign mydata=site.data.csv.attributes.RObjectClass %}
 {% include content/RObjectClass.md %}

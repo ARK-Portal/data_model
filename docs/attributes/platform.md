@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 60
 permalink: docs/attributes/platform.html
-date: 2025-11-03
+date: 2025-11-04
 ---
 {% assign mydata=site.data.csv.attributes.platform %}
 {% include content/platform.md %}
