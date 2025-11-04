@@ -4,7 +4,42 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "DOI": {
+    "publicationType": {
+      "enum": [
+        "correction",
+        "peer-reviewed",
+        "pre-print"
+      ]
+    },
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "AIM for RA",
+          "STAMP",
+          "LOCKIT",
+          "SLE",
+          "V-CoRT",
+          "ELLIPSS",
+          "RA"
+        ]
+      },
+      "maxItems": 7
+    },
+    "associatedDataset": {},
+    "PMID": {
       "not": {
         "type": "null"
       },
@@ -16,12 +51,12 @@
       },
       "minLength": 1
     },
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "AMP AIM",
-        "Community Contribution"
-      ]
+    "PMCID": {},
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "Component": {
       "not": {
@@ -29,60 +64,25 @@
       },
       "minLength": 1
     },
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "PMID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "SLE",
-          "V-CoRT",
-          "RA",
-          "AIM for RA",
-          "STAMP",
-          "LOCKIT",
-          "ELLIPSS"
-        ]
-      },
-      "maxItems": 7
-    },
-    "associatedDataset": {},
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationType": {
+    "program": {
       "enum": [
-        "correction",
-        "peer-reviewed",
-        "pre-print"
+        "AMP AIM",
+        "Community Contribution",
+        "AMP RA/SLE"
       ]
     },
-    "PMCID": {},
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "programPhase": {
       "type": "array",
       "items": {
         "enum": [
-          "II",
           "I",
+          "II",
           ""
         ]
       },
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "DOI",
-    "year",
-    "program",
-    "Component",
+    "publicationType",
     "title",
-    "publicationDate",
-    "PMID",
-    "project",
     "journal",
-    "publicationType"
+    "project",
+    "PMID",
+    "year",
+    "publicationDate",
+    "Component",
+    "program",
+    "DOI"
   ],
   "allOf": [
     {
@@ -121,8 +121,8 @@
             "type": "array",
             "items": {
               "enum": [
-                "II",
-                "I"
+                "I",
+                "II"
               ]
             },
             "maxItems": 2
