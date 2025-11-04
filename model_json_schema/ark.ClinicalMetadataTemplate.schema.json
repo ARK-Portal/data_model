@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/ClinicalMetadataTemplate",
+  "title": "ClinicalMetadataTemplate",
+  "type": "object",
+  "properties": {
+    "age": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "VETI": {},
+    "CDASI": {},
+    "VASI": {},
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "VIDA": {},
+    "comorbidities": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "psoriasis",
+          "inflammatory bowel disease",
+          "systemic lupus erythematosus",
+          "other",
+          "autoimmune thyroid disease",
+          "cardiovascular disease",
+          "multiple sclerosis",
+          "diabetes",
+          "psoriatic arthritis",
+          "Hashimoto's Thyroiditis",
+          "rheumatoid arthritis",
+          "pulmonary disease",
+          ""
+        ]
+      },
+      "maxItems": 12
+    },
+    "PASI": {},
+    "ethnicity": {
+      "enum": [
+        "Not Hispanic or Latino",
+        "unknown",
+        "Hispanic or Latino",
+        ""
+      ]
+    },
+    "diagnosis": {
+      "enum": [
+        "dermatomyositis",
+        "PsA",
+        "PsO",
+        "LN",
+        "RA",
+        "vitiligo",
+        "CLE",
+        "SjD",
+        "scleroderma",
+        "OA",
+        "SLE",
+        "At-Risk RA",
+        "control"
+      ]
+    },
+    "program": {
+      "enum": [
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
+      ]
+    },
+    "individualID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "vitiligoType": {
+      "enum": [
+        "segmental",
+        "mixed",
+        "non-segmental",
+        "unclassified",
+        ""
+      ]
+    },
+    "sex": {
+      "enum": [
+        "male",
+        "unknown",
+        "female",
+        "intersex"
+      ]
+    },
+    "ageUnits": {
+      "enum": [
+        "years",
+        "months"
+      ]
+    },
+    "heightUnits": {
+      "enum": [
+        "centimeters",
+        "feet",
+        "meters",
+        "inches"
+      ]
+    },
+    "race": {
+      "enum": [
+        "White",
+        "unknown",
+        "Asian",
+        "Black or African American",
+        "American Indian or Alaska Native",
+        "other",
+        "Native Hawaiian or Other Pacific Islander",
+        "Hispanic",
+        "Mixed Race",
+        ""
+      ]
+    },
+    "project": {
+      "enum": [
+        "STAMP",
+        "RA",
+        "LOCKIT",
+        "AIM for RA",
+        "ELLIPSS",
+        "V-CoRT",
+        "SLE"
+      ]
+    },
+    "height": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "weightUnits": {
+      "enum": [
+        "g",
+        "kg",
+        "lb",
+        "oz"
+      ]
+    },
+    "weight": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "diabetesType": {
+      "enum": [
+        "unknown",
+        "gestational",
+        "type 1",
+        "type 2",
+        ""
+      ]
+    },
+    "programPhase": {
+      "enum": [
+        "II",
+        "I",
+        ""
+      ]
+    }
+  },
+  "required": [
+    "age",
+    "Component",
+    "diagnosis",
+    "program",
+    "individualID",
+    "sex",
+    "ageUnits",
+    "heightUnits",
+    "project",
+    "height",
+    "weightUnits",
+    "weight"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "comorbidities": {
+            "enum": [
+              "diabetes"
+            ]
+          }
+        },
+        "required": [
+          "comorbidities"
+        ]
+      },
+      "then": {
+        "properties": {
+          "diabetesType": {
+            "enum": [
+              "unknown",
+              "gestational",
+              "type 1",
+              "type 2",
+              ""
+            ]
+          }
+        },
+        "required": [
+          "diabetesType"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "program": {
+            "enum": [
+              "AMP RA/SLE"
+            ]
+          }
+        },
+        "required": [
+          "program"
+        ]
+      },
+      "then": {
+        "properties": {
+          "programPhase": {
+            "enum": [
+              "II",
+              "I"
+            ]
+          }
+        },
+        "required": [
+          "programPhase"
+        ]
+      }
+    }
+  ]
+}
