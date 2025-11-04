@@ -14,7 +14,7 @@ def json2csv(json_data, csv_fid):
     json_data (list of dict): The JSON data to convert.
     csv_fid (str): The file path where the CSV will be saved.
     """
-    columns = list(data['properties'].keys())
+    columns = list(json_data['properties'].keys())
     out = ','.join(columns) + '\n'
     with open(csv_fid, 'w') as f:
         f.write(out)
