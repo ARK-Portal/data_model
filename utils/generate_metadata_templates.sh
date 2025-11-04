@@ -21,9 +21,9 @@ while read template; do
 done < model_templates/templates.txt
 echo "✓ xlsx templates created."
 
-# clean up/reorg remaining output from manifest get
-rm *.schema.json
-echo "json schemas moved to model_templates/"
+# reorg remaining output from manifest get
+mv *.schema.json model_json_schema/
+echo "json schemas moved to model_json_schema/"
 
 echo "✓ Done!"
 
