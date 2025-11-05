@@ -10,34 +10,34 @@
         ""
       ]
     },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "eventCount": {},
-    "assay": {
-      "enum": [
-        "CyTOF",
-        "flow cytometry"
-      ]
-    },
     "specimenModality": {
       "enum": [
         "multispecimen",
         "single specimen"
       ]
     },
+    "eventCount": {},
+    "assay": {
+      "enum": [
+        "flow cytometry",
+        "CyTOF"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "dataCollectionBatch": {},
     "sampleProcessingBatch": {},
-    "individualID": {},
-    "biospecimenID": {}
+    "biospecimenID": {},
+    "individualID": {}
   },
   "required": [
-    "Component",
+    "specimenModality",
     "assay",
-    "specimenModality"
+    "Component"
   ],
   "allOf": [
     {
@@ -99,7 +99,7 @@
       },
       "then": {
         "properties": {
-          "individualID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             },
@@ -107,7 +107,7 @@
           }
         },
         "required": [
-          "individualID"
+          "biospecimenID"
         ]
       }
     },
@@ -126,7 +126,7 @@
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "individualID": {
             "not": {
               "type": "null"
             },
@@ -134,7 +134,7 @@
           }
         },
         "required": [
-          "biospecimenID"
+          "individualID"
         ]
       }
     }

@@ -51,6 +51,10 @@ jobs:
         run: |
           bash utils/generate_model_templates.sh
 
+      - name: Generate blank CSV templates from json schema to support dictionary site build
+        run: |
+          python utils/generate_csv_templates.py
+
       - name: Clean up sensitive info
         run: |
           rm schematic_service_account_creds.json
