@@ -21,12 +21,11 @@ def get_model_template_name(df):
 def delete_templates(templates):
   for t in templates:
     print(f"Deleting template files for {t}...")
-    csv_fid = f"model_templates/ark.{t}.csv"
-    json_fid = f"model_json_schema/ark.{t}.schema.json"
-    if os.path.exists(csv_fid):
-      os.remove(csv_fid)
-    if os.path.exists(json_fid):
-      os.remove(json_fid)
+    fid_ext = {"csv": "model_templates", "schema.json": 'model_json_schema', "xlsx": "model_templates"}
+    for e in fid_ext.keys():
+      fid = f"{fid_ext[e]}/ark.{t}.{e}"
+      if os.path.exists(fid):
+        os.remove(fid)
 
 def get_valid_values_dict(df):
   df = df[df['Valid Values'].isna() == False]
