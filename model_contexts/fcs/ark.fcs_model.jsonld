@@ -152,7 +152,7 @@
         {
             "@id": "bts:BDMFCSFileAnnotations",
             "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
+            "rdfs:comment": "A template outlining metadata to be collected and applied to FCS file entities as annotations in Synapse by BDM team as part of data release process.",
             "rdfs:label": "BDMFCSFileAnnotations",
             "rdfs:subClassOf": [
                 {
@@ -202,9 +202,6 @@
                     "@id": "bts:Diagnosis"
                 },
                 {
-                    "@id": "bts:VisitID"
-                },
-                {
                     "@id": "bts:Platform"
                 },
                 {
@@ -241,7 +238,7 @@
                 }
             ],
             "sms:displayName": "resourceType",
-            "sms:required": "sms:false",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -542,23 +539,6 @@
             "sms:validationRules": [
                 "list like error"
             ]
-        },
-        {
-            "@id": "bts:VisitID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
-            "rdfs:label": "VisitID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "visitID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
         },
         {
             "@id": "bts:Platform",
@@ -1188,6 +1168,67 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:AMPRA/SLE",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Accelerating Medicines Partnership Rheumatoid Arthritis and Systemic Lupus Erythematosus. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "AMPRA/SLE",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "AMP RA/SLE",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:VisitID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VisitID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
+            "rdfs:label": "VisitID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "visitID",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:AMPAIM",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Accelerating Medicines Partnership Autoimmune and Immune-Mediated Diseases. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "AMPAIM",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "AMP AIM",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:VisitID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:PublicationSynID",
             "@type": "rdfs:Class",
             "rdfs:comment": "The synID of the corresponding Synapse entity that stores metadata about the publication. This is used to differentiate publication-specific files, often consisting of level 4 processed data and expanded subject metadata, in a publication dataset that also includes raw or minimally processed files from experimental datasets. This provides an easy way to distinguish and select for the publication-specific data from which the research findings were derived. When this attribute is used to annotate a Dataset it serves as a way to directly link the Dataset entity with the publication metadata stored in Synapse.",
@@ -1225,45 +1266,6 @@
                 "list like",
                 "regex search ^syn[0-9]{8} error"
             ]
-        },
-        {
-            "@id": "bts:AMPAIM",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "AMPAIM",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Program"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "AMP AIM",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:AMPRA/SLE",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
-            "rdfs:label": "AMPRA/SLE",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Program"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "AMP RA/SLE",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:ProgramPhase"
-                }
-            ],
-            "sms:validationRules": []
         },
         {
             "@id": "bts:CommunityContribution",
@@ -8429,10 +8431,7 @@
             },
             "sms:displayName": "plateID",
             "sms:required": "sms:false",
-            "sms:validationRules": {
-                "OlinkAssayMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "required"
-            }
+            "sms:validationRules": []
         },
         {
             "@id": "bts:PMCID",

@@ -4,12 +4,48 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "DOI": {
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "STAMP",
+          "ELLIPSS",
+          "SLE",
+          "AIM for RA",
+          "V-CoRT",
+          "RA",
+          "LOCKIT"
+        ]
+      },
+      "maxItems": 7
+    },
+    "PMCID": {},
+    "publicationType": {
+      "enum": [
+        "correction",
+        "peer-reviewed",
+        "pre-print"
+      ]
+    },
+    "title": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
+    "journal": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "associatedDataset": {},
     "year": {
       "not": {
         "type": "null"
@@ -18,18 +54,18 @@
     },
     "program": {
       "enum": [
-        "AMP RA/SLE",
         "AMP AIM",
-        "Community Contribution"
+        "Community Contribution",
+        "AMP RA/SLE"
       ]
     },
-    "Component": {
+    "PMID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "title": {
+    "DOI": {
       "not": {
         "type": "null"
       },
@@ -41,48 +77,12 @@
       },
       "minLength": 1
     },
-    "PMID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "SLE",
-          "V-CoRT",
-          "RA",
-          "AIM for RA",
-          "STAMP",
-          "LOCKIT",
-          "ELLIPSS"
-        ]
-      },
-      "maxItems": 7
-    },
-    "associatedDataset": {},
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationType": {
-      "enum": [
-        "correction",
-        "peer-reviewed",
-        "pre-print"
-      ]
-    },
-    "PMCID": {},
     "programPhase": {
       "type": "array",
       "items": {
         "enum": [
-          "II",
           "I",
+          "II",
           ""
         ]
       },
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "DOI",
+    "project",
+    "publicationType",
+    "title",
+    "journal",
+    "Component",
     "year",
     "program",
-    "Component",
-    "title",
-    "publicationDate",
     "PMID",
-    "project",
-    "journal",
-    "publicationType"
+    "DOI",
+    "publicationDate"
   ],
   "allOf": [
     {
@@ -121,8 +121,8 @@
             "type": "array",
             "items": {
               "enum": [
-                "II",
-                "I"
+                "I",
+                "II"
               ]
             },
             "maxItems": 2

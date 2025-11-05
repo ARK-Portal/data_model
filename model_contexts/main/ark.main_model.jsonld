@@ -1758,246 +1758,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Metadata",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Any file that contains curated data describing an experiment and experimental-derived data, including metadata about study subjects, biospecimens, protocols, assay reagents, marker panels, and ID mappings. Is a valid value of Resource Type that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Metadata",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:ResourceType"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "metadata",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:MetadataType"
-                },
-                {
-                    "@id": "bts:MetadataStandards"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:MetadataType",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A label further classifying the content of metadata resource.",
-            "rdfs:label": "MetadataType",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:Assay"
-                },
-                {
-                    "@id": "bts:Biospecimen"
-                },
-                {
-                    "@id": "bts:Datadictionary"
-                },
-                {
-                    "@id": "bts:Filemanifest"
-                },
-                {
-                    "@id": "bts:Medication"
-                },
-                {
-                    "@id": "bts:Phenotype"
-                },
-                {
-                    "@id": "bts:Protocol"
-                },
-                {
-                    "@id": "bts:Single-cellmetadata"
-                },
-                {
-                    "@id": "bts:Targetpanel"
-                },
-                {
-                    "@id": "bts:Template"
-                },
-                {
-                    "@id": "bts:Usermanual"
-                }
-            ],
-            "sms:displayName": "metadataType",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:MetadataStandards",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Metadata standards used to generate the metadata",
-            "rdfs:label": "MetadataStandards",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:ARKdatamodel"
-                },
-                {
-                    "@id": "bts:User-defined"
-                }
-            ],
-            "sms:displayName": "metadataStandards",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xGEM-XFlexGeneExpressionHuman",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A scRNA-seq method that analyzes gene expression using pre-designed probes. Is a valid value of `libraryPrepMethod` and when selected triggers conditional dependencies for additional metadata collection.",
-            "rdfs:label": "10xGEM-XFlexGeneExpressionHuman",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:LibraryPrepMethod"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "10x GEM-X Flex Gene Expression Human",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:10xProbeSetReference"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:10xProbeSetReference",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Name of probe set used in 10x Chromium Flex, Xenium, or Visium data. If custom modified probe set was used the probe reference should be included as metadata accompanying the experimental data files.",
-            "rdfs:label": "10xProbeSetReference",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "schema:rangeIncludes": [
-                {
-                    "@id": "bts:FlexHumanTranscriptomeProbeSetv1.0.1"
-                },
-                {
-                    "@id": "bts:FlexHumanTranscriptomeProbeSetv1.1.0"
-                },
-                {
-                    "@id": "bts:VisiumHumanTranscriptomev1"
-                },
-                {
-                    "@id": "bts:VisiumHumanTranscriptomev2"
-                },
-                {
-                    "@id": "bts:Customprobeset"
-                }
-            ],
-            "sms:displayName": "10xProbeSetReference",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Multispecimen",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Multispecimen",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:SpecimenModality"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "multispecimen",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:LibraryID"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:LibraryID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
-            "rdfs:label": "LibraryID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "libraryID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:Singlespecimen",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.",
-            "rdfs:label": "Singlespecimen",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:SpecimenModality"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "single specimen",
-            "sms:required": "sms:false",
-            "sms:requiresDependency": [
-                {
-                    "@id": "bts:BiospecimenID"
-                }
-            ],
-            "sms:validationRules": []
-        },
-        {
-            "@id": "bts:BiospecimenID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
-            "rdfs:label": "BiospecimenID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "biospecimenID",
-            "sms:required": "sms:true",
-            "sms:validationRules": {
-                "BiospecimenMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "unique error",
-                "all_other_components": "list like error"
-            }
-        },
-        {
             "@id": "bts:BDMMetadataFileAnnotations",
             "@type": "rdfs:Class",
             "rdfs:comment": "A template outlining metadata to be collected for annotating metadata files to be compiled by ARK BDM.",
@@ -2392,6 +2152,27 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:BiospecimenID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+            "rdfs:label": "BiospecimenID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "biospecimenID",
+            "sms:required": "sms:true",
+            "sms:validationRules": {
+                "BiospecimenMetadataTemplate": "unique error",
+                "OlinkBiospecimenMetadataTemplate": "unique error",
+                "all_other_components": "list like error"
+            }
+        },
+        {
             "@id": "bts:TargetPanel",
             "@type": "rdfs:Class",
             "rdfs:comment": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
@@ -2445,6 +2226,225 @@
             "sms:validationRules": [
                 "int error"
             ]
+        },
+        {
+            "@id": "bts:Metadata",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Any file that contains curated data describing an experiment and experimental-derived data, including metadata about study subjects, biospecimens, protocols, assay reagents, marker panels, and ID mappings. Is a valid value of Resource Type that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Metadata",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:ResourceType"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "metadata",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:MetadataType"
+                },
+                {
+                    "@id": "bts:MetadataStandards"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:MetadataType",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A label further classifying the content of metadata resource.",
+            "rdfs:label": "MetadataType",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:Assay"
+                },
+                {
+                    "@id": "bts:Biospecimen"
+                },
+                {
+                    "@id": "bts:Datadictionary"
+                },
+                {
+                    "@id": "bts:Filemanifest"
+                },
+                {
+                    "@id": "bts:Medication"
+                },
+                {
+                    "@id": "bts:Phenotype"
+                },
+                {
+                    "@id": "bts:Protocol"
+                },
+                {
+                    "@id": "bts:Single-cellmetadata"
+                },
+                {
+                    "@id": "bts:Targetpanel"
+                },
+                {
+                    "@id": "bts:Template"
+                },
+                {
+                    "@id": "bts:Usermanual"
+                }
+            ],
+            "sms:displayName": "metadataType",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:MetadataStandards",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Metadata standards used to generate the metadata",
+            "rdfs:label": "MetadataStandards",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:ARKdatamodel"
+                },
+                {
+                    "@id": "bts:User-defined"
+                }
+            ],
+            "sms:displayName": "metadataStandards",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xGEM-XFlexGeneExpressionHuman",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A scRNA-seq method that analyzes gene expression using pre-designed probes. Is a valid value of `libraryPrepMethod` and when selected triggers conditional dependencies for additional metadata collection.",
+            "rdfs:label": "10xGEM-XFlexGeneExpressionHuman",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:LibraryPrepMethod"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "10x GEM-X Flex Gene Expression Human",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:10xProbeSetReference"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:10xProbeSetReference",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Name of probe set used in 10x Chromium Flex, Xenium, or Visium data. If custom modified probe set was used the probe reference should be included as metadata accompanying the experimental data files.",
+            "rdfs:label": "10xProbeSetReference",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "schema:rangeIncludes": [
+                {
+                    "@id": "bts:FlexHumanTranscriptomeProbeSetv1.0.1"
+                },
+                {
+                    "@id": "bts:FlexHumanTranscriptomeProbeSetv1.1.0"
+                },
+                {
+                    "@id": "bts:VisiumHumanTranscriptomev1"
+                },
+                {
+                    "@id": "bts:VisiumHumanTranscriptomev2"
+                },
+                {
+                    "@id": "bts:Customprobeset"
+                }
+            ],
+            "sms:displayName": "10xProbeSetReference",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Multispecimen",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Multispecimen",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:SpecimenModality"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "multispecimen",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:LibraryID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:LibraryID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
+            "rdfs:label": "LibraryID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "libraryID",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:Singlespecimen",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "Singlespecimen",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:SpecimenModality"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "single specimen",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:BiospecimenID"
+                }
+            ],
+            "sms:validationRules": []
         },
         {
             "@id": "bts:Bai",
@@ -2942,7 +2942,7 @@
         {
             "@id": "bts:AMPRA/SLE",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
+            "rdfs:comment": "Accelerating Medicines Partnership Rheumatoid Arthritis and Systemic Lupus Erythematosus. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "AMPRA/SLE",
             "rdfs:subClassOf": [
                 {
@@ -5791,7 +5791,7 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "visitID",
-            "sms:required": "sms:false",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -10535,10 +10535,7 @@
             },
             "sms:displayName": "plateID",
             "sms:required": "sms:false",
-            "sms:validationRules": {
-                "OlinkAssayMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "required"
-            }
+            "sms:validationRules": []
         },
         {
             "@id": "bts:ProcessedDataType",

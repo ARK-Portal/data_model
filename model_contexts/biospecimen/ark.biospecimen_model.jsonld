@@ -36,9 +36,6 @@
                     "@id": "bts:IndividualID"
                 },
                 {
-                    "@id": "bts:VisitID"
-                },
-                {
                     "@id": "bts:BiospecimenID"
                 },
                 {
@@ -49,6 +46,9 @@
                 },
                 {
                     "@id": "bts:BiospecimenSubtype"
+                },
+                {
+                    "@id": "bts:PlateID"
                 }
             ],
             "sms:validationRules": []
@@ -160,23 +160,6 @@
                 "ClinicalMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
-        },
-        {
-            "@id": "bts:VisitID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
-            "rdfs:label": "VisitID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "visitID",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
         },
         {
             "@id": "bts:BiospecimenID",
@@ -340,9 +323,26 @@
             "sms:validationRules": []
         },
         {
+            "@id": "bts:PlateID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "An identifier corresponding to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects. This attribute is required. Please enter 'Not Applicable' if your biospecimen were not profiled in plated batches.",
+            "rdfs:label": "PlateID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "plateID",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
             "@id": "bts:Skinswab",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Skinswab",
             "rdfs:subClassOf": [
                 {
@@ -462,7 +462,7 @@
         {
             "@id": "bts:Skinbiopsy",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Skinbiopsy",
             "rdfs:subClassOf": [
                 {
@@ -487,7 +487,7 @@
         {
             "@id": "bts:Suctionblistercells",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Suctionblistercells",
             "rdfs:subClassOf": [
                 {
@@ -512,7 +512,7 @@
         {
             "@id": "bts:Suctionblisterfluid",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Suctionblisterfluid",
             "rdfs:subClassOf": [
                 {
@@ -537,7 +537,7 @@
         {
             "@id": "bts:Saliva",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Saliva",
             "rdfs:subClassOf": [
                 {
@@ -584,7 +584,7 @@
         {
             "@id": "bts:Synovialtissue",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Synovialtissue",
             "rdfs:subClassOf": [
                 {
@@ -728,7 +728,7 @@
         {
             "@id": "bts:Synovialfluid",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Is a valid value of `biospecimenType` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "Is a valid value of 'biospecimenType' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Synovialfluid",
             "rdfs:subClassOf": [
                 {
@@ -753,7 +753,7 @@
         {
             "@id": "bts:Flow-sortedcells",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `biospecimenSubtype` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "A valid value of 'biospecimenSubtype' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Flow-sortedcells",
             "rdfs:subClassOf": [
                 {
@@ -854,7 +854,7 @@
         {
             "@id": "bts:Cellsuspension",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A valid value of `biospecimenSubtype` that triggers conditional dependencies for additional attributes.",
+            "rdfs:comment": "A valid value of 'biospecimenSubtype' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "Cellsuspension",
             "rdfs:subClassOf": [
                 {
@@ -882,7 +882,7 @@
         {
             "@id": "bts:AMPRA/SLE",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Accelerating Medicines Partnership rheumatoid arthritis and systemic lupus erythematosus. Is a valid value for Program attribute and when selected it triggers a conditional dependency.",
+            "rdfs:comment": "Accelerating Medicines Partnership Rheumatoid Arthritis and Systemic Lupus Erythematosus. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.",
             "rdfs:label": "AMPRA/SLE",
             "rdfs:subClassOf": [
                 {
@@ -893,6 +893,45 @@
                 "@id": "http://schema.biothings.io"
             },
             "sms:displayName": "AMP RA/SLE",
+            "sms:required": "sms:false",
+            "sms:requiresDependency": [
+                {
+                    "@id": "bts:VisitID"
+                }
+            ],
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:VisitID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Ordinal ID distinguishing different patient visits.",
+            "rdfs:label": "VisitID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "visitID",
+            "sms:required": "sms:true",
+            "sms:validationRules": []
+        },
+        {
+            "@id": "bts:AMPAIM",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Accelerating Medicines Partnership Autoimmune and Immune-Mediated Diseases. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.",
+            "rdfs:label": "AMPAIM",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Program"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "AMP AIM",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
@@ -1518,23 +1557,6 @@
                 "list like",
                 "regex search ^syn[0-9]{8} error"
             ]
-        },
-        {
-            "@id": "bts:AMPAIM",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "TBD",
-            "rdfs:label": "AMPAIM",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Program"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "AMP AIM",
-            "sms:required": "sms:false",
-            "sms:validationRules": []
         },
         {
             "@id": "bts:CommunityContribution",
@@ -10109,26 +10131,6 @@
             "sms:validationRules": [
                 "int error"
             ]
-        },
-        {
-            "@id": "bts:PlateID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.",
-            "rdfs:label": "PlateID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "plateID",
-            "sms:required": "sms:false",
-            "sms:validationRules": {
-                "OlinkAssayMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "required"
-            }
         },
         {
             "@id": "bts:PMCID",
