@@ -26,6 +26,7 @@ def delete_templates(templates):
       fid = f"{fid_ext[e]}/ark.{t}.{e}"
       if os.path.exists(fid):
         os.remove(fid)
+        print(f"{fid} deleted.")
 
 def get_valid_values_dict(df):
   df = df[df['Valid Values'].isna() == False]
