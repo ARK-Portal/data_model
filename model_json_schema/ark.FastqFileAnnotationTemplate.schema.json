@@ -4,36 +4,36 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "readLength": {},
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "WGS",
-          "feature barcode sequencing",
-          "RNASeq",
-          "snRNASeq",
-          "scVDJSeq",
           "VDJSeq",
           "scRNASeq",
-          "snATACSeq",
+          "WGS",
+          "feature barcode sequencing",
+          "ASAPSeq",
+          "RNASeq",
+          "scVDJSeq",
           "WES",
-          "CITESeq",
-          "ASAPSeq"
+          "snATACSeq",
+          "snRNASeq",
+          "CITESeq"
         ]
       },
       "maxItems": 11
-    },
-    "readLength": {},
-    "fileFormat": {
-      "enum": [
-        "fastq"
-      ]
     },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
+    },
+    "fileFormat": {
+      "enum": [
+        "fastq"
+      ]
     },
     "specimenModality": {
       "enum": [
@@ -44,14 +44,14 @@
     "targetPanel": {},
     "targetPanelSize": {},
     "targetPanelSynID": {},
-    "biospecimenID": {},
     "individualID": {},
+    "biospecimenID": {},
     "libraryID": {}
   },
   "required": [
     "assay",
-    "fileFormat",
     "Component",
+    "fileFormat",
     "specimenModality"
   ],
   "allOf": [
@@ -146,7 +146,7 @@
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "individualID": {
             "not": {
               "type": "null"
             },
@@ -154,7 +154,7 @@
           }
         },
         "required": [
-          "biospecimenID"
+          "individualID"
         ]
       }
     },
@@ -173,7 +173,7 @@
       },
       "then": {
         "properties": {
-          "individualID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             },
@@ -181,7 +181,7 @@
           }
         },
         "required": [
-          "individualID"
+          "biospecimenID"
         ]
       }
     },
