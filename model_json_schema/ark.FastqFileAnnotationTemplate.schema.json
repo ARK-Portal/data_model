@@ -4,26 +4,26 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "readLength": {},
     "assay": {
       "type": "array",
       "items": {
         "enum": [
-          "CITESeq",
-          "ASAPSeq",
-          "feature barcode sequencing",
-          "scVDJSeq",
-          "RNASeq",
-          "snATACSeq",
-          "VDJSeq",
-          "WES",
-          "scRNASeq",
           "WGS",
-          "snRNASeq"
+          "feature barcode sequencing",
+          "RNASeq",
+          "snRNASeq",
+          "scVDJSeq",
+          "VDJSeq",
+          "scRNASeq",
+          "snATACSeq",
+          "WES",
+          "CITESeq",
+          "ASAPSeq"
         ]
       },
       "maxItems": 11
     },
+    "readLength": {},
     "fileFormat": {
       "enum": [
         "fastq"
@@ -37,16 +37,16 @@
     },
     "specimenModality": {
       "enum": [
-        "multispecimen",
-        "single specimen"
+        "single specimen",
+        "multispecimen"
       ]
     },
     "targetPanel": {},
     "targetPanelSize": {},
     "targetPanelSynID": {},
-    "libraryID": {},
     "biospecimenID": {},
-    "individualID": {}
+    "individualID": {},
+    "libraryID": {}
   },
   "required": [
     "assay",
@@ -136,33 +136,6 @@
         "properties": {
           "specimenModality": {
             "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "libraryID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "libraryID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
               "single specimen"
             ]
           }
@@ -209,6 +182,33 @@
         },
         "required": [
           "individualID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "libraryID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "libraryID"
         ]
       }
     }
