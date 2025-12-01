@@ -4,53 +4,39 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "fileFormat": {
       "enum": [
-        "bai",
-        "csv",
-        "tgz",
-        "fastq",
-        "h5",
-        "geojson",
-        "txt",
-        "bim",
-        "fcs",
-        "erate",
-        "xls",
-        "tbi",
         "pdf",
+        "bim",
+        "csv",
+        "bai",
+        "dose",
+        "h5",
+        "fastq",
+        "info",
+        "fcs",
+        "parquet",
+        "tgz",
+        "xls",
+        "docx",
         "bam",
         "rds",
-        "dose",
-        "xlsx",
-        "tsv",
+        "erate",
         "zip",
-        "parquet",
+        "fam",
         "rec",
         "vcf",
-        "fam",
-        "bed",
-        "info",
-        "h5ad",
+        "txt",
         "mtx",
-        "docx"
+        "xlsx",
+        "tbi",
+        "bed",
+        "tsv",
+        "geojson",
+        "h5ad"
       ]
     },
-    "resourceType": {
-      "enum": [
-        "figure",
-        "experimental data",
-        "code",
-        "metadata"
-      ]
-    },
-    "plateID": {
+    "Component": {
       "not": {
         "type": "null"
       },
@@ -61,13 +47,27 @@
         "single specimen",
         "multispecimen"
       ]
+    },
+    "plateID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "resourceType": {
+      "enum": [
+        "metadata",
+        "experimental data",
+        "figure",
+        "code"
+      ]
     }
   },
   "required": [
-    "Component",
     "fileFormat",
-    "resourceType",
+    "Component",
+    "specimenModality",
     "plateID",
-    "specimenModality"
+    "resourceType"
   ]
 }

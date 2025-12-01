@@ -4,7 +4,40 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "AMP AIM",
+        "Community Contribution"
+      ]
+    },
+    "PMCID": {},
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "associatedDataset": {},
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "year": {
       "not": {
         "type": "null"
       },
@@ -16,62 +49,29 @@
       },
       "minLength": 1
     },
-    "journal": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "PMCID": {},
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "associatedDataset": {},
-    "publicationType": {
-      "enum": [
-        "peer-reviewed",
-        "correction",
-        "pre-print"
-      ]
-    },
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "AMP AIM",
-        "Community Contribution"
-      ]
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "project": {
       "type": "array",
       "items": {
         "enum": [
-          "V-CoRT",
-          "STAMP",
           "SLE",
+          "V-CoRT",
           "ELLIPSS",
-          "LOCKIT",
           "RA",
+          "STAMP",
+          "LOCKIT",
           "AIM for RA"
         ]
       },
       "maxItems": 7
     },
-    "year": {
+    "publicationType": {
+      "enum": [
+        "pre-print",
+        "peer-reviewed",
+        "correction"
+      ]
+    },
+    "journal": {
       "not": {
         "type": "null"
       },
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "DOI",
-    "PMID",
-    "journal",
-    "Component",
     "title",
-    "publicationType",
     "program",
+    "Component",
+    "DOI",
     "publicationDate",
+    "year",
+    "PMID",
     "project",
-    "year"
+    "publicationType",
+    "journal"
   ],
   "allOf": [
     {
