@@ -4,10 +4,11 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "assay": {
+    "eventCount": {},
+    "fileFormat": {
       "enum": [
-        "CyTOF",
-        "flow cytometry"
+        "fcs",
+        ""
       ]
     },
     "specimenModality": {
@@ -16,28 +17,27 @@
         "single specimen"
       ]
     },
-    "eventCount": {},
-    "fileFormat": {
-      "enum": [
-        "fcs",
-        ""
-      ]
-    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
+    "assay": {
+      "enum": [
+        "CyTOF",
+        "flow cytometry"
+      ]
+    },
     "sampleProcessingBatch": {},
     "dataCollectionBatch": {},
-    "biospecimenID": {},
-    "individualID": {}
+    "individualID": {},
+    "biospecimenID": {}
   },
   "required": [
-    "assay",
     "specimenModality",
-    "Component"
+    "Component",
+    "assay"
   ],
   "allOf": [
     {
@@ -99,7 +99,7 @@
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "individualID": {
             "not": {
               "type": "null"
             },
@@ -107,7 +107,7 @@
           }
         },
         "required": [
-          "biospecimenID"
+          "individualID"
         ]
       }
     },
@@ -126,7 +126,7 @@
       },
       "then": {
         "properties": {
-          "individualID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             },
@@ -134,7 +134,7 @@
           }
         },
         "required": [
-          "individualID"
+          "biospecimenID"
         ]
       }
     }

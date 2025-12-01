@@ -4,26 +4,7 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "program": {
-      "enum": [
-        "AMP RA/SLE",
-        "AMP AIM",
-        "Community Contribution"
-      ]
-    },
     "DOI": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "journal": {
       "not": {
         "type": "null"
       },
@@ -35,35 +16,20 @@
       },
       "minLength": 1
     },
-    "title": {
+    "journal": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "ELLIPSS",
-          "STAMP",
-          "RA",
-          "V-CoRT",
-          "AIM for RA",
-          "LOCKIT",
-          "SLE"
-        ]
+    "Component": {
+      "not": {
+        "type": "null"
       },
-      "maxItems": 7
+      "minLength": 1
     },
     "PMCID": {},
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "year": {
+    "title": {
       "not": {
         "type": "null"
       },
@@ -76,6 +42,40 @@
         "correction",
         "pre-print"
       ]
+    },
+    "program": {
+      "enum": [
+        "AMP RA/SLE",
+        "AMP AIM",
+        "Community Contribution"
+      ]
+    },
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "V-CoRT",
+          "STAMP",
+          "SLE",
+          "ELLIPSS",
+          "LOCKIT",
+          "RA",
+          "AIM for RA"
+        ]
+      },
+      "maxItems": 7
+    },
+    "year": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "programPhase": {
       "type": "array",
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "program",
     "DOI",
-    "Component",
-    "journal",
     "PMID",
+    "journal",
+    "Component",
     "title",
-    "project",
+    "publicationType",
+    "program",
     "publicationDate",
-    "year",
-    "publicationType"
+    "project",
+    "year"
   ],
   "allOf": [
     {

@@ -56,5 +56,5 @@ for template in ${ALL_TEMPLATES[@]}; do
   cat $template >> templates_by_context.txt
 done
 
-# delete BDM-specific json schema files
-rm model_json_schema/ark.BDM*
+
+# END
