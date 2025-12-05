@@ -3,7 +3,7 @@ title: vitiligoPhenotype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 91
+nav_order: 103
 permalink: docs/attributes/vitiligoPhenotype.html
 date: 2025-12-05
 ---

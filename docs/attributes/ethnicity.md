@@ -3,7 +3,7 @@ title: ethnicity
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 36
+nav_order: 37
 permalink: docs/attributes/ethnicity.html
 date: 2025-12-05
 ---

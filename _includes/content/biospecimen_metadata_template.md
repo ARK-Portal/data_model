@@ -1,2 +1,2 @@
 # Biospecimen Metadata Template
-A template outlining metadata to be collected for biospecimen.
+A general template outlining metadata to be collected for biospecimen profiled in a dataset.

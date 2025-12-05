@@ -3,7 +3,7 @@ title: skinSunExposure
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 78
+nav_order: 85
 permalink: docs/attributes/skinSunExposure.html
 date: 2025-12-05
 ---

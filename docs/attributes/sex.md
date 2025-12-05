@@ -3,7 +3,7 @@ title: sex
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 76
+nav_order: 83
 permalink: docs/attributes/sex.html
 date: 2025-12-05
 ---

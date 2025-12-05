@@ -3,7 +3,7 @@ title: weightUnits
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 94
+nav_order: 106
 permalink: docs/attributes/weightUnits.html
 date: 2025-12-05
 ---

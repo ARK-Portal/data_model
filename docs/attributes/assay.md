@@ -3,7 +3,7 @@ title: assay
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 9
+nav_order: 10
 permalink: docs/attributes/assay.html
 date: 2025-12-05
 ---

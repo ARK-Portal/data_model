@@ -1,5 +1,5 @@
 # PMID
-PubMed® Identifier
+PubMed(R) Identifier
 
 
 {: .note }

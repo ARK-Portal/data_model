@@ -3,7 +3,7 @@ title: dataType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 30
+nav_order: 31
 permalink: docs/attributes/dataType.html
 date: 2025-12-05
 ---

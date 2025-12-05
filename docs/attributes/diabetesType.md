@@ -3,7 +3,7 @@ title: diabetesType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 32
+nav_order: 33
 permalink: docs/attributes/diabetesType.html
 date: 2025-12-05
 ---

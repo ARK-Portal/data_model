@@ -3,7 +3,7 @@ title: biospecimenSubtype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 13
+nav_order: 14
 permalink: docs/attributes/biospecimenSubtype.html
 date: 2025-12-05
 ---
