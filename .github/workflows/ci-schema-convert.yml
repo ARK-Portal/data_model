@@ -5,8 +5,8 @@ name: ci-schema-convert
 
 on:
   pull_request:
-    branches: [main]
-    paths: 
+    branches: [main-archived]
+    paths:
       - 'ark.model.csv'
       - '.github/workflows/ci-schema-convert.yml'
       - 'utils/generate_metadata_templates.sh'
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
-    
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,7 +27,7 @@ jobs:
       # Set up supported python.
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10.12' 
+          python-version: '3.10.12'
 
       - name: Install Schematic
         run: |
@@ -45,7 +45,7 @@ jobs:
       - name: Generate metadata collection templates defined in model
         run: |
           bash utils/generate_metadata_templates.sh
-      
+
       - name: Generate blank CSV templates from json schema to support dictionary site build
         run: |
           python utils/generate_csv_templates.py
@@ -56,16 +56,16 @@ jobs:
 
       - name: Commit files if there are changes
         run: |
-          if [[ $(git status -z) ]]; then 
+          if [[ $(git status -z) ]]; then
             echo "Changes to branch files detected, changes will be committed."
             git config --local user.name "$GITHUB_ACTOR"
             git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
             git add .
             git commit -m "committing changes resulting from execution of ci-schema-convert workflow"
-          else 
+          else
             echo "No changes to branch files detected, nothing to commit"
           fi
-    
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
