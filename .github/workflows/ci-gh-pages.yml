@@ -7,7 +7,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'ark.model.csv'
+      - 'model_contexts/**'
+      - 'ark.all_attributes.csv'
       - '.github/workflows/ci-gh-pages.yml'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,6 +39,7 @@ jobs:
             any::rlang
             any::remotes
             any::lubridate
+            any::openxlsx
 
       - name: Checkout gh-pages
         uses: actions/checkout@v4
@@ -45,9 +47,21 @@ jobs:
           ref: gh-pages
           token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
 
+      - name: Checkout other branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }} # Checkout the same repository
+          ref: main # Specify the branch you want to access
+          path: main # Checkout into a different directory
+          token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
+
       - name: Update site content
         run: |
           Rscript _utils/update_site_content.R https://raw.githubusercontent.com/ARK-Portal/data_model/refs/heads/main/ark.model.csv
+
+      - name: Clean up before commit
+        run: |
+          rm -Rf main/
 
       - name: Commit files if there are changes
         run: |
@@ -67,4 +81,3 @@ jobs:
           github_token: ${{ secrets.ARK_CICD_SERVICE_ACCOUNT }}
           branch: gh-pages
           force: true
-# END
