@@ -1,15 +1,10 @@
 ---
-title: "filename"
+title: Filename
 parent: Attributes
 datatable: true
 layout: page
-nav_order: "32"
-permalink: "docs/attributes/filename.html"
-date: "2025-02-08"
-params:
-  title: ""
-  rank: ""
+nav_order: 39
+permalink: docs/attributes/Filename.html
+date: 2025-12-05
 ---
-{% assign mydata=site.data.csv.attributes.filename %} 
-
-{% include content/filename.md %}
+{% include content/Filename.md %}
