@@ -1,27 +1,27 @@
 # Data Models
 
-## main branch
+## contexts_refactor branch
 
-> This branch should not be merged with `gh-pages` and vice versa
+> This branch should not be merged with `gh-pages` or current `main` branch and vice versa
 
-This repository contains 3 major files:
+This repository contains the refactored ARK Portal data model. This version of the 
+model uses "contexts" in order to have context-specific conditionally required 
+attributes with the bonus of also being able to define context-specific valid value 
+lists for model attributes and more. Ultimately we hope this produces an improved user 
+experience when filling out metadata manifest templates generated from this data model.
 
-1. `ark.model.csv`: The CSV representation of the ARK Portal data model and is used 
-to create the JSON-LD representation of the data model.
+The following subdirs are included in this branch:
 
+`model_contexts/`: This directory houses each context-specific set of csv. Only the 
+`model_context.csv` files should be modified to update contexts models. The other csv 
+files are created through automated processes.
 
-2. `ark.model.jsonld`: The JSON-LD representation of the data model, which is 
-automatically created from the CSV data model using the schematic CLI. More details 
-on how to convert the CSV data model to the JSON-LD data model can be 
-found [here](https://sage-schematic.readthedocs.io/en/develop/cli_reference.html#schematic-schema-convert). 
-This is the central schema (data model) which will be used to power the 
-generation of metadata manifest templates for various data types (e.g., `scRNA-seq Level 1`) 
-from the schema.
+`model_json_schema/`: This directory stores all the json schema files generated from the 
+various context-specific models. Note - all BDM-specific file annotation templates are 
+deleted from this dir before committing changes to this branch b/c at this time the 
+team does not have plans to bind these schema in Synapse (that may well change in the future).
 
-
-3. `schematic_config.yml`: A template version of the schematic-compatible configuration file, 
-which allows users to specify values for application-specific keys (e.g., path 
-to Synapse configuration file) and project-specific keys (e.g., Synapse 
-fileview for community project). A description of what the various keys in this 
-file represent can be found in the [Fill in Configuration File(s)](https://sage-schematic.readthedocs.io/en/develop/README.html#fill-in-configuration-file-s) 
-section of the schematic [docs](https://sage-schematic.readthedocs.io/en/develop/index.html).
+3. `model_templates/`: This directory stores both XLSX- and CSV-formatted blank 
+metadata templates. These files are created through automated processes. CSV templates 
+are needed for creating template content on the data dictionary website (amongst other 
+things).
