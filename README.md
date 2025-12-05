@@ -21,7 +21,7 @@ various context-specific models. Note - all BDM-specific file annotation templat
 deleted from this dir before committing changes to this branch b/c at this time the 
 team does not have plans to bind these schema in Synapse (that may well change in the future).
 
-3. `model_templates/`: This directory stores both XLSX- and CSV-formatted blank 
+`model_templates/`: This directory stores both XLSX- and CSV-formatted blank 
 metadata templates. These files are created through automated processes. CSV templates 
 are needed for creating template content on the data dictionary website (amongst other 
 things).
