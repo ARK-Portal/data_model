@@ -4,11 +4,28 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "targetPanel": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "targetPanelSynID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
+    },
+    "assay": {
+      "enum": [
+        "GenePS SeqFISH",
+        "serial IHC",
+        "Xenium",
+        "CosMX",
+        "Visium",
+        "H&E",
+        "imaging mass cytometry"
+      ]
     },
     "specimenModality": {
       "enum": [
@@ -16,71 +33,26 @@
         "multispecimen"
       ]
     },
+    "dataCollectionBatch": {},
     "targetPanelSize": {},
+    "sampleProcessingBatch": {},
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "targetPanel": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "sampleProcessingBatch": {},
-    "assay": {
-      "enum": [
-        "Xenium",
-        "CosMX",
-        "imaging mass cytometry",
-        "H&E",
-        "serial IHC",
-        "Visium",
-        "GenePS SeqFISH",
-        ""
-      ]
-    },
-    "dataCollectionBatch": {},
-    "individualID": {},
     "biospecimenID": {},
     "slideID": {}
   },
   "required": [
+    "targetPanel",
     "targetPanelSynID",
+    "assay",
     "specimenModality",
-    "Component",
-    "targetPanel"
+    "Component"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
