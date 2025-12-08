@@ -4,83 +4,55 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "specimenModality": {
+    "assay": {
       "enum": [
-        "single specimen",
-        "multispecimen"
+        "GenePS SeqFISH",
+        "Xenium",
+        "Visium",
+        "H&E",
+        "serial IHC",
+        "CosMX",
+        "imaging mass cytometry"
       ]
     },
-    "targetPanelSize": {},
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
+    "sampleProcessingBatch": {},
     "targetPanel": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "sampleProcessingBatch": {},
-    "assay": {
-      "enum": [
-        "Xenium",
-        "CosMX",
-        "imaging mass cytometry",
-        "H&E",
-        "serial IHC",
-        "Visium",
-        "GenePS SeqFISH",
-        ""
-      ]
+    "targetPanelSynID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
     },
     "dataCollectionBatch": {},
-    "individualID": {},
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "targetPanelSize": {},
+    "specimenModality": {
+      "enum": [
+        "single specimen",
+        "multispecimen"
+      ]
+    },
     "biospecimenID": {},
     "slideID": {}
   },
   "required": [
+    "assay",
+    "targetPanel",
     "targetPanelSynID",
-    "specimenModality",
     "Component",
-    "targetPanel"
+    "specimenModality"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
