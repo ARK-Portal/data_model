@@ -51,9 +51,6 @@
                     "@id": "bts:BiospecimenSubtype"
                 },
                 {
-                    "@id": "bts:PlateID"
-                },
-                {
                     "@id": "bts:Notes"
                 }
             ],
@@ -182,7 +179,6 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
         },
@@ -353,23 +349,6 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:PlateID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "An identifier corresponding to a multi-well plate. Certain data types and assays (e.g., Olink) profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects. This attribute is required. Please enter 'Not Applicable' if your biospecimen were not profiled in plated batches.",
-            "rdfs:label": "PlateID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "plateID",
-            "sms:required": "sms:true",
-            "sms:validationRules": []
-        },
-        {
             "@id": "bts:Notes",
             "@type": "rdfs:Class",
             "rdfs:comment": "Please use this attribute to captured pertinent details not otherwise captured. This is an unstructured text entry, please be concise.",
@@ -428,9 +407,6 @@
                 },
                 {
                     "@id": "bts:BiospecimenSubtype"
-                },
-                {
-                    "@id": "bts:PlateID"
                 },
                 {
                     "@id": "bts:Treatment"
@@ -10647,6 +10623,23 @@
             "sms:validationRules": [
                 "int error"
             ]
+        },
+        {
+            "@id": "bts:PlateID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.",
+            "rdfs:label": "PlateID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "plateID",
+            "sms:required": "sms:false",
+            "sms:validationRules": []
         },
         {
             "@id": "bts:PMCID",

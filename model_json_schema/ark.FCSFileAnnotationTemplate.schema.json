@@ -6,8 +6,14 @@
   "properties": {
     "assay": {
       "enum": [
-        "CyTOF",
-        "flow cytometry"
+        "flow cytometry",
+        "CyTOF"
+      ]
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen"
       ]
     },
     "fileFormat": {
@@ -17,22 +23,16 @@
       ]
     },
     "eventCount": {},
-    "specimenModality": {
-      "enum": [
-        "single specimen",
-        "multispecimen"
-      ]
-    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "individualID": {},
-    "biospecimenID": {},
+    "dataCollectionBatch": {},
     "sampleProcessingBatch": {},
-    "dataCollectionBatch": {}
+    "biospecimenID": {},
+    "individualID": {}
   },
   "required": [
     "assay",
@@ -45,7 +45,7 @@
         "properties": {
           "specimenModality": {
             "enum": [
-              "single specimen"
+              "multispecimen"
             ]
           }
         },
@@ -55,15 +55,32 @@
       },
       "then": {
         "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
+          "dataCollectionBatch": {}
+        },
+        "required": [
+          "dataCollectionBatch"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
           }
         },
         "required": [
-          "individualID"
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sampleProcessingBatch": {}
+        },
+        "required": [
+          "sampleProcessingBatch"
         ]
       }
     },
@@ -99,7 +116,7 @@
         "properties": {
           "specimenModality": {
             "enum": [
-              "multispecimen"
+              "single specimen"
             ]
           }
         },
@@ -109,32 +126,15 @@
       },
       "then": {
         "properties": {
-          "sampleProcessingBatch": {}
-        },
-        "required": [
-          "sampleProcessingBatch"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
+          "individualID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
           }
         },
         "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "dataCollectionBatch": {}
-        },
-        "required": [
-          "dataCollectionBatch"
+          "individualID"
         ]
       }
     }
