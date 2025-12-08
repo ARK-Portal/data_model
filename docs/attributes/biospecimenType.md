@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 15
 permalink: docs/attributes/biospecimenType.html
-date: 2025-12-05
+date: 2025-12-08
 ---
 {% assign mydata=site.data.csv.attributes.biospecimenType %}
 {% include content/biospecimenType.md %}

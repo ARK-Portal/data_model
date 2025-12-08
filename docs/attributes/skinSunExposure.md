@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 85
 permalink: docs/attributes/skinSunExposure.html
-date: 2025-12-05
+date: 2025-12-08
 ---
 {% assign mydata=site.data.csv.attributes.skinSunExposure %}
 {% include content/skinSunExposure.md %}
