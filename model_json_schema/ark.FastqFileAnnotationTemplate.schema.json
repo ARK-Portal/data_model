@@ -4,36 +4,30 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "readLength": {},
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "VDJSeq",
-          "scRNASeq",
-          "WGS",
-          "feature barcode sequencing",
-          "ASAPSeq",
-          "RNASeq",
-          "scVDJSeq",
-          "WES",
-          "snATACSeq",
-          "snRNASeq",
-          "CITESeq"
-        ]
-      },
-      "maxItems": 11
-    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "fileFormat": {
-      "enum": [
-        "fastq"
-      ]
+    "assay": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "snRNASeq",
+          "WGS",
+          "WES",
+          "feature barcode sequencing",
+          "CITESeq",
+          "VDJSeq",
+          "scVDJSeq",
+          "RNASeq",
+          "ASAPSeq",
+          "scRNASeq",
+          "snATACSeq"
+        ]
+      },
+      "maxItems": 11
     },
     "specimenModality": {
       "enum": [
@@ -41,18 +35,24 @@
         "multispecimen"
       ]
     },
-    "targetPanel": {},
-    "targetPanelSize": {},
+    "fileFormat": {
+      "enum": [
+        "fastq"
+      ]
+    },
+    "readLength": {},
     "targetPanelSynID": {},
-    "individualID": {},
+    "targetPanelSize": {},
+    "targetPanel": {},
     "biospecimenID": {},
+    "individualID": {},
     "libraryID": {}
   },
   "required": [
-    "assay",
     "Component",
-    "fileFormat",
-    "specimenModality"
+    "assay",
+    "specimenModality",
+    "fileFormat"
   ],
   "allOf": [
     {
@@ -70,7 +70,7 @@
       },
       "then": {
         "properties": {
-          "targetPanel": {
+          "targetPanelSynID": {
             "not": {
               "type": "null"
             },
@@ -78,7 +78,7 @@
           }
         },
         "required": [
-          "targetPanel"
+          "targetPanelSynID"
         ]
       }
     },
@@ -119,7 +119,7 @@
       },
       "then": {
         "properties": {
-          "targetPanelSynID": {
+          "targetPanel": {
             "not": {
               "type": "null"
             },
@@ -127,34 +127,7 @@
           }
         },
         "required": [
-          "targetPanelSynID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
+          "targetPanel"
         ]
       }
     },
@@ -182,6 +155,33 @@
         },
         "required": [
           "biospecimenID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "single specimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "individualID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "individualID"
         ]
       }
     },
