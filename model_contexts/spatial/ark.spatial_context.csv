@@ -1,0 +1,14 @@
+Attribute,Description,Valid Values,DependsOn,Properties,Required,Parent,DependsOn Component,Source,Validation Rules,columnType
+Spatial Assay Metadata Template,A template outlining metadata to be collected for each slide in a spatial transcriptomic or imaging based dataset.,,"Component, assay, specimenModality, sampleProcessingBatch, dataCollectionBatch, targetPanel, targetPanelSynID, targetPanelSize",,,,,,,
+Spatial Imaging File Annotation Template,A data contributor template outlining metadata to be collected as file annotations for imaging-based data files.,,"Component, fileFormat, assay, resourceType, specimenModality",,,,,,,
+BDM Spatial Imaging File Annotations,A template outlining as file annotations for imaging-based data files to be compiled by ARK BDM.,,"Component, fileFormat, assay, resourceType, specimenModality, parentBiospecimenID, biospecimenType, biospecimenSubtype, dataType, dataSubtype, diagnosis, visitID, targetPanel, targetPanelSynID, targetPanelSize, program, project, species",,,,,,,
+single specimen,Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.,,"biospecimenID, individualID",,,,,,,
+multispecimen,Is a valid value of `specimenModality` that triggers conditional dependencies for additional attributes.,,slideID,,,,,,,
+resourceType,,"experimental data, metadata",,,TRUE,,,,list like error,string
+assay,,"Xenium, CosMX, GenePS SeqFISH, imaging mass cytometry, Visium, H&E, serial IHC",,,,,,,,
+Rds,Is a valid value of 'fileFormat' that triggers conditional dependencies for additional attributes.,,RObjectClass,,,,,,,
+experimental data,Is a valid value of 'resourceType' that triggers conditional dependencies for additional attributes.,,processedDataType,,,,,,,
+metadata,"Is a valid value of Resource Type that triggers conditional dependencies for additional attributes. Any file that contains curated data describing an experiment and experimental-derived data, including metadata about study subjects, biospecimens, protocols, assay reagents, marker panels, and ID mappings",,metadataType,,FALSE,,,,,
+metadataType,,"single-cell metadata, cell coordinates, target panel, tissue multiarray map, other",,,TRUE,,,,,string
+AMP RA/SLE,Accelerating Medicines Partnership Rheumatoid Arthritis and Systemic Lupus Erythematosus. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.,,visitID,,,,,,,
+AMP AIM,Accelerating Medicines Partnership Autoimmune and Immune-Mediated Diseases. Is a valid value for 'program' that triggers conditional dependencies for additional attributes.,,visitID,,,,,,,
