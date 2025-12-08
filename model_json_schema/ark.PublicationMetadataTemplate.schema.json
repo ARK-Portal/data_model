@@ -4,40 +4,7 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "SLE",
-          "ELLIPSS",
-          "STAMP",
-          "LOCKIT",
-          "V-CoRT",
-          "AIM for RA",
-          "RA"
-        ]
-      },
-      "maxItems": 7
-    },
-    "publicationDate": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "DOI": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "program": {
-      "enum": [
-        "Community Contribution",
-        "AMP RA/SLE",
-        "AMP AIM"
-      ]
-    },
+    "PMCID": {},
     "Component": {
       "not": {
         "type": "null"
@@ -50,8 +17,7 @@
       },
       "minLength": 1
     },
-    "associatedDataset": {},
-    "PMID": {
+    "publicationDate": {
       "not": {
         "type": "null"
       },
@@ -59,9 +25,23 @@
     },
     "publicationType": {
       "enum": [
-        "peer-reviewed",
+        "correction",
         "pre-print",
-        "correction"
+        "peer-reviewed"
+      ]
+    },
+    "DOI": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "associatedDataset": {},
+    "program": {
+      "enum": [
+        "Community Contribution",
+        "AMP AIM",
+        "AMP RA/SLE"
       ]
     },
     "journal": {
@@ -70,8 +50,28 @@
       },
       "minLength": 1
     },
-    "PMCID": {},
     "year": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SLE",
+          "AIM for RA",
+          "RA",
+          "STAMP",
+          "ELLIPSS",
+          "V-CoRT",
+          "LOCKIT"
+        ]
+      },
+      "maxItems": 7
+    },
+    "PMID": {
       "not": {
         "type": "null"
       },
@@ -90,16 +90,16 @@
     }
   },
   "required": [
-    "project",
-    "publicationDate",
-    "DOI",
-    "program",
     "Component",
     "title",
-    "PMID",
+    "publicationDate",
     "publicationType",
+    "DOI",
+    "program",
     "journal",
-    "year"
+    "year",
+    "project",
+    "PMID"
   ],
   "allOf": [
     {

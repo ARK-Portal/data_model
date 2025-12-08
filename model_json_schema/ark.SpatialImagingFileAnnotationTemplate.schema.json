@@ -4,154 +4,154 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "fileFormat": {
+      "enum": [
+        "czi",
+        "xls",
+        "csv",
+        "mcd",
+        "info",
+        "fam",
+        "mtx",
+        "rds",
+        "tgz",
+        "zip",
+        "h5",
+        "txt",
+        "parquet",
+        "h5ad",
+        "dose",
+        "bed",
+        "geojson",
+        "bim",
+        "rec",
+        "svs",
+        "vcf",
+        "bam",
+        "erate",
+        "tbi",
+        "fcs",
+        "xlsx",
+        "pdf",
+        "docx",
+        "bai",
+        "fastq",
+        "tsv"
+      ]
+    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
+    "assay": {
+      "enum": [
+        "Xenium",
+        "H&E",
+        "GenePS SeqFISH",
+        "CosMX",
+        "imaging mass cytometry",
+        "Visium",
+        "serial IHC"
+      ]
+    },
     "resourceType": {
       "type": "array",
       "items": {
         "enum": [
-          "experimental data",
-          "metadata"
+          "metadata",
+          "experimental data"
         ]
       },
       "maxItems": 2
     },
-    "fileFormat": {
+    "specimenModality": {
       "enum": [
-        "bed",
-        "xls",
-        "erate",
-        "bai",
-        "h5ad",
-        "docx",
-        "mcd",
-        "rec",
-        "tbi",
-        "fastq",
-        "rds",
-        "csv",
-        "vcf",
-        "tsv",
-        "svs",
-        "fcs",
-        "txt",
-        "xlsx",
-        "info",
-        "bam",
-        "pdf",
-        "czi",
-        "mtx",
-        "bim",
-        "fam",
-        "parquet",
-        "zip",
-        "h5",
-        "dose",
-        "geojson",
-        "tgz"
+        "single specimen",
+        "multispecimen"
       ]
     },
-    "assay": {
+    "RObjectClass": {
       "enum": [
-        "serial IHC",
-        "H&E",
-        "imaging mass cytometry",
-        "CosMX",
-        "Xenium",
-        "GenePS SeqFISH",
-        "Visium",
+        "matrix",
+        "Symphony reference",
+        "Seurat object",
+        "data.frame",
+        "vector",
+        "ROCR prediction.object",
+        "SummarizedExperiment",
+        "list",
+        "sparse matrix",
         ""
       ]
     },
-    "specimenModality": {
+    "metadataType": {
       "enum": [
-        "multispecimen",
-        "single specimen"
+        "other",
+        "single-cell metadata",
+        "tissue microarray map",
+        "cell coordinates",
+        "target panel",
+        ""
       ]
     },
     "processedDataType": {
       "type": "array",
       "items": {
         "enum": [
-          "barcode counts",
-          "differential expression results",
-          "gene counts",
           "epigenomic peaks",
+          "differential expression results",
+          "barcode counts",
+          "gene counts",
           ""
         ]
       },
       "maxItems": 4
     },
-    "metadataType": {
-      "enum": [
-        "other",
-        "tissue multiarray map",
-        "single-cell metadata",
-        "target panel",
-        "cell coordinates",
-        ""
-      ]
-    },
-    "RObjectClass": {
-      "enum": [
-        "Seurat object",
-        "ROCR prediction.object",
-        "Symphony reference",
-        "matrix",
-        "sparse matrix",
-        "SummarizedExperiment",
-        "vector",
-        "data.frame",
-        "list",
-        ""
-      ]
-    },
-    "slideID": {},
-    "individualID": {},
-    "biospecimenID": {}
+    "biospecimenID": {},
+    "slideID": {}
   },
   "required": [
-    "Component",
-    "resourceType",
     "fileFormat",
+    "Component",
+    "assay",
+    "resourceType",
     "specimenModality"
   ],
   "allOf": [
     {
       "if": {
         "properties": {
-          "resourceType": {
+          "fileFormat": {
             "enum": [
-              "experimental data"
+              "rds"
             ]
           }
         },
         "required": [
-          "resourceType"
+          "fileFormat"
         ]
       },
       "then": {
         "properties": {
-          "processedDataType": {
-            "type": "array",
-            "items": {
-              "enum": [
-                "barcode counts",
-                "differential expression results",
-                "gene counts",
-                "epigenomic peaks",
-                ""
-              ]
-            },
-            "maxItems": 4
+          "RObjectClass": {
+            "enum": [
+              "matrix",
+              "Symphony reference",
+              "Seurat object",
+              "data.frame",
+              "vector",
+              "ROCR prediction.object",
+              "SummarizedExperiment",
+              "list",
+              "sparse matrix",
+              ""
+            ]
           }
         },
         "required": [
-          "processedDataType"
+          "RObjectClass"
         ]
       }
     },
@@ -173,10 +173,10 @@
           "metadataType": {
             "enum": [
               "other",
-              "tissue multiarray map",
               "single-cell metadata",
-              "target panel",
-              "cell coordinates"
+              "tissue microarray map",
+              "cell coordinates",
+              "target panel"
             ]
           }
         },
@@ -188,89 +188,34 @@
     {
       "if": {
         "properties": {
-          "fileFormat": {
+          "resourceType": {
             "enum": [
-              "rds"
+              "experimental data"
             ]
           }
         },
         "required": [
-          "fileFormat"
+          "resourceType"
         ]
       },
       "then": {
         "properties": {
-          "RObjectClass": {
-            "enum": [
-              "Seurat object",
-              "ROCR prediction.object",
-              "Symphony reference",
-              "matrix",
-              "sparse matrix",
-              "SummarizedExperiment",
-              "vector",
-              "data.frame",
-              "list",
-              ""
-            ]
-          }
-        },
-        "required": [
-          "RObjectClass"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "slideID": {
-            "not": {
-              "type": "null"
+          "processedDataType": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "epigenomic peaks",
+                "differential expression results",
+                "barcode counts",
+                "gene counts",
+                ""
+              ]
             },
-            "minLength": 1
+            "maxItems": 4
           }
         },
         "required": [
-          "slideID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
+          "processedDataType"
         ]
       }
     },
@@ -298,6 +243,33 @@
         },
         "required": [
           "biospecimenID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "multispecimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "slideID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "slideID"
         ]
       }
     }
