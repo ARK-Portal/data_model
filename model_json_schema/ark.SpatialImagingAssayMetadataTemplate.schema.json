@@ -4,24 +4,22 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "specimenModality": {
       "enum": [
         "single specimen",
         "multispecimen"
       ]
     },
-    "targetPanelSize": {},
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+    "assay": {
+      "enum": [
+        "Visium",
+        "H&E",
+        "GenePS SeqFISH",
+        "imaging mass cytometry",
+        "Xenium",
+        "serial IHC",
+        "CosMX"
+      ]
     },
     "targetPanel": {
       "not": {
@@ -29,58 +27,32 @@
       },
       "minLength": 1
     },
-    "sampleProcessingBatch": {},
-    "assay": {
-      "enum": [
-        "Xenium",
-        "CosMX",
-        "imaging mass cytometry",
-        "H&E",
-        "serial IHC",
-        "Visium",
-        "GenePS SeqFISH",
-        ""
-      ]
-    },
     "dataCollectionBatch": {},
-    "individualID": {},
+    "targetPanelSize": {},
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "targetPanelSynID": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "sampleProcessingBatch": {},
     "biospecimenID": {},
     "slideID": {}
   },
   "required": [
-    "targetPanelSynID",
     "specimenModality",
+    "assay",
+    "targetPanel",
     "Component",
-    "targetPanel"
+    "targetPanelSynID"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
