@@ -8,10 +8,10 @@
     },
     "@graph": [
         {
-            "@id": "bts:SpatialAssayMetadataTemplate",
+            "@id": "bts:SpatialImagingAssayMetadataTemplate",
             "@type": "rdfs:Class",
             "rdfs:comment": "A template outlining metadata to be collected for each slide in a spatial transcriptomic or imaging based dataset.",
-            "rdfs:label": "SpatialAssayMetadataTemplate",
+            "rdfs:label": "SpatialImagingAssayMetadataTemplate",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:Thing"
@@ -20,7 +20,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "Spatial Assay Metadata Template",
+            "sms:displayName": "Spatial Imaging Assay Metadata Template",
             "sms:required": "sms:false",
             "sms:requiresDependency": [
                 {
@@ -104,7 +104,7 @@
                 }
             ],
             "sms:displayName": "assay",
-            "sms:required": "sms:false",
+            "sms:required": "sms:true",
             "sms:validationRules": []
         },
         {
@@ -902,9 +902,6 @@
             "sms:requiresDependency": [
                 {
                     "@id": "bts:BiospecimenID"
-                },
-                {
-                    "@id": "bts:IndividualID"
                 }
             ],
             "sms:validationRules": []
@@ -926,28 +923,6 @@
             "sms:required": "sms:true",
             "sms:validationRules": {
                 "BiospecimenMetadataTemplate": "unique error",
-                "OlinkBiospecimenMetadataTemplate": "unique error",
-                "all_other_components": "list like error"
-            }
-        },
-        {
-            "@id": "bts:IndividualID",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
-            "rdfs:label": "IndividualID",
-            "rdfs:subClassOf": [
-                {
-                    "@id": "bts:Thing"
-                }
-            ],
-            "schema:isPartOf": {
-                "@id": "http://schema.biothings.io"
-            },
-            "sms:displayName": "individualID",
-            "sms:required": "sms:true",
-            "sms:validationRules": {
-                "BiospecimenMetadataTemplate": "str",
-                "ClinicalMetadataTemplate": "unique error",
                 "all_other_components": "list like error"
             }
         },
@@ -976,7 +951,7 @@
         {
             "@id": "bts:SlideID",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A library label or name, unique within an experiment, used to distinguish imaging slides.",
+            "rdfs:comment": "A distinct label or name, unique within an experiment, assigned to an imaging slides.",
             "rdfs:label": "SlideID",
             "rdfs:subClassOf": [
                 {
@@ -1281,7 +1256,7 @@
                     "@id": "bts:Targetpanel"
                 },
                 {
-                    "@id": "bts:Tissuemultiarraymap"
+                    "@id": "bts:Tissuemicroarraymap"
                 },
                 {
                     "@id": "bts:Other"
@@ -1343,10 +1318,10 @@
             "sms:validationRules": []
         },
         {
-            "@id": "bts:Tissuemultiarraymap",
+            "@id": "bts:Tissuemicroarraymap",
             "@type": "rdfs:Class",
             "rdfs:comment": "TBD",
-            "rdfs:label": "Tissuemultiarraymap",
+            "rdfs:label": "Tissuemicroarraymap",
             "rdfs:subClassOf": [
                 {
                     "@id": "bts:MetadataType"
@@ -1355,7 +1330,7 @@
             "schema:isPartOf": {
                 "@id": "http://schema.biothings.io"
             },
-            "sms:displayName": "tissue multiarray map",
+            "sms:displayName": "tissue microarray map",
             "sms:required": "sms:false",
             "sms:validationRules": []
         },
@@ -3623,6 +3598,27 @@
             "sms:displayName": "unknown",
             "sms:required": "sms:false",
             "sms:validationRules": []
+        },
+        {
+            "@id": "bts:IndividualID",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+            "rdfs:label": "IndividualID",
+            "rdfs:subClassOf": [
+                {
+                    "@id": "bts:Thing"
+                }
+            ],
+            "schema:isPartOf": {
+                "@id": "http://schema.biothings.io"
+            },
+            "sms:displayName": "individualID",
+            "sms:required": "sms:true",
+            "sms:validationRules": {
+                "BiospecimenMetadataTemplate": "str",
+                "ClinicalMetadataTemplate": "unique error",
+                "all_other_components": "list like error"
+            }
         },
         {
             "@id": "bts:PBMCs",
@@ -8303,7 +8299,7 @@
         {
             "@id": "bts:Age",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Age at which subject was enrolled in study or age at corresponding visit and data collection event.",
+            "rdfs:comment": "Age at which subject was enrolled in study or age at corresponding visit and data collection event. If value unknown, enter '-1'.",
             "rdfs:label": "Age",
             "rdfs:subClassOf": [
                 {
@@ -8808,7 +8804,7 @@
         {
             "@id": "bts:Weight",
             "@type": "rdfs:Class",
-            "rdfs:comment": "Weight of subject.",
+            "rdfs:comment": "Weight of subject. If value unknown, enter '-1'.",
             "rdfs:label": "Weight",
             "rdfs:subClassOf": [
                 {
@@ -9470,7 +9466,7 @@
         {
             "@id": "bts:KrennInflammatory",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A standardized, semi-quantitative measure of the degree of inflammatory infiltrate in synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'.",
+            "rdfs:comment": "A standardized, semi-quantitative measure of the degree of inflammatory infiltrate in synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'.",
             "rdfs:label": "KrennInflammatory",
             "rdfs:subClassOf": [
                 {
@@ -9508,7 +9504,7 @@
         {
             "@id": "bts:KrennStroma",
             "@type": "rdfs:Class",
-            "rdfs:comment": "A standardized, semi-quantitative measure of stromal cell density of synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'.",
+            "rdfs:comment": "A standardized, semi-quantitative measure of stromal cell density of synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'.",
             "rdfs:label": "KrennStroma",
             "rdfs:subClassOf": [
                 {
