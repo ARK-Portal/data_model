@@ -1,5 +1,5 @@
 # slideID
-A library label or name, unique within an experiment, used to distinguish imaging slides.
+A distinct label or name, unique within an experiment, assigned to an imaging slides.
 
 
 {: .note }

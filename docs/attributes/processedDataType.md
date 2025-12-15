@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 67
 permalink: docs/attributes/processedDataType.html
-date: 2025-12-08
+date: 2025-12-15
 ---
 {% assign mydata=site.data.csv.attributes.processedDataType %}
 {% include content/processedDataType.md %}

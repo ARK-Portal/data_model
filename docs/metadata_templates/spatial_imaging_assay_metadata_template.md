@@ -1,13 +1,13 @@
 ---
-title: Biospecimen Metadata Template
+title: Spatial Imaging Assay Metadata Template
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: docs/metadata_templates/biospecimen_metadata_template.html
+permalink: docs/metadata_templates/spatial_imaging_assay_metadata_template.html
 date: 2025-12-15
 ---
-{% assign mydata=site.data.csv.metadata_templates.biospecimen_metadata_template %}
-{% include content/biospecimen_metadata_template.md %}
+{% assign mydata=site.data.csv.metadata_templates.spatial_imaging_assay_metadata_template %}
+{% include content/spatial_imaging_assay_metadata_template.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
       {% for column in mydata[0] %}

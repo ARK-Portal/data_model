@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 61
 permalink: docs/attributes/percentCellViability.html
-date: 2025-12-08
+date: 2025-12-15
 ---
 {% include content/percentCellViability.md %}

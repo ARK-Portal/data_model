@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/bulk_atac_seq_assay_metadata_template.html
-date: 2025-12-08
+date: 2025-12-15
 ---
 {% assign mydata=site.data.csv.metadata_templates.bulk_atac_seq_assay_metadata_template %}
 {% include content/bulk_atac_seq_assay_metadata_template.md %}

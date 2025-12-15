@@ -1,5 +1,5 @@
 # weight
-Weight of subject.
+Weight of subject. If value unknown, enter '-1'.
 
 
 {: .note }

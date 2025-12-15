@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 6
 permalink: docs/attributes/alignmentReference.html
-date: 2025-12-08
+date: 2025-12-15
 ---
 {% assign mydata=site.data.csv.attributes.alignmentReference %}
 {% include content/alignmentReference.md %}
