@@ -4,41 +4,41 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "assay": {
-      "enum": [
-        "flow cytometry",
-        "CyTOF"
-      ]
-    },
-    "eventCount": {},
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "specimenModality": {
-      "enum": [
-        "unknown",
-        "multispecimen",
-        "single specimen"
-      ]
-    },
     "fileFormat": {
       "enum": [
         "fcs",
         ""
       ]
     },
+    "eventCount": {},
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen",
+        "unknown"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
+    "assay": {
+      "enum": [
+        "CyTOF",
+        "flow cytometry"
+      ]
+    },
     "dataCollectionBatch": {},
     "sampleProcessingBatch": {},
-    "biospecimenID": {},
-    "individualID": {}
+    "individualID": {},
+    "biospecimenID": {}
   },
   "required": [
-    "assay",
+    "specimenModality",
     "Component",
-    "specimenModality"
+    "assay"
   ],
   "allOf": [
     {
@@ -100,7 +100,7 @@
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "individualID": {
             "not": {
               "type": "null"
             },
@@ -108,7 +108,7 @@
           }
         },
         "required": [
-          "biospecimenID"
+          "individualID"
         ]
       }
     },
@@ -127,7 +127,7 @@
       },
       "then": {
         "properties": {
-          "individualID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             },
@@ -135,7 +135,7 @@
           }
         },
         "required": [
-          "individualID"
+          "biospecimenID"
         ]
       }
     }

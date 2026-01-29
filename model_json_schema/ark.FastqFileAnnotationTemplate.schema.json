@@ -10,50 +10,50 @@
       },
       "minLength": 1
     },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen",
-        "unknown"
-      ]
-    },
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "snRNASeq",
-          "CITESeq",
-          "snATACSeq",
-          "RNASeq",
-          "feature barcode sequencing",
-          "VDJSeq",
-          "WES",
-          "scVDJSeq",
-          "WGS",
-          "scRNASeq",
-          "ASAPSeq"
-        ]
-      },
-      "maxItems": 11
-    },
-    "readLength": {},
     "fileFormat": {
       "enum": [
         "fastq"
       ]
     },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "unknown",
+        "single specimen"
+      ]
+    },
+    "readLength": {},
+    "assay": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "RNASeq",
+          "ASAPSeq",
+          "feature barcode sequencing",
+          "snRNASeq",
+          "scVDJSeq",
+          "WGS",
+          "VDJSeq",
+          "scRNASeq",
+          "snATACSeq",
+          "WES",
+          "CITESeq"
+        ]
+      },
+      "maxItems": 11
+    },
     "libraryID": {},
     "biospecimenID": {},
     "individualID": {},
-    "targetPanelSize": {},
+    "targetPanel": {},
     "targetPanelSynID": {},
-    "targetPanel": {}
+    "targetPanelSize": {}
   },
   "required": [
     "Component",
+    "fileFormat",
     "specimenModality",
-    "assay",
-    "fileFormat"
+    "assay"
   ],
   "allOf": [
     {
@@ -152,10 +152,15 @@
       },
       "then": {
         "properties": {
-          "targetPanelSize": {}
+          "targetPanel": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
         },
         "required": [
-          "targetPanelSize"
+          "targetPanel"
         ]
       }
     },
@@ -201,15 +206,10 @@
       },
       "then": {
         "properties": {
-          "targetPanel": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
+          "targetPanelSize": {}
         },
         "required": [
-          "targetPanel"
+          "targetPanelSize"
         ]
       }
     }
