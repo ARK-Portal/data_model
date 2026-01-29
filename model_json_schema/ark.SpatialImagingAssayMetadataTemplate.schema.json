@@ -4,11 +4,24 @@
   "title": "ark",
   "type": "object",
   "properties": {
-    "Component": {
+    "sampleProcessingBatch": {},
+    "targetPanelSynID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
+    },
+    "targetPanelSize": {},
+    "assay": {
+      "enum": [
+        "CosMX",
+        "imaging mass cytometry",
+        "Visium",
+        "serial IHC",
+        "Xenium",
+        "GenePS SeqFISH",
+        "H&E"
+      ]
     },
     "targetPanel": {
       "not": {
@@ -16,71 +29,31 @@
       },
       "minLength": 1
     },
-    "targetPanelSize": {},
-    "targetPanelSynID": {
+    "dataCollectionBatch": {},
+    "specimenModality": {
+      "enum": [
+        "unknown",
+        "multispecimen",
+        "single specimen"
+      ]
+    },
+    "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "assay": {
-      "enum": [
-        "GenePS SeqFISH",
-        "imaging mass cytometry",
-        "CosMX",
-        "H&E",
-        "serial IHC",
-        "Visium",
-        "Xenium"
-      ]
-    },
-    "sampleProcessingBatch": {},
-    "dataCollectionBatch": {},
-    "specimenModality": {
-      "enum": [
-        "single specimen",
-        "unknown",
-        "multispecimen"
-      ]
-    },
-    "biospecimenID": {},
-    "slideID": {}
+    "slideID": {},
+    "biospecimenID": {}
   },
   "required": [
-    "Component",
-    "targetPanel",
     "targetPanelSynID",
     "assay",
-    "specimenModality"
+    "targetPanel",
+    "specimenModality",
+    "Component"
   ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "biospecimenID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
@@ -105,6 +78,33 @@
         },
         "required": [
           "slideID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "single specimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "biospecimenID"
         ]
       }
     }

@@ -4,6 +4,28 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "associatedDataset": {},
+    "project": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "SLE",
+          "STAMP",
+          "RA",
+          "LOCKIT",
+          "UMass V-CoRT",
+          "AIM for RA",
+          "ELLIPSS"
+        ]
+      },
+      "maxItems": 7
+    },
+    "publicationDate": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "publicationType": {
       "enum": [
         "pre-print",
@@ -17,32 +39,13 @@
       },
       "minLength": 1
     },
-    "year": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "PMCID": {},
-    "title": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
     "DOI": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "PMID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "publicationDate": {
+    "year": {
       "not": {
         "type": "null"
       },
@@ -50,32 +53,29 @@
     },
     "program": {
       "enum": [
-        "AMP AIM",
         "AMP RA/SLE",
+        "AMP AIM",
         "Community Contribution"
       ]
     },
-    "associatedDataset": {},
+    "title": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "Component": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "AIM for RA",
-          "STAMP",
-          "SLE",
-          "UMass V-CoRT",
-          "ELLIPSS",
-          "LOCKIT",
-          "RA"
-        ]
+    "PMCID": {},
+    "PMID": {
+      "not": {
+        "type": "null"
       },
-      "maxItems": 7
+      "minLength": 1
     },
     "programPhase": {
       "type": "array",
@@ -90,16 +90,16 @@
     }
   },
   "required": [
+    "project",
+    "publicationDate",
     "publicationType",
     "journal",
-    "year",
-    "title",
     "DOI",
-    "PMID",
-    "publicationDate",
+    "year",
     "program",
+    "title",
     "Component",
-    "project"
+    "PMID"
   ],
   "allOf": [
     {

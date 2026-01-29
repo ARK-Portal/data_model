@@ -4,6 +4,48 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "fileFormat": {
+      "enum": [
+        "zip",
+        "h5ad",
+        "bed",
+        "h5",
+        "csv",
+        "fam",
+        "bam",
+        "mtx",
+        "bai",
+        "tgz",
+        "txt",
+        "Rds",
+        "bim",
+        "tsv",
+        "xlsx",
+        "xls"
+      ]
+    },
+    "specimenModality": {
+      "enum": [
+        "multispecimen",
+        "single specimen",
+        "unknown"
+      ]
+    },
+    "dataLevel": {
+      "enum": [
+        "5",
+        "3",
+        "1",
+        "4",
+        "2"
+      ]
+    },
+    "Component": {
+      "not": {
+        "type": "null"
+      },
+      "minLength": 1
+    },
     "resourceType": {
       "type": "array",
       "items": {
@@ -18,86 +60,60 @@
       "type": "array",
       "items": {
         "enum": [
-          "H&E",
-          "SNP array",
-          "CE-MS",
-          "Xenium",
-          "GenePS SeqFISH",
-          "imaging mass spectrometry",
-          "Visium",
-          "Olink Explore HT",
-          "Olink Reveal",
-          "CosMX",
-          "Olink Target 96",
-          "Olink Target 48",
-          "SomaScan",
           "LC-MS/MS",
-          "WES",
-          "Olink Focus",
-          "scRNASeq",
-          "WGS",
-          "scVDJSeq",
-          "kiloplex",
-          "snRNASeq",
-          "VDJSeq",
-          "imaging mass cytometry",
-          "Olink Flex",
           "RNASeq",
-          "serial IHC",
-          "feature barcode sequencing",
-          "snATACSeq",
-          "NULISA",
-          "ASAPSeq",
-          "CyTOF",
-          "multiplexed ELISA",
+          "Xenium",
+          "snRNASeq",
+          "Olink Focus",
           "flow cytometry",
-          "CITESeq"
+          "imaging mass spectrometry",
+          "Olink Reveal",
+          "WES",
+          "WGS",
+          "imaging mass cytometry",
+          "Olink Explore HT",
+          "scRNASeq",
+          "Olink Target 96",
+          "VDJSeq",
+          "NULISA",
+          "multiplexed ELISA",
+          "CE-MS",
+          "SomaScan",
+          "CosMX",
+          "scVDJSeq",
+          "GenePS SeqFISH",
+          "Visium",
+          "CITESeq",
+          "kiloplex",
+          "H&E",
+          "CyTOF",
+          "Olink Flex",
+          "Olink Target 48",
+          "SNP array",
+          "feature barcode sequencing",
+          "serial IHC",
+          "snATACSeq",
+          "ASAPSeq"
         ]
       },
       "maxItems": 34
     },
-    "dataLevel": {
+    "RObjectClass": {
       "enum": [
-        "2",
-        "3",
-        "4",
-        "1",
-        "5"
+        "Seurat object",
+        "SummarizedExperiment",
+        "sparse matrix",
+        "Symphony reference",
+        "vector",
+        "data.frame",
+        "matrix",
+        "ROCR prediction.object",
+        "list",
+        ""
       ]
     },
-    "fileFormat": {
-      "enum": [
-        "bim",
-        "mtx",
-        "h5ad",
-        "xlsx",
-        "csv",
-        "Rds",
-        "bam",
-        "tgz",
-        "bed",
-        "bai",
-        "xls",
-        "fam",
-        "txt",
-        "zip",
-        "h5",
-        "tsv"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "specimenModality": {
-      "enum": [
-        "unknown",
-        "single specimen",
-        "multispecimen"
-      ]
-    },
+    "biospecimenID": {},
+    "individualID": {},
     "metadataType": {
       "enum": [
         "single-cell metadata",
@@ -108,44 +124,117 @@
       "type": "array",
       "items": {
         "enum": [
-          "gene counts",
           "epigenomic peaks",
-          "differential expression results",
+          "gene counts",
           "barcode counts",
+          "differential expression results",
           ""
         ]
       },
       "maxItems": 4
     },
-    "targetPanel": {},
-    "targetPanelSynID": {},
     "targetPanelSize": {},
-    "RObjectClass": {
-      "enum": [
-        "matrix",
-        "data.frame",
-        "ROCR prediction.object",
-        "vector",
-        "SummarizedExperiment",
-        "Symphony reference",
-        "Seurat object",
-        "list",
-        "sparse matrix",
-        ""
-      ]
-    },
-    "individualID": {},
-    "biospecimenID": {}
+    "targetPanelSynID": {},
+    "targetPanel": {}
   },
   "required": [
-    "resourceType",
-    "assay",
-    "dataLevel",
     "fileFormat",
+    "specimenModality",
+    "dataLevel",
     "Component",
-    "specimenModality"
+    "resourceType",
+    "assay"
   ],
   "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fileFormat": {
+            "enum": [
+              "Rds"
+            ]
+          }
+        },
+        "required": [
+          "fileFormat"
+        ]
+      },
+      "then": {
+        "properties": {
+          "RObjectClass": {
+            "enum": [
+              "Seurat object",
+              "SummarizedExperiment",
+              "sparse matrix",
+              "Symphony reference",
+              "vector",
+              "data.frame",
+              "matrix",
+              "ROCR prediction.object",
+              "list",
+              ""
+            ]
+          }
+        },
+        "required": [
+          "RObjectClass"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "single specimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "biospecimenID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "single specimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "individualID": {
+            "not": {
+              "type": "null"
+            },
+            "minLength": 1
+          }
+        },
+        "required": [
+          "individualID"
+        ]
+      }
+    },
     {
       "if": {
         "properties": {
@@ -191,10 +280,10 @@
             "type": "array",
             "items": {
               "enum": [
-                "gene counts",
                 "epigenomic peaks",
-                "differential expression results",
+                "gene counts",
                 "barcode counts",
+                "differential expression results",
                 ""
               ]
             },
@@ -221,15 +310,10 @@
       },
       "then": {
         "properties": {
-          "targetPanel": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
+          "targetPanelSize": {}
         },
         "required": [
-          "targetPanel"
+          "targetPanelSize"
         ]
       }
     },
@@ -275,64 +359,7 @@
       },
       "then": {
         "properties": {
-          "targetPanelSize": {}
-        },
-        "required": [
-          "targetPanelSize"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "fileFormat": {
-            "enum": [
-              "Rds"
-            ]
-          }
-        },
-        "required": [
-          "fileFormat"
-        ]
-      },
-      "then": {
-        "properties": {
-          "RObjectClass": {
-            "enum": [
-              "matrix",
-              "data.frame",
-              "ROCR prediction.object",
-              "vector",
-              "SummarizedExperiment",
-              "Symphony reference",
-              "Seurat object",
-              "list",
-              "sparse matrix",
-              ""
-            ]
-          }
-        },
-        "required": [
-          "RObjectClass"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
+          "targetPanel": {
             "not": {
               "type": "null"
             },
@@ -340,34 +367,7 @@
           }
         },
         "required": [
-          "individualID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "biospecimenID"
+          "targetPanel"
         ]
       }
     }
