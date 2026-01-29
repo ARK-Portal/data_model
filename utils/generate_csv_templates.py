@@ -3,6 +3,12 @@ import csv
 import sys
 import json
 
+'''
+this script generates a "blank" csv file for every json schema in model_json_schema/ 
+which are used for various downstream purposes including the data dictionary site 
+and BDM curation work
+'''
+
 ####
 #### Functions
 ####

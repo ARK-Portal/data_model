@@ -5,6 +5,11 @@ import csv
 import sys
 import time
 
+'''
+this script will take each context.csv and combine with the ark.all_attributes.csv 
+to generate context-specific model csv files.
+'''
+
 ####
 #### Functions
 ####
