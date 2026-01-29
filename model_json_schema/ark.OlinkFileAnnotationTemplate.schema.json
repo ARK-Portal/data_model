@@ -4,24 +4,61 @@
   "title": "ark",
   "type": "object",
   "properties": {
+    "fileFormat": {
+      "enum": [
+        "csv",
+        "geojson",
+        "svs",
+        "mtx",
+        "fastq",
+        "fcs",
+        "xlsx",
+        "tgz",
+        "czi",
+        "tsv",
+        "bai",
+        "bed",
+        "pdf",
+        "docx",
+        "tbi",
+        "zip",
+        "erate",
+        "rds",
+        "h5",
+        "vcf",
+        "parquet",
+        "xls",
+        "rec",
+        "h5ad",
+        "mcd",
+        "txt",
+        "py",
+        "bam",
+        "bim",
+        "dose",
+        "info",
+        "fam"
+      ]
+    },
+    "specimenModality": {
+      "enum": [
+        "unknown",
+        "multispecimen",
+        "single specimen"
+      ]
+    },
     "plateID": {
       "not": {
         "type": "null"
       },
       "minLength": 1
     },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "single specimen"
-      ]
-    },
     "resourceType": {
       "enum": [
-        "figure",
         "metadata",
         "code",
-        "experimental data"
+        "experimental data",
+        "figure"
       ]
     },
     "Component": {
@@ -29,48 +66,13 @@
         "type": "null"
       },
       "minLength": 1
-    },
-    "fileFormat": {
-      "enum": [
-        "fastq",
-        "fam",
-        "svs",
-        "bai",
-        "vcf",
-        "czi",
-        "tgz",
-        "geojson",
-        "pdf",
-        "txt",
-        "tbi",
-        "dose",
-        "mcd",
-        "zip",
-        "parquet",
-        "bam",
-        "h5ad",
-        "info",
-        "rec",
-        "xls",
-        "rds",
-        "bed",
-        "csv",
-        "docx",
-        "mtx",
-        "fcs",
-        "h5",
-        "erate",
-        "xlsx",
-        "tsv",
-        "bim"
-      ]
     }
   },
   "required": [
-    "plateID",
+    "fileFormat",
     "specimenModality",
+    "plateID",
     "resourceType",
-    "Component",
-    "fileFormat"
+    "Component"
   ]
 }
