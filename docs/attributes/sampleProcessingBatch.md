@@ -3,8 +3,8 @@ title: sampleProcessingBatch
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 80
+nav_order: 81
 permalink: docs/attributes/sampleProcessingBatch.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% include content/sampleProcessingBatch.md %}

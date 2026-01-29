@@ -3,9 +3,9 @@ title: vitiligoPhenotype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 103
+nav_order: 105
 permalink: docs/attributes/vitiligoPhenotype.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.vitiligoPhenotype %}
 {% include content/vitiligoPhenotype.md %}

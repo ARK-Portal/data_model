@@ -3,9 +3,9 @@ title: cellRangerOutput
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 19
+nav_order: 20
 permalink: docs/attributes/cellRangerOutput.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.cellRangerOutput %}
 {% include content/cellRangerOutput.md %}

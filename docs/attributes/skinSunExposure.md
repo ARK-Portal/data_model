@@ -3,9 +3,9 @@ title: skinSunExposure
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 85
+nav_order: 86
 permalink: docs/attributes/skinSunExposure.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.skinSunExposure %}
 {% include content/skinSunExposure.md %}

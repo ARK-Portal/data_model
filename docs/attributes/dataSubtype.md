@@ -3,9 +3,9 @@ title: dataSubtype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 30
+nav_order: 31
 permalink: docs/attributes/dataSubtype.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.dataSubtype %}
 {% include content/dataSubtype.md %}

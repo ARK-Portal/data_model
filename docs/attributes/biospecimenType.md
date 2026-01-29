@@ -3,9 +3,9 @@ title: biospecimenType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 15
+nav_order: 16
 permalink: docs/attributes/biospecimenType.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.biospecimenType %}
 {% include content/biospecimenType.md %}

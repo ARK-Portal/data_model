@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/spatial_imaging_assay_metadata_template.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.metadata_templates.spatial_imaging_assay_metadata_template %}
 {% include content/spatial_imaging_assay_metadata_template.md %}

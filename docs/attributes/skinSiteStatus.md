@@ -3,9 +3,9 @@ title: skinSiteStatus
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 84
+nav_order: 85
 permalink: docs/attributes/skinSiteStatus.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.skinSiteStatus %}
 {% include content/skinSiteStatus.md %}

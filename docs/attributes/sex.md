@@ -3,9 +3,9 @@ title: sex
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 83
+nav_order: 84
 permalink: docs/attributes/sex.html
-date: 2025-12-15
+date: 2026-01-29
 ---
 {% assign mydata=site.data.csv.attributes.sex %}
 {% include content/sex.md %}
