@@ -31,16 +31,16 @@ jobs:
 
       - name: Install Python Packages
         run: |
-          pip install synapseclient[pandas]==${{ env.CLIENT_VERSION }}
+          pip install "synapseclient[pandas, curator]==${{ env.CLIENT_VERSION }}"
           pip show synapseclient
 
       - name: Create context-specific models
         run: |
           python utils/context_specific_models.py
 
-      - name: Generate templates
+      - name: Generate json schemas
         run: |
-          bash utils/generate_model_templates.sh
+          python utils/generate_jsonschema.py
 
       - name: Generate blank CSV templates from json schema to support dictionary site build
         run: |
