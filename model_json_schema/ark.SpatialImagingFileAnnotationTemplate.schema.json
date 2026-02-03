@@ -1,155 +1,23 @@
 {
+  "$id": "http://example.com/SpatialImagingFileAnnotationTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
-  "properties": {
-    "fileFormat": {
-      "enum": [
-        "fcs",
-        "h5ad",
-        "h5",
-        "txt",
-        "bim",
-        "geojson",
-        "tbi",
-        "vcf",
-        "tsv",
-        "mcd",
-        "erate",
-        "bai",
-        "py",
-        "bed",
-        "dose",
-        "czi",
-        "fastq",
-        "rds",
-        "fam",
-        "xls",
-        "tgz",
-        "zip",
-        "svs",
-        "parquet",
-        "xlsx",
-        "bam",
-        "pdf",
-        "rec",
-        "csv",
-        "info",
-        "mtx",
-        "docx"
-      ]
-    },
-    "assay": {
-      "enum": [
-        "Visium",
-        "CosMX",
-        "GenePS SeqFISH",
-        "Xenium",
-        "imaging mass cytometry",
-        "H&E",
-        "serial IHC"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "resourceType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "metadata",
-          "experimental data"
-        ]
-      },
-      "maxItems": 2
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "unknown",
-        "single specimen"
-      ]
-    },
-    "RObjectClass": {
-      "enum": [
-        "data.frame",
-        "sparse matrix",
-        "Seurat object",
-        "vector",
-        "Symphony reference",
-        "ROCR prediction.object",
-        "matrix",
-        "list",
-        "SummarizedExperiment",
-        ""
-      ]
-    },
-    "metadataType": {
-      "enum": [
-        "target panel",
-        "cell coordinates",
-        "tissue microarray map",
-        "single-cell metadata",
-        "other",
-        ""
-      ]
-    },
-    "processedDataType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "differential expression results",
-          "epigenomic peaks",
-          "gene counts",
-          "barcode counts",
-          ""
-        ]
-      },
-      "maxItems": 4
-    },
-    "slideID": {},
-    "biospecimenID": {}
-  },
-  "required": [
-    "fileFormat",
-    "assay",
-    "Component",
-    "resourceType",
-    "specimenModality"
-  ],
   "allOf": [
     {
       "if": {
         "properties": {
-          "fileFormat": {
+          "FileFormat": {
             "enum": [
-              "rds"
+              "Rds"
             ]
           }
-        },
-        "required": [
-          "fileFormat"
-        ]
+        }
       },
       "then": {
         "properties": {
           "RObjectClass": {
-            "enum": [
-              "data.frame",
-              "sparse matrix",
-              "Seurat object",
-              "vector",
-              "Symphony reference",
-              "ROCR prediction.object",
-              "matrix",
-              "list",
-              "SummarizedExperiment",
-              ""
-            ]
+            "not": {
+              "type": "null"
+            }
           }
         },
         "required": [
@@ -160,120 +28,225 @@
     {
       "if": {
         "properties": {
-          "resourceType": {
+          "ResourceType": {
             "enum": [
-              "metadata"
+              "Experimentaldata"
             ]
           }
-        },
-        "required": [
-          "resourceType"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "metadataType": {
-            "enum": [
-              "target panel",
-              "cell coordinates",
-              "tissue microarray map",
-              "single-cell metadata",
-              "other"
-            ]
-          }
-        },
-        "required": [
-          "metadataType"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "resourceType": {
-            "enum": [
-              "experimental data"
-            ]
-          }
-        },
-        "required": [
-          "resourceType"
-        ]
-      },
-      "then": {
-        "properties": {
-          "processedDataType": {
-            "type": "array",
-            "items": {
-              "enum": [
-                "differential expression results",
-                "epigenomic peaks",
-                "gene counts",
-                "barcode counts",
-                ""
-              ]
-            },
-            "maxItems": 4
-          }
-        },
-        "required": [
-          "processedDataType"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "slideID": {
+          "ProcessedDataType": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "slideID"
+          "ProcessedDataType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "specimenModality": {
+          "ResourceType": {
             "enum": [
-              "single specimen"
+              "Metadata"
             ]
           }
-        },
-        "required": [
-          "specimenModality"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "MetadataType": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "biospecimenID"
+          "MetadataType"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SpecimenModality": {
+            "enum": [
+              "Multispecimen"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "SlideID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "SlideID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "SpecimenModality": {
+            "enum": [
+              "Singlespecimen"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "BiospecimenID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "BiospecimenID"
         ]
       }
     }
-  ]
+  ],
+  "description": "A data contributor template outlining metadata to be collected as file annotations for imaging-based data files.",
+  "properties": {
+    "Assay": {
+      "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "enum": [
+        "CosMX",
+        "GenePS SeqFISH",
+        "H&E",
+        "Visium",
+        "Xenium",
+        "imaging mass cytometry",
+        "serial IHC"
+      ],
+      "title": "assay"
+    },
+    "BiospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "title": "biospecimenID",
+      "type": "string"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "FileFormat": {
+      "description": "Standard file format name or file extension",
+      "enum": [
+        "bai",
+        "bam",
+        "bed",
+        "bim",
+        "csv",
+        "czi",
+        "docx",
+        "dose",
+        "erate",
+        "fam",
+        "fastq",
+        "fcs",
+        "geojson",
+        "h5",
+        "h5ad",
+        "info",
+        "mcd",
+        "mtx",
+        "parquet",
+        "pdf",
+        "py",
+        "rds",
+        "rec",
+        "svs",
+        "tbi",
+        "tgz",
+        "tsv",
+        "txt",
+        "vcf",
+        "xls",
+        "xlsx",
+        "zip"
+      ],
+      "title": "fileFormat"
+    },
+    "MetadataType": {
+      "description": "A label further classifying the content of metadata resource.",
+      "enum": [
+        "cell coordinates",
+        "other",
+        "single-cell metadata",
+        "target panel",
+        "tissue microarray map"
+      ],
+      "title": "metadataType"
+    },
+    "ProcessedDataType": {
+      "description": "A label used for file annotations to provide a brief description of the processed data file.",
+      "enum": [
+        "barcode counts",
+        "differential expression results",
+        "epigenomic peaks",
+        "gene counts"
+      ],
+      "title": "processedDataType"
+    },
+    "RObjectClass": {
+      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
+      "enum": [
+        "ROCR prediction.object",
+        "Seurat object",
+        "SummarizedExperiment",
+        "Symphony reference",
+        "data.frame",
+        "list",
+        "matrix",
+        "sparse matrix",
+        "vector"
+      ],
+      "title": "RObjectClass"
+    },
+    "ResourceType": {
+      "description": "High-level classification of the file content",
+      "enum": [
+        "experimental data",
+        "metadata"
+      ],
+      "title": "resourceType"
+    },
+    "SlideID": {
+      "description": "A distinct label or name, unique within an experiment, assigned to an imaging slides.",
+      "title": "slideID",
+      "type": "string"
+    },
+    "SpecimenModality": {
+      "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
+      "enum": [
+        "multispecimen",
+        "single specimen",
+        "unknown"
+      ],
+      "title": "specimenModality"
+    }
+  },
+  "required": [
+    "Assay",
+    "Component",
+    "FileFormat",
+    "ResourceType",
+    "SpecimenModality"
+  ],
+  "title": "SpatialImagingFileAnnotationTemplate",
+  "type": "object"
 }

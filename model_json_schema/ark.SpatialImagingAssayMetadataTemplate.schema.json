@@ -1,112 +1,127 @@
 {
+  "$id": "http://example.com/SpatialImagingAssayMetadataTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
-  "properties": {
-    "targetPanelSize": {},
-    "assay": {
-      "enum": [
-        "H&E",
-        "CosMX",
-        "serial IHC",
-        "Xenium",
-        "GenePS SeqFISH",
-        "imaging mass cytometry",
-        "Visium"
-      ]
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "unknown",
-        "single specimen"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "sampleProcessingBatch": {},
-    "targetPanel": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "dataCollectionBatch": {},
-    "slideID": {},
-    "biospecimenID": {}
-  },
-  "required": [
-    "assay",
-    "specimenModality",
-    "Component",
-    "targetPanelSynID",
-    "targetPanel"
-  ],
   "allOf": [
     {
       "if": {
         "properties": {
-          "specimenModality": {
+          "SpecimenModality": {
             "enum": [
-              "multispecimen"
+              "Multispecimen"
             ]
           }
-        },
-        "required": [
-          "specimenModality"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "slideID": {
+          "SlideID": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "slideID"
+          "SlideID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "specimenModality": {
+          "SpecimenModality": {
             "enum": [
-              "single specimen"
+              "Singlespecimen"
             ]
           }
-        },
-        "required": [
-          "specimenModality"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "biospecimenID": {
+          "BiospecimenID": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "biospecimenID"
+          "BiospecimenID"
         ]
       }
     }
-  ]
+  ],
+  "description": "A template outlining metadata to be collected for each slide in a spatial transcriptomic or imaging based dataset.",
+  "properties": {
+    "Assay": {
+      "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "enum": [
+        "CosMX",
+        "GenePS SeqFISH",
+        "H&E",
+        "Visium",
+        "Xenium",
+        "imaging mass cytometry",
+        "serial IHC"
+      ],
+      "title": "assay"
+    },
+    "BiospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "title": "biospecimenID",
+      "type": "string"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "DataCollectionBatch": {
+      "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
+      "title": "dataCollectionBatch",
+      "type": "string"
+    },
+    "SampleProcessingBatch": {
+      "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
+      "title": "sampleProcessingBatch",
+      "type": "string"
+    },
+    "SlideID": {
+      "description": "A distinct label or name, unique within an experiment, assigned to an imaging slides.",
+      "title": "slideID",
+      "type": "string"
+    },
+    "SpecimenModality": {
+      "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
+      "enum": [
+        "multispecimen",
+        "single specimen",
+        "unknown"
+      ],
+      "title": "specimenModality"
+    },
+    "TargetPanel": {
+      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+      "title": "targetPanel",
+      "type": "string"
+    },
+    "TargetPanelSize": {
+      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+      "title": "targetPanelSize",
+      "type": "integer"
+    },
+    "TargetPanelSynID": {
+      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "targetPanelSynID",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Assay",
+    "Component",
+    "SpecimenModality",
+    "TargetPanel",
+    "TargetPanelSynID"
+  ],
+  "title": "SpatialImagingAssayMetadataTemplate",
+  "type": "object"
 }

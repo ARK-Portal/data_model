@@ -1,64 +1,65 @@
 {
+  "$id": "http://example.com/OlinkAssayMetadataTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
+  "description": "A template outlining assay metadata to be collected for each plate in an Olink dataset.",
   "properties": {
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "targetPanel": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "targetPanelSize": {},
-    "platform": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "Illumina NovaSeq 6000",
-          "Fluidigm BioMark",
-          "Olink Signature Q100",
-          "unknown",
-          "Illumina NextSeq 500",
-          ""
-        ]
-      },
-      "maxItems": 5
-    },
-    "plateID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "assay": {
+    "Assay": {
+      "description": "The technology used to generate the data in this file.",
       "enum": [
+        "Olink Explore HT",
         "Olink Flex",
-        "Olink Target 96",
         "Olink Focus",
         "Olink Reveal",
-        "Olink Explore HT",
-        "Olink Target 48"
-      ]
+        "Olink Target 48",
+        "Olink Target 96"
+      ],
+      "title": "assay"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "PlateID": {
+      "description": "An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.",
+      "title": "plateID",
+      "type": "string"
+    },
+    "Platform": {
+      "description": "The specific instrument (manufacturer, model, etc.) that was used to carry out a laboratory or computational experiment.",
+      "enum": [
+        "Fluidigm BioMark",
+        "Illumina NextSeq 500",
+        "Illumina NovaSeq 6000",
+        "Olink Signature Q100",
+        "unknown"
+      ],
+      "title": "platform"
+    },
+    "TargetPanel": {
+      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+      "title": "targetPanel",
+      "type": "string"
+    },
+    "TargetPanelSize": {
+      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+      "title": "targetPanelSize",
+      "type": "integer"
+    },
+    "TargetPanelSynID": {
+      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "targetPanelSynID",
+      "type": "string"
     }
   },
   "required": [
-    "targetPanelSynID",
-    "targetPanel",
+    "Assay",
     "Component",
-    "plateID",
-    "assay"
-  ]
+    "PlateID",
+    "TargetPanel",
+    "TargetPanelSynID"
+  ],
+  "title": "OlinkAssayMetadataTemplate",
+  "type": "object"
 }
