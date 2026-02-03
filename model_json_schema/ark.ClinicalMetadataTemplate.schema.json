@@ -1,392 +1,139 @@
 {
+  "$id": "http://example.com/ClinicalMetadataTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
-  "properties": {
-    "heightUnits": {
-      "enum": [
-        "centimeters",
-        "feet",
-        "inches",
-        "meters"
-      ]
-    },
-    "comorbidities": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "autoimmune thyroid disease",
-          "multiple sclerosis",
-          "psoriasis",
-          "systemic lupus erythematosus",
-          "inflammatory bowel disease",
-          "psoriatic arthritis",
-          "diabetes",
-          "rheumatoid arthritis",
-          "Hashimoto's Thyroiditis",
-          "pulmonary disease",
-          "other",
-          "cardiovascular disease",
-          ""
-        ]
-      },
-      "maxItems": 12
-    },
-    "age": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "ethnicity": {
-      "enum": [
-        "Hispanic or Latino",
-        "unknown",
-        "Not Hispanic or Latino",
-        ""
-      ]
-    },
-    "ageUnits": {
-      "enum": [
-        "years",
-        "months"
-      ]
-    },
-    "weight": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "program": {
-      "enum": [
-        "AMP AIM",
-        "AMP RA/SLE",
-        "Community Contribution"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "species": {
-      "enum": [
-        "Homo sapiens"
-      ]
-    },
-    "individualID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "sex": {
-      "enum": [
-        "intersex",
-        "unknown",
-        "female",
-        "male"
-      ]
-    },
-    "race": {
-      "enum": [
-        "White",
-        "Hispanic",
-        "Mixed Race",
-        "American Indian or Alaska Native",
-        "Asian",
-        "unknown",
-        "other",
-        "Native Hawaiian or Other Pacific Islander",
-        "Black or African American",
-        ""
-      ]
-    },
-    "weightUnits": {
-      "enum": [
-        "g",
-        "kg",
-        "oz",
-        "lb"
-      ]
-    },
-    "project": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "AIM for RA",
-          "STAMP",
-          "LOCKIT",
-          "SLE",
-          "UMass V-CoRT",
-          "ELLIPSS",
-          "RA"
-        ]
-      },
-      "maxItems": 7
-    },
-    "height": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "diagnosis": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "dermatomyositis",
-          "Sjogren's disease",
-          "cutaneous lupus erythematosus",
-          "psoriasis",
-          "vitiligo",
-          "scleroderma",
-          "control",
-          "At-Risk RA",
-          "OA",
-          "psoriatic arthritis",
-          "unknown",
-          "lupus nephritis",
-          "SLE",
-          "discoid lupus erythematosus",
-          "Not Applicable",
-          "RA"
-        ]
-      },
-      "maxItems": 16
-    },
-    "PASI": {},
-    "diabetesType": {
-      "enum": [
-        "gestational",
-        "unknown",
-        "type 1",
-        "type 2",
-        ""
-      ]
-    },
-    "visitID": {},
-    "CDASI": {},
-    "VASI": {},
-    "VETI": {},
-    "vitiligoPattern": {
-      "enum": [
-        "mixed",
-        "unclassified",
-        "non-segmental",
-        "segmental",
-        ""
-      ]
-    },
-    "VIDA": {}
-  },
-  "required": [
-    "heightUnits",
-    "age",
-    "ageUnits",
-    "weight",
-    "program",
-    "Component",
-    "species",
-    "individualID",
-    "sex",
-    "weightUnits",
-    "project",
-    "height",
-    "diagnosis"
-  ],
   "allOf": [
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Comorbidities": {
             "enum": [
-              "psoriasis"
+              "Diabetes"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "PASI": {}
-        },
-        "required": [
-          "PASI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "diagnosis": {
-            "enum": [
-              "psoriasis"
-            ]
-          }
-        },
-        "required": [
-          "diagnosis"
-        ]
-      },
-      "then": {
-        "properties": {
-          "PASI": {}
-        },
-        "required": [
-          "PASI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "diagnosis": {
-            "enum": [
-              "psoriasis"
-            ]
-          }
-        },
-        "required": [
-          "diagnosis"
-        ]
-      },
-      "then": {
-        "properties": {
-          "PASI": {}
-        },
-        "required": [
-          "PASI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "diagnosis": {
-            "enum": [
-              "psoriasis"
-            ]
-          }
-        },
-        "required": [
-          "diagnosis"
-        ]
-      },
-      "then": {
-        "properties": {
-          "PASI": {}
-        },
-        "required": [
-          "PASI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "comorbidities": {
-            "enum": [
-              "diabetes"
-            ]
-          }
-        },
-        "required": [
-          "comorbidities"
-        ]
-      },
-      "then": {
-        "properties": {
-          "diabetesType": {
-            "enum": [
-              "gestational",
-              "unknown",
-              "type 1",
-              "type 2",
-              ""
-            ]
-          }
-        },
-        "required": [
-          "diabetesType"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "program": {
-            "enum": [
-              "AMP AIM"
-            ]
-          }
-        },
-        "required": [
-          "program"
-        ]
-      },
-      "then": {
-        "properties": {
-          "visitID": {
+          "DiabetesType": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "visitID"
+          "DiabetesType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "program": {
+          "Comorbidities": {
             "enum": [
-              "AMP RA/SLE"
+              "Psoriasis"
             ]
           }
-        },
-        "required": [
-          "program"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "visitID": {
+          "PASI": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
           }
         },
         "required": [
-          "visitID"
+          "PASI"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Diagnosis": {
             "enum": [
-              "dermatomyositis"
+              "Psoriasis"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "CDASI": {}
+          "PASI": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "PASI"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Comorbidities": {
+            "enum": [
+              "Psoriasis"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "PASI": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "PASI"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Diagnosis": {
+            "enum": [
+              "Psoriasis"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "PASI": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "PASI"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Diagnosis": {
+            "enum": [
+              "Dermatomyositis"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "CDASI": {
+            "not": {
+              "type": "null"
+            }
+          }
         },
         "required": [
           "CDASI"
@@ -396,19 +143,20 @@
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Diagnosis": {
             "enum": [
-              "vitiligo"
+              "Vitiligo"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "VASI": {}
+          "VASI": {
+            "not": {
+              "type": "null"
+            }
+          }
         },
         "required": [
           "VASI"
@@ -418,19 +166,20 @@
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Diagnosis": {
             "enum": [
-              "vitiligo"
+              "Vitiligo"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "VETI": {}
+          "VETI": {
+            "not": {
+              "type": "null"
+            }
+          }
         },
         "required": [
           "VETI"
@@ -440,54 +189,320 @@
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Diagnosis": {
             "enum": [
-              "vitiligo"
+              "Vitiligo"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "vitiligoPattern": {
-            "enum": [
-              "mixed",
-              "unclassified",
-              "non-segmental",
-              "segmental",
-              ""
-            ]
+          "VIDA": {
+            "not": {
+              "type": "null"
+            }
           }
         },
         "required": [
-          "vitiligoPattern"
+          "VIDA"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "diagnosis": {
+          "Diagnosis": {
             "enum": [
-              "vitiligo"
+              "Vitiligo"
             ]
           }
-        },
-        "required": [
-          "diagnosis"
-        ]
+        }
       },
       "then": {
         "properties": {
-          "VIDA": {}
+          "VitiligoPattern": {
+            "not": {
+              "type": "null"
+            }
+          }
         },
         "required": [
-          "VIDA"
+          "VitiligoPattern"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Program": {
+            "enum": [
+              "AMPAIM"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "VisitID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "VisitID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "Program": {
+            "enum": [
+              "AMPRA/SLE"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "VisitID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "VisitID"
         ]
       }
     }
-  ]
+  ],
+  "description": "A template outlining clinical metadata to collect for study subjects.",
+  "properties": {
+    "Age": {
+      "description": "Age at which subject was enrolled in study or age at corresponding visit and data collection event. If value unknown, enter '-1'.",
+      "title": "age",
+      "type": "number"
+    },
+    "AgeUnits": {
+      "description": "The unit of measure used for `ageEnrollment` and `ageDiagnosis`",
+      "enum": [
+        "months",
+        "years"
+      ],
+      "title": "ageUnits"
+    },
+    "CDASI": {
+      "description": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
+      "title": "CDASI",
+      "type": "string"
+    },
+    "Comorbidities": {
+      "description": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
+      "enum": [
+        "Hashimoto's Thyroiditis",
+        "autoimmune thyroid disease",
+        "cardiovascular disease",
+        "diabetes",
+        "inflammatory bowel disease",
+        "multiple sclerosis",
+        "other",
+        "psoriasis",
+        "psoriatic arthritis",
+        "pulmonary disease",
+        "rheumatoid arthritis",
+        "systemic lupus erythematosus"
+      ],
+      "title": "comorbidities"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "DiabetesType": {
+      "description": "Type of diabetes mellitus.",
+      "enum": [
+        "gestational",
+        "type 1",
+        "type 2",
+        "unknown"
+      ],
+      "title": "diabetesType"
+    },
+    "Diagnosis": {
+      "description": "A high-level classifier indicating the disease status of an individual.",
+      "enum": [
+        "At-Risk RA",
+        "Not Applicable",
+        "OA",
+        "RA",
+        "SLE",
+        "Sjogren's disease",
+        "control",
+        "cutaneous lupus erythematosus",
+        "dermatomyositis",
+        "discoid lupus erythematosus",
+        "lupus nephritis",
+        "psoriasis",
+        "psoriatic arthritis",
+        "scleroderma",
+        "unknown",
+        "vitiligo"
+      ],
+      "title": "diagnosis"
+    },
+    "Ethnicity": {
+      "description": "The ethnicity of a person.",
+      "enum": [
+        "Hispanic or Latino",
+        "Not Hispanic or Latino",
+        "unknown"
+      ],
+      "title": "ethnicity"
+    },
+    "Height": {
+      "description": "Standing height of subject.",
+      "title": "height",
+      "type": "number"
+    },
+    "HeightUnits": {
+      "description": "Unit of measure of value provided for `height`.",
+      "enum": [
+        "centimeters",
+        "feet",
+        "inches",
+        "meters"
+      ],
+      "title": "heightUnits"
+    },
+    "IndividualID": {
+      "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "title": "individualID",
+      "type": "string"
+    },
+    "PASI": {
+      "description": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
+      "title": "PASI",
+      "type": "string"
+    },
+    "Program": {
+      "description": "Name of the funding program that supported the generation of data and associated files",
+      "enum": [
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
+      ],
+      "title": "program"
+    },
+    "Project": {
+      "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
+      "enum": [
+        "AIM for RA",
+        "ELLIPSS",
+        "LOCKIT",
+        "RA",
+        "SLE",
+        "STAMP",
+        "UMass V-CoRT"
+      ],
+      "title": "project"
+    },
+    "Race": {
+      "description": "A textual description of a person's race.",
+      "enum": [
+        "American Indian or Alaska Native",
+        "Asian",
+        "Black or African American",
+        "Hispanic",
+        "Mixed Race",
+        "Native Hawaiian or Other Pacific Islander",
+        "White",
+        "other",
+        "unknown"
+      ],
+      "title": "race"
+    },
+    "Sex": {
+      "description": "A textual description of a person's sex at birth.",
+      "enum": [
+        "female",
+        "intersex",
+        "male",
+        "unknown"
+      ],
+      "title": "sex"
+    },
+    "Species": {
+      "description": "The genus species of sample or subject origin.",
+      "enum": [
+        "Homo sapiens"
+      ],
+      "title": "species"
+    },
+    "VASI": {
+      "description": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
+      "title": "VASI",
+      "type": "string"
+    },
+    "VETI": {
+      "description": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
+      "title": "VETI",
+      "type": "number"
+    },
+    "VIDA": {
+      "description": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
+      "title": "VIDA",
+      "type": "string"
+    },
+    "VisitID": {
+      "description": "Ordinal ID distinguishing different patient visits.",
+      "title": "visitID",
+      "type": "string"
+    },
+    "VitiligoPattern": {
+      "description": "A high-level classification of vitiligo based on the distribution and patterning of lesions across the body.",
+      "enum": [
+        "mixed",
+        "non-segmental",
+        "segmental",
+        "unclassified"
+      ],
+      "title": "vitiligoPattern"
+    },
+    "Weight": {
+      "description": "Weight of subject. If value unknown, enter '-1'.",
+      "title": "weight",
+      "type": "number"
+    },
+    "WeightUnits": {
+      "description": "Abbreviated unit of measure of value provided for `weight`.",
+      "enum": [
+        "g",
+        "kg",
+        "lb",
+        "oz"
+      ],
+      "title": "weightUnits"
+    }
+  },
+  "required": [
+    "Age",
+    "AgeUnits",
+    "Component",
+    "Diagnosis",
+    "Height",
+    "HeightUnits",
+    "IndividualID",
+    "Program",
+    "Project",
+    "Sex",
+    "Species",
+    "Weight",
+    "WeightUnits"
+  ],
+  "title": "ClinicalMetadataTemplate",
+  "type": "object"
 }
