@@ -11,10 +11,10 @@ on:
       - '.github/workflows/ci-schema-convert.yml'
       - 'utils/**'
       - 'model_contexts/**'
+  workflow_dispatch:
 
 env:
-  SCHEMATIC_VERSION: 24.11.2
-  SCHEMATIC_SERVICE_ACCOUNT_CREDS: ${{ secrets.SCHEMATIC_SERVICE_ACCOUNT_CREDS }}
+  CLIENT_VERSION: 4.11.0
 
 jobs:
   build:
@@ -28,28 +28,20 @@ jobs:
       # Set up supported python.
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.10.12' 
+          python-version: '3.10.19' 
 
       - name: Install Python Packages
         run: |
-          pip install schematicpy==${{ env.SCHEMATIC_VERSION }}
-          pip show schematicpy
-
-      - name: Create creds file
-        run: |
-          echo "${SCHEMATIC_SERVICE_ACCOUNT_CREDS}" > schematic_service_account_creds.json
+          pip install "synapseclient[pandas, curator]==${{ env.CLIENT_VERSION }}"
+          pip show synapseclient
 
       - name: Create context-specific models
         run: |
           python utils/context_specific_models.py
 
-      - name: convert model csv to jsonld
+      - name: Generate json schemas
         run: |
-          bash utils/schema_convert.sh
-
-      - name: Generate templates
-        run: |
-          bash utils/generate_model_templates.sh
+          python utils/generate_jsonschema.py
 
       - name: Generate blank CSV templates from json schema to support dictionary site build
         run: |
@@ -58,10 +50,6 @@ jobs:
       - name: delete BDM-specific json schema files
         run: | 
           rm model_json_schema/ark.BDM*
-
-      - name: Clean up sensitive info
-        run: |
-          rm schematic_service_account_creds.json
 
       - name: Commit files if there are changes
         run: |
