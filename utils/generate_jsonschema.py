@@ -22,8 +22,7 @@ for context in templates.keys():
       data_model_source=f"model_contexts/{context}/ark.{context}_model.csv",
       output=f"model_json_schema/ark.{t}.schema.json",
       data_types= [t],
-      synapse_client=syn,
-      data_model_labels = "display_label"
+      synapse_client=syn
     )
 
 print("JSON schema generation complete!")
