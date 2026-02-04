@@ -63,59 +63,71 @@
     },
     "Assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
-      "enum": [
-        "ASAPSeq",
-        "CE-MS",
-        "CITESeq",
-        "CosMX",
-        "CyTOF",
-        "GenePS SeqFISH",
-        "H&E",
-        "LC-MS/MS",
-        "NULISA",
-        "Olink Explore HT",
-        "Olink Flex",
-        "Olink Focus",
-        "Olink Reveal",
-        "Olink Target 48",
-        "Olink Target 96",
-        "RNASeq",
-        "SNP array",
-        "SomaScan",
-        "VDJSeq",
-        "Visium",
-        "WES",
-        "WGS",
-        "Xenium",
-        "feature barcode sequencing",
-        "flow cytometry",
-        "imaging mass cytometry",
-        "imaging mass spectrometry",
-        "kiloplex",
-        "multiplexed ELISA",
-        "scRNASeq",
-        "scVDJSeq",
-        "serial IHC",
-        "snATACSeq",
-        "snRNASeq"
-      ],
-      "title": "assay"
+      "items": {
+        "enum": [
+          "ASAPSeq",
+          "CE-MS",
+          "CITESeq",
+          "CosMX",
+          "CyTOF",
+          "GenePS SeqFISH",
+          "H&E",
+          "LC-MS/MS",
+          "NULISA",
+          "Olink Explore HT",
+          "Olink Flex",
+          "Olink Focus",
+          "Olink Reveal",
+          "Olink Target 48",
+          "Olink Target 96",
+          "RNASeq",
+          "SNP array",
+          "SomaScan",
+          "VDJSeq",
+          "Visium",
+          "WES",
+          "WGS",
+          "Xenium",
+          "feature barcode sequencing",
+          "flow cytometry",
+          "imaging mass cytometry",
+          "imaging mass spectrometry",
+          "kiloplex",
+          "multiplexed ELISA",
+          "scRNASeq",
+          "scVDJSeq",
+          "serial IHC",
+          "snATACSeq",
+          "snRNASeq"
+        ],
+        "type": "string"
+      },
+      "title": "assay",
+      "type": "array"
     },
     "AssociatedAccession": {
       "description": "This is a File and Dataset annotation attribute indicating additional accessions (i.e., unique identifiers) associated with the data when the data has also been submitted to or can be found in other repositories such as GEO, SRA, dbGaP, etc.",
+      "items": {
+        "type": "string"
+      },
       "title": "associatedAccession",
-      "type": "string"
+      "type": "array"
     },
     "AssociatedCodeURL": {
       "description": "A URL to the repository where associated code is available.",
+      "format": "uri",
       "title": "associatedCodeURL",
       "type": "string"
     },
     "AssociatedDataset": {
       "description": "The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.",
+      "items": {
+        "pattern": "^syn[0-9]{8}",
+        "type": "string"
+      },
       "pattern": "^syn[0-9]{8}",
       "title": "associatedDataset",
-      "type": "string"
+      "type": "array"
     },
     "BiospecimenSubtype": {
       "description": "Biospecimen status before sample is processed into a scRNA-seq library. Several scRNA-seq technologies support a variety of sample processing methods which can introduces sources of technical variation.",
@@ -134,30 +146,34 @@
     },
     "BiospecimenType": {
       "description": "A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.",
-      "enum": [
-        "PBMCs",
-        "cell line",
-        "fibroblast-like synoviocyte",
-        "kidney biopsy",
-        "none",
-        "plasma",
-        "primary cell culture",
-        "saliva",
-        "salivary gland",
-        "serum",
-        "skin biopsy",
-        "skin swab",
-        "stool",
-        "suction blister cells",
-        "suction blister fluid",
-        "synovial fluid",
-        "synovial tissue",
-        "total leukocytes",
-        "urine",
-        "uvea",
-        "whole blood"
-      ],
-      "title": "biospecimenType"
+      "items": {
+        "enum": [
+          "PBMCs",
+          "cell line",
+          "fibroblast-like synoviocyte",
+          "kidney biopsy",
+          "none",
+          "plasma",
+          "primary cell culture",
+          "saliva",
+          "salivary gland",
+          "serum",
+          "skin biopsy",
+          "skin swab",
+          "stool",
+          "suction blister cells",
+          "suction blister fluid",
+          "synovial fluid",
+          "synovial tissue",
+          "total leukocytes",
+          "urine",
+          "uvea",
+          "whole blood"
+        ],
+        "type": "string"
+      },
+      "title": "biospecimenType",
+      "type": "array"
     },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
@@ -166,33 +182,41 @@
     },
     "DataSubtype": {
       "description": "General classification to differentiate between omics profiling modalities. If N/A please select 'none'. Multiple selections can be provided in a comma-delimited list, however this is largely only expected in the context of Datasets and files that contain integrated experimental data spanning multiple types.",
-      "enum": [
-        "bulk",
-        "none",
-        "pseudobulk",
-        "single-cell",
-        "single-nucleus",
-        "spatial"
-      ],
-      "title": "dataSubtype"
+      "items": {
+        "enum": [
+          "bulk",
+          "none",
+          "pseudobulk",
+          "single-cell",
+          "single-nucleus",
+          "spatial"
+        ],
+        "type": "string"
+      },
+      "title": "dataSubtype",
+      "type": "array"
     },
     "DataType": {
       "description": "High-level classification of the type of data contained in the file, loosely related to the experimental method or biological entity that is being profiled. Select all that apply using a comma-delimited list, though in most cases only a single label is expected. For multimodal datasets with concomitant profiling of biospecimen include 'multimodal'.",
-      "enum": [
-        "cytometry",
-        "epigenomics",
-        "genomics",
-        "histology",
-        "immune repertoire profiling",
-        "immunostaining",
-        "lipidomics",
-        "metabolomics",
-        "microbiome",
-        "multimodal",
-        "proteomics",
-        "transcriptomics"
-      ],
-      "title": "dataType"
+      "items": {
+        "enum": [
+          "cytometry",
+          "epigenomics",
+          "genomics",
+          "histology",
+          "immune repertoire profiling",
+          "immunostaining",
+          "lipidomics",
+          "metabolomics",
+          "microbiome",
+          "multimodal",
+          "proteomics",
+          "transcriptomics"
+        ],
+        "type": "string"
+      },
+      "title": "dataType",
+      "type": "array"
     },
     "DatasetDescription": {
       "description": "A Dataset-specific attribute specifying the synID of the folder that contains a wiki write-up of the dataset description. This wiki content will be surfaced on the ARK Portal frontend site.",
@@ -221,25 +245,29 @@
     },
     "Diagnosis": {
       "description": "A high-level classifier indicating the disease status of an individual.",
-      "enum": [
-        "At-Risk RA",
-        "Not Applicable",
-        "OA",
-        "RA",
-        "SLE",
-        "Sjogren's disease",
-        "control",
-        "cutaneous lupus erythematosus",
-        "dermatomyositis",
-        "discoid lupus erythematosus",
-        "lupus nephritis",
-        "psoriasis",
-        "psoriatic arthritis",
-        "scleroderma",
-        "unknown",
-        "vitiligo"
-      ],
-      "title": "diagnosis"
+      "items": {
+        "enum": [
+          "At-Risk RA",
+          "Not Applicable",
+          "OA",
+          "RA",
+          "SLE",
+          "Sjogren's disease",
+          "control",
+          "cutaneous lupus erythematosus",
+          "dermatomyositis",
+          "discoid lupus erythematosus",
+          "lupus nephritis",
+          "psoriasis",
+          "psoriatic arthritis",
+          "scleroderma",
+          "unknown",
+          "vitiligo"
+        ],
+        "type": "string"
+      },
+      "title": "diagnosis",
+      "type": "array"
     },
     "ImmPortAccession": {
       "description": "Accession to corresponding information in ImmPort.",
@@ -258,24 +286,32 @@
     },
     "ProgramPhase": {
       "description": "A label noting which AMP RA/SLE program phase generated the data.",
-      "enum": [
-        "I",
-        "II"
-      ],
-      "title": "programPhase"
+      "items": {
+        "enum": [
+          "I",
+          "II"
+        ],
+        "type": "string"
+      },
+      "title": "programPhase",
+      "type": "array"
     },
     "Project": {
       "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
-      "enum": [
-        "AIM for RA",
-        "ELLIPSS",
-        "LOCKIT",
-        "RA",
-        "SLE",
-        "STAMP",
-        "UMass V-CoRT"
-      ],
-      "title": "project"
+      "items": {
+        "enum": [
+          "AIM for RA",
+          "ELLIPSS",
+          "LOCKIT",
+          "RA",
+          "SLE",
+          "STAMP",
+          "UMass V-CoRT"
+        ],
+        "type": "string"
+      },
+      "title": "project",
+      "type": "array"
     },
     "PublicationSynID": {
       "description": "The synID of the corresponding Synapse entity that stores metadata about the publication. This is used to differentiate publication-specific files, often consisting of level 4 processed data and expanded subject metadata, in a publication dataset that also includes raw or minimally processed files from experimental datasets. This provides an easy way to distinguish and select for the publication-specific data from which the research findings were derived. When this attribute is used to annotate a Dataset it serves as a way to directly link the Dataset entity with the publication metadata stored in Synapse.",

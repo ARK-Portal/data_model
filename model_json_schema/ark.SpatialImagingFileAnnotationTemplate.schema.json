@@ -135,8 +135,11 @@
     },
     "BiospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "items": {
+        "type": "string"
+      },
       "title": "biospecimenID",
-      "type": "string"
+      "type": "array"
     },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
@@ -194,13 +197,17 @@
     },
     "ProcessedDataType": {
       "description": "A label used for file annotations to provide a brief description of the processed data file.",
-      "enum": [
-        "barcode counts",
-        "differential expression results",
-        "epigenomic peaks",
-        "gene counts"
-      ],
-      "title": "processedDataType"
+      "items": {
+        "enum": [
+          "barcode counts",
+          "differential expression results",
+          "epigenomic peaks",
+          "gene counts"
+        ],
+        "type": "string"
+      },
+      "title": "processedDataType",
+      "type": "array"
     },
     "RObjectClass": {
       "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
@@ -219,11 +226,15 @@
     },
     "ResourceType": {
       "description": "High-level classification of the file content",
-      "enum": [
-        "experimental data",
-        "metadata"
-      ],
-      "title": "resourceType"
+      "items": {
+        "enum": [
+          "experimental data",
+          "metadata"
+        ],
+        "type": "string"
+      },
+      "title": "resourceType",
+      "type": "array"
     },
     "SlideID": {
       "description": "A distinct label or name, unique within an experiment, assigned to an imaging slides.",

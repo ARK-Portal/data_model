@@ -30,9 +30,13 @@
   "properties": {
     "AssociatedDataset": {
       "description": "The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.",
+      "items": {
+        "pattern": "^syn[0-9]{8}",
+        "type": "string"
+      },
       "pattern": "^syn[0-9]{8}",
       "title": "associatedDataset",
-      "type": "string"
+      "type": "array"
     },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
@@ -41,6 +45,7 @@
     },
     "DOI": {
       "description": "Digital object identifier",
+      "format": "uri-reference",
       "title": "DOI",
       "type": "string"
     },
@@ -72,24 +77,32 @@
     },
     "ProgramPhase": {
       "description": "A label noting which AMP RA/SLE program phase generated the data.",
-      "enum": [
-        "I",
-        "II"
-      ],
-      "title": "programPhase"
+      "items": {
+        "enum": [
+          "I",
+          "II"
+        ],
+        "type": "string"
+      },
+      "title": "programPhase",
+      "type": "array"
     },
     "Project": {
       "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
-      "enum": [
-        "AIM for RA",
-        "ELLIPSS",
-        "LOCKIT",
-        "RA",
-        "SLE",
-        "STAMP",
-        "UMass V-CoRT"
-      ],
-      "title": "project"
+      "items": {
+        "enum": [
+          "AIM for RA",
+          "ELLIPSS",
+          "LOCKIT",
+          "RA",
+          "SLE",
+          "STAMP",
+          "UMass V-CoRT"
+        ],
+        "type": "string"
+      },
+      "title": "project",
+      "type": "array"
     },
     "PublicationDate": {
       "description": "The publication date extracted from PubMed database",
