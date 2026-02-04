@@ -5,6 +5,11 @@ import csv
 import sys
 import time
 
+'''
+this script will take each context.csv and combine with the ark.all_attributes.csv 
+to generate context-specific model csv files.
+'''
+
 ####
 #### Functions
 ####
@@ -61,7 +66,7 @@ contexts = os.listdir("model_contexts/")
 contexts = [c for c in contexts if c not in [".DS_Store", ".Rhistory"]] # for local execution
 
 # shore-up attribute valid values so that all context-specific valid values are included in all_attributes.csv
-allAttr = pd.read_csv("ark.all_attributes.csv")
+allAttr = pd.read_csv("ark.all_attributes.csv", dtype="object")
 all_vv = get_valid_values_dict(allAttr)
 
 # then compile context-specific valid values
@@ -107,7 +112,7 @@ if add_new_rows:
 update_all_attributes(allAttr, all_vv)
 
 # read in newest version and prep all attributes csv
-allAttr = pd.read_csv("ark.all_attributes.csv")
+allAttr = pd.read_csv("ark.all_attributes.csv", dtype="object")
 # create dictionary of attribute descriptions that can be pulled into context models
 descriptions = allAttr.loc[:, ["Attribute", "Description"]].set_index("Attribute").to_dict("index")
 
