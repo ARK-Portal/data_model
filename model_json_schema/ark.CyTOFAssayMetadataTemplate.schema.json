@@ -1,171 +1,189 @@
 {
+  "$id": "http://example.com/CyTOFAssayMetadataTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
+  "description": "A template outlining assay-related metadata for a cytometry time-of-flight (CyTOF) dataset. Each row corresponds to a biospecimen profiled in the experiment.",
   "properties": {
-    "softwareAndVersion": {
-      "enum": [
-        "Cell Ranger v6.0.2",
-        "Cell Ranger v3.0.0",
-        "Cell Ranger 9.0.1",
-        "Space Ranger 3.1.0",
-        "Cell Ranger ATAC v1.1.0",
-        "Cell Ranger v4.0.0",
-        "Cell Ranger v3.0.2",
-        "Cell Ranger v9.0.0",
-        "Space Ranger 3.1.1",
-        "Cell Ranger v6.0.0",
-        "Cell Ranger v7.0.0",
-        "Cell Ranger v5.0.1",
-        "Cell Ranger v7.2.0",
-        "Cell Ranger v3.0.1",
-        "Cell Ranger v5.0.0",
-        "BD FACSDiva 8.0.1",
-        "Space Ranger 3.1.2",
-        "demuxlet",
-        "Cell Ranger v3.1.0",
-        "Cell Ranger v6.1.0",
-        "Space Ranger 3.0.1",
-        "Cell Ranger v8.0.1",
-        "Cell Ranger v6.0.1",
-        "Cell Ranger v7.1.0",
-        "Space Ranger 3.0.0",
-        "Cell Ranger v7.0.1",
-        "Cell Ranger v6.1.1",
-        "Cell Ranger v6.1.2",
-        "Space Ranger 3.1.3",
-        "Cell Ranger v8.0.0",
-        ""
-      ]
+    "Assay": {
+      "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "items": {
+        "enum": [
+          "ASAPSeq",
+          "CE-MS",
+          "CITESeq",
+          "CosMX",
+          "CyTOF",
+          "GenePS SeqFISH",
+          "H&E",
+          "LC-MS/MS",
+          "NULISA",
+          "Olink Explore HT",
+          "Olink Flex",
+          "Olink Focus",
+          "Olink Reveal",
+          "Olink Target 48",
+          "Olink Target 96",
+          "RNASeq",
+          "SNP array",
+          "SomaScan",
+          "VDJSeq",
+          "Visium",
+          "WES",
+          "WGS",
+          "Xenium",
+          "feature barcode sequencing",
+          "flow cytometry",
+          "imaging mass cytometry",
+          "imaging mass spectrometry",
+          "kiloplex",
+          "multiplexed ELISA",
+          "scRNASeq",
+          "scVDJSeq",
+          "serial IHC",
+          "snATACSeq",
+          "snRNASeq"
+        ],
+        "type": "string"
+      },
+      "title": "assay",
+      "type": "array"
     },
-    "dataCollectionBatch": {},
+    "BiospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "items": {
+        "type": "string"
+      },
+      "title": "biospecimenID",
+      "type": "array"
+    },
     "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
     },
-    "targetPanelSynID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+    "DataCollectionBatch": {
+      "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
+      "title": "dataCollectionBatch",
+      "type": "string"
     },
-    "biospecimenID": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "sampleProcessingBatch": {},
-    "platform": {
-      "type": "array",
+    "Platform": {
+      "description": "The specific version (manufacturer, model, etc.) of a technology that is used to carry out a laboratory or computational experiment. Specify where applicable for experimental data files, else enter 'none'. In most cases only a single label is expected, however multiple selections can be provided in comma-delimited list where applicable e.g., for 10x Genomics fastq files please specify both the 10x instrument and the sequencing platform.",
       "items": {
         "enum": [
           "BD FACSAria Fusion cell sorter",
-          "unknown",
-          "GEM-X Flex Gene Expression Chip",
+          "BD FACSAria III",
           "BD FACSCanto",
-          "BD FACSMelody",
+          "BD FACSCanto II",
+          "BD FACSDiscover A8",
+          "BD FACSDiscover S8",
           "BD FACSLyric Clinical",
-          "Illumina HiSeq X Ten",
-          "Illumina NextSeq 500",
-          "Cytek Aurora Evo",
-          "Chromium Next GEM Chip Q",
-          "Helios Mass Cytometer",
+          "BD FACSMelody",
           "BD FACSymphony S6",
+          "BD LSRFortessa",
           "Chromium Controller",
+          "Chromium GEM-X Single Cell 3' Chip v4",
+          "Chromium Next GEM Chip G",
+          "Chromium Next GEM Chip H",
           "Chromium Next GEM Chip K",
-          "Fluidigm BioMark",
-          "GEM-X OCM 5' Chip",
+          "Chromium Next GEM Chip M",
+          "Chromium Next GEM Chip Q",
+          "Chromium X",
+          "Chromium Xo",
+          "Chromium iX",
           "CyTOF XT",
           "Cytek Aurora",
-          "Xenium",
-          "Visium CytAssist",
-          "Thermo Fisher Attune Xenith",
-          "BD FACSAria III",
-          "Chromium X",
-          "Chromium Next GEM Chip H",
-          "Illumina NovaSeq X",
-          "Sony MA900",
-          "Chromium Next GEM Chip G",
-          "Olink Signature Q100",
-          "BD LSRFortessa",
-          "BD FACSDiscover S8",
-          "Chromium Xo",
-          "Thermo Fisher Attune NxT",
-          "BD FACSCanto II",
-          "none",
-          "Not Applicable",
-          "Chromium GEM-X Single Cell 3' Chip v4",
-          "Illumina HiSeq 2500",
-          "Chromium Next GEM Chip M",
-          "BD FACSDiscover A8",
+          "Cytek Aurora Evo",
+          "Fluidigm BioMark",
+          "GEM-X Flex Gene Expression Chip",
+          "GEM-X OCM 5' Chip",
+          "Helios Mass Cytometer",
           "Hyperion",
-          "Thermo Fisher Attune CytPix",
+          "Illumina HiSeq 2500",
+          "Illumina HiSeq X Ten",
+          "Illumina NextSeq 500",
           "Illumina NovaSeq 6000",
-          "Chromium iX"
-        ]
-      },
-      "maxItems": 43
-    },
-    "targetPanelSize": {},
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "H&E",
-          "VDJSeq",
-          "imaging mass spectrometry",
-          "RNASeq",
-          "Olink Explore HT",
-          "Olink Target 96",
-          "Olink Flex",
-          "kiloplex",
-          "imaging mass cytometry",
-          "CosMX",
-          "snRNASeq",
-          "CE-MS",
-          "WES",
-          "SomaScan",
+          "Illumina NovaSeq X",
+          "Not Applicable",
+          "Olink Signature Q100",
+          "Sony MA900",
+          "Thermo Fisher Attune CytPix",
+          "Thermo Fisher Attune NxT",
+          "Thermo Fisher Attune Xenith",
+          "Visium CytAssist",
           "Xenium",
-          "ASAPSeq",
-          "Olink Target 48",
-          "scVDJSeq",
-          "multiplexed ELISA",
-          "scRNASeq",
-          "snATACSeq",
-          "WGS",
-          "flow cytometry",
-          "CITESeq",
-          "NULISA",
-          "LC-MS/MS",
-          "Olink Focus",
-          "GenePS SeqFISH",
-          "Visium",
-          "serial IHC",
-          "Olink Reveal",
-          "feature barcode sequencing",
-          "SNP array",
-          "CyTOF"
-        ]
+          "none",
+          "unknown"
+        ],
+        "type": "string"
       },
-      "maxItems": 34
+      "title": "platform",
+      "type": "array"
     },
-    "targetPanel": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
+    "SampleProcessingBatch": {
+      "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
+      "title": "sampleProcessingBatch",
+      "type": "string"
+    },
+    "SoftwareAndVersion": {
+      "description": "Relevant software and version used to generate the data file.",
+      "enum": [
+        "BD FACSDiva 8.0.1",
+        "Cell Ranger 9.0.1",
+        "Cell Ranger ATAC v1.1.0",
+        "Cell Ranger v3.0.0",
+        "Cell Ranger v3.0.1",
+        "Cell Ranger v3.0.2",
+        "Cell Ranger v3.1.0",
+        "Cell Ranger v4.0.0",
+        "Cell Ranger v5.0.0",
+        "Cell Ranger v5.0.1",
+        "Cell Ranger v6.0.0",
+        "Cell Ranger v6.0.1",
+        "Cell Ranger v6.0.2",
+        "Cell Ranger v6.1.0",
+        "Cell Ranger v6.1.1",
+        "Cell Ranger v6.1.2",
+        "Cell Ranger v7.0.0",
+        "Cell Ranger v7.0.1",
+        "Cell Ranger v7.1.0",
+        "Cell Ranger v7.2.0",
+        "Cell Ranger v8.0.0",
+        "Cell Ranger v8.0.1",
+        "Cell Ranger v9.0.0",
+        "Space Ranger 3.0.0",
+        "Space Ranger 3.0.1",
+        "Space Ranger 3.1.0",
+        "Space Ranger 3.1.1",
+        "Space Ranger 3.1.2",
+        "Space Ranger 3.1.3",
+        "demuxlet"
+      ],
+      "title": "softwareAndVersion"
+    },
+    "TargetPanel": {
+      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+      "title": "targetPanel",
+      "type": "string"
+    },
+    "TargetPanelSize": {
+      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+      "title": "targetPanelSize",
+      "type": "integer"
+    },
+    "TargetPanelSynID": {
+      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "targetPanelSynID",
+      "type": "string"
     }
   },
   "required": [
+    "Assay",
+    "BiospecimenID",
     "Component",
-    "targetPanelSynID",
-    "biospecimenID",
-    "platform",
-    "assay",
-    "targetPanel"
-  ]
+    "Platform",
+    "TargetPanel",
+    "TargetPanelSynID"
+  ],
+  "title": "CyTOFAssayMetadataTemplate",
+  "type": "object"
 }
