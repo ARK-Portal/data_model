@@ -5,81 +5,53 @@
     {
       "if": {
         "properties": {
-          "Assay": {
+          "assay": {
             "enum": [
-              "Featurebarcodesequencing"
+              "feature barcode sequencing"
             ]
           }
-        }
+        },
+        "required": [
+          "assay"
+        ]
       },
       "then": {
         "properties": {
-          "TargetPanel": {
+          "targetPanel": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "targetPanelSize": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "targetPanelSynID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "TargetPanel"
+          "targetPanel",
+          "targetPanelSize",
+          "targetPanelSynID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "Assay": {
+          "fileFormat": {
             "enum": [
-              "Featurebarcodesequencing"
+              "rds"
             ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "TargetPanelSize": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "TargetPanelSize"
+          "fileFormat"
         ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Assay": {
-            "enum": [
-              "Featurebarcodesequencing"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "TargetPanelSynID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "TargetPanelSynID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "FileFormat": {
-            "enum": [
-              "Rds"
-            ]
-          }
-        }
       },
       "then": {
         "properties": {
@@ -97,99 +69,111 @@
     {
       "if": {
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "enum": [
-              "Experimentaldata"
+              "experimental data"
             ]
           }
-        }
+        },
+        "required": [
+          "resourceType"
+        ]
       },
       "then": {
         "properties": {
-          "ProcessedDataType": {
+          "processedDataType": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "ProcessedDataType"
+          "processedDataType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "enum": [
-              "Metadata"
+              "metadata"
             ]
           }
-        }
+        },
+        "required": [
+          "resourceType"
+        ]
       },
       "then": {
         "properties": {
-          "MetadataType": {
+          "metadataType": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "MetadataType"
+          "metadataType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Singlespecimen"
+              "single specimen"
             ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "BiospecimenID": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "BiospecimenID"
+          "specimenModality"
         ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "SpecimenModality": {
-            "enum": [
-              "Singlespecimen"
-            ]
-          }
-        }
       },
       "then": {
         "properties": {
-          "IndividualID": {
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "individualID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "IndividualID"
+          "biospecimenID",
+          "individualID"
         ]
       }
     }
   ],
   "description": "A data contributor template outlining metadata to be collected as file annotations for snRNA-seq processed data files (i.e., anything not a fastq file).",
   "properties": {
-    "Assay": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "RObjectClass": {
+      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
+      "enum": [
+        "ROCR prediction.object",
+        "Seurat object",
+        "SummarizedExperiment",
+        "Symphony reference",
+        "data.frame",
+        "list",
+        "matrix",
+        "sparse matrix",
+        "vector"
+      ],
+      "title": "RObjectClass"
+    },
+    "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
       "items": {
         "enum": [
@@ -233,7 +217,7 @@
       "title": "assay",
       "type": "array"
     },
-    "BiospecimenID": {
+    "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -241,7 +225,7 @@
       "title": "biospecimenID",
       "type": "array"
     },
-    "CellRangerOutput": {
+    "cellRangerOutput": {
       "description": "10x Genomics Cell Ranger software output several different counts results and formats, some with different processing applied. This label distinguishes between these types and is particularly helpful when multiple files are uploaded with the sample name, e.g., barcodes.tsv.gz",
       "enum": [
         "Not Applicable",
@@ -254,12 +238,7 @@
       ],
       "title": "cellRangerOutput"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DataLevel": {
+    "dataLevel": {
       "description": "Level of data processing applied to file. Levels refer to pre-defined standards of processing for the given assay.",
       "enum": [
         "1",
@@ -270,7 +249,7 @@
       ],
       "title": "dataLevel"
     },
-    "FileFormat": {
+    "fileFormat": {
       "description": "Standard file format name or file extension",
       "enum": [
         "bai",
@@ -292,7 +271,7 @@
       ],
       "title": "fileFormat"
     },
-    "IndividualID": {
+    "individualID": {
       "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -300,14 +279,14 @@
       "title": "individualID",
       "type": "array"
     },
-    "MetadataType": {
+    "metadataType": {
       "description": "A label further classifying the content of metadata resource.",
       "enum": [
         "single-cell metadata"
       ],
       "title": "metadataType"
     },
-    "ProcessedDataType": {
+    "processedDataType": {
       "description": "A label used for file annotations to provide a brief description of the processed data file.",
       "items": {
         "enum": [
@@ -321,22 +300,7 @@
       "title": "processedDataType",
       "type": "array"
     },
-    "RObjectClass": {
-      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
-      "enum": [
-        "ROCR prediction.object",
-        "Seurat object",
-        "SummarizedExperiment",
-        "Symphony reference",
-        "data.frame",
-        "list",
-        "matrix",
-        "sparse matrix",
-        "vector"
-      ],
-      "title": "RObjectClass"
-    },
-    "ResourceType": {
+    "resourceType": {
       "description": "High-level classification of the file content",
       "items": {
         "enum": [
@@ -348,7 +312,7 @@
       "title": "resourceType",
       "type": "array"
     },
-    "SpecimenModality": {
+    "specimenModality": {
       "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
       "enum": [
         "multispecimen",
@@ -357,17 +321,17 @@
       ],
       "title": "specimenModality"
     },
-    "TargetPanel": {
+    "targetPanel": {
       "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
       "title": "targetPanel",
       "type": "string"
     },
-    "TargetPanelSize": {
+    "targetPanelSize": {
       "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
       "title": "targetPanelSize",
       "type": "integer"
     },
-    "TargetPanelSynID": {
+    "targetPanelSynID": {
       "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
       "pattern": "^syn[0-9]{8}",
       "title": "targetPanelSynID",
@@ -375,13 +339,13 @@
     }
   },
   "required": [
-    "Assay",
-    "CellRangerOutput",
+    "assay",
+    "cellRangerOutput",
     "Component",
-    "DataLevel",
-    "FileFormat",
-    "ResourceType",
-    "SpecimenModality"
+    "dataLevel",
+    "fileFormat",
+    "resourceType",
+    "specimenModality"
   ],
   "title": "SnRNASeqProcessedDataAnnotationTemplate",
   "type": "object"

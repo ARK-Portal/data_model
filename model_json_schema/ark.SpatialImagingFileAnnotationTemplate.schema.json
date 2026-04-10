@@ -5,12 +5,15 @@
     {
       "if": {
         "properties": {
-          "FileFormat": {
+          "fileFormat": {
             "enum": [
-              "Rds"
+              "rds"
             ]
           }
-        }
+        },
+        "required": [
+          "fileFormat"
+        ]
       },
       "then": {
         "properties": {
@@ -28,99 +31,131 @@
     {
       "if": {
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "enum": [
-              "Experimentaldata"
+              "experimental data"
             ]
           }
-        }
+        },
+        "required": [
+          "resourceType"
+        ]
       },
       "then": {
         "properties": {
-          "ProcessedDataType": {
+          "processedDataType": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "ProcessedDataType"
+          "processedDataType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "enum": [
-              "Metadata"
+              "metadata"
             ]
           }
-        }
+        },
+        "required": [
+          "resourceType"
+        ]
       },
       "then": {
         "properties": {
-          "MetadataType": {
+          "metadataType": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "MetadataType"
+          "metadataType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Multispecimen"
+              "multispecimen"
             ]
           }
-        }
+        },
+        "required": [
+          "specimenModality"
+        ]
       },
       "then": {
         "properties": {
-          "SlideID": {
+          "slideID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "SlideID"
+          "slideID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Singlespecimen"
+              "single specimen"
             ]
           }
-        }
+        },
+        "required": [
+          "specimenModality"
+        ]
       },
       "then": {
         "properties": {
-          "BiospecimenID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "BiospecimenID"
+          "biospecimenID"
         ]
       }
     }
   ],
   "description": "A data contributor template outlining metadata to be collected as file annotations for imaging-based data files.",
   "properties": {
-    "Assay": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "RObjectClass": {
+      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
+      "enum": [
+        "ROCR prediction.object",
+        "Seurat object",
+        "SummarizedExperiment",
+        "Symphony reference",
+        "data.frame",
+        "list",
+        "matrix",
+        "sparse matrix",
+        "vector"
+      ],
+      "title": "RObjectClass"
+    },
+    "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
       "enum": [
         "CosMX",
@@ -133,7 +168,7 @@
       ],
       "title": "assay"
     },
-    "BiospecimenID": {
+    "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -141,12 +176,7 @@
       "title": "biospecimenID",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "FileFormat": {
+    "fileFormat": {
       "description": "Standard file format name or file extension",
       "enum": [
         "bai",
@@ -184,7 +214,7 @@
       ],
       "title": "fileFormat"
     },
-    "MetadataType": {
+    "metadataType": {
       "description": "A label further classifying the content of metadata resource.",
       "enum": [
         "cell coordinates",
@@ -195,7 +225,7 @@
       ],
       "title": "metadataType"
     },
-    "ProcessedDataType": {
+    "processedDataType": {
       "description": "A label used for file annotations to provide a brief description of the processed data file.",
       "items": {
         "enum": [
@@ -209,22 +239,7 @@
       "title": "processedDataType",
       "type": "array"
     },
-    "RObjectClass": {
-      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
-      "enum": [
-        "ROCR prediction.object",
-        "Seurat object",
-        "SummarizedExperiment",
-        "Symphony reference",
-        "data.frame",
-        "list",
-        "matrix",
-        "sparse matrix",
-        "vector"
-      ],
-      "title": "RObjectClass"
-    },
-    "ResourceType": {
+    "resourceType": {
       "description": "High-level classification of the file content",
       "items": {
         "enum": [
@@ -236,12 +251,12 @@
       "title": "resourceType",
       "type": "array"
     },
-    "SlideID": {
+    "slideID": {
       "description": "A distinct label or name, unique within an experiment, assigned to an imaging slides.",
       "title": "slideID",
       "type": "string"
     },
-    "SpecimenModality": {
+    "specimenModality": {
       "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
       "enum": [
         "multispecimen",
@@ -252,11 +267,11 @@
     }
   },
   "required": [
-    "Assay",
+    "assay",
     "Component",
-    "FileFormat",
-    "ResourceType",
-    "SpecimenModality"
+    "fileFormat",
+    "resourceType",
+    "specimenModality"
   ],
   "title": "SpatialImagingFileAnnotationTemplate",
   "type": "object"

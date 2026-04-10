@@ -5,99 +5,76 @@
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Multispecimen"
+              "multispecimen"
             ]
           }
-        }
+        },
+        "required": [
+          "specimenModality"
+        ]
       },
       "then": {
         "properties": {
-          "DataCollectionBatch": {
+          "dataCollectionBatch": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "sampleProcessingBatch": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "DataCollectionBatch"
+          "dataCollectionBatch",
+          "sampleProcessingBatch"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Multispecimen"
+              "single specimen"
             ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "SampleProcessingBatch": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "SampleProcessingBatch"
+          "specimenModality"
         ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "SpecimenModality": {
-            "enum": [
-              "Singlespecimen"
-            ]
-          }
-        }
       },
       "then": {
         "properties": {
-          "BiospecimenID": {
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "individualID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "BiospecimenID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "SpecimenModality": {
-            "enum": [
-              "Singlespecimen"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "IndividualID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "IndividualID"
+          "biospecimenID",
+          "individualID"
         ]
       }
     }
   ],
   "description": "A template outlining metadata to be collected and applied to FCS file entities as annotations in Synapse.",
   "properties": {
-    "Assay": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "assay": {
       "description": "The technology used to generate the data in this file.",
       "enum": [
         "CyTOF",
@@ -105,7 +82,7 @@
       ],
       "title": "assay"
     },
-    "BiospecimenID": {
+    "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -113,29 +90,24 @@
       "title": "biospecimenID",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DataCollectionBatch": {
+    "dataCollectionBatch": {
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
       "title": "dataCollectionBatch",
       "type": "string"
     },
-    "EventCount": {
+    "eventCount": {
       "description": "The total number of events detected and captured in the corresponding FCS file. In cytometry, an event corresponds to particles detected and measured by the instrument. This number corresponds to the number of rows in the FCS file and is expected to be a whole integer number.",
       "title": "eventCount",
       "type": "integer"
     },
-    "FileFormat": {
+    "fileFormat": {
       "description": "Standard file format name or file extension",
       "enum": [
         "fcs"
       ],
       "title": "fileFormat"
     },
-    "IndividualID": {
+    "individualID": {
       "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -143,12 +115,12 @@
       "title": "individualID",
       "type": "array"
     },
-    "SampleProcessingBatch": {
+    "sampleProcessingBatch": {
       "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
       "title": "sampleProcessingBatch",
       "type": "string"
     },
-    "SpecimenModality": {
+    "specimenModality": {
       "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
       "enum": [
         "multispecimen",
@@ -159,9 +131,9 @@
     }
   },
   "required": [
-    "Assay",
+    "assay",
     "Component",
-    "SpecimenModality"
+    "specimenModality"
   ],
   "title": "FCSFileAnnotationTemplate",
   "type": "object"

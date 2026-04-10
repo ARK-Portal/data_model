@@ -5,23 +5,26 @@
     {
       "if": {
         "properties": {
-          "Program": {
+          "program": {
             "enum": [
-              "AMPRA/SLE"
+              "AMP RA/SLE"
             ]
           }
-        }
+        },
+        "required": [
+          "program"
+        ]
       },
       "then": {
         "properties": {
-          "ProgramPhase": {
+          "programPhase": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "ProgramPhase"
+          "programPhase"
         ]
       }
     }
@@ -54,14 +57,25 @@
       ],
       "title": "ARKRelease"
     },
-    "AcknowledgmentStatement": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "ImmPortAccession": {
+      "description": "Accession to corresponding information in ImmPort.",
+      "pattern": "^SDY",
+      "title": "ImmPortAccession",
+      "type": "string"
+    },
+    "acknowledgmentStatement": {
       "description": "A Dataset-specific attribute specifying the path to the wiki subpage within the ARK Portal - backend project that contains the acknowledgement statement that must be included in publications using data from the given dataset as a stipulation of the conditions of use.",
       "enum": [
         "syn26710600/wiki/619685"
       ],
       "title": "acknowledgmentStatement"
     },
-    "Assay": {
+    "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
       "items": {
         "enum": [
@@ -105,7 +119,7 @@
       "title": "assay",
       "type": "array"
     },
-    "AssociatedAccession": {
+    "associatedAccession": {
       "description": "This is a File and Dataset annotation attribute indicating additional accessions (i.e., unique identifiers) associated with the data when the data has also been submitted to or can be found in other repositories such as GEO, SRA, dbGaP, etc.",
       "items": {
         "type": "string"
@@ -113,13 +127,13 @@
       "title": "associatedAccession",
       "type": "array"
     },
-    "AssociatedCodeURL": {
+    "associatedCodeURL": {
       "description": "A URL to the repository where associated code is available.",
       "format": "uri",
       "title": "associatedCodeURL",
       "type": "string"
     },
-    "AssociatedDataset": {
+    "associatedDataset": {
       "description": "The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.",
       "items": {
         "pattern": "^syn[0-9]{8}",
@@ -129,7 +143,7 @@
       "title": "associatedDataset",
       "type": "array"
     },
-    "BiospecimenSubtype": {
+    "biospecimenSubtype": {
       "description": "Biospecimen status before sample is processed into a scRNA-seq library. Several scRNA-seq technologies support a variety of sample processing methods which can introduces sources of technical variation.",
       "enum": [
         "FFPE tissue",
@@ -144,7 +158,7 @@
       ],
       "title": "biospecimenSubtype"
     },
-    "BiospecimenType": {
+    "biospecimenType": {
       "description": "A label indicating the biological material collected for experimentation and data collection. Where applicable, provide all types in a comma-separated list.",
       "items": {
         "enum": [
@@ -175,12 +189,7 @@
       "title": "biospecimenType",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DataSubtype": {
+    "dataSubtype": {
       "description": "General classification to differentiate between omics profiling modalities. If N/A please select 'none'. Multiple selections can be provided in a comma-delimited list, however this is largely only expected in the context of Datasets and files that contain integrated experimental data spanning multiple types.",
       "items": {
         "enum": [
@@ -196,7 +205,7 @@
       "title": "dataSubtype",
       "type": "array"
     },
-    "DataType": {
+    "dataType": {
       "description": "High-level classification of the type of data contained in the file, loosely related to the experimental method or biological entity that is being profiled. Select all that apply using a comma-delimited list, though in most cases only a single label is expected. For multimodal datasets with concomitant profiling of biospecimen include 'multimodal'.",
       "items": {
         "enum": [
@@ -218,13 +227,13 @@
       "title": "dataType",
       "type": "array"
     },
-    "DatasetDescription": {
+    "datasetDescription": {
       "description": "A Dataset-specific attribute specifying the synID of the folder that contains a wiki write-up of the dataset description. This wiki content will be surfaced on the ARK Portal frontend site.",
       "pattern": "^syn[0-9]{8}",
       "title": "datasetDescription",
       "type": "string"
     },
-    "DatasetStatus": {
+    "datasetStatus": {
       "description": "A categorical label indicating the status of an ARK Portal dataset. This is applied to improve downstream management of datasets as well as various ETL workflows.",
       "enum": [
         "deprecated",
@@ -235,7 +244,7 @@
       ],
       "title": "datasetStatus"
     },
-    "DatasetType": {
+    "datasetType": {
       "description": "High-level classification of dataset entity distinguishing between datasets compiled for a specific publication or as a general data resource.",
       "enum": [
         "experimental",
@@ -243,7 +252,7 @@
       ],
       "title": "datasetType"
     },
-    "Diagnosis": {
+    "diagnosis": {
       "description": "A high-level classifier indicating the disease status of an individual.",
       "items": {
         "enum": [
@@ -269,13 +278,7 @@
       "title": "diagnosis",
       "type": "array"
     },
-    "ImmPortAccession": {
-      "description": "Accession to corresponding information in ImmPort.",
-      "pattern": "^SDY",
-      "title": "ImmPortAccession",
-      "type": "string"
-    },
-    "Program": {
+    "program": {
       "description": "Name of the funding program that supported the generation of data and associated files",
       "enum": [
         "AMP AIM",
@@ -284,7 +287,7 @@
       ],
       "title": "program"
     },
-    "ProgramPhase": {
+    "programPhase": {
       "description": "A label noting which AMP RA/SLE program phase generated the data.",
       "items": {
         "enum": [
@@ -296,7 +299,7 @@
       "title": "programPhase",
       "type": "array"
     },
-    "Project": {
+    "project": {
       "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
       "items": {
         "enum": [
@@ -313,13 +316,13 @@
       "title": "project",
       "type": "array"
     },
-    "PublicationSynID": {
+    "publicationSynID": {
       "description": "The synID of the corresponding Synapse entity that stores metadata about the publication. This is used to differentiate publication-specific files, often consisting of level 4 processed data and expanded subject metadata, in a publication dataset that also includes raw or minimally processed files from experimental datasets. This provides an easy way to distinguish and select for the publication-specific data from which the research findings were derived. When this attribute is used to annotate a Dataset it serves as a way to directly link the Dataset entity with the publication metadata stored in Synapse.",
       "pattern": "^syn[0-9]{8}",
       "title": "publicationSynID",
       "type": "string"
     },
-    "Species": {
+    "species": {
       "description": "The genus species of sample or subject origin.",
       "enum": [
         "Homo sapiens"
@@ -329,19 +332,19 @@
   },
   "required": [
     "ARKRelease",
-    "AcknowledgmentStatement",
-    "Assay",
-    "BiospecimenType",
+    "acknowledgmentStatement",
+    "assay",
+    "biospecimenType",
     "Component",
-    "DataSubtype",
-    "DataType",
-    "DatasetDescription",
-    "DatasetStatus",
-    "DatasetType",
-    "Diagnosis",
-    "Program",
-    "Project",
-    "Species"
+    "dataSubtype",
+    "dataType",
+    "datasetDescription",
+    "datasetStatus",
+    "datasetType",
+    "diagnosis",
+    "program",
+    "project",
+    "species"
   ],
   "title": "DatasetAnnotationTemplate",
   "type": "object"

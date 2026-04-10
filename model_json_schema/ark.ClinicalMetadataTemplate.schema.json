@@ -5,58 +5,41 @@
     {
       "if": {
         "properties": {
-          "Comorbidities": {
+          "comorbidities": {
             "enum": [
-              "Diabetes"
+              "diabetes"
             ]
           }
-        }
+        },
+        "required": [
+          "comorbidities"
+        ]
       },
       "then": {
         "properties": {
-          "DiabetesType": {
+          "diabetesType": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "DiabetesType"
+          "diabetesType"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "Comorbidities": {
+          "comorbidities": {
             "enum": [
-              "Psoriasis"
+              "psoriasis"
             ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "PASI": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "PASI"
+          "comorbidities"
         ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Diagnosis": {
-            "enum": [
-              "Psoriasis"
-            ]
-          }
-        }
       },
       "then": {
         "properties": {
@@ -67,6 +50,7 @@
           }
         },
         "required": [
+          "PASI",
           "PASI"
         ]
       }
@@ -74,12 +58,15 @@
     {
       "if": {
         "properties": {
-          "Comorbidities": {
+          "diagnosis": {
             "enum": [
-              "Psoriasis"
+              "psoriasis"
             ]
           }
-        }
+        },
+        "required": [
+          "diagnosis"
+        ]
       },
       "then": {
         "properties": {
@@ -90,6 +77,7 @@
           }
         },
         "required": [
+          "PASI",
           "PASI"
         ]
       }
@@ -97,35 +85,15 @@
     {
       "if": {
         "properties": {
-          "Diagnosis": {
+          "diagnosis": {
             "enum": [
-              "Psoriasis"
+              "dermatomyositis"
             ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "PASI": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "PASI"
+          "diagnosis"
         ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Diagnosis": {
-            "enum": [
-              "Dermatomyositis"
-            ]
-          }
-        }
       },
       "then": {
         "properties": {
@@ -143,12 +111,15 @@
     {
       "if": {
         "properties": {
-          "Diagnosis": {
+          "diagnosis": {
             "enum": [
-              "Vitiligo"
+              "vitiligo"
             ]
           }
-        }
+        },
+        "required": [
+          "diagnosis"
+        ]
       },
       "then": {
         "properties": {
@@ -156,137 +127,122 @@
             "not": {
               "type": "null"
             }
-          }
-        },
-        "required": [
-          "VASI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Diagnosis": {
-            "enum": [
-              "Vitiligo"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
+          },
           "VETI": {
             "not": {
               "type": "null"
             }
-          }
-        },
-        "required": [
-          "VETI"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Diagnosis": {
-            "enum": [
-              "Vitiligo"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
+          },
           "VIDA": {
             "not": {
               "type": "null"
             }
-          }
-        },
-        "required": [
-          "VIDA"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "Diagnosis": {
-            "enum": [
-              "Vitiligo"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "VitiligoPattern": {
+          },
+          "vitiligoPattern": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "VitiligoPattern"
+          "VASI",
+          "VETI",
+          "VIDA",
+          "vitiligoPattern"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "Program": {
+          "program": {
             "enum": [
-              "AMPAIM"
+              "AMP AIM"
             ]
           }
-        }
+        },
+        "required": [
+          "program"
+        ]
       },
       "then": {
         "properties": {
-          "VisitID": {
+          "visitID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "VisitID"
+          "visitID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "Program": {
+          "program": {
             "enum": [
-              "AMPRA/SLE"
+              "AMP RA/SLE"
             ]
           }
-        }
+        },
+        "required": [
+          "program"
+        ]
       },
       "then": {
         "properties": {
-          "VisitID": {
+          "visitID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "VisitID"
+          "visitID"
         ]
       }
     }
   ],
   "description": "A template outlining clinical metadata to collect for study subjects.",
   "properties": {
-    "Age": {
+    "CDASI": {
+      "description": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
+      "title": "CDASI",
+      "type": "string"
+    },
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "PASI": {
+      "description": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
+      "title": "PASI",
+      "type": "string"
+    },
+    "VASI": {
+      "description": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
+      "title": "VASI",
+      "type": "string"
+    },
+    "VETI": {
+      "description": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
+      "title": "VETI",
+      "type": "number"
+    },
+    "VIDA": {
+      "description": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
+      "title": "VIDA",
+      "type": "string"
+    },
+    "age": {
       "description": "Age at which subject was enrolled in study or age at corresponding visit and data collection event. If value unknown, enter '-1'.",
       "title": "age",
       "type": "number"
     },
-    "AgeUnits": {
+    "ageUnits": {
       "description": "The unit of measure used for `ageEnrollment` and `ageDiagnosis`",
       "enum": [
         "months",
@@ -294,12 +250,7 @@
       ],
       "title": "ageUnits"
     },
-    "CDASI": {
-      "description": "Cutaneous Dermatomyositis Disease Area and Severity Index, is a measurement used to characterize cutaneous dermatomyositis severity.",
-      "title": "CDASI",
-      "type": "string"
-    },
-    "Comorbidities": {
+    "comorbidities": {
       "description": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
       "items": {
         "enum": [
@@ -321,12 +272,7 @@
       "title": "comorbidities",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DiabetesType": {
+    "diabetesType": {
       "description": "Type of diabetes mellitus.",
       "enum": [
         "gestational",
@@ -336,7 +282,7 @@
       ],
       "title": "diabetesType"
     },
-    "Diagnosis": {
+    "diagnosis": {
       "description": "A high-level classifier indicating the disease status of an individual.",
       "items": {
         "enum": [
@@ -362,7 +308,7 @@
       "title": "diagnosis",
       "type": "array"
     },
-    "Ethnicity": {
+    "ethnicity": {
       "description": "The ethnicity of a person.",
       "enum": [
         "Hispanic or Latino",
@@ -371,12 +317,12 @@
       ],
       "title": "ethnicity"
     },
-    "Height": {
+    "height": {
       "description": "Standing height of subject.",
       "title": "height",
       "type": "number"
     },
-    "HeightUnits": {
+    "heightUnits": {
       "description": "Unit of measure of value provided for `height`.",
       "enum": [
         "centimeters",
@@ -386,17 +332,12 @@
       ],
       "title": "heightUnits"
     },
-    "IndividualID": {
+    "individualID": {
       "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
       "title": "individualID",
       "type": "string"
     },
-    "PASI": {
-      "description": "Psoriasis Area and Severity Index, is a measurement of the discoloration, thickness, scaling, and coverage of psoriasis plaques.",
-      "title": "PASI",
-      "type": "string"
-    },
-    "Program": {
+    "program": {
       "description": "Name of the funding program that supported the generation of data and associated files",
       "enum": [
         "AMP AIM",
@@ -405,7 +346,7 @@
       ],
       "title": "program"
     },
-    "Project": {
+    "project": {
       "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
       "enum": [
         "AIM for RA",
@@ -418,7 +359,7 @@
       ],
       "title": "project"
     },
-    "Race": {
+    "race": {
       "description": "A textual description of a person's race.",
       "enum": [
         "American Indian or Alaska Native",
@@ -433,7 +374,7 @@
       ],
       "title": "race"
     },
-    "Sex": {
+    "sex": {
       "description": "A textual description of a person's sex at birth.",
       "enum": [
         "female",
@@ -443,34 +384,19 @@
       ],
       "title": "sex"
     },
-    "Species": {
+    "species": {
       "description": "The genus species of sample or subject origin.",
       "enum": [
         "Homo sapiens"
       ],
       "title": "species"
     },
-    "VASI": {
-      "description": "Total body Vitiligo Area Severity Index, a measure of the percentage of vitiligo involvement across the body calculated in terms of hand units.",
-      "title": "VASI",
-      "type": "string"
-    },
-    "VETI": {
-      "description": "Vitiligo Extent Tensity Index measures the extent of vitiligo by a numerical score and combines analysis of extensity and severity of vitiligo to produce a constant and reproducible number.",
-      "title": "VETI",
-      "type": "number"
-    },
-    "VIDA": {
-      "description": "Vitiligo Disease Activity Score, a six-point scale that evaluates the activity of vitiligo",
-      "title": "VIDA",
-      "type": "string"
-    },
-    "VisitID": {
+    "visitID": {
       "description": "Ordinal ID distinguishing different patient visits.",
       "title": "visitID",
       "type": "string"
     },
-    "VitiligoPattern": {
+    "vitiligoPattern": {
       "description": "A high-level classification of vitiligo based on the distribution and patterning of lesions across the body.",
       "enum": [
         "mixed",
@@ -480,12 +406,12 @@
       ],
       "title": "vitiligoPattern"
     },
-    "Weight": {
+    "weight": {
       "description": "Weight of subject. If value unknown, enter '-1'.",
       "title": "weight",
       "type": "number"
     },
-    "WeightUnits": {
+    "weightUnits": {
       "description": "Abbreviated unit of measure of value provided for `weight`.",
       "enum": [
         "g",
@@ -497,19 +423,19 @@
     }
   },
   "required": [
-    "Age",
-    "AgeUnits",
+    "age",
+    "ageUnits",
     "Component",
-    "Diagnosis",
-    "Height",
-    "HeightUnits",
-    "IndividualID",
-    "Program",
-    "Project",
-    "Sex",
-    "Species",
-    "Weight",
-    "WeightUnits"
+    "diagnosis",
+    "height",
+    "heightUnits",
+    "individualID",
+    "program",
+    "project",
+    "sex",
+    "species",
+    "weight",
+    "weightUnits"
   ],
   "title": "ClinicalMetadataTemplate",
   "type": "object"

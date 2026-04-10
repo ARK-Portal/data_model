@@ -5,12 +5,15 @@
     {
       "if": {
         "properties": {
-          "LibraryPrepMethod": {
+          "libraryPrepMethod": {
             "enum": [
-              "10xGEM-XFlexGeneExpressionHuman"
+              "10x GEM-X Flex Gene Expression Human"
             ]
           }
-        }
+        },
+        "required": [
+          "libraryPrepMethod"
+        ]
       },
       "then": {
         "properties": {
@@ -28,46 +31,52 @@
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Multispecimen"
+              "multispecimen"
             ]
           }
-        }
+        },
+        "required": [
+          "specimenModality"
+        ]
       },
       "then": {
         "properties": {
-          "LibraryID": {
+          "libraryID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "LibraryID"
+          "libraryID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "SpecimenModality": {
+          "specimenModality": {
             "enum": [
-              "Singlespecimen"
+              "single specimen"
             ]
           }
-        }
+        },
+        "required": [
+          "specimenModality"
+        ]
       },
       "then": {
         "properties": {
-          "BiospecimenID": {
+          "biospecimenID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "BiospecimenID"
+          "biospecimenID"
         ]
       }
     }
@@ -85,7 +94,12 @@
       ],
       "title": "10xProbeSetReference"
     },
-    "AlignmentReference": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "alignmentReference": {
       "description": "The genomic/transcriptomic reference used for performing read alignment against.",
       "enum": [
         "10x Cell Ranger Human GRCh38 2020-A",
@@ -97,7 +111,7 @@
       ],
       "title": "alignmentReference"
     },
-    "Assay": {
+    "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
       "items": {
         "enum": [
@@ -141,7 +155,7 @@
       "title": "assay",
       "type": "array"
     },
-    "BiospecimenID": {
+    "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -149,27 +163,22 @@
       "title": "biospecimenID",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DataCollectionBatch": {
+    "dataCollectionBatch": {
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
       "title": "dataCollectionBatch",
       "type": "string"
     },
-    "InputCellCount": {
+    "inputCellCount": {
       "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
       "title": "inputCellCount",
       "type": "integer"
     },
-    "LibraryID": {
+    "libraryID": {
       "description": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
       "title": "libraryID",
       "type": "string"
     },
-    "LibraryPrepMethod": {
+    "libraryPrepMethod": {
       "description": "Sequencing library preparation method or kit used to create the library. If no commercially available kit was used, please select 'in-house library prep'.",
       "enum": [
         "10x Chromium Fixed RNA Human Transcriptome",
@@ -206,7 +215,7 @@
       ],
       "title": "libraryPrepMethod"
     },
-    "NucleicAcidSource": {
+    "nucleicAcidSource": {
       "description": "The source of the nucleic acid used as input for sequencing library fragments. Select all that apply, though in most cases only a single label is expected.",
       "items": {
         "enum": [
@@ -228,14 +237,14 @@
       "title": "nucleicAcidSource",
       "type": "array"
     },
-    "PercentCellViability": {
+    "percentCellViability": {
       "description": "A measure of the proportion of viable cells within a cell suspension. Scale is 0-100.",
       "maximum": 100.0,
       "minimum": 50.0,
       "title": "percentCellViability",
       "type": "integer"
     },
-    "Platform": {
+    "platform": {
       "description": "The specific version (manufacturer, model, etc.) of a technology that is used to carry out a laboratory or computational experiment. Specify where applicable for experimental data files, else enter 'none'. In most cases only a single label is expected, however multiple selections can be provided in comma-delimited list where applicable e.g., for 10x Genomics fastq files please specify both the 10x instrument and the sequencing platform.",
       "items": {
         "enum": [
@@ -288,19 +297,19 @@
       "title": "platform",
       "type": "array"
     },
-    "SampleProcessingBatch": {
+    "sampleProcessingBatch": {
       "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
       "title": "sampleProcessingBatch",
       "type": "string"
     },
-    "SequencingSaturation": {
+    "sequencingSaturation": {
       "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1.",
       "maximum": 1.0,
       "minimum": 0.0,
       "title": "sequencingSaturation",
       "type": "number"
     },
-    "SoftwareAndVersion": {
+    "softwareAndVersion": {
       "description": "Relevant software and version used to generate the data file.",
       "enum": [
         "BD FACSDiva 8.0.1",
@@ -336,7 +345,7 @@
       ],
       "title": "softwareAndVersion"
     },
-    "SpecimenModality": {
+    "specimenModality": {
       "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
       "enum": [
         "multispecimen",
@@ -345,23 +354,23 @@
       ],
       "title": "specimenModality"
     },
-    "TotalReads": {
+    "totalReads": {
       "description": "Total number of reads sequenced from the library.",
       "title": "totalReads",
       "type": "integer"
     }
   },
   "required": [
-    "AlignmentReference",
-    "Assay",
+    "alignmentReference",
+    "assay",
     "Component",
-    "InputCellCount",
-    "LibraryPrepMethod",
-    "NucleicAcidSource",
-    "PercentCellViability",
-    "Platform",
-    "SpecimenModality",
-    "TotalReads"
+    "inputCellCount",
+    "libraryPrepMethod",
+    "nucleicAcidSource",
+    "percentCellViability",
+    "platform",
+    "specimenModality",
+    "totalReads"
   ],
   "title": "ScRNASeqAssayMetadataTemplate",
   "type": "object"

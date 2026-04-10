@@ -3,7 +3,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A template outlining assay-related metadata for a cytometry time-of-flight (CyTOF) dataset. Each row corresponds to a biospecimen profiled in the experiment.",
   "properties": {
-    "Assay": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
       "items": {
         "enum": [
@@ -47,7 +52,7 @@
       "title": "assay",
       "type": "array"
     },
-    "BiospecimenID": {
+    "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
       "items": {
         "type": "string"
@@ -55,17 +60,12 @@
       "title": "biospecimenID",
       "type": "array"
     },
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
-    "DataCollectionBatch": {
+    "dataCollectionBatch": {
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
       "title": "dataCollectionBatch",
       "type": "string"
     },
-    "Platform": {
+    "platform": {
       "description": "The specific version (manufacturer, model, etc.) of a technology that is used to carry out a laboratory or computational experiment. Specify where applicable for experimental data files, else enter 'none'. In most cases only a single label is expected, however multiple selections can be provided in comma-delimited list where applicable e.g., for 10x Genomics fastq files please specify both the 10x instrument and the sequencing platform.",
       "items": {
         "enum": [
@@ -118,12 +118,12 @@
       "title": "platform",
       "type": "array"
     },
-    "SampleProcessingBatch": {
+    "sampleProcessingBatch": {
       "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
       "title": "sampleProcessingBatch",
       "type": "string"
     },
-    "SoftwareAndVersion": {
+    "softwareAndVersion": {
       "description": "Relevant software and version used to generate the data file.",
       "enum": [
         "BD FACSDiva 8.0.1",
@@ -159,17 +159,17 @@
       ],
       "title": "softwareAndVersion"
     },
-    "TargetPanel": {
+    "targetPanel": {
       "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
       "title": "targetPanel",
       "type": "string"
     },
-    "TargetPanelSize": {
+    "targetPanelSize": {
       "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
       "title": "targetPanelSize",
       "type": "integer"
     },
-    "TargetPanelSynID": {
+    "targetPanelSynID": {
       "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
       "pattern": "^syn[0-9]{8}",
       "title": "targetPanelSynID",
@@ -177,12 +177,12 @@
     }
   },
   "required": [
-    "Assay",
-    "BiospecimenID",
+    "assay",
+    "biospecimenID",
     "Component",
-    "Platform",
-    "TargetPanel",
-    "TargetPanelSynID"
+    "platform",
+    "targetPanel",
+    "targetPanelSynID"
   ],
   "title": "CyTOFAssayMetadataTemplate",
   "type": "object"

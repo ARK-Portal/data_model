@@ -5,39 +5,32 @@
     {
       "if": {
         "properties": {
-          "Program": {
+          "program": {
             "enum": [
-              "AMPRA/SLE"
+              "AMP RA/SLE"
             ]
           }
-        }
+        },
+        "required": [
+          "program"
+        ]
       },
       "then": {
         "properties": {
-          "ProgramPhase": {
+          "programPhase": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "ProgramPhase"
+          "programPhase"
         ]
       }
     }
   ],
   "description": "A template outlining metadata to use as annotations for Publication ‘file’ entities.",
   "properties": {
-    "AssociatedDataset": {
-      "description": "The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.",
-      "items": {
-        "pattern": "^syn[0-9]{8}",
-        "type": "string"
-      },
-      "pattern": "^syn[0-9]{8}",
-      "title": "associatedDataset",
-      "type": "array"
-    },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
       "title": "Component",
@@ -47,11 +40,6 @@
       "description": "Digital object identifier",
       "format": "uri-reference",
       "title": "DOI",
-      "type": "string"
-    },
-    "Journal": {
-      "description": "Journal in which the publication was released",
-      "title": "journal",
       "type": "string"
     },
     "PMCID": {
@@ -66,7 +54,22 @@
       "title": "PMID",
       "type": "string"
     },
-    "Program": {
+    "associatedDataset": {
+      "description": "The synID of a Dataset entity. This serves to link other Synapse entities to Dataset entities. When used to annotate a publication Dataset this attribute should include the synID for an experimental Datasets from which the publication data was derived. Multiple synID can be specified using a comma-delimited list.",
+      "items": {
+        "pattern": "^syn[0-9]{8}",
+        "type": "string"
+      },
+      "pattern": "^syn[0-9]{8}",
+      "title": "associatedDataset",
+      "type": "array"
+    },
+    "journal": {
+      "description": "Journal in which the publication was released",
+      "title": "journal",
+      "type": "string"
+    },
+    "program": {
       "description": "Name of the funding program that supported the generation of data and associated files",
       "enum": [
         "AMP AIM",
@@ -75,7 +78,7 @@
       ],
       "title": "program"
     },
-    "ProgramPhase": {
+    "programPhase": {
       "description": "A label noting which AMP RA/SLE program phase generated the data.",
       "items": {
         "enum": [
@@ -87,7 +90,7 @@
       "title": "programPhase",
       "type": "array"
     },
-    "Project": {
+    "project": {
       "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
       "items": {
         "enum": [
@@ -104,12 +107,12 @@
       "title": "project",
       "type": "array"
     },
-    "PublicationDate": {
+    "publicationDate": {
       "description": "The publication date extracted from PubMed database",
       "title": "publicationDate",
       "type": "string"
     },
-    "PublicationType": {
+    "publicationType": {
       "description": "General classification of publication.",
       "enum": [
         "correction",
@@ -118,12 +121,12 @@
       ],
       "title": "publicationType"
     },
-    "Title": {
+    "title": {
       "description": "Title of the publication.",
       "title": "title",
       "type": "string"
     },
-    "Year": {
+    "year": {
       "description": "Year (YYYY) in which the paper was published.",
       "pattern": "[1-2][0-9]{3}",
       "title": "year",
@@ -133,14 +136,14 @@
   "required": [
     "Component",
     "DOI",
-    "Journal",
+    "journal",
     "PMID",
-    "Program",
-    "Project",
-    "PublicationDate",
-    "PublicationType",
-    "Title",
-    "Year"
+    "program",
+    "project",
+    "publicationDate",
+    "publicationType",
+    "title",
+    "year"
   ],
   "title": "PublicationMetadataTemplate",
   "type": "object"
