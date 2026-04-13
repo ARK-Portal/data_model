@@ -1,289 +1,7 @@
 {
+  "$id": "http://example.com/ScVDJSeqProcessedDataAnnotationTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://example.com/ark",
-  "title": "ark",
-  "type": "object",
-  "properties": {
-    "dataLevel": {
-      "enum": [
-        "2",
-        "5",
-        "4",
-        "3",
-        "1"
-      ]
-    },
-    "Component": {
-      "not": {
-        "type": "null"
-      },
-      "minLength": 1
-    },
-    "specimenModality": {
-      "enum": [
-        "multispecimen",
-        "unknown",
-        "single specimen"
-      ]
-    },
-    "fileFormat": {
-      "enum": [
-        "h5ad",
-        "tsv",
-        "bai",
-        "zip",
-        "bam",
-        "fam",
-        "bim",
-        "mtx",
-        "Rds",
-        "h5",
-        "xlsx",
-        "xls",
-        "tgz",
-        "txt",
-        "bed",
-        "csv"
-      ]
-    },
-    "assay": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "NULISA",
-          "SNP array",
-          "snRNASeq",
-          "snATACSeq",
-          "imaging mass spectrometry",
-          "scRNASeq",
-          "kiloplex",
-          "Olink Target 48",
-          "Visium",
-          "Olink Focus",
-          "imaging mass cytometry",
-          "serial IHC",
-          "RNASeq",
-          "Xenium",
-          "WES",
-          "flow cytometry",
-          "Olink Flex",
-          "CITESeq",
-          "GenePS SeqFISH",
-          "H&E",
-          "Olink Explore HT",
-          "Olink Reveal",
-          "feature barcode sequencing",
-          "scVDJSeq",
-          "CosMX",
-          "LC-MS/MS",
-          "CE-MS",
-          "Olink Target 96",
-          "VDJSeq",
-          "ASAPSeq",
-          "multiplexed ELISA",
-          "SomaScan",
-          "WGS",
-          "CyTOF"
-        ]
-      },
-      "maxItems": 34
-    },
-    "resourceType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "metadata",
-          "experimental data"
-        ]
-      },
-      "maxItems": 2
-    },
-    "biospecimenID": {},
-    "individualID": {},
-    "RObjectClass": {
-      "enum": [
-        "vector",
-        "ROCR prediction.object",
-        "SummarizedExperiment",
-        "matrix",
-        "Symphony reference",
-        "sparse matrix",
-        "list",
-        "data.frame",
-        "Seurat object",
-        ""
-      ]
-    },
-    "targetPanelSize": {},
-    "targetPanelSynID": {},
-    "targetPanel": {},
-    "metadataType": {
-      "enum": [
-        "single-cell metadata",
-        ""
-      ]
-    },
-    "processedDataType": {
-      "type": "array",
-      "items": {
-        "enum": [
-          "barcode counts",
-          "gene counts",
-          "differential expression results",
-          "epigenomic peaks",
-          ""
-        ]
-      },
-      "maxItems": 4
-    }
-  },
-  "required": [
-    "dataLevel",
-    "Component",
-    "specimenModality",
-    "fileFormat",
-    "assay",
-    "resourceType"
-  ],
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "biospecimenID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "individualID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "individualID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "fileFormat": {
-            "enum": [
-              "Rds"
-            ]
-          }
-        },
-        "required": [
-          "fileFormat"
-        ]
-      },
-      "then": {
-        "properties": {
-          "RObjectClass": {
-            "enum": [
-              "vector",
-              "ROCR prediction.object",
-              "SummarizedExperiment",
-              "matrix",
-              "Symphony reference",
-              "sparse matrix",
-              "list",
-              "data.frame",
-              "Seurat object",
-              ""
-            ]
-          }
-        },
-        "required": [
-          "RObjectClass"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanelSize": {}
-        },
-        "required": [
-          "targetPanelSize"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanelSynID": {
-            "not": {
-              "type": "null"
-            },
-            "minLength": 1
-          }
-        },
-        "required": [
-          "targetPanelSynID"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {
@@ -302,38 +20,49 @@
           "targetPanel": {
             "not": {
               "type": "null"
-            },
-            "minLength": 1
+            }
+          },
+          "targetPanelSize": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "targetPanelSynID": {
+            "not": {
+              "type": "null"
+            }
           }
         },
         "required": [
-          "targetPanel"
+          "targetPanel",
+          "targetPanelSize",
+          "targetPanelSynID"
         ]
       }
     },
     {
       "if": {
         "properties": {
-          "resourceType": {
+          "fileFormat": {
             "enum": [
-              "metadata"
+              "rds"
             ]
           }
         },
         "required": [
-          "resourceType"
+          "fileFormat"
         ]
       },
       "then": {
         "properties": {
-          "metadataType": {
-            "enum": [
-              "single-cell metadata"
-            ]
+          "RObjectClass": {
+            "not": {
+              "type": "null"
+            }
           }
         },
         "required": [
-          "metadataType"
+          "RObjectClass"
         ]
       }
     },
@@ -353,23 +82,257 @@
       "then": {
         "properties": {
           "processedDataType": {
-            "type": "array",
-            "items": {
-              "enum": [
-                "barcode counts",
-                "gene counts",
-                "differential expression results",
-                "epigenomic peaks",
-                ""
-              ]
-            },
-            "maxItems": 4
+            "not": {
+              "type": "null"
+            }
           }
         },
         "required": [
           "processedDataType"
         ]
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "resourceType": {
+            "enum": [
+              "metadata"
+            ]
+          }
+        },
+        "required": [
+          "resourceType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "metadataType": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "metadataType"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "specimenModality": {
+            "enum": [
+              "single specimen"
+            ]
+          }
+        },
+        "required": [
+          "specimenModality"
+        ]
+      },
+      "then": {
+        "properties": {
+          "biospecimenID": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "individualID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "biospecimenID",
+          "individualID"
+        ]
+      }
     }
-  ]
+  ],
+  "description": "A data contributor template outlining metadata to be collected as file annotations for scVDJ-seq (i.e., immune repertoire profiling) processed data files (i.e., anything not a fastq file).",
+  "properties": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "RObjectClass": {
+      "description": "Rds files store R objects, one per file. This label details the class of the R object saved to the Rds file or other similar file types.",
+      "enum": [
+        "ROCR prediction.object",
+        "Seurat object",
+        "SummarizedExperiment",
+        "Symphony reference",
+        "data.frame",
+        "list",
+        "matrix",
+        "sparse matrix",
+        "vector"
+      ],
+      "title": "RObjectClass"
+    },
+    "assay": {
+      "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "items": {
+        "enum": [
+          "ASAPSeq",
+          "CE-MS",
+          "CITESeq",
+          "CosMX",
+          "CyTOF",
+          "GenePS SeqFISH",
+          "H&E",
+          "LC-MS/MS",
+          "NULISA",
+          "Olink Explore HT",
+          "Olink Flex",
+          "Olink Focus",
+          "Olink Reveal",
+          "Olink Target 48",
+          "Olink Target 96",
+          "RNASeq",
+          "SNP array",
+          "SomaScan",
+          "VDJSeq",
+          "Visium",
+          "WES",
+          "WGS",
+          "Xenium",
+          "feature barcode sequencing",
+          "flow cytometry",
+          "imaging mass cytometry",
+          "imaging mass spectrometry",
+          "kiloplex",
+          "multiplexed ELISA",
+          "scRNASeq",
+          "scVDJSeq",
+          "serial IHC",
+          "snATACSeq",
+          "snRNASeq"
+        ],
+        "type": "string"
+      },
+      "title": "assay",
+      "type": "array"
+    },
+    "biospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "items": {
+        "type": "string"
+      },
+      "title": "biospecimenID",
+      "type": "array"
+    },
+    "dataLevel": {
+      "description": "Level of data processing applied to file. Levels refer to pre-defined standards of processing for the given assay.",
+      "enum": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "title": "dataLevel"
+    },
+    "fileFormat": {
+      "description": "Standard file format name or file extension",
+      "enum": [
+        "bai",
+        "bam",
+        "bed",
+        "bim",
+        "csv",
+        "fam",
+        "h5",
+        "h5ad",
+        "mtx",
+        "rds",
+        "tgz",
+        "tsv",
+        "txt",
+        "xls",
+        "xlsx",
+        "zip"
+      ],
+      "title": "fileFormat"
+    },
+    "individualID": {
+      "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "items": {
+        "type": "string"
+      },
+      "title": "individualID",
+      "type": "array"
+    },
+    "metadataType": {
+      "description": "A label further classifying the content of metadata resource.",
+      "enum": [
+        "single-cell metadata"
+      ],
+      "title": "metadataType"
+    },
+    "processedDataType": {
+      "description": "A label used for file annotations to provide a brief description of the processed data file.",
+      "items": {
+        "enum": [
+          "barcode counts",
+          "differential expression results",
+          "epigenomic peaks",
+          "gene counts"
+        ],
+        "type": "string"
+      },
+      "title": "processedDataType",
+      "type": "array"
+    },
+    "resourceType": {
+      "description": "High-level classification of the file content",
+      "items": {
+        "enum": [
+          "experimental data",
+          "metadata"
+        ],
+        "type": "string"
+      },
+      "title": "resourceType",
+      "type": "array"
+    },
+    "specimenModality": {
+      "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
+      "enum": [
+        "multispecimen",
+        "single specimen",
+        "unknown"
+      ],
+      "title": "specimenModality"
+    },
+    "targetPanel": {
+      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
+      "title": "targetPanel",
+      "type": "string"
+    },
+    "targetPanelSize": {
+      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
+      "title": "targetPanelSize",
+      "type": "integer"
+    },
+    "targetPanelSynID": {
+      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "targetPanelSynID",
+      "type": "string"
+    }
+  },
+  "required": [
+    "assay",
+    "Component",
+    "dataLevel",
+    "fileFormat",
+    "resourceType",
+    "specimenModality"
+  ],
+  "title": "ScVDJSeqProcessedDataAnnotationTemplate",
+  "type": "object"
 }
