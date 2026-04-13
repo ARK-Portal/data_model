@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/fastq_file_annotation_template.html
-date: 2026-01-29
+date: 2026-04-13
 ---
 {% assign mydata=site.data.csv.metadata_templates.fastq_file_annotation_template %}
 {% include content/fastq_file_annotation_template.md %}

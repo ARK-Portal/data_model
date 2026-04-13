@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 21
 permalink: docs/attributes/cellType.html
-date: 2026-01-29
+date: 2026-04-13
 ---
 {% include content/cellType.md %}

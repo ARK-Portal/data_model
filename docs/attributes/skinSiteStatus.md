@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 85
 permalink: docs/attributes/skinSiteStatus.html
-date: 2026-01-29
+date: 2026-04-13
 ---
 {% assign mydata=site.data.csv.attributes.skinSiteStatus %}
 {% include content/skinSiteStatus.md %}
