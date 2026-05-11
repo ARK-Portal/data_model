@@ -1,7 +1,7 @@
 #! Rscript
 
 # install remote package
-remotes::install_github("Sage-Bionetworks/JustTheDocsDataDictionary", ref = "dev")
+remotes::install_github("Sage-Bionetworks/JustTheDocsDataDictionary", ref = "main")
 # load installed library
 library(JustTheDocsDataDictionary)
 
