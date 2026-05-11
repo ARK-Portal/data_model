@@ -1,0 +1,267 @@
+{
+  "$id": "http://example.com/MetadataFileAnnotationsTemplate",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "program": {
+            "enum": [
+              "AMP RA/SLE"
+            ]
+          }
+        },
+        "required": [
+          "program"
+        ]
+      },
+      "then": {
+        "properties": {
+          "programPhase": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "programPhase"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "resourceType": {
+            "enum": [
+              "metadata"
+            ]
+          }
+        },
+        "required": [
+          "resourceType"
+        ]
+      },
+      "then": {
+        "properties": {
+          "metadataStandards": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "metadataType": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "metadataStandards",
+          "metadataType"
+        ]
+      }
+    }
+  ],
+  "description": "A template outlining metadata to be collected for annotating metadata files to be compiled by ARK BDM.",
+  "properties": {
+    "Component": {
+      "description": "A high-level attribute for grouping attributes into templates.",
+      "title": "Component",
+      "type": "string"
+    },
+    "assay": {
+      "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
+      "items": {
+        "enum": [
+          "ASAPSeq",
+          "CE-MS",
+          "CITESeq",
+          "CosMX",
+          "CyTOF",
+          "GenePS SeqFISH",
+          "H&E",
+          "LC-MS/MS",
+          "NULISA",
+          "Olink Explore HT",
+          "Olink Flex",
+          "Olink Focus",
+          "Olink Reveal",
+          "Olink Target 48",
+          "Olink Target 96",
+          "RNASeq",
+          "SNP array",
+          "SomaScan",
+          "VDJSeq",
+          "Visium",
+          "WES",
+          "WGS",
+          "Xenium",
+          "feature barcode sequencing",
+          "flow cytometry",
+          "imaging mass cytometry",
+          "imaging mass spectrometry",
+          "kiloplex",
+          "multiplexed ELISA",
+          "scRNASeq",
+          "scVDJSeq",
+          "serial IHC",
+          "snATACSeq",
+          "snRNASeq"
+        ],
+        "type": "string"
+      },
+      "title": "assay",
+      "type": "array"
+    },
+    "dataType": {
+      "description": "High-level classification of the type of data contained in the file, loosely related to the experimental method or biological entity that is being profiled. Select all that apply using a comma-delimited list, though in most cases only a single label is expected. For multimodal datasets with concomitant profiling of biospecimen include 'multimodal'.",
+      "items": {
+        "enum": [
+          "cytometry",
+          "epigenomics",
+          "genomics",
+          "histology",
+          "immune repertoire profiling",
+          "immunostaining",
+          "lipidomics",
+          "metabolomics",
+          "microbiome",
+          "multimodal",
+          "proteomics",
+          "transcriptomics"
+        ],
+        "type": "string"
+      },
+      "title": "dataType",
+      "type": "array"
+    },
+    "fileFormat": {
+      "description": "Standard file format name or file extension",
+      "enum": [
+        "bai",
+        "bam",
+        "bed",
+        "bim",
+        "csv",
+        "czi",
+        "docx",
+        "dose",
+        "erate",
+        "fam",
+        "fastq",
+        "fcs",
+        "geojson",
+        "h5",
+        "h5ad",
+        "info",
+        "mcd",
+        "mtx",
+        "parquet",
+        "pdf",
+        "py",
+        "rds",
+        "rec",
+        "svs",
+        "tbi",
+        "tgz",
+        "tsv",
+        "txt",
+        "vcf",
+        "xls",
+        "xlsx",
+        "zip"
+      ],
+      "title": "fileFormat"
+    },
+    "metadataStandards": {
+      "description": "Metadata standards used to generate the metadata",
+      "enum": [
+        "ARK data model",
+        "user-defined"
+      ],
+      "title": "metadataStandards"
+    },
+    "metadataType": {
+      "description": "A label further classifying the content of metadata resource.",
+      "enum": [
+        "assay",
+        "biospecimen",
+        "cell coordinates",
+        "data dictionary",
+        "file manifest",
+        "medication",
+        "other",
+        "phenotype",
+        "protocol",
+        "single-cell metadata",
+        "target panel",
+        "template",
+        "tissue microarray map",
+        "tissue multiarray map",
+        "user manual"
+      ],
+      "title": "metadataType"
+    },
+    "program": {
+      "description": "Name of the funding program that supported the generation of data and associated files",
+      "enum": [
+        "AMP AIM",
+        "AMP RA/SLE",
+        "Community Contribution"
+      ],
+      "title": "program"
+    },
+    "programPhase": {
+      "description": "A label noting which AMP RA/SLE program phase generated the data.",
+      "items": {
+        "enum": [
+          "I",
+          "II"
+        ],
+        "type": "string"
+      },
+      "title": "programPhase",
+      "type": "array"
+    },
+    "project": {
+      "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
+      "items": {
+        "enum": [
+          "AIM for RA",
+          "EDP1",
+          "EDP2",
+          "ELLIPSS",
+          "LOCKIT",
+          "METRO",
+          "RA",
+          "SLE",
+          "STAMP",
+          "UMass V-CoRT"
+        ],
+        "type": "string"
+      },
+      "title": "project",
+      "type": "array"
+    },
+    "resourceType": {
+      "description": "High-level classification of the file content",
+      "enum": [
+        "code",
+        "experimental data",
+        "figure",
+        "metadata"
+      ],
+      "title": "resourceType"
+    }
+  },
+  "required": [
+    "Component",
+    "dataType",
+    "fileFormat",
+    "program",
+    "project",
+    "resourceType",
+    "assay"
+  ],
+  "title": "MetadataFileAnnotationsTemplate",
+  "type": "object"
+}
