@@ -3,4 +3,6 @@ The anatomical site, i.e., location on or within the body, from which the biospe
 
 
 {: .note }
-There are no defined valid values for this model attribute.
+Valid values for this attribute are derived from the Foundational Model of Anatomy 
+(FMA) ontology. More details about FMA are available at <http://sig.biostr.washington.edu/projects/fm/AboutFM.html> 
+and <https://bioportal.bioontology.org/ontologies/FMA>
