@@ -117,6 +117,7 @@ allAttr = pd.read_csv("ark.all_attributes.csv", dtype="object")
 descriptions = allAttr.loc[:, ["Attribute", "Description"]].set_index("Attribute").to_dict("index")
 
 # concat context csv with all attr csv to make context model csv
+master_template_df = {"template": [], 'context': []}
 for context in contexts:
   #print(context)
   path = f"model_contexts/{context}"
@@ -153,7 +154,15 @@ for context in contexts:
     #for t in set(templates):
     for t in sorted_uniq_list:
       a = f.write(f"{t}\t{context}\n")
+      # add to 'master' dictionary for writing templates_by_context.txt
+      master_template_df['template'].append(t)
+      master_template_df['context'].append(context)
   f.close()
+
+
+df = pd.DataFrame(master_template_df)
+df.to_csv('templates_by_context.txt', sep='\t', header=False, index=False)
+
 
 print("\nAll context model csv files created!\n")
 
