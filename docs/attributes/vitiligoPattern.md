@@ -3,7 +3,7 @@ title: vitiligoPattern
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 104
+nav_order: 105
 permalink: docs/attributes/vitiligoPattern.html
 date: 2026-05-12
 ---

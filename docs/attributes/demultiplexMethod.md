@@ -1,14 +1,14 @@
 ---
-title: species
+title: demultiplexMethod
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 90
-permalink: docs/attributes/species.html
+nav_order: 33
+permalink: docs/attributes/demultiplexMethod.html
 date: 2026-05-12
 ---
-{% assign mydata=site.data.csv.attributes.species %}
-{% include content/species.md %}
+{% assign mydata=site.data.csv.attributes.demultiplexMethod %}
+{% include content/demultiplexMethod.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}
