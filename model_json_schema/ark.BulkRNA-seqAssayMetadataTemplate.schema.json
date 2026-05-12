@@ -43,6 +43,11 @@
       },
       "then": {
         "properties": {
+          "demultiplexMethod": {
+            "not": {
+              "type": "null"
+            }
+          },
           "libraryID": {
             "not": {
               "type": "null"
@@ -50,6 +55,7 @@
           }
         },
         "required": [
+          "demultiplexMethod",
           "libraryID"
         ]
       }
@@ -167,6 +173,16 @@
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
       "title": "dataCollectionBatch",
       "type": "string"
+    },
+    "demultiplexMethod": {
+      "description": "This attribute indicates the general method that needs to be used to demultiplex multispecimen raw data.",
+      "enum": [
+        "genotypic demux",
+        "hashtag oligos",
+        "sample barcode",
+        "slide array map"
+      ],
+      "title": "demultiplexMethod"
     },
     "libraryID": {
       "description": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
