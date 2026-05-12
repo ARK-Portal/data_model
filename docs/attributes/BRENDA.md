@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 17
 permalink: docs/attributes/BRENDA.html
-date: 2026-05-11
+date: 2026-05-12
 ---
 {% include content/BRENDA.md %}

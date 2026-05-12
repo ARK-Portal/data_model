@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/dataset_annotation_template.html
-date: 2026-05-11
+date: 2026-05-12
 ---
 {% assign mydata=site.data.csv.metadata_templates.dataset_annotation_template %}
 {% include content/dataset_annotation_template.md %}

@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 90
 permalink: docs/attributes/specimenModality.html
-date: 2026-05-11
+date: 2026-05-12
 ---
 {% assign mydata=site.data.csv.attributes.specimenModality %}
 {% include content/specimenModality.md %}
