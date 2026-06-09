@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 109
 permalink: docs/attributes/year.html
-date: 2026-05-12
+date: 2026-06-09
 ---
 {% include content/year.md %}

@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 49
 permalink: docs/attributes/krennInflammatory.html
-date: 2026-05-12
+date: 2026-06-09
 ---
 {% include content/krennInflammatory.md %}

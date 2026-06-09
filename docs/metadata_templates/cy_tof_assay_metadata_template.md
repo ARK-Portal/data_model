@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/cy_tof_assay_metadata_template.html
-date: 2026-05-12
+date: 2026-06-09
 ---
 {% assign mydata=site.data.csv.metadata_templates.cy_tof_assay_metadata_template %}
 {% include content/cy_tof_assay_metadata_template.md %}

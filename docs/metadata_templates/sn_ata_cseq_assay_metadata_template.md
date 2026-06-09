@@ -1,13 +1,13 @@
 ---
-title: Spatial Imaging File Annotation Template
+title: snATACseq Assay Metadata Template
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: docs/metadata_templates/spatial_imaging_file_annotation_template.html
+permalink: docs/metadata_templates/sn_ata_cseq_assay_metadata_template.html
 date: 2026-06-09
 ---
-{% assign mydata=site.data.csv.metadata_templates.spatial_imaging_file_annotation_template %}
-{% include content/spatial_imaging_file_annotation_template.md %}
+{% assign mydata=site.data.csv.metadata_templates.sn_ata_cseq_assay_metadata_template %}
+{% include content/sn_ata_cseq_assay_metadata_template.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
       {% for column in mydata[0] %}

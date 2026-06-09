@@ -4,5 +4,5 @@ has_children: true
 layout: page
 permalink: docs/metadata_templates/Metadata_Templates.html
 nav_order: 2
-date: 2026-05-12
+date: 2026-06-09
 ---

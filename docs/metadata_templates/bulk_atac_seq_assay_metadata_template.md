@@ -1,10 +1,10 @@
 ---
-title: Bulk ATAC-seq Assay Metadata Template
+title: Bulk ATACSeq Assay Metadata Template
 parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/bulk_atac_seq_assay_metadata_template.html
-date: 2026-05-12
+date: 2026-06-09
 ---
 {% assign mydata=site.data.csv.metadata_templates.bulk_atac_seq_assay_metadata_template %}
 {% include content/bulk_atac_seq_assay_metadata_template.md %}
