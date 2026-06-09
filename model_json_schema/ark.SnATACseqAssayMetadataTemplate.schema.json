@@ -1,5 +1,5 @@
 {
-  "$id": "http://example.com/BulkRNA-seqAssayMetadataTemplate",
+  "$id": "http://example.com/SnATACseqAssayMetadataTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "allOf": [
     {
@@ -87,7 +87,7 @@
       }
     }
   ],
-  "description": "A template outlining metadata to be collected for each library in a bulk RNA-seq dataset.",
+  "description": "A template outlining metadata to be collected for each library in a snATAC-seq dataset.",
   "properties": {
     "10xProbeSetReference": {
       "description": "Name of probe set used in 10x Chromium Flex, Xenium, or Visium data. If custom modified probe set was used the probe reference should be included as metadata accompanying the experimental data files.",
@@ -184,6 +184,11 @@
       ],
       "title": "demultiplexMethod"
     },
+    "inputCellCount": {
+      "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
+      "title": "inputCellCount",
+      "type": "integer"
+    },
     "libraryID": {
       "description": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
       "title": "libraryID",
@@ -248,6 +253,13 @@
       "title": "nucleicAcidSource",
       "type": "array"
     },
+    "percentCellViability": {
+      "description": "A measure of the proportion of viable cells within a cell suspension. Scale is 0-100.",
+      "maximum": 100.0,
+      "minimum": 50.0,
+      "title": "percentCellViability",
+      "type": "integer"
+    },
     "platform": {
       "description": "The specific version (manufacturer, model, etc.) of a technology that is used to carry out a laboratory or computational experiment. Specify where applicable for experimental data files, else enter 'none'. In most cases only a single label is expected, however multiple selections can be provided in comma-delimited list where applicable e.g., for 10x Genomics fastq files please specify both the 10x instrument and the sequencing platform.",
       "items": {
@@ -306,6 +318,13 @@
       "title": "sampleProcessingBatch",
       "type": "string"
     },
+    "sequencingSaturation": {
+      "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1.",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "sequencingSaturation",
+      "type": "number"
+    },
     "softwareAndVersion": {
       "description": "Relevant software and version used to generate the data file.",
       "enum": [
@@ -361,12 +380,14 @@
     "alignmentReference",
     "assay",
     "Component",
+    "inputCellCount",
     "libraryPrepMethod",
     "nucleicAcidSource",
+    "percentCellViability",
     "platform",
     "specimenModality",
     "totalReads"
   ],
-  "title": "BulkRNA-seqAssayMetadataTemplate",
+  "title": "SnATACseqAssayMetadataTemplate",
   "type": "object"
 }
