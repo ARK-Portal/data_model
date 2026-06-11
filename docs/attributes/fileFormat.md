@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 41
 permalink: docs/attributes/fileFormat.html
-date: 2026-06-09
+date: 2026-06-11
 ---
 {% assign mydata=site.data.csv.attributes.fileFormat %}
 {% include content/fileFormat.md %}

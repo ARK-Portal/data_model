@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/sc_vdj_seq_processed_data_annotation_template.html
-date: 2026-06-09
+date: 2026-06-11
 ---
 {% assign mydata=site.data.csv.metadata_templates.sc_vdj_seq_processed_data_annotation_template %}
 {% include content/sc_vdj_seq_processed_data_annotation_template.md %}

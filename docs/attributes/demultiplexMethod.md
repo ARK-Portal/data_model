@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 33
 permalink: docs/attributes/demultiplexMethod.html
-date: 2026-06-09
+date: 2026-06-11
 ---
 {% assign mydata=site.data.csv.attributes.demultiplexMethod %}
 {% include content/demultiplexMethod.md %}

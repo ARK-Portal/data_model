@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 108
 permalink: docs/attributes/weightUnits.html
-date: 2026-06-09
+date: 2026-06-11
 ---
 {% assign mydata=site.data.csv.attributes.weightUnits %}
 {% include content/weightUnits.md %}

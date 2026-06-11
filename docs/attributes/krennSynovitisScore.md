@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 52
 permalink: docs/attributes/krennSynovitisScore.html
-date: 2026-06-09
+date: 2026-06-11
 ---
 {% include content/krennSynovitisScore.md %}
