@@ -3,7 +3,7 @@ title: heightUnits
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 45
+nav_order: 44
 permalink: docs/attributes/heightUnits.html
 date: 2026-06-22
 ---

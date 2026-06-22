@@ -3,7 +3,7 @@ title: metadataType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 58
+nav_order: 57
 permalink: docs/attributes/metadataType.html
 date: 2026-06-22
 ---

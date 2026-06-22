@@ -3,7 +3,7 @@ title: resourceType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 79
+nav_order: 78
 permalink: docs/attributes/resourceType.html
 date: 2026-06-22
 ---

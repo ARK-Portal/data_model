@@ -3,7 +3,7 @@ title: publicationType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 76
+nav_order: 75
 permalink: docs/attributes/publicationType.html
 date: 2026-06-22
 ---

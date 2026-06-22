@@ -3,7 +3,7 @@ title: datasetType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 31
+nav_order: 30
 permalink: docs/attributes/datasetType.html
 date: 2026-06-22
 ---

@@ -3,7 +3,7 @@ title: dataSubtype
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 32
+nav_order: 31
 permalink: docs/attributes/dataSubtype.html
 date: 2026-06-22
 ---
