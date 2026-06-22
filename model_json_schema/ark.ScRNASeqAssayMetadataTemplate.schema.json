@@ -5,32 +5,6 @@
     {
       "if": {
         "properties": {
-          "libraryPrepMethod": {
-            "enum": [
-              "10x GEM-X Flex Gene Expression Human"
-            ]
-          }
-        },
-        "required": [
-          "libraryPrepMethod"
-        ]
-      },
-      "then": {
-        "properties": {
-          "10xProbeSetReference": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "10xProbeSetReference"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
           "specimenModality": {
             "enum": [
               "multispecimen"
@@ -47,59 +21,16 @@
             "not": {
               "type": "null"
             }
-          },
-          "libraryID": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "demultiplexMethod",
-          "libraryID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
+          "demultiplexMethod"
         ]
       }
     }
   ],
   "description": "A template outlining metadata to be collected for each library in a scRNA-seq dataset.",
   "properties": {
-    "10xProbeSetReference": {
-      "description": "Name of probe set used in 10x Chromium Flex, Xenium, or Visium data. If custom modified probe set was used the probe reference should be included as metadata accompanying the experimental data files.",
-      "enum": [
-        "Flex Human Transcriptome Probe Set v1.0.1",
-        "Flex Human Transcriptome Probe Set v1.1.0",
-        "Visium Human Transcriptome v1",
-        "Visium Human Transcriptome v2",
-        "custom probe set"
-      ],
-      "title": "10xProbeSetReference"
-    },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
       "title": "Component",
@@ -110,7 +41,14 @@
       "enum": [
         "10x Cell Ranger Human GRCh38 2020-A",
         "10x Cell Ranger Human GRCh38 2024-A",
+        "10x Human Transcriptome Flex Probe Set v1.0.1",
+        "10x Human Transcriptome Flex Probe Set v1.1.0",
+        "10x Human Transcriptome v2.0 Flex Probe Set",
+        "10x Human V(D)J reference (GRCh38)",
         "GRCh38",
+        "Visium Human Transcriptome v1",
+        "Visium Human Transcriptome v2",
+        "custom reference",
         "modified GRCh38",
         "unknown",
         "vdj_GRCh38_alts_ensembl-4.0.0"
@@ -161,13 +99,11 @@
       "title": "assay",
       "type": "array"
     },
-    "biospecimenID": {
-      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
-      "items": {
-        "type": "string"
-      },
-      "title": "biospecimenID",
-      "type": "array"
+    "customAlignmentReferenceSynID": {
+      "description": "If a custom alignment reference was used for aligning your reads, then the reference files should be grouped as a zip or tar archive and uploaded as metadata. This attribute links the experimental data back to the custom reference files via a Synapse ID. This includes genomomic, transcriptomic, and proteomic reference sequence information as well as 10x Genomics Flex probe sets.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "customAlignmentReferenceSynID",
+      "type": "string"
     },
     "dataCollectionBatch": {
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
@@ -188,11 +124,6 @@
       "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
       "title": "inputCellCount",
       "type": "integer"
-    },
-    "libraryID": {
-      "description": "A library label or name, unique within an experiment, used to distinguish sequencing libraries.",
-      "title": "libraryID",
-      "type": "string"
     },
     "libraryPrepMethod": {
       "description": "Sequencing library preparation method or kit used to create the library. If no commercially available kit was used, please select 'in-house library prep'.",
@@ -386,7 +317,8 @@
     "percentCellViability",
     "platform",
     "specimenModality",
-    "totalReads"
+    "totalReads",
+    "customAlignmentReferenceSynID"
   ],
   "title": "ScRNASeqAssayMetadataTemplate",
   "type": "object"
