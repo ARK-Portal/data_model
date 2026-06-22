@@ -3,9 +3,9 @@ title: datasetType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 30
+nav_order: 31
 permalink: docs/attributes/datasetType.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.datasetType %}
 {% include content/datasetType.md %}

@@ -3,9 +3,9 @@ title: nucleicAcidSource
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 59
+nav_order: 60
 permalink: docs/attributes/nucleicAcidSource.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.nucleicAcidSource %}
 {% include content/nucleicAcidSource.md %}

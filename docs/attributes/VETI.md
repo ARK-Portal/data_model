@@ -3,8 +3,8 @@ title: VETI
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 102
+nav_order: 103
 permalink: docs/attributes/VETI.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/VETI.md %}

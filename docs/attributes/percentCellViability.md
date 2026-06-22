@@ -3,8 +3,8 @@ title: percentCellViability
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 62
+nav_order: 63
 permalink: docs/attributes/percentCellViability.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/percentCellViability.md %}

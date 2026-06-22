@@ -3,9 +3,9 @@ title: project
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 71
+nav_order: 72
 permalink: docs/attributes/project.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.project %}
 {% include content/project.md %}

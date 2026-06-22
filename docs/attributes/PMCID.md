@@ -3,8 +3,8 @@ title: PMCID
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 65
+nav_order: 66
 permalink: docs/attributes/PMCID.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/PMCID.md %}

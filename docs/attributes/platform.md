@@ -3,9 +3,9 @@ title: platform
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 64
+nav_order: 65
 permalink: docs/attributes/platform.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.platform %}
 {% include content/platform.md %}

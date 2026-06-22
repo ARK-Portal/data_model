@@ -3,8 +3,8 @@ title: year
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 109
+nav_order: 110
 permalink: docs/attributes/year.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/year.md %}

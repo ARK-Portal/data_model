@@ -3,9 +3,9 @@ title: fileFormat
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 41
+nav_order: 42
 permalink: docs/attributes/fileFormat.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.fileFormat %}
 {% include content/fileFormat.md %}

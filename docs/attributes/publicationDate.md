@@ -3,8 +3,8 @@ title: publicationDate
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 73
+nav_order: 74
 permalink: docs/attributes/publicationDate.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/publicationDate.md %}

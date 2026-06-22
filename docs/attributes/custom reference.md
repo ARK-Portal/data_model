@@ -1,14 +1,14 @@
 ---
-title: cellType
+title: custom reference
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 21
-permalink: docs/attributes/cellType.html
+nav_order: 25
+permalink: docs/attributes/custom reference.html
 date: 2026-06-22
 ---
-{% assign mydata=site.data.csv.attributes.cellType %}
-{% include content/cellType.md %}
+{% assign mydata=site.data.csv.attributes.custom reference %}
+{% include content/custom reference.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
     {% for column in mydata[0] %}

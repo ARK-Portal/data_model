@@ -3,8 +3,8 @@ title: sampleCollectionBatch
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 81
+nav_order: 82
 permalink: docs/attributes/sampleCollectionBatch.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/sampleCollectionBatch.md %}

@@ -3,9 +3,9 @@ title: species
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 90
+nav_order: 91
 permalink: docs/attributes/species.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.species %}
 {% include content/species.md %}

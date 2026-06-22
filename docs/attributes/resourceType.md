@@ -3,9 +3,9 @@ title: resourceType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 78
+nav_order: 79
 permalink: docs/attributes/resourceType.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.resourceType %}
 {% include content/resourceType.md %}

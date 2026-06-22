@@ -3,9 +3,9 @@ title: specimenModality
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 91
+nav_order: 92
 permalink: docs/attributes/specimenModality.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% assign mydata=site.data.csv.attributes.specimenModality %}
 {% include content/specimenModality.md %}

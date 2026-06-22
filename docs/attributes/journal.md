@@ -3,8 +3,8 @@ title: journal
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 48
+nav_order: 49
 permalink: docs/attributes/journal.html
-date: 2026-06-11
+date: 2026-06-22
 ---
 {% include content/journal.md %}
