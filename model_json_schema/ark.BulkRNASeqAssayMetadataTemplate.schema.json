@@ -5,6 +5,32 @@
     {
       "if": {
         "properties": {
+          "alignmentReference": {
+            "enum": [
+              "custom reference"
+            ]
+          }
+        },
+        "required": [
+          "alignmentReference"
+        ]
+      },
+      "then": {
+        "properties": {
+          "customAlignmentReferenceSynID": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "customAlignmentReferenceSynID"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
           "specimenModality": {
             "enum": [
               "multispecimen"
@@ -99,6 +125,14 @@
       "title": "assay",
       "type": "array"
     },
+    "biospecimenID": {
+      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "items": {
+        "type": "string"
+      },
+      "title": "biospecimenID",
+      "type": "array"
+    },
     "customAlignmentReferenceSynID": {
       "description": "If a custom alignment reference was used for aligning your reads, then the reference files should be grouped as a zip or tar archive and uploaded as metadata. This attribute links the experimental data back to the custom reference files via a Synapse ID. This includes genomomic, transcriptomic, and proteomic reference sequence information as well as 10x Genomics Flex probe sets.",
       "pattern": "^syn[0-9]{8}",
@@ -158,26 +192,22 @@
       "title": "libraryPrepMethod"
     },
     "nucleicAcidSource": {
-      "description": "The source of the nucleic acid used as input for sequencing library fragments. Select all that apply, though in most cases only a single label is expected.",
-      "items": {
-        "enum": [
-          "BCR mRNA",
-          "CRISPR protospacer feature barcode",
-          "TCR mRNA",
-          "Tn5-accessible gDNA",
-          "antigen capture barcode",
-          "gDNA",
-          "globin-depleted RNA",
-          "intracellular protein feature barcode",
-          "multiplexing oligo",
-          "poly(A) RNA",
-          "rRNA-depleted RNA",
-          "surface protein feature barcode"
-        ],
-        "type": "string"
-      },
-      "title": "nucleicAcidSource",
-      "type": "array"
+      "description": "The source of the nucleic acid used as input for sequencing library fragments.",
+      "enum": [
+        "BCR mRNA",
+        "CRISPR protospacer feature barcode",
+        "TCR mRNA",
+        "Tn5-accessible gDNA",
+        "antigen capture barcode",
+        "gDNA",
+        "globin-depleted RNA",
+        "intracellular protein feature barcode",
+        "multiplexing oligo",
+        "poly(A) RNA",
+        "rRNA-depleted RNA",
+        "surface protein feature barcode"
+      ],
+      "title": "nucleicAcidSource"
     },
     "platform": {
       "description": "The specific version (manufacturer, model, etc.) of a technology that is used to carry out a laboratory or computational experiment. Specify where applicable for experimental data files, else enter 'none'. In most cases only a single label is expected, however multiple selections can be provided in comma-delimited list where applicable e.g., for 10x Genomics fastq files please specify both the 10x instrument and the sequencing platform.",
@@ -291,13 +321,13 @@
   "required": [
     "alignmentReference",
     "assay",
+    "biospecimenID",
     "Component",
     "libraryPrepMethod",
     "nucleicAcidSource",
     "platform",
     "specimenModality",
-    "totalReads",
-    "customAlignmentReferenceSynID"
+    "totalReads"
   ],
   "title": "BulkRNASeqAssayMetadataTemplate",
   "type": "object"
