@@ -79,64 +79,6 @@
           "metadataType"
         ]
       }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "demultiplexMethod": {
-            "not": {
-              "type": "null"
-            }
-          },
-          "slideID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "demultiplexMethod",
-          "slideID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
-        ]
-      }
     }
   ],
   "description": "A data contributor template outlining metadata to be collected as file annotations for imaging-based data files.",
@@ -174,14 +116,6 @@
       ],
       "title": "assay"
     },
-    "biospecimenID": {
-      "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
-      "items": {
-        "type": "string"
-      },
-      "title": "biospecimenID",
-      "type": "array"
-    },
     "dataLevel": {
       "description": "Level of data processing applied to file. Levels refer to pre-defined standards of processing for the given assay.",
       "enum": [
@@ -194,16 +128,6 @@
         "unknown"
       ],
       "title": "dataLevel"
-    },
-    "demultiplexMethod": {
-      "description": "This attribute indicates the general method that needs to be used to demultiplex multispecimen raw data.",
-      "enum": [
-        "genotypic demux",
-        "hashtag oligos",
-        "sample barcode",
-        "slide array map"
-      ],
-      "title": "demultiplexMethod"
     },
     "fileFormat": {
       "description": "Standard file format name or file extension",
@@ -302,6 +226,7 @@
     "dataLevel",
     "fileFormat",
     "resourceType",
+    "slideID",
     "specimenModality"
   ],
   "title": "SpatialImagingFileAnnotationTemplate",

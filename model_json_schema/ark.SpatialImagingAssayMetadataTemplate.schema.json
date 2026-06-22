@@ -21,42 +21,10 @@
             "not": {
               "type": "null"
             }
-          },
-          "slideID": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "demultiplexMethod",
-          "slideID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
+          "demultiplexMethod"
         ]
       }
     }
@@ -70,16 +38,47 @@
     },
     "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
-      "enum": [
-        "CosMX",
-        "GenePS SeqFISH",
-        "H&E",
-        "Visium",
-        "Xenium",
-        "imaging mass cytometry",
-        "serial IHC"
-      ],
-      "title": "assay"
+      "items": {
+        "enum": [
+          "ASAPSeq",
+          "CE-MS",
+          "CITESeq",
+          "CosMX",
+          "CyTOF",
+          "GenePS SeqFISH",
+          "H&E",
+          "LC-MS/MS",
+          "NULISA",
+          "Olink Explore HT",
+          "Olink Flex",
+          "Olink Focus",
+          "Olink Reveal",
+          "Olink Target 48",
+          "Olink Target 96",
+          "RNASeq",
+          "SNP array",
+          "SomaScan",
+          "VDJSeq",
+          "Visium",
+          "WES",
+          "WGS",
+          "Xenium",
+          "feature barcode sequencing",
+          "flow cytometry",
+          "imaging mass cytometry",
+          "imaging mass spectrometry",
+          "kiloplex",
+          "multiplexed ELISA",
+          "scRNASeq",
+          "scVDJSeq",
+          "serial IHC",
+          "snATACSeq",
+          "snRNASeq"
+        ],
+        "type": "string"
+      },
+      "title": "assay",
+      "type": "array"
     },
     "biospecimenID": {
       "description": "A unique identifier assigned to specimens collected from study participants. For multi-specimen data files provide all IDs in a comma-separated list.",
@@ -142,7 +141,9 @@
   },
   "required": [
     "assay",
+    "biospecimenID",
     "Component",
+    "slideID",
     "specimenModality",
     "targetPanel",
     "targetPanelSynID"
