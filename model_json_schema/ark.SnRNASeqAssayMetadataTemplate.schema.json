@@ -5,26 +5,26 @@
     {
       "if": {
         "properties": {
-          "libraryPrepMethod": {
+          "alignmentReference": {
             "enum": [
-              "10x GEM-X Flex Gene Expression Human"
+              "custom reference"
             ]
           }
         },
         "required": [
-          "libraryPrepMethod"
+          "alignmentReference"
         ]
       },
       "then": {
         "properties": {
-          "10xProbeSetReference": {
+          "customAlignmentReferenceSynID": {
             "not": {
               "type": "null"
             }
           }
         },
         "required": [
-          "10xProbeSetReference"
+          "customAlignmentReferenceSynID"
         ]
       }
     },
@@ -47,59 +47,16 @@
             "not": {
               "type": "null"
             }
-          },
-          "libraryID": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "demultiplexMethod",
-          "libraryID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
+          "demultiplexMethod"
         ]
       }
     }
   ],
   "description": "A template outlining metadata to be collected for each library in a snRNA-seq dataset.",
   "properties": {
-    "10xProbeSetReference": {
-      "description": "Name of probe set used in 10x Chromium Flex, Xenium, or Visium data. If custom modified probe set was used the probe reference should be included as metadata accompanying the experimental data files.",
-      "enum": [
-        "Flex Human Transcriptome Probe Set v1.0.1",
-        "Flex Human Transcriptome Probe Set v1.1.0",
-        "Visium Human Transcriptome v1",
-        "Visium Human Transcriptome v2",
-        "custom probe set"
-      ],
-      "title": "10xProbeSetReference"
-    },
     "Component": {
       "description": "A high-level attribute for grouping attributes into templates.",
       "title": "Component",
@@ -108,9 +65,17 @@
     "alignmentReference": {
       "description": "The genomic/transcriptomic reference used for performing read alignment against.",
       "enum": [
-        "10x Cell Ranger Human GRCh38 2020-A",
-        "10x Cell Ranger Human GRCh38 2024-A",
+        "10x Cell Ranger ATAC Human Reference GRCh38 2024-A",
+        "10x Cell Ranger Human Reference GRCh38 2020-A",
+        "10x Cell Ranger Human Reference GRCh38 2024-A",
+        "10x Human Transcriptome Flex Probe Set v1.0.1",
+        "10x Human Transcriptome Flex Probe Set v1.1.0",
+        "10x Human Transcriptome Flex Probe Set v2.0",
+        "10x Human V(D)J reference (GRCh38)",
+        "10x Visium Human Transcriptome v1",
+        "10x Visium Human Transcriptome v2",
         "GRCh38",
+        "custom reference",
         "modified GRCh38",
         "unknown",
         "vdj_GRCh38_alts_ensembl-4.0.0"
@@ -169,6 +134,12 @@
       "title": "biospecimenID",
       "type": "array"
     },
+    "customAlignmentReferenceSynID": {
+      "description": "If a custom alignment reference was used for aligning your reads, then the reference files should be grouped as a zip or tar archive and uploaded as metadata. This attribute links the experimental data back to the custom reference files via a Synapse ID. This includes genomomic, transcriptomic, and proteomic reference sequence information as well as 10x Genomics Flex probe sets.",
+      "pattern": "^syn[0-9]{8}",
+      "title": "customAlignmentReferenceSynID",
+      "type": "string"
+    },
     "dataCollectionBatch": {
       "description": "A label indicating batching that occurs during data collection, e.g., collecting data across multiple days.",
       "title": "dataCollectionBatch",
@@ -198,17 +169,22 @@
       "description": "Sequencing library preparation method or kit used to create the library. If no commercially available kit was used, please select 'in-house library prep'.",
       "enum": [
         "10x Chromium Fixed RNA Human Transcriptome",
-        "10x Chromium GEM-X Single Cell 3' v4",
-        "10x Chromium GEM-X Single Cell 5' v3",
-        "10x Chromium Next GEM Single Cell 3'",
-        "10x Chromium Next GEM Single Cell 3' 3.1",
+        "10x Chromium Next GEM Single Cell 3' v1",
+        "10x Chromium Next GEM Single Cell 3' v2",
+        "10x Chromium Next GEM Single Cell 3' v3",
+        "10x Chromium Next GEM Single Cell 3' v3.1",
         "10x Chromium Next GEM Single Cell 5' v1.1",
         "10x Chromium Next GEM Single Cell 5' v2",
+        "10x Chromium Next GEM Single Cell ATAC v1",
         "10x Chromium Next GEM Single Cell ATAC v2",
         "10x Chromium Single Cell Human BCR",
         "10x Chromium Single Cell Human TCR",
-        "10x GEM-X Flex Gene Expression Human",
-        "10x GEM-X Universal 5' Gene Expression v3",
+        "10x GEM-X Epi Multiome",
+        "10x GEM-X Flex Human v1",
+        "10x GEM-X Flex Human v2",
+        "10x GEM-X Universal 3' v3",
+        "10x GEM-X Universal 3' v4",
+        "10x GEM-X Universal 5' v3",
         "CEL-Seq2",
         "Chromium Next GEM Single Cell ATAC v1.1",
         "Fluidigm C1 HT",
@@ -232,26 +208,22 @@
       "title": "libraryPrepMethod"
     },
     "nucleicAcidSource": {
-      "description": "The source of the nucleic acid used as input for sequencing library fragments. Select all that apply, though in most cases only a single label is expected.",
-      "items": {
-        "enum": [
-          "BCR mRNA",
-          "CRISPR protospacer feature barcode",
-          "TCR mRNA",
-          "Tn5-accessible gDNA",
-          "antigen capture barcode",
-          "gDNA",
-          "globin-depleted RNA",
-          "intracellular protein feature barcode",
-          "multiplexing oligo",
-          "poly(A) RNA",
-          "rRNA-depleted RNA",
-          "surface protein feature barcode"
-        ],
-        "type": "string"
-      },
-      "title": "nucleicAcidSource",
-      "type": "array"
+      "description": "The source of the nucleic acid used as input for sequencing library fragments.",
+      "enum": [
+        "BCR mRNA",
+        "CRISPR protospacer feature barcode",
+        "TCR mRNA",
+        "Tn5-accessible gDNA",
+        "antigen capture barcode",
+        "gDNA",
+        "globin-depleted RNA",
+        "intracellular protein feature barcode",
+        "multiplexing oligo",
+        "poly(A) RNA",
+        "rRNA-depleted RNA",
+        "surface protein feature barcode"
+      ],
+      "title": "nucleicAcidSource"
     },
     "percentCellViability": {
       "description": "A measure of the proportion of viable cells within a cell suspension. Scale is 0-100.",
@@ -379,8 +351,10 @@
   "required": [
     "alignmentReference",
     "assay",
+    "biospecimenID",
     "Component",
     "inputCellCount",
+    "libraryID",
     "libraryPrepMethod",
     "nucleicAcidSource",
     "percentCellViability",
