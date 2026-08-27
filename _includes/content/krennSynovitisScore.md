@@ -1,5 +1,5 @@
 # krennSynovitisScore
-The Krenn Synovitis Score (KSS) is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'.
+The Krenn Synovitis Score (KSS) is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'
 
 
 {: .note }

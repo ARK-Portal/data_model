@@ -3,9 +3,9 @@ title: diabetesType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 34
+nav_order: 33
 permalink: docs/attributes/diabetesType.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.diabetesType %}
 {% include content/diabetesType.md %}

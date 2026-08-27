@@ -4,7 +4,7 @@ parent: Metadata Templates
 datatable: true
 layout: page
 permalink: docs/metadata_templates/olink_file_annotation_template.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.metadata_templates.olink_file_annotation_template %}
 {% include content/olink_file_annotation_template.md %}

@@ -3,9 +3,9 @@ title: demultiplexMethod
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 33
+nav_order: 32
 permalink: docs/attributes/demultiplexMethod.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.demultiplexMethod %}
 {% include content/demultiplexMethod.md %}

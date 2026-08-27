@@ -1,5 +1,5 @@
 # height
-Standing height of subject.
+Standing height of subject. If value unknown, enter '-1'
 
 
 {: .note }

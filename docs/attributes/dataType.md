@@ -3,9 +3,9 @@ title: dataType
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 32
+nav_order: 31
 permalink: docs/attributes/dataType.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.dataType %}
 {% include content/dataType.md %}

@@ -1,5 +1,5 @@
 # ageDiagnosis
-Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age`.
+Age at which subject was diagnosed with `diagnosis`. If providing this value be sure the unit matches that used for `age`. If value unknown, enter '-1'
 
 
 {: .note }

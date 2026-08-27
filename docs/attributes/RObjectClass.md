@@ -3,9 +3,9 @@ title: RObjectClass
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 79
+nav_order: 78
 permalink: docs/attributes/RObjectClass.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.RObjectClass %}
 {% include content/RObjectClass.md %}

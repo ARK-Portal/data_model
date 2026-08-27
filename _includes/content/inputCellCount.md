@@ -1,5 +1,5 @@
 # inputCellCount
-An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.
+An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results. If value unknown, enter '-1'
 
 
 {: .note }

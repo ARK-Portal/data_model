@@ -3,8 +3,8 @@ title: krennInflammatory
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 49
+nav_order: 48
 permalink: docs/attributes/krennInflammatory.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% include content/krennInflammatory.md %}

@@ -3,9 +3,9 @@ title: ethnicity
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 38
+nav_order: 37
 permalink: docs/attributes/ethnicity.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.ethnicity %}
 {% include content/ethnicity.md %}

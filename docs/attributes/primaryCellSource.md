@@ -3,9 +3,9 @@ title: primaryCellSource
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 67
+nav_order: 66
 permalink: docs/attributes/primaryCellSource.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.primaryCellSource %}
 {% include content/primaryCellSource.md %}

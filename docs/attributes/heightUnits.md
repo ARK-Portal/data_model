@@ -3,9 +3,9 @@ title: heightUnits
 parent: Attributes
 datatable: true
 layout: page
-nav_order: 44
+nav_order: 43
 permalink: docs/attributes/heightUnits.html
-date: 2026-06-22
+date: 2026-08-27
 ---
 {% assign mydata=site.data.csv.attributes.heightUnits %}
 {% include content/heightUnits.md %}
