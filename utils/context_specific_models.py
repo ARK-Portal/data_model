@@ -14,7 +14,7 @@ to generate context-specific model csv files.
 #### Functions
 ####
 def get_model_template_name(df):
-  df = df[df.DependsOn.str.contains("Component") == True]
+  df = df[df.Attribute.str.contains("Template|Annotation") == True]
   templates = list(df.Attribute.unique())
   templates = [t.replace(" ", "") for t in templates]
   for i in range(len(templates)):

@@ -501,11 +501,6 @@
   ],
   "description": "A general template outlining metadata to be collected for biospecimen profiled in a dataset.",
   "properties": {
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
     "FACSPopulation": {
       "description": "A description of the marker gating strategy used to derive the population cells with FACS.",
       "title": "FACSPopulation",
@@ -3823,23 +3818,31 @@
     },
     "krennInflammatory": {
       "description": "A standardized, semi-quantitative measure of the degree of inflammatory infiltrate in synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'.",
+      "maximum": 3.0,
+      "minimum": -1.0,
       "title": "krennInflammatory",
-      "type": "number"
+      "type": "integer"
     },
     "krennLining": {
-      "description": "A standardized, semi-quantitative measure of the degree of hyperplasia/enlargement of the synovial lining layer of synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'.",
+      "description": "A standardized, semi-quantitative measure of the degree of hyperplasia/enlargement of the synovial lining layer of synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'. If value unknown, enter '-1'",
+      "maximum": 3.0,
+      "minimum": -1.0,
       "title": "krennLining",
-      "type": "number"
+      "type": "integer"
     },
     "krennStroma": {
       "description": "A standardized, semi-quantitative measure of stromal cell density of synovial specimen. This is one of three measures used to derive the Krenn Synovitis Score (KSS) which is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'.",
+      "maximum": 3.0,
+      "minimum": -1.0,
       "title": "krennStroma",
-      "type": "number"
+      "type": "integer"
     },
     "krennSynovitisScore": {
-      "description": "The Krenn Synovitis Score (KSS) is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, use '-1'.",
+      "description": "The Krenn Synovitis Score (KSS) is a histological scoring system used to quantify inflammation in synovial tissue biopsies, particularly in the context of inflammatory arthritis like rheumatoid arthritis. If value unknown, enter '-1'",
+      "maximum": 9.0,
+      "minimum": -1.0,
       "title": "krennSynovitisScore",
-      "type": "number"
+      "type": "integer"
     },
     "notes": {
       "description": "Please use this attribute to captured pertinent details not otherwise captured. This is an unstructured text entry, please be concise.",
@@ -3937,7 +3940,6 @@
   "required": [
     "biospecimenID",
     "biospecimenType",
-    "Component",
     "individualID",
     "program",
     "project"
