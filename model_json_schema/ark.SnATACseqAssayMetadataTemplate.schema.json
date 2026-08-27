@@ -57,11 +57,6 @@
   ],
   "description": "A template outlining metadata to be collected for each library in a snATAC-seq dataset.",
   "properties": {
-    "Component": {
-      "description": "A high-level attribute for grouping attributes into templates.",
-      "title": "Component",
-      "type": "string"
-    },
     "alignmentReference": {
       "description": "The genomic/transcriptomic reference used for performing read alignment against.",
       "enum": [
@@ -156,7 +151,8 @@
       "title": "demultiplexMethod"
     },
     "inputCellCount": {
-      "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results.",
+      "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results. If value unknown, enter '-1'",
+      "minimum": -1.0,
       "title": "inputCellCount",
       "type": "integer"
     },
@@ -275,7 +271,7 @@
       "type": "string"
     },
     "sequencingSaturation": {
-      "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1.",
+      "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1. If value unknown, enter '-1'",
       "maximum": 1.0,
       "minimum": 0.0,
       "title": "sequencingSaturation",
@@ -336,7 +332,6 @@
     "alignmentReference",
     "assay",
     "biospecimenID",
-    "Component",
     "inputCellCount",
     "libraryID",
     "libraryPrepMethod",
