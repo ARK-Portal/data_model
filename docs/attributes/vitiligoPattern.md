@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 104
 permalink: docs/attributes/vitiligoPattern.html
-date: 2026-08-27
+date: 2026-08-28
 ---
 {% assign mydata=site.data.csv.attributes.vitiligoPattern %}
 {% include content/vitiligoPattern.md %}
