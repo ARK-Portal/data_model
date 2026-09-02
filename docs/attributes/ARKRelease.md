@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 9
 permalink: docs/attributes/ARKRelease.html
-date: 2026-08-28
+date: 2026-09-02
 ---
 {% assign mydata=site.data.csv.attributes.ARKRelease %}
 {% include content/ARKRelease.md %}

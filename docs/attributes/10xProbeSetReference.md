@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 1
 permalink: docs/attributes/10xProbeSetReference.html
-date: 2026-08-28
+date: 2026-09-02
 ---
 {% assign mydata=site.data.csv.attributes.10xProbeSetReference %}
 {% include content/10xProbeSetReference.md %}
