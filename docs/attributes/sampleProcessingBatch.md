@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 81
 permalink: docs/attributes/sampleProcessingBatch.html
-date: 2026-09-02
+date: 2026-09-28
 ---
 {% include content/sampleProcessingBatch.md %}

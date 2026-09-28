@@ -1,13 +1,13 @@
 ---
-title: snATACSeq Assay Metadata Template
+title: Flow Cytometry Assay Metadata Template
 parent: Metadata Templates
 datatable: true
 layout: page
-permalink: docs/metadata_templates/sn_atac_seq_assay_metadata_template.html
+permalink: docs/metadata_templates/flow_cytometry_assay_metadata_template.html
 date: 2026-09-28
 ---
-{% assign mydata=site.data.csv.metadata_templates.sn_atac_seq_assay_metadata_template %}
-{% include content/sn_atac_seq_assay_metadata_template.md %}
+{% assign mydata=site.data.csv.metadata_templates.flow_cytometry_assay_metadata_template %}
+{% include content/flow_cytometry_assay_metadata_template.md %}
 <table id="myTable" class="display" style="width:100%">
     <thead>
       {% for column in mydata[0] %}
