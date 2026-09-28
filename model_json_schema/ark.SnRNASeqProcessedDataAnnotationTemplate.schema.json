@@ -5,44 +5,6 @@
     {
       "if": {
         "properties": {
-          "assay": {
-            "enum": [
-              "feature barcode sequencing"
-            ]
-          }
-        },
-        "required": [
-          "assay"
-        ]
-      },
-      "then": {
-        "properties": {
-          "targetPanel": {
-            "not": {
-              "type": "null"
-            }
-          },
-          "targetPanelSize": {
-            "not": {
-              "type": "null"
-            }
-          },
-          "targetPanelSynID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "targetPanel",
-          "targetPanelSize",
-          "targetPanelSynID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
           "fileFormat": {
             "enum": [
               "rds"
@@ -318,22 +280,6 @@
         "unknown"
       ],
       "title": "specimenModality"
-    },
-    "targetPanel": {
-      "description": "A unique or established human-readable name assigned to the panel of targets profiled in the experiment. For example, the panel of antibodies and corresponding fluorophores used in a flow cytometry experiment or panel used in a Xenium spatial transcriptomics experiment.",
-      "title": "targetPanel",
-      "type": "string"
-    },
-    "targetPanelSize": {
-      "description": "The number of gene, transcript, protein, etc., targets profiled in the assay for assays that use a pre-defined set of probes, antibodies, etc., to measure biological components in samples. The input value is expected to be a whole integer that matches the number of targets described in the accompanying target panel metadata (i.e., targetPanelSynID).",
-      "title": "targetPanelSize",
-      "type": "integer"
-    },
-    "targetPanelSynID": {
-      "description": "In most cases an accompanying metadata file should be provided that details information about the targets profiled in the experiment. This attribute links experimental data files to the target panel metadata via the synapse ID of that file.",
-      "pattern": "^syn[0-9]{8}",
-      "title": "targetPanelSynID",
-      "type": "string"
     }
   },
   "required": [
