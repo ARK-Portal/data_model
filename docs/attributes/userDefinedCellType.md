@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 99
 permalink: docs/attributes/userDefinedCellType.html
-date: 2026-09-28
+date: 2026-10-26
 ---
 {% include content/userDefinedCellType.md %}
