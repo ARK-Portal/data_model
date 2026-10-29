@@ -21,42 +21,10 @@
             "not": {
               "type": "null"
             }
-          },
-          "poolID": {
-            "not": {
-              "type": "null"
-            }
           }
         },
         "required": [
-          "demultiplexMethod",
-          "poolID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
+          "demultiplexMethod"
         ]
       }
     }
@@ -115,11 +83,6 @@
         "unknown"
       ],
       "title": "platform"
-    },
-    "poolID": {
-      "description": "unique identifier for a multiplexed sample that consists of multiple specimen pooled together before data collection begins.",
-      "title": "poolID",
-      "type": "string"
     },
     "sampleProcessingBatch": {
       "description": "A label indicating batching of sample processing or preparation that occurs prior to data collection.",
@@ -190,6 +153,7 @@
   },
   "required": [
     "assay",
+    "biospecimenID",
     "platform",
     "specimenModality",
     "targetPanel",
