@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 60
 permalink: docs/attributes/PASI.html
-date: 2026-10-26
+date: 2026-10-29
 ---
 {% include content/PASI.md %}

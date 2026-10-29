@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 49
 permalink: docs/attributes/krennLining.html
-date: 2026-10-26
+date: 2026-10-29
 ---
 {% include content/krennLining.md %}

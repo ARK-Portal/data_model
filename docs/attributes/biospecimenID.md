@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 14
 permalink: docs/attributes/biospecimenID.html
-date: 2026-10-26
+date: 2026-10-29
 ---
 {% include content/biospecimenID.md %}
