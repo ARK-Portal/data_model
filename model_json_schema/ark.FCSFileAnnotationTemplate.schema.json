@@ -1,66 +1,6 @@
 {
   "$id": "http://example.com/FCSFileAnnotationTemplate",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "multispecimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "demultiplexMethod": {
-            "not": {
-              "type": "null"
-            }
-          },
-          "poolID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "demultiplexMethod",
-          "poolID"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "specimenModality": {
-            "enum": [
-              "single specimen"
-            ]
-          }
-        },
-        "required": [
-          "specimenModality"
-        ]
-      },
-      "then": {
-        "properties": {
-          "biospecimenID": {
-            "not": {
-              "type": "null"
-            }
-          }
-        },
-        "required": [
-          "biospecimenID"
-        ]
-      }
-    }
-  ],
   "description": "A template outlining metadata to be collected and applied to FCS file entities as annotations in Synapse.",
   "properties": {
     "biospecimenID": {
@@ -84,16 +24,6 @@
       ],
       "title": "dataLevel"
     },
-    "demultiplexMethod": {
-      "description": "This attribute indicates the general method that needs to be used to demultiplex multispecimen raw data.",
-      "enum": [
-        "genotypic demux",
-        "hashtag oligos",
-        "sample barcode",
-        "slide array map"
-      ],
-      "title": "demultiplexMethod"
-    },
     "eventCount": {
       "description": "The total number of events detected and captured in the corresponding FCS file. In cytometry, an event corresponds to particles detected and measured by the instrument. This number corresponds to the number of rows in the FCS file and is expected to be a whole integer number. If value unknown, enter '-1'",
       "title": "eventCount",
@@ -105,25 +35,11 @@
         "fcs"
       ],
       "title": "fileFormat"
-    },
-    "poolID": {
-      "description": "unique identifier for a multiplexed sample that consists of multiple specimen pooled together before data collection begins.",
-      "title": "poolID",
-      "type": "string"
-    },
-    "specimenModality": {
-      "description": "Label assigned to experimental data files indicating whether the data contained corresponds to a single or multiple biospecimens",
-      "enum": [
-        "multispecimen",
-        "single specimen",
-        "unknown"
-      ],
-      "title": "specimenModality"
     }
   },
   "required": [
-    "dataLevel",
-    "specimenModality"
+    "biospecimenID",
+    "dataLevel"
   ],
   "title": "FCSFileAnnotationTemplate",
   "type": "object"
