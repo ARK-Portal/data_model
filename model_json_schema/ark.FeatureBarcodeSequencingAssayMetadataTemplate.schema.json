@@ -6,9 +6,10 @@
       "if": {
         "properties": {
           "alignmentReference": {
-            "enum": [
-              "custom reference"
-            ]
+            "contains": {
+              "const": "custom reference"
+            },
+            "type": "array"
           }
         },
         "required": [
@@ -59,23 +60,27 @@
   "properties": {
     "alignmentReference": {
       "description": "The genomic/transcriptomic reference used for performing read alignment against.",
-      "enum": [
-        "10x Cell Ranger ATAC Human Reference GRCh38 2024-A",
-        "10x Cell Ranger Human Reference GRCh38 2020-A",
-        "10x Cell Ranger Human Reference GRCh38 2024-A",
-        "10x Human Transcriptome Flex Probe Set v1.0.1",
-        "10x Human Transcriptome Flex Probe Set v1.1.0",
-        "10x Human Transcriptome Flex Probe Set v2.0",
-        "10x Human V(D)J reference (GRCh38)",
-        "10x Visium Human Transcriptome v1",
-        "10x Visium Human Transcriptome v2",
-        "GRCh38",
-        "custom reference",
-        "modified GRCh38",
-        "unknown",
-        "vdj_GRCh38_alts_ensembl-4.0.0"
-      ],
-      "title": "alignmentReference"
+      "items": {
+        "enum": [
+          "10x Cell Ranger ATAC Human Reference GRCh38 2024-A",
+          "10x Cell Ranger Human Reference GRCh38 2020-A",
+          "10x Cell Ranger Human Reference GRCh38 2024-A",
+          "10x Human Transcriptome Flex Probe Set v1.0.1",
+          "10x Human Transcriptome Flex Probe Set v1.1.0",
+          "10x Human Transcriptome Flex Probe Set v2.0",
+          "10x Human V(D)J reference (GRCh38)",
+          "10x Visium Human Transcriptome v1",
+          "10x Visium Human Transcriptome v2",
+          "GRCh38",
+          "custom reference",
+          "modified GRCh38",
+          "unknown",
+          "vdj_GRCh38_alts_ensembl-4.0.0"
+        ],
+        "type": "string"
+      },
+      "title": "alignmentReference",
+      "type": "array"
     },
     "assay": {
       "description": "The technology used to generate the data in this file. For multimodal datasets with concomitant profiling of biospecimen select all assays that apply. e.g., the GEX files from a CITE-seq experiment should be labeled with both 'scRNASeq' and 'CITESeq'.",
@@ -152,7 +157,7 @@
       "title": "demultiplexMethod"
     },
     "inputCellCount": {
-      "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results. If value unknown, enter '-1'",
+      "description": "An estimate of the number of cells expected to be sequenced in a library. Software that process single-cell sequencing data often include options for users to specify this value to improve processing results. If value unknown, enter '-1'.",
       "minimum": -1.0,
       "title": "inputCellCount",
       "type": "integer"
@@ -174,6 +179,7 @@
         "10x Chromium Next GEM Single Cell 5' v2",
         "10x Chromium Next GEM Single Cell ATAC v1",
         "10x Chromium Next GEM Single Cell ATAC v2",
+        "10x Chromium Next GEM Single Cell Fixed RNA Human",
         "10x Chromium Single Cell Human BCR",
         "10x Chromium Single Cell Human TCR",
         "10x GEM-X Epi Multiome",
@@ -212,6 +218,7 @@
         "TCR mRNA",
         "Tn5-accessible gDNA",
         "antigen capture barcode",
+        "fixed mRNA",
         "gDNA",
         "globin-depleted RNA",
         "intracellular protein feature barcode",
@@ -223,9 +230,9 @@
       "title": "nucleicAcidSource"
     },
     "percentCellViability": {
-      "description": "A measure of the proportion of viable cells within a cell suspension. Scale is 0-100.",
+      "description": "A measure of the proportion of viable cells within a cell suspension. Scale is 0-100. If value unknown, enter '-1'. If value not applicable, enter '-2'.",
       "maximum": 100.0,
-      "minimum": 50.0,
+      "minimum": -2.0,
       "title": "percentCellViability",
       "type": "integer"
     },
@@ -272,7 +279,7 @@
       "type": "string"
     },
     "sequencingSaturation": {
-      "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1. If value unknown, enter '-1'",
+      "description": "A measure of the fraction of library complexity that was sequenced in a library. This metric quantifies the fraction of reads originating from an already-observed UMI. More specifically, this is the fraction of confidently mapped, valid cell-barcode, valid UMI reads that are non-unique. Scale is 0-1. If value unknown, enter '-1'.",
       "maximum": 1.0,
       "minimum": 0.0,
       "title": "sequencingSaturation",
