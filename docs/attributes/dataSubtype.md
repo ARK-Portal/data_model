@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 30
 permalink: docs/attributes/dataSubtype.html
-date: 2026-10-29
+date: 2026-10-30
 ---
 {% assign mydata=site.data.csv.attributes.dataSubtype %}
 {% include content/dataSubtype.md %}

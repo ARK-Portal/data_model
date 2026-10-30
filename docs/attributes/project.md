@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 70
 permalink: docs/attributes/project.html
-date: 2026-10-29
+date: 2026-10-30
 ---
 {% assign mydata=site.data.csv.attributes.project %}
 {% include content/project.md %}

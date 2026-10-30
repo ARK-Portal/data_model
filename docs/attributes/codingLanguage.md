@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 22
 permalink: docs/attributes/codingLanguage.html
-date: 2026-10-29
+date: 2026-10-30
 ---
 {% assign mydata=site.data.csv.attributes.codingLanguage %}
 {% include content/codingLanguage.md %}

@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 47
 permalink: docs/attributes/journal.html
-date: 2026-10-29
+date: 2026-10-30
 ---
 {% include content/journal.md %}
