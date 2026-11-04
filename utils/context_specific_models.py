@@ -131,7 +131,24 @@ for context in contexts:
     if contextCSV.loc[contextCSV.Attribute == a, "Description"].isna().any():
       contextCSV.loc[contextCSV.Attribute == a, "Description"] = descriptions[a]["Description"]
   
-  # prep all attributes csv for merging
+  # if attribute has defined enums/valid vals in all_attributes but not in context csv
+  # then add all enums in context, this makes it easy to have context-specific column types
+  df = contextCSV[contextCSV.Attribute.isin(list(all_vv.keys())) == True] # get context Attributes that have enums in all_attr
+  df.reset_index(drop = True, inplace = True)
+  
+  df = df[df['Valid Values'].isna()] # now have context Attr that don't have context-specific enums list
+  df.reset_index(drop = True, inplace = True)
+  # add all_attr vv to context attr
+  for x in range(0, df.shape[0]):
+    a = df.Attribute.to_list()[x]
+    vv = ', '.join(all_vv[a])
+    df.loc[x, 'Valid Values'] = vv
+  # then bring it all together
+  contextCSV = contextCSV[contextCSV.Attribute.isin(df.Attribute.to_list()) == False]
+  contextCSV = pd.concat([contextCSV, df], ignore_index=True)
+  contextCSV.reset_index(drop = True, inplace = True)
+  
+  # prep all attributes csv for merging by removing any context specific attr entries
   temp_allAttr = allAttr[allAttr.Attribute.isin(context_attrs) == False]
   
   # merge context and all attributes to create a model csv
