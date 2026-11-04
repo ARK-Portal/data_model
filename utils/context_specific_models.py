@@ -48,6 +48,27 @@ def get_valid_values_dict(df):
   
   return validvals
 
+def manage_columnType_conversion_descriptions(df):
+  # if attribute is no longer a list-type in the context model
+  # modify the attribute description accordingly
+  to_remove = [" Multiple selections can be provided in a comma-delimited list.", 
+               " For multi-specimen data files provide all IDs in a comma-separated list."]
+  non_list_df = df[df.columnType.str.contains("_list", na=False) == False]
+  non_list_df.reset_index(drop = True, inplace = True)
+  desc = []
+  for d in non_list_df.Description:
+    for x in to_remove:
+      d = d.replace(x, "")
+    desc.append(d)
+  
+  idx = non_list_df.columns.get_loc('Description')
+  non_list_df.iloc[:, idx] = desc
+  
+  df = df[df['columnType'].str.contains("_list", na=False) == True]
+  out = pd.concat([df, non_list_df], ignore_index=True)
+  return out
+
+
 def update_all_attributes(allAttr, vv):
   # update allAttr with valid values from all_vv
   for a in all_vv.keys():
@@ -153,6 +174,7 @@ for context in contexts:
   
   # merge context and all attributes to create a model csv
   contextModel = pd.concat([contextCSV, temp_allAttr], ignore_index=True)
+  contextModel = manage_columnType_conversion_descriptions(contextModel)
   fid = f"{path}/ark.{context}_model.csv"
   contextModel.to_csv(fid, index=False, quoting=csv.QUOTE_ALL)
   
