@@ -180,6 +180,7 @@ for context in contexts:
 
 
 df = pd.DataFrame(master_template_df)
+df.sort_values(by=['context', 'template'], inplace=True)
 df.to_csv('templates_by_context.txt', sep='\t', header=False, index=False)
 
 
