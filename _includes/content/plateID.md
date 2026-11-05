@@ -1,5 +1,5 @@
 # plateID
-An identifier assigned to a multi-well plate. Certain data types and assays profile samples using multi-well plates. Knowing which samples were profiled on each plate is important for establishing sample provenance, finding the right data files for a specific set of samples, as well as downstream exploratory data analysis and QC work particularly regarding identification and correction of batch effects.
+An identifier, unique within a dataset, used to label a multi-well plate used for sample profiling. For aggregated data files please specify all corresponding plateIDs with a comma-delimited list.
 
 
 {: .note }
