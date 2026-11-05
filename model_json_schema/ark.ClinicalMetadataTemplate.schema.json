@@ -60,10 +60,9 @@
       "if": {
         "properties": {
           "diagnosis": {
-            "contains": {
-              "const": "psoriasis"
-            },
-            "type": "array"
+            "enum": [
+              "psoriasis"
+            ]
           }
         },
         "required": [
@@ -87,10 +86,9 @@
       "if": {
         "properties": {
           "diagnosis": {
-            "contains": {
-              "const": "dermatomyositis"
-            },
-            "type": "array"
+            "enum": [
+              "dermatomyositis"
+            ]
           }
         },
         "required": [
@@ -114,10 +112,9 @@
       "if": {
         "properties": {
           "diagnosis": {
-            "contains": {
-              "const": "vitiligo"
-            },
-            "type": "array"
+            "enum": [
+              "vitiligo"
+            ]
           }
         },
         "required": [
@@ -206,6 +203,38 @@
           "visitID"
         ]
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "species": {
+            "enum": [
+              "Homo sapiens"
+            ]
+          }
+        },
+        "required": [
+          "species"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ethnicity": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "race": {
+            "not": {
+              "type": "null"
+            }
+          }
+        },
+        "required": [
+          "ethnicity",
+          "race"
+        ]
+      }
     }
   ],
   "description": "A template outlining clinical metadata to collect for study subjects.",
@@ -250,7 +279,7 @@
       "title": "ageUnits"
     },
     "comorbidities": {
-      "description": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`.",
+      "description": "Any diseases or medical condition that is simultaneously present in addition to `diagnosis`. Multiple selections can be provided in a comma-delimited list.",
       "items": {
         "enum": [
           "Hashimoto's Thyroiditis",
@@ -283,29 +312,25 @@
     },
     "diagnosis": {
       "description": "A high-level classifier indicating the disease status of an individual.",
-      "items": {
-        "enum": [
-          "At-Risk RA",
-          "Not Applicable",
-          "OA",
-          "RA",
-          "SLE",
-          "Sjogren's disease",
-          "control",
-          "cutaneous lupus erythematosus",
-          "dermatomyositis",
-          "discoid lupus erythematosus",
-          "lupus nephritis",
-          "psoriasis",
-          "psoriatic arthritis",
-          "scleroderma",
-          "unknown",
-          "vitiligo"
-        ],
-        "type": "string"
-      },
-      "title": "diagnosis",
-      "type": "array"
+      "enum": [
+        "At-Risk RA",
+        "Not Applicable",
+        "OA",
+        "RA",
+        "SLE",
+        "Sjogren's disease",
+        "control",
+        "cutaneous lupus erythematosus",
+        "dermatomyositis",
+        "discoid lupus erythematosus",
+        "lupus nephritis",
+        "psoriasis",
+        "psoriatic arthritis",
+        "scleroderma",
+        "unknown",
+        "vitiligo"
+      ],
+      "title": "diagnosis"
     },
     "ethnicity": {
       "description": "The ethnicity of a person.",
@@ -333,7 +358,7 @@
       "title": "heightUnits"
     },
     "individualID": {
-      "description": "Unique identifier assigned to each study participant. For multi-specimen data files provide all IDs in a comma-separated list.",
+      "description": "Unique identifier assigned to each study participant.",
       "title": "individualID",
       "type": "string"
     },
@@ -352,18 +377,26 @@
       "title": "program"
     },
     "project": {
-      "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses.",
-      "enum": [
-        "AIM for RA",
-        "ELLIPSS",
-        "LOCKIT",
-        "METRO",
-        "RA",
-        "SLE",
-        "STAMP",
-        "UMass V-CoRT"
-      ],
-      "title": "project"
+      "description": "A sub-level attribute of `program` specifying a research initiative working to investigate particular hypotheses. Multiple selections can be provided in a comma-delimited list.",
+      "items": {
+        "enum": [
+          "AIM for RA",
+          "EDP1",
+          "EDP2",
+          "ELLIPSS",
+          "LOCKIT",
+          "METRO",
+          "NRP1",
+          "NRP2",
+          "RA",
+          "SLE",
+          "STAMP",
+          "UMass V-CoRT"
+        ],
+        "type": "string"
+      },
+      "title": "project",
+      "type": "array"
     },
     "race": {
       "description": "A textual description of a person's race.",
