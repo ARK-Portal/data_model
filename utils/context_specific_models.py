@@ -52,7 +52,8 @@ def manage_columnType_conversion_descriptions(df):
   # if attribute is no longer a list-type in the context model
   # modify the attribute description accordingly
   to_remove = [" Multiple selections can be provided in a comma-delimited list.", 
-               " For multi-specimen data files provide all IDs in a comma-separated list."]
+               " For multi-specimen data files provide all IDs in a comma-separated list.", 
+               " For aggregated data files please specify all corresponding plateIDs with a comma-delimited list."]
   non_list_df = df[df.columnType.str.contains("_list", na=False) == False]
   non_list_df.reset_index(drop = True, inplace = True)
   desc = []
