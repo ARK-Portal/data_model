@@ -12,6 +12,7 @@ library(JustTheDocsDataDictionary)
 # generate site content from context-based model design
 main_contexts(portal = "ark",
               template_dir = "model_templates",
-              branch = "main")
+              branch = "main", 
+              instructions_fid = "main/template_instructions.json")
 
 # END
