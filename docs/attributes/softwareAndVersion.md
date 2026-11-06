@@ -5,7 +5,7 @@ datatable: true
 layout: page
 nav_order: 88
 permalink: docs/attributes/softwareAndVersion.html
-date: 2026-11-05
+date: 2026-11-06
 ---
 {% assign mydata=site.data.csv.attributes.softwareAndVersion %}
 {% include content/softwareAndVersion.md %}

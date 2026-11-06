@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 97
 permalink: docs/attributes/treatment.html
-date: 2026-11-05
+date: 2026-11-06
 ---
 {% include content/treatment.md %}

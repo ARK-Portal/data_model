@@ -5,6 +5,6 @@ datatable: true
 layout: page
 nav_order: 50
 permalink: docs/attributes/krennStroma.html
-date: 2026-11-05
+date: 2026-11-06
 ---
 {% include content/krennStroma.md %}
